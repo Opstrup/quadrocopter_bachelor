@@ -1,0 +1,51 @@
+\section{Use Case 01 - Opsætning af ny flyvning}
+
+\begin{table}[H]
+\begin{tabular}{|l|p{10cm}|}
+\hline
+
+Goal	 								& Bruger får adgang til webapplikation og kan indstille opsætning til ny flyvning. \\\hline
+Initiation 							& Bruger. \\\hline
+No. of concurrent occurrence’s		& 1. \\\hline
+Stakeholders	and Interests			& Bruger (primær) 
+										\begin{itemize}
+											\item Bruger ønsker at få adgang til webapplikation.
+											\item Fra webapplikation kan bruger opsætte indstillinger til ny flyvning.
+										\end{itemize} 
+									  Webapplikation (sekundær)
+										\begin{itemize}
+											\item Gør information om opsætning tilgængelig for quadrocopter.
+										\end{itemize} \\\hline
+Precondition							& Bruger er oprettet i systemet. \\\hline
+Postcondition						& Opsætning til ny flyvning er tilgængelig for quadrocopter. \\\hline
+Main success scenario				&
+ 
+									\renewcommand{\labelenumi}{\arabic{enumi}.}
+									\renewcommand{\labelenumii}{\Roman{enumii}:}
+
+									\begin{enumerate}[topsep=0.0cm, leftmargin=0.5cm]
+										\item Bruger logger på webapplikation.
+										\item Efter succesfuld log-in vises webapplikations forside.
+											\begin{enumerate}[partopsep=4cm, topsep=0cm, leftmargin=1cm]
+												\item Fejl i log-in.
+											\end{enumerate}
+										\item På forsiden vælges Ny flyvning.
+										\item Via et kort indstilles den/de GPS lokation(er) hvor quadrocopteren under flyvning skal tage billeder/video.	
+										\item Flyvehøjde, flyvehastighed, billedopløsning mm kan indstilles
+									\end{enumerate} \\\hline	
+
+Extensions							& 
+
+									\renewcommand{\labelenumi}{\Roman{enumi}:}
+									\renewcommand{\labelenumii}{\alph{enumii})}
+									\begin{enumerate}[topsep=0.0cm,leftmargin=0.5cm]
+										\item Fejl i log-in.
+											\begin{enumerate}[topsep=0cm, leftmargin=1cm]
+												\item Bruger bliver ført tilbage til log-in skærm.
+											\end{enumerate}
+									\end{enumerate} \\\hline	
+
+\end{tabular}
+\caption{Use Case 01}
+\label{tab:UC01}
+\end{table}
