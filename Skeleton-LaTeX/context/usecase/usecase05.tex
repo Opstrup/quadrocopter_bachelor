@@ -1,0 +1,60 @@
+\section{Use Case 05 - Billede af position}
+
+\begin{table}[H]
+\begin{tabular}{|l|p{10cm}|}
+\hline
+
+Goal	 								& Quadrocopter ankommer til position hvor den tager et billede som sendes til
+webapplikation. Fra databasen kan bruger inspicerer og accepterer billedet. \\\hline
+Initiation 							& UC\#4. \\\hline
+No. of concurrent occurrence’s		& 1. \\\hline
+Stakeholders	and Interests			& Bruger (primær) 
+										\begin{itemize}
+											\item Kan inspicerer og acceptere billede.
+										\end{itemize} 
+									  Webapplikation (sekundær)
+										\begin{itemize}
+											\item Modtager billede fra quadrocopter.
+											\item Giver bruger billede der skal accepteres.
+										\end{itemize} \\\hline
+Precondition							& UC\#1, UC\#3 og UC\#4 er succesfuld gennemført. \\\hline
+Postcondition						& 	\begin{itemize}
+											\item Bruger kan tilgå flyverute og billede via webapplikation.
+											\item Quadrocopter flyver til næste GPS-position eller udgangsposition.
+										\end{itemize} \\\hline
+Main success scenario				&
+ 
+									\renewcommand{\labelenumi}{\arabic{enumi}.}
+									\renewcommand{\labelenumii}{\Roman{enumii}:}
+
+									\begin{enumerate}[topsep=0.0cm, leftmargin=0.5cm]
+										\item Quadrocopter er ved ønsket GPS-koordinat og tager et billede.
+										\item Billedet bearbejdes.
+										\item Billedet sendes til webapplikation.
+										\item Bruger er online på webapplikation og spørges om accept.
+											\begin{enumerate}[partopsep=4cm, topsep=0cm, leftmargin=1cm]
+												\item Bruger accepterer ikke billede.
+												\item Bruger svarer ikke inden for tidsgrænsen.
+											\end{enumerate}
+										\item Quadrocopter flyver til næste GPS-position eller udgangsposition.
+									\end{enumerate} \\\hline	
+
+Extensions							& 
+
+									\renewcommand{\labelenumi}{\Roman{enumi}:}
+									\renewcommand{\labelenumii}{\alph{enumii})}
+									\begin{enumerate}[topsep=0.0cm,leftmargin=0.5cm]
+										\item Bruger accepterer ikke billede.
+											\begin{enumerate}[topsep=0cm, leftmargin=1cm]
+												\item Quadrocopter instrueres til at ændre højde, orientering eller position Trin 1-4 i main succes scenario gentages indtil bruger accepterer billede.
+											\end{enumerate}
+										\item Bruger svarer ikke inden for tidsgrænsen.
+											\begin{enumerate}[topsep=0cm, leftmargin=1cm]
+												\item Quadrocopter får automatisk tildelt accept og sendes instruktioner om atflyve næste GPS-position eller til udgangsposition.
+											\end{enumerate}
+									\end{enumerate} \\\hline	
+
+\end{tabular}
+\caption{Use Case 05}
+\label{tab:UC05}
+\end{table}
