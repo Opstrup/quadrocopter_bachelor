@@ -1,39 +1,26 @@
 \begin{enumerate}
 \item \textbf{Generelle krav}
 	\begin{enumerate}[label*=\arabic*.]
-	\item Kommunikation mellem bærbar enhed og resterende system skal foregå trådløst. 
-	\item Højtalernes vinkel i forhold til bærbar enhed må maks afvige ± 10°.
-	\item Det aktuelle lydtryk må afvige ± \SI{6}{dB} fra ønsket.
-	\item Rækkeviden mellem bærbar enhed og anlæg skal minimum være 2 meter.
-	\item System skal kunne tracke bruger 180°.\\
+	\item Kommunikation mellem quadrocopter og webapplikation skal foregå trådløst.
+	\item Trådløs kommunikation benytter 3G protocol eller ældre. 
+	\item GPS der skal angive koordinat indenfor +- 2,5 meter.
+	\item Højdemåler skal måle højde +- 0,25 meter.\\
 	\end{enumerate}
 
-\item \textbf{Krav til højtalere og forstærker}
+\item \textbf{Krav til webapplikation}
 	\begin{enumerate}[label*=\arabic*.]
-	\item Hvis bærbar enhed skifter position, skal højtaler begynde at tilpasse retning inden for 2 sekunder.
-	\item Højtalerne tager maksimalt 5 sekunder om at dreje 180°.
-	\item Højtalerne kan rotere ± 90° i forhold til centerposition.
-	\item Default indstilling for højtaler retning er centerposition.
-	\item Forstærkeren har analog stereo input.
-	\item Forstærkeren har stereo outputkanal. 
-	\item Default indstilling for lydstyrke er 50 \% af anlæggets maksimale output.\\
+	\item Webapplikation skal kunne tilgås via både computerer og telefoner.
+	\item Indholder database med billeder og flyveruter fra tidligere.
+	\item Indholder datebase med brugere.\\
 	\end{enumerate}	
 	
 
-\item \textbf{Krav til bærbar enhed}
+\item \textbf{Krav til quadrocopter}
 	\begin{enumerate}[label*=\arabic*.]
 	\item Skal forsynes fra batteri.
-	\item Batterilevetiden skal minimum være 2 timer.
-	\item Ønsket lydtryk kan reguleres i mindst 10 trin.
-	\item Måling af gyldige lydstyrke værdier skal lægge indenfor 50$-$\SI{120}{dB}.\\
-	\end{enumerate}
-
-
-\item \textbf{Krav til opsamling af data}
-	\begin{enumerate}[label*=\arabic*.]
-	\item En gyldig lydtryksmåling ligger i intervallet 50$-$\SI{120}{dB}.
-	\item Lydtryksdataserie er ugyldig hvis ikke der foretages en gyldig lydtryksmåling inden for 3 sekunder.
-	\item En gyldig positionsmåling ligger inden for en radius af 4 meter fra anlæg. 
-	\item Positionsdataserie er ugyldig hvis ikke der foretages en gyldig positionsmåling inden for 3 sekunder.\\
+	\item Batterilevetiden skal minimum være 15 minutter.
+	\item Flyvehøjde kan reguleres mellem mindst 5 stadier.
+	\item Højde der tages billeder fra kan reguleres mellem mindst 5 stadier.
+	\item Det skal være muligt at tage billeder med 3 forskellige opløsninger.\\
 	\end{enumerate}
 \end{enumerate}
