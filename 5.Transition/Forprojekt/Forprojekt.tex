@@ -3,18 +3,17 @@
 
 %\includeonly{file1,file2}										% Inkluder kun specifikke filer (kommasepareret liste)
 
-\begin{document}													% Starter dokumentet - obligatorisk
+\begin{document}												% Starter dokumentet - obligatorisk
 
 
-\frontmatter														% Forindhold - nummereres med romertal
+\frontmatter													% Forindhold - nummereres med romertal
 
-\include{4.Construction/formalities/frontpage}
-\include{4.Construction/formalities/titlepage}
-\include{4.Construction/formalities/preface}
+\include{Kapitler/Forside/frontpage}
+
 
 %%%% Indholdsfortegnelse (TOC) %%%%
 
-%\phantomsection													% Kunstigt afsnit, som hyperlinks kan 'holde fast i'
+%\phantomsection												% Kunstigt afsnit, som hyperlinks kan 'holde fast i'
 %\pdfbookmark[0]{Indholdsfortegnelse}{indhold}					% Tildeler en klikbar bookmark til den endelige PDF
 \tableofcontents*												% Indholdsfortegnelsen (kaldet ToC) 
 
@@ -23,21 +22,14 @@
 
 \mainmatter														% Hovedindhold - nummereres fra side 1
 
-%%%% Rapportindhold %%%% 										% Rapportindholdet boer IKKE indeholde broedtekst - KUN includede filer!
+%%%% Rapportindhold %%%% 										% Rapportindhold - KUN include filer!
 
-%% Indledende %%												% Opdel evt. i passende afsnit for overblikkets skyld
+%% Indledende %%												% Opdel evt. i passende afsnit
 
-\include{4.Construction/introduction}
 
 %% Kontekst %%
 
-\include{2.Inception/usecase/usecase_holder}
-\include{4.Construction/skeleton-chapter}
-\include{4.Construction/skeleton-chapter2}
-
-%% Afrunding %%
-
-\include{4.Construction/formalities/conclusion}
+\include{Kapitler/Kravspecifikation/_Kravspecifikation}
 
 
 %%%% Kilder %%%%
@@ -82,5 +74,3 @@
 
 
 \end{document}													% Slutter dokumentet - obligatorisk
-
-
