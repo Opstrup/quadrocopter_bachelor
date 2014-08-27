@@ -10,17 +10,16 @@ Nedenstående figur viser hvilke aktører der interagerer med systemet.
 \end{figure}
 
 \subsection{Aktørbeskrivelser}
-Aktørbeskrivelsen skitserer systemets aktører samt hvilken rolle de spiller for systemet.
-
+Beskriver systemets aktører samt hvilken rolle de spiller for systemet.
 
 \begin{table}[H]
 \begin{tabular}{|l|p{13.25cm}|} \hline
 
 Navn					& Bruger. 	\\\hline
 Type					& Primær.	\\\hline
-Beskrivelse				& Bruger er den eneste person der interagerer med systemet.\\
+Beskrivelse				& Bruger er den eneste person der interagere med systemet.\\
 						& Via webapplikation kan bruger indstille flyveopsætning for nye flyvninger, \\ 
-						& samt undersøge billeder og flyveruter fra tidligere flyvninger.\\\hline
+						& samt undersøge billeder og flyverute fra tidligere flyvninger.\\\hline
 						
 \end{tabular}
 \caption{Aktørbeskrivelse, Bruger}

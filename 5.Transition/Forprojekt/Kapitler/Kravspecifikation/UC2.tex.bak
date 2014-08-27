@@ -1,23 +1,24 @@
-\subsection*{UC5 - Vis tidligere flyvning}
+\subsection*{UC2 - Ny flyveopsætning}
 
 \begin{table}[H]
 \begin{tabular}{|l|p{10cm}|}
 \hline
 
-Goal	 								& Bruger tilgår webapplikation hvor tidligere flyveruter og tilhørende billeder forefindes. \\\hline
+Goal	 							& Ny flyveopsætning er oprettet og sendt til quadrocopter. \\\hline
 Initiation 							& Bruger. \\\hline
 No. of concurrent occurrence’s		& 1. \\\hline
 Stakeholders	and Interests			& Bruger (primær) 
 										\begin{itemize}
-											\item Ønsker at få adgang til webapplikation. 
-											\item Fra webapplikation kan bruger undersøge flyveruter og billeder fra tidligere flyvninger.
+											\item Bruger ønsker at få adgang til webapplikation.
+											\item Fra webapplikation indstiller bruger flyveopsætning.
 										\end{itemize} 
+										\newline
 									  Webapplikation (sekundær)
 										\begin{itemize}
-											\item Giver bruger adgang til flyveruter og billeder.
+											\item Sender flyveopsætning til quadropcopter.
 										\end{itemize} \\\hline
-Precondition							& Bruger er oprettet i systemet. \\\hline
-Postcondition						& Ingen. \\\hline
+Precondition							& Bruger er oprettet i systemet og \ref{tab:UC01} er gennemført  \\\hline
+Postcondition						& Ny flyveopsætning er sendt til quadrocopter. \\\hline
 Main success scenario				&
  
 									\renewcommand{\labelenumi}{\arabic{enumi}.}
@@ -29,9 +30,7 @@ Main success scenario				&
 												\item Fejl i log-in.
 										\end{enumerate}
 										\item Efter succesfuld log-in vises webapplikations forside.
-										\item På forsiden vælges historik.
-										\item Bruger vælger tidligere flyvning.	
-										\item Flyverute samt billeder fra valgte flyvning vises.
+										\item Fra forsiden navigerer bruger til vindue hvorfra ny flyveopsætning indstilles.
 									\end{enumerate} \\\hline	
 
 Extensions							& 
@@ -46,6 +45,6 @@ Extensions							&
 									\end{enumerate} \\\hline	
 
 \end{tabular}
-\caption{Use Case 5}
-\label{tab:UC5}
+\caption{Use Case 2}
+\label{tab:UC2}
 \end{table}
