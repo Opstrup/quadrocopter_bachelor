@@ -1,24 +1,23 @@
-\subsection*{UC2 - Vis tidligere flyvning}
+\subsection*{UC2 - Ny flyveopsætning}
 
 \begin{table}[H]
 \begin{tabular}{|l|p{10cm}|}
 \hline
 
-Goal	 								& Bruger får adgang til webapplikationen. Via webapplikation kan bruger tilgå en
-database, hvor tidligere flyveruter og tilhørende billeder forefindes. \\\hline
+Goal	 							& Ny flyveopsætning er oprettet og sendt til quadrocopter. \\\hline
 Initiation 							& Bruger. \\\hline
 No. of concurrent occurrence’s		& 1. \\\hline
 Stakeholders	and Interests			& Bruger (primær) 
 										\begin{itemize}
-											\item Ønsker at få adgang til webapplikation. Herfra kan bruger
-undersøge flyveruter og billeder fra tidligere flyvninger.
-										\end{itemize} 
+											\item Bruger ønsker at få adgang til webapplikation.
+											\item Fra webapplikation indstiller bruger flyveopsætning.
+										\end{itemize}
 									  Webapplikation (sekundær)
 										\begin{itemize}
-											\item Giver bruger de oplysninger der ønskes.
+											\item Sender flyveopsætning til quadropcopter.
 										\end{itemize} \\\hline
-Precondition							& Bruger er oprettet i systemet. \\\hline
-Postcondition						& Ingen. \\\hline
+Precondition							& Bruger er oprettet i systemet og UC\#1 er succesfuld gennemført  \\\hline
+Postcondition						& Ny flyveopsætning er sendt til quadrocopter. \\\hline
 Main success scenario				&
  
 									\renewcommand{\labelenumi}{\arabic{enumi}.}
@@ -26,13 +25,11 @@ Main success scenario				&
 
 									\begin{enumerate}[topsep=0.0cm, leftmargin=0.5cm]
 										\item Bruger logger på webapplikation.
-										\item Efter succesfuld log-in vises webapplikations forside.
-											\begin{enumerate}[partopsep=4cm, topsep=0cm, leftmargin=1cm]
+										\begin{enumerate}[partopsep=4cm, topsep=0cm, leftmargin=1cm]
 												\item Fejl i log-in.
-											\end{enumerate}
-										\item På forsiden vælges Historik.
-										\item Bruger vælger tidligere flyvning ud fra dato.	
-										\item Vindue med flyverute samt billeder fra valgte dato/flyvning vises.
+										\end{enumerate}
+										\item Efter succesfuld log-in vises webapplikations forside.
+										\item Fra forsiden navigerer bruger til vindue hvorfra ny flyveopsætning indstilles.
 									\end{enumerate} \\\hline	
 
 Extensions							& 
@@ -47,6 +44,6 @@ Extensions							&
 									\end{enumerate} \\\hline	
 
 \end{tabular}
-\caption{Use Case 02}
-\label{tab:UC02}
+\caption{Use Case 2}
+\label{tab:UC2}
 \end{table}

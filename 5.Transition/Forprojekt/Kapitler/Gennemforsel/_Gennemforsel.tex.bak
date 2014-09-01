@@ -33,7 +33,7 @@ I sidste iteration laves nice to have ting, fx et flot GUI.
 
 \newpage
 
-\begin{figure}
+\begin{figure}[V]
 \centering
 \includegraphics[width=0.7\textwidth]{Billeder/Tidsplan1.png}
 \caption{Grafisk tidsplan}
