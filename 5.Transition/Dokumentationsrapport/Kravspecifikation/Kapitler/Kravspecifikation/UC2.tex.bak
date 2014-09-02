@@ -11,13 +11,12 @@ Stakeholders	and Interests			& Bruger (primær)
 										\begin{itemize}
 											\item Bruger ønsker at få adgang til webapplikation.
 											\item Fra webapplikation indstiller bruger flyveopsætning.
-										\end{itemize} 
-										\newline
+										\end{itemize}
 									  Webapplikation (sekundær)
 										\begin{itemize}
 											\item Sender flyveopsætning til quadropcopter.
 										\end{itemize} \\\hline
-Precondition							& Bruger er oprettet i systemet og \ref{tab:UC01} er gennemført  \\\hline
+Precondition							& Bruger er oprettet i systemet og UC\#1 er succesfuld gennemført  \\\hline
 Postcondition						& Ny flyveopsætning er sendt til quadrocopter. \\\hline
 Main success scenario				&
  
@@ -30,7 +29,8 @@ Main success scenario				&
 												\item Fejl i log-in.
 										\end{enumerate}
 										\item Efter succesfuld log-in vises webapplikations forside.
-										\item Fra forsiden navigerer bruger til vindue hvorfra ny flyveopsætning indstilles.
+										\item Fra forsiden navigerer bruger til flyveopsætning.
+										\item Enten laver bruger en ny flyveopsætning eller anvender en gemt.
 									\end{enumerate} \\\hline	
 
 Extensions							& 

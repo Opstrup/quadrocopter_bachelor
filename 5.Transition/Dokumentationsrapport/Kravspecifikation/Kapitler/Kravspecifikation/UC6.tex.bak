@@ -1,0 +1,45 @@
+\subsection*{UC6 - Anti kollidering}
+
+\begin{table}[H]
+\begin{tabular}{|l|p{10cm}|}
+\hline
+
+Goal	 								& Quadrocopter kan undvige forhindringer vha. anti kollidering \\\hline
+Initiation 							& Bruger. \\\hline
+No. of concurrent occurrence’s		& 1. \\\hline
+Stakeholders	and Interests			& Bruger (primær) 
+										\begin{itemize}
+											\item Ønsker flyvning uden kollision.
+										\end{itemize} \\\hline
+Precondition							& Quadropcopter flyver. \\\hline
+Postcondition						& Quadrocopter har undviget en kollision \\\hline
+Main success scenario				&
+ 
+									\renewcommand{\labelenumi}{\arabic{enumi}.}
+									\renewcommand{\labelenumii}{\Roman{enumii}:}
+
+									\begin{enumerate}[topsep=0.0cm, leftmargin=0.5cm]
+										\item Quadrocopter flyver mod GPS koordinat.
+										\item Anti kolliderings system detekterer en forhindring.
+										\item Undvigelses manøvre udføres.
+											\begin{enumerate}[topsep=0cm, leftmargin=1cm]
+												\item Forhindring kan ikke undviges.
+											\end{enumerate}
+										
+									\end{enumerate} \\\hline	
+
+Extensions							& 
+
+									\renewcommand{\labelenumi}{\Roman{enumi}:}
+									\renewcommand{\labelenumii}{\alph{enumii})}
+									\begin{enumerate}[topsep=0.0cm,leftmargin=0.5cm]
+										\item Forhindring kan ikke undviges.
+											\begin{enumerate}[topsep=0cm, leftmargin=1cm]
+												\item 
+											\end{enumerate}
+									\end{enumerate} \\\hline	
+
+\end{tabular}
+\caption{Use Case 5}
+\label{tab:UC5}
+\end{table}
