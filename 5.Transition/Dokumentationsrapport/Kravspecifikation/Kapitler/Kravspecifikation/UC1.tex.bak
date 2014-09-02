@@ -1,0 +1,45 @@
+\subsection*{UC1 - Start quadrocopter}
+
+\begin{table}[H]
+\begin{tabular}{|l|p{10cm}|}
+\hline
+
+Goal	 								& Quadrocopteren er tændt og har forbindelse til webapplikation. \\\hline
+Initiation 							& Bruger. \\\hline
+No. of concurrent occurrence’s		& 1. \\\hline
+Stakeholders	and Interests			& Bruger (primær) 
+										\begin{itemize}
+											\item Bruger tænder quadrocopter.
+										\end{itemize} \\\hline
+Precondition						& Der er ingen precondition. \\\hline
+Postcondition						& Quadrocopter er klar til at modtage flyveinstruktioner fra webapplikationen. \\\hline
+Main success scenario				&
+ 
+									\renewcommand{\labelenumi}{\arabic{enumi}.}
+									\renewcommand{\labelenumii}{\Roman{enumii}:}
+
+									\begin{enumerate}[topsep=0.0cm, leftmargin=0.5cm]
+										\item Bruger tænder quadrocopter.
+										\item Quadrocopter initialiseres.
+										\item Forbindelse fra quadrocopter til webapplikation oprettes.
+											\begin{enumerate}[partopsep=4cm, topsep=0cm, leftmargin=1cm]
+												\item Forbindelsen kan ikke oprettes.
+											\end{enumerate}
+										
+									\end{enumerate} \\\hline	
+
+Extensions							& 
+
+									\renewcommand{\labelenumi}{\Roman{enumi}:}
+									\renewcommand{\labelenumii}{\alph{enumii})}
+									\begin{enumerate}[topsep=0.0cm,leftmargin=0.5cm]
+										\item Forbindelsen kan ikke oprettes.
+											\begin{enumerate}[topsep=0cm, leftmargin=1cm]
+												\item Systemet indikerer at der ikke er forbindelse mellem quadrocopter og webapplikation.
+											\end{enumerate}
+									\end{enumerate} \\\hline	
+
+\end{tabular}
+\caption{Use Case 1}
+\label{tab:UC1}
+\end{table}
