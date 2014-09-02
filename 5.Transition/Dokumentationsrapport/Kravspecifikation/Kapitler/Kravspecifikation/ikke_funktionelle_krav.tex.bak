@@ -1,0 +1,32 @@
+\begin{enumerate}
+\item \textbf{Generelle krav}
+	\begin{enumerate}[label*=\arabic*.]
+	\item Kommunikation mellem quadrocopter og webapplikation skal foregå trådløst.
+	\item Trådløs kommunikation benytter 3G protocol eller ældre. 
+	\item GPS der skal angive koordinat indenfor $\pm$ 2,5 meter.
+	\item Højdemåler skal måle højde $\pm$ 10 cm.\\
+	\end{enumerate}
+
+\item \textbf{Krav til webapplikation}
+	\begin{enumerate}[label*=\arabic*.]
+	\item Webapplikation skal kunne tilgås via både computere og telefoner.
+	\item Indholder database med billeder og flyveruter fra tidligere.
+	\item Indholder database med brugere.\\
+	\end{enumerate}	
+	
+
+\item \textbf{Krav til quadrocopter}
+	\begin{enumerate}[label*=\arabic*.]
+	\item Skal forsynes fra batteri.
+	\item Batterilevetiden skal minimum være 15 minutter.
+	\item Flyvehastigheden skal minimum være 2$\frac{m}{s}$.
+	\item Flyvehøjde kan reguleres mellem 1 og 2,5 meter.
+	\item Højde der tages billeder fra kan reguleres mellem 1 og 2,5 meter.\\
+	
+	\end{enumerate}
+	
+\item \textbf{Krav til opsamling af data}
+	\begin{enumerate} [label*=\arabic*.]
+	\item Gyldig højdemåling ligger i intervallet 0,5 til 4,5 meter. 
+	\end{enumerate}
+\end{enumerate}

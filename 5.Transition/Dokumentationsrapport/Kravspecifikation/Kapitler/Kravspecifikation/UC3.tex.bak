@@ -1,0 +1,52 @@
+\subsection*{UC3 - Flyv til position}
+
+\begin{table}[H]
+\begin{tabular}{|l|p{10cm}|}
+\hline
+
+Goal	 							& Quadrocopter flyver til ønsket position. \\\hline
+Initiation 							& UC\#2. \\\hline
+No. of concurrent occurrence’s		& 1. \\\hline
+Stakeholders	and Interests			& Bruger (primær) 
+										\begin{itemize}
+											\item Bruger ønsker at quadrocopter flyver til den angivne position.
+										\end{itemize} \\\hline
+Precondition							& UC\#1 og UC\#2 er succesfuld gennemført. \\\hline
+Postcondition						& Position er nået. \\\hline
+Main success scenario				&
+ 
+									\renewcommand{\labelenumi}{\arabic{enumi}.}
+									\renewcommand{\labelenumii}{\Roman{enumii}:}
+
+									\begin{enumerate}[topsep=0.0cm, leftmargin=0.5cm]
+										\item Opdaterer nuværende position.
+											\begin{enumerate}[partopsep=4cm, topsep=0cm, leftmargin=1cm]
+												\item Ugyldig GPS koordinat.
+											\end{enumerate}
+										\item Flyvehøjde tilpasses.
+											\begin{enumerate}[partopsep=4cm, topsep=0cm, leftmargin=1cm]
+												\item Flyvehøjde kan ikke findes.
+											\end{enumerate}
+										\item Flyveretning tilpasses.
+										\item Quadrocopter flyver mod ønsket position.
+									\end{enumerate} \\\hline	
+
+Extensions							& 
+
+									\renewcommand{\labelenumi}{\Roman{enumi}:}
+									\renewcommand{\labelenumii}{\alph{enumii})}
+									\begin{enumerate}[topsep=0.0cm,leftmargin=0.5cm]
+										\item Ugyldig GPS koordinat.
+											\begin{enumerate}[topsep=0cm, leftmargin=1cm]
+												\item Opdaterer position igen.
+											\end{enumerate}
+										\item Flyvehøjde kan ikke findes.
+											\begin{enumerate}[topsep=0cm, leftmargin=1cm]
+												\item Quadrocopter går i fejlmode.
+											\end{enumerate}
+									\end{enumerate} \\\hline	
+
+\end{tabular}
+\caption{Use Case 04}
+\label{tab:UC04}
+\end{table}
