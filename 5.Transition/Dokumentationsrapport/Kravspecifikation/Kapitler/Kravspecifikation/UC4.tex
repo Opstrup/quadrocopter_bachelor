@@ -4,10 +4,9 @@
 \begin{tabular}{|l|p{10cm}|}
 \hline
 
-Goal	 							& Quadrocopter tager et billede af nuværende position som sendes til webapplikation. Fra webapplikation kan bruger inspicere og acceptere billedet. \\\hline
-Initiation 							& UC\#3. \\\hline
-No. of concurrent occurrence’s		& 1. \\\hline
-Stakeholders	and Interests			& Bruger (primær) 
+Mål	 							& Quadrocopter tager et billede af nuværende position som sendes til webapplikation. Fra webapplikation kan bruger inspicere og acceptere billedet. \\\hline
+Initiering 							& UC\#3. \\\hline
+Aktører og interesserede parter			& Bruger (primær) 
 										\begin{itemize}
 											\item Kan inspicere og acceptere billede.
 										\end{itemize} 
@@ -16,20 +15,20 @@ Stakeholders	and Interests			& Bruger (primær)
 											\item Modtager billede fra quadrocopter.
 											\item Viser bruger billede der skal accepteres.
 										\end{itemize} \\\hline
-Precondition							& UC\#1, UC\#2 og UC\#3 er succesfuld gennemført. \\\hline
-Postcondition						& 	\begin{itemize}
+Startbetingelser							& UC\#1, UC\#2 og UC\#3 er succesfuld gennemført. \\\hline
+Slutbetingelser						& 	\begin{itemize}
 											\item Bruger kan tilgå billede via webapplikation.
 											\item Quadrocopter flyver til næste GPS-position eller udgangsposition.
 										\end{itemize} \\\hline
-Main success scenario				&
+Hovedforløb				&
  
 									\renewcommand{\labelenumi}{\arabic{enumi}.}
 									\renewcommand{\labelenumii}{\Roman{enumii}:}
 
 									\begin{enumerate}[topsep=0.0cm, leftmargin=0.5cm]
-										\item Quadrocopter er ved ønsket GPS-position og tager et billede.
+										\item Quadrocopter tager et billede af nuværende position.
 										\item Billedet sendes til webapplikation.
-										\item Bruger er online på webapplikation og giver accept af billede.
+										\item Bruger er online på webapplikation og giver accept af billedet.
 											\begin{enumerate}[partopsep=4cm, topsep=0cm, leftmargin=1cm]
 												\item Bruger accepterer ikke billede.
 												\item Bruger svarer ikke inden for tidsgrænsen.
@@ -37,7 +36,7 @@ Main success scenario				&
 										\item Quadrocopter flyver til næste GPS- eller udgangsposition.
 									\end{enumerate} \\\hline	
 
-Extensions							& 
+Undtagelser							& 
 
 									\renewcommand{\labelenumi}{\Roman{enumi}:}
 									\renewcommand{\labelenumii}{\alph{enumii})}

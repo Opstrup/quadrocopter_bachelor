@@ -4,34 +4,33 @@
 \begin{tabular}{|l|p{10cm}|}
 \hline
 
-Goal	 							& Quadrocopter flyver til ønsket position. \\\hline
-Initiation 							& UC\#2. \\\hline
-No. of concurrent occurrence’s		& 1. \\\hline
-Stakeholders	and Interests			& Bruger (primær) 
+Mål	 							& Quadrocopter flyver til ønsket position. \\\hline
+Initiering 							& UC\#2. \\\hline
+Aktører og interesserede parter			& Bruger (primær) 
 										\begin{itemize}
 											\item Bruger ønsker at quadrocopter flyver som angivet i flyveopsætning.
 										\end{itemize} \\\hline
-Precondition							& UC\#1 og UC\#2 er succesfuld gennemført. \\\hline
-Postcondition						& Position er nået. \\\hline
-Main success scenario				&
+Startbetingelser							& UC\#1 og UC\#2 er succesfuld gennemført. \\\hline
+Slutbetingelser						& Position er nået. \\\hline
+Hovedforløb				&
  
 									\renewcommand{\labelenumi}{\arabic{enumi}.}
 									\renewcommand{\labelenumii}{\Roman{enumii}:}
 
 									\begin{enumerate}[topsep=0.0cm, leftmargin=0.5cm]
-										\item Opdaterer nuværende position.
+										\item Nuværende position opdateres.
 											\begin{enumerate}[partopsep=4cm, topsep=0cm, leftmargin=1cm]
 												\item Ugyldig GPS koordinat.
 											\end{enumerate}
 										\item Flyvehøjde tilpasses.
 											\begin{enumerate}[partopsep=4cm, topsep=0cm, leftmargin=1cm]
-												\item Flyvehøjde kan ikke findes.
+												\item Ugyldig flyvehøjde.
 											\end{enumerate}
 										\item Flyveretning tilpasses.
 										\item Quadrocopter flyver mod ønsket position.
 									\end{enumerate} \\\hline	
 
-Extensions							& 
+Undtagelser							& 
 
 									\renewcommand{\labelenumi}{\Roman{enumi}:}
 									\renewcommand{\labelenumii}{\alph{enumii})}
@@ -40,7 +39,7 @@ Extensions							&
 											\begin{enumerate}[topsep=0cm, leftmargin=1cm]
 												\item Quadrocopter går i fejlmode.
 											\end{enumerate}
-										\item Flyvehøjde kan ikke findes.
+										\item Ugyldig flyvehøjde.
 											\begin{enumerate}[topsep=0cm, leftmargin=1cm]
 												\item Quadrocopter går i fejlmode.
 											\end{enumerate}
