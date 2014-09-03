@@ -2,7 +2,37 @@
 
 \section{Revisionshistorik}
 
+\begin{table}[H]
+	\centering
+		\begin{tabular}{|l|l|p{7 cm}|} 
+		\hline
+			Område & Prioritering & Kommentar \\ \hline
+			Sikkerhed & 5 & \\ \hline
+			Pålidelighed & 4 & \\ \hline
+			Pris & 3 & \\ \hline
+			Brugervenlighed & 3 & \\ \hline
+		\end{tabular}
+	\caption{Revisionshistorik}
+	%\label{tab:TC1}
+\end{table}
+
 \section{Ordforklaring}
+
+
+\begin{table}[H]
+	\centering
+		\begin{tabular}{|l|l|p{7 cm}|} 
+		\hline
+			Område & Prioritering & Kommentar \\ \hline
+			Sikkerhed & 5 & \\ \hline
+			Pålidelighed & 4 & \\ \hline
+			Pris & 3 & \\ \hline
+			Brugervenlighed & 3 & \\ \hline
+		\end{tabular}
+	\caption{Ordforklaring}
+	%\label{tab:TC1}
+\end{table}
+
 
 \newpage
 \section{Indledning}

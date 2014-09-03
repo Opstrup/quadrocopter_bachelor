@@ -1,3 +1,23 @@
 \section{Brugscenarie}
 
+Et almindeligt brugsscenarie for den autonome overvågnings drone vil være at få tildelt nogle koordinater, typisk omkring en virksomhed eller et område, som skal overvåges.
+Brugeren indtaster de steder dronen skal overvåge, hvorefter disse uploades til dronen. 
+Brugeren har mulighed for at vælge mellem nogle forskellige indstillinger, så som flyvehøjde, højden billeder skal tages i og antal steder der skal overvåges.
+Under flyvningen kan bruger godkende billederne, hvis billederne ikke godkendes, ændrer dronen positionen, hvorefter et nyt billede tages og sendes til godkendelse. Hvis ikke brugeren får godkendt billedet indenfor tidsgrænsen, vil det blive betragtet som at billedet godkendes og dronen flyver videre til næste koordinat.
+
 \section{Prioritering}
+
+
+\begin{table}[H]
+	\centering
+		\begin{tabular}{|l|l|p{7 cm}|} 
+		\hline
+			Område & Prioritering & Kommentar \\ \hline
+			Sikkerhed & 5 & Sikkerheden prioriteres højst, idet quadrocopterens propeller roterer med en hastighed der kan skade personer og dyr.   \\ \hline
+			Pålidelighed & 4 & Hele systemet skal være pålidelig, da den under flyvning ikke må udsætte mennesker og dyr for farlige situationer.  \\ \hline
+			Pris & 3 & Prisen er mindre vigtig, da dette er et udviklingsprojekt med henblik på videreudvikling.   \\ \hline
+			Brugervenlighed & 3 & Systemet skal ikke kunne betjenes af alle, så brugervenligheden er ikke den vigtigste prioritering. \\ \hline
+		\end{tabular}
+	\caption{Prioriteringsliste}
+	%\label{tab:TC1}
+\end{table}
