@@ -4,13 +4,11 @@
 
 \begin{table}[H]
 	\centering
-		\begin{tabular}{|l|l|p{7 cm}|} 
+		\begin{tabular}{|l|l|l|p{5 cm}|} 
 		\hline
-			Område & Prioritering & Kommentar \\ \hline
-			Sikkerhed & 5 & \\ \hline
-			Pålidelighed & 4 & \\ \hline
-			Pris & 3 & \\ \hline
-			Brugervenlighed & 3 & \\ \hline
+			Rev. Nr & Dato		& Initialer 	& Ændring \\ \hline
+			1.0 	& 25-08-14	& KG,RL,AO		& Oprettet.	\\ \hline
+			1.1 	& 03-09-14	& KG,RL,AO		& Use cases er blevet opdateret.\\ \hline
 		\end{tabular}
 	\caption{Revisionshistorik}
 	%\label{tab:TC1}
@@ -21,18 +19,19 @@
 
 \begin{table}[H]
 	\centering
-		\begin{tabular}{|l|l|p{7 cm}|} 
+		\begin{tabular}{|p{3 cm}|p{3 cm}|p{3 cm}|} 
 		\hline
-			Område & Prioritering & Kommentar \\ \hline
-			Sikkerhed & 5 & \\ \hline
-			Pålidelighed & 4 & \\ \hline
-			Pris & 3 & \\ \hline
-			Brugervenlighed & 3 & \\ \hline
+			Forkortelse & Betydning & Forklaring \\ \hline
+			& & \\ \hline
+			& & \\ \hline
+			& & \\ \hline
+			& & \\ \hline
 		\end{tabular}
 	\caption{Ordforklaring}
 	%\label{tab:TC1}
 \end{table}
 
 
-\newpage
 \section{Indledning}
+
+Dette dokument indeholder en generel beskrivelse af \textit{"Autonom overvågnings drone"}. Ydermere er krav og egenskaber for systemet beskrevet.
