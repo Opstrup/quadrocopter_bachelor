@@ -1,12 +1,12 @@
 \subsection*{UC4 - Billede af position}
 
 \begin{table}[H]
-\begin{tabular}{|l|p{10cm}|}
+\begin{tabular}{| p{3cm}| p{11.5cm}|}
 \hline
 
 Mål	 							& Quadrocopter tager et billede af nuværende position som sendes til webapplikation. Fra webapplikation kan bruger inspicere og acceptere billedet. \\\hline
 Initiering 							& UC\#3. \\\hline
-Aktører og interesserede parter			& Bruger (primær) 
+Aktører og interesserede			& Bruger (primær) 
 										\begin{itemize}
 											\item Kan inspicere og acceptere billede.
 										\end{itemize} 
@@ -28,12 +28,12 @@ Hovedforløb				&
 									\begin{enumerate}[topsep=0.0cm, leftmargin=0.5cm]
 										\item Quadrocopter tager et billede af nuværende position.
 										\item Billedet sendes til webapplikation.
-										\item Bruger er online på webapplikation og giver accept af billedet.
+										\item Bruger giver accept af billedet via webapplikation.
 											\begin{enumerate}[partopsep=4cm, topsep=0cm, leftmargin=1cm]
 												\item Bruger accepterer ikke billede.
 												\item Bruger svarer ikke inden for tidsgrænsen.
 											\end{enumerate}
-										\item Quadrocopter flyver til næste GPS- eller udgangsposition.
+										\item Quadrocopter sendes information om næste lokation.
 									\end{enumerate} \\\hline	
 
 Undtagelser							& 
@@ -43,7 +43,7 @@ Undtagelser							&
 									\begin{enumerate}[topsep=0.0cm,leftmargin=0.5cm]
 										\item Bruger accepterer ikke billede.
 											\begin{enumerate}[topsep=0cm, leftmargin=1cm]
-												\item Quadrocopter instrueres til at ændre højde, orientering eller position. Trin 1-3 i main succes scenario gentages.
+												\item Quadrocopter instrueres til at ændre højde, orientering eller position. Derefter genstartes UC4.
 											\end{enumerate}
 										\item Bruger svarer ikke inden for tidsgrænsen.
 											\begin{enumerate}[topsep=0cm, leftmargin=1cm]
