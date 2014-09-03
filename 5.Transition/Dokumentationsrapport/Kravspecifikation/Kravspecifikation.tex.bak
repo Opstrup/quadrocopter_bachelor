@@ -28,7 +28,7 @@
 
 \include{Kapitler/Beskrivelse/Brugscenarie}
 %%%% Rapportindhold %%%% 										% Rapportindhold - KUN include filer!
-
+\include{Kapitler/Test/_Test}
 %% Indledende %%												% Opdel evt. i passende afsnit
 
 
