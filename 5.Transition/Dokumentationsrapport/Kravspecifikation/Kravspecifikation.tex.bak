@@ -17,6 +17,14 @@
 
 \include{Kapitler/Beskrivelse/Brugscenarie}
 
+\include{Kapitler/Beskrivelse/grenseflader}
+%%%% Rapportindhold %%%% 										% Rapportindhold - KUN include filer!
+
+%% Indledende %%												% Opdel evt. i passende afsnit
+
+
+%% Kontekst %%
+
 \include{Kapitler/Kravspecifikation/_Kravspecifikation}
 
 \include{Kapitler/Test/_Test}
