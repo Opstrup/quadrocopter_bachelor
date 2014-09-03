@@ -82,8 +82,6 @@ Forudsætninger:	Ingen.
 			2 & Drone intialiseres. & Arduino bootes og ESC'er signalerer de er flyve klar. &   \\ \hline
 			3 & Forbindelse fra drone til webapplikation oprettes. & Fra webapplikation ses at drone er connected. &  \\ \hline
 		\end{tabular}
-	\caption{Test case 1: Start system}
-	%\label{tab:TC1}
 \end{table}
 
 
@@ -97,14 +95,11 @@ Forudsætninger:	Bruger er oprettet i systemet og UC\#1 er succesfuld gennemfør
 		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{3.5 cm}|} 
 		\hline
 			Step & Handling & Forventet resultat & Resultat\\ \hline
-			1 & Bruger logger på webapplikation. & Login lykkes. &  \\ \hline
-			2 & Webapplikations forside vises. & Webapplikationens forside vises. &   \\ \hline
+			1 & Bruger logger på webapplikation. & Login lykkes, og webapplikations forside vises. &  \\ \hline
 			3 & Fra forsiden navigerer bruger til flyveopsætning. & Flyveopsætnings siden vises. & \\ \hline
 			4 & Bruger laver en ny flyveopsætning. & Flyveopsætning klargjort & \\ \hline
 			5 & Flyveopsætning sendes til drone. & Flyveopsætning sendes til drone & \\ \hline
 		\end{tabular}
-	\caption{Test case 2: Ny flyveopsætning}
-	%\label{tab:TC2}
 \end{table}
 
 \textbf{Extension 1: Fejl i login.}
@@ -179,42 +174,38 @@ Forudsætninger:	UC\#1, UC\#2 og UC\#3 er succesfuld gennemført.
 		\hline
 			Step & Handling & Forventet resultat & Resultat\\ \hline
 			1 & Drone tager et billede af nuværende position. & Kamera aktiveres og der tages et billede. & \\ \hline
-			2 & Billedet sendes til webapplikation. & Billedet gøres tilgængelig på webapplikationen &  \\ \hline
-			3 & Bruger er online på webapplikation og giver accept af billedet. &  & \\ \hline
+			2 & Billedet sendes til webapplikation. & Billedet sendes til webapplikation bliver tilgængelig på webapplikationen &  \\ \hline
+			3 & Bruger giver accept af billedet via webapplikation. & Billedet gemmes i database  & \\ \hline
+			4 & Drone modtager information om næste GPS lokation & Drone påbegynder flyvning mod næste GPS lokation (UC3). & \\ \hline
+
 		\end{tabular}
-	\caption{Test case 4: Tilpas højtaler retning}
-	\label{tab:TC 4}
 \end{table}
 
 
-\textbf{Extension 1: Ugyldig positionsdataserie.}
+\textbf{Extension 1: Bruger accepterer ikke billede.}
 \begin{table}[H]
 	\centering
 		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{3.5 cm}|} 
 		\hline
 			Step & Handling & Forventet resultat & Resultat\\ \hline
-			a & Der måles en ugyldig positionsdataserie. & Højtaler retning indstilles til default. & Ikke godkendt – kan ikke testes 	\\ \hline
+			a & Quadrocopter intrueres til at ændre flyvehøjde, orientering eller position. UC4 genstartes. & Flyvehøjde, orientering eller position ændres. & \\ \hline
 		\end{tabular}
-	\caption{Test Case 4: Tilpas højtalers retning - Extension 1}
-	\label{tab:TC4ex1}
 \end{table}
 
-\textbf{Extension 2: Bærbar enhed mister forbindelse til anlæg.}
+\textbf{Extension 2: Bruger svarer ikke inden for tidsgrænsen.}
 \begin{table}[H]
 	\centering
 		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{3.5 cm}|} 
 		\hline
 			Step & Handling & Forventet resultat & Resultat\\ \hline
-			a & Bærbar enhed mister forbindelse til anlæg. & Højtaler retning og lydstyrke indstilles til default. & Ikke godkendt – kan ikke testes\\ \hline
+			a & Quadrocopter får automatisk tildelt accept. & Quadrocopter påbegynder flyvning mod næste GPS lokation (UC3). & \\ \hline
 		\end{tabular}
-	\caption{Test case 4: Tilpas højtaler retning - Extension 2}
-	\label{tab:TC4ex2}
 \end{table}
 
 \newpage
-\subsection*{Test case 5: Tilpas lydtryk}
-Use case under test: UC 5: Tilpas lydtryk.\\
-Forudsætninger:	UC 1 er succesfuldt gennemført.
+\subsection*{Test case 5: Vis tidligere flyvning}
+Use case under test: UC 5: Vis tidligere flyvning.\\
+Forudsætninger:	Bruger er oprettet i systemet.
 
 \textbf{Hovedscenarie}
 \begin{table}[H]
@@ -222,39 +213,45 @@ Forudsætninger:	UC 1 er succesfuldt gennemført.
 		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{3.5 cm}|} 
 		\hline
 			Step & Handling & Forventet resultat & Resultat\\ \hline
-			1 & Bærbar enhed måler lydtryk hos bruger. & Ingen handling. & Godkendt\\ \hline
-			2 & Bærbar enhed sender data til anlæg. & Ingen handling. & Godkendt\\ \hline
-			3 & Anlæg bearbejder data. & Ingen handling. & Godkendt\\ \hline
-			4 & Anlæg tilpasser lydtryk. & System afspiller lyd i ønsket lydtryk \SI{+-6}{dB}. & Godkendt – Justeres dog ud fra fixed point\\ \hline
+			1 & Bruger logger på webapplikation. & Login lykkes og webapplikations forside vises. &  \\ \hline
+			3 & Fra forsiden navigerer bruger til historik. & Historik side vises. & \\ \hline
+			4 & Matriale tilhørende en tidligere flyvning vælges. & Billeder, video og flyverute tilhørende valgte flyvning vises. & \\ \hline			
 		\end{tabular}
-	\caption{Test case 5: Tilpas lydtryk}
-	\label{tab:TC5}
 \end{table}
 
-\textbf{Extension 1: Ugyldig lydtryksdataserie.}
+\textbf{Extension 1: Fejl i login.}
 \begin{table}[H]
 	\centering
 		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{3.5 cm}|} 
 		\hline
 			Step & Handling & Forventet resultat & Resultat\\ \hline
-			a & Der måles en ugyldig lydtryksdataserie. & Lydstyrke indstilles til default. & Ikke godkendt  \\ \hline
+			a & Bruger føres tilbage til login. & Login kan påny forsøges. & \\ \hline
 		\end{tabular}
-	\caption{Test Case 5: Tilpas lydtryk - Extension 1}
-	\label{tab:TC5ex1}
 \end{table}
 
-\textbf{Extension 2: Bærbar enhed mister forbindelse til system.}
+\subsection*{Test case 6: Alti kollidering}
+Use case under test: UC 6: Alti kollidering.\\
+Forudsætninger:	UC\#3 er igangværende.
+
+\textbf{Hovedscenarie}
 \begin{table}[H]
 	\centering
 		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{3.5 cm}|} 
 		\hline
-			Step & Handling & Forventet resultat & Resultat\\ \hline	
-			a & Bærbar enhed mister forbindelse til system. & System går i default mode. & Ikke godkendt – kan ikke testes \\ \hline
+			Step & Handling & Forventet resultat & Resultat\\ \hline
+			1 & Anti kolliderings system detekterer en forhindring. & Bremser qaudrocopterens fremdrift. &  \\ \hline
+			3 & Ungvigningsmanøvre udføres. & Quadrocopter passere forhindring og flyver videre. & \\ \hline			
 		\end{tabular}
-	\caption{Test case 5: Tilpas lydtryk - Extension 2}
-	\label{tab:TC5ex2}
 \end{table}
 
-
+\textbf{Extension 1: Forhindringen kan ikke undviges.}
+\begin{table}[H]
+	\centering
+		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{3.5 cm}|} 
+		\hline
+			Step & Handling & Forventet resultat & Resultat\\ \hline
+			a & Quadrocopter går i fejlmode. & Forsøger at finde måde at passere forhindring, mislykkes dette lander quadrocopteren.. & \\ \hline
+		\end{tabular}
+\end{table}
 
 
