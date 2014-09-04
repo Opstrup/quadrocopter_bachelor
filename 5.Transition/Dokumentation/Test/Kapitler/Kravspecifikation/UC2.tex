@@ -1,0 +1,58 @@
+\subsection*{UC2 - Ny flyveopsætning}
+
+\begin{table}[H]
+\begin{tabular}{| p{3cm}| p{11.5cm}|}
+\hline
+
+Mål	 							& Ny flyveopsætning er oprettet og sendt til drone. \\\hline
+Initiering							& Bruger. \\\hline
+Aktører og interesserede			& Bruger (primær) 
+										\begin{itemize}
+											\item Bruger ønsker at få adgang til webapplikation.
+											\item Fra webapplikation indstiller bruger flyveopsætning.
+										\end{itemize}
+									  Webapplikation (sekundær)
+										\begin{itemize}
+											\item Sender flyveopsætning til drone.
+										\end{itemize} \\\hline
+Startbetingelser						& Bruger er oprettet i systemet og UC\#1 er succesfuld gennemført  \\\hline
+Slutbetingelser						& Ny flyveopsætning er sendt til drone. \\\hline
+Hovedforløb				&
+ 
+									\renewcommand{\labelenumi}{\arabic{enumi}.}
+									\renewcommand{\labelenumii}{\Roman{enumii}:}
+
+									\begin{enumerate}[topsep=0.0cm, leftmargin=0.5cm]
+										\item Bruger logger på webapplikation.
+										\begin{enumerate}[partopsep=4cm, topsep=0cm, leftmargin=1cm]
+												\item Fejl i login.
+										\end{enumerate}
+										\item Fra forsiden navigerer bruger til flyveopsætning.
+										\item Bruger laver en ny flyveopsætning.
+										\begin{enumerate}[partopsep=4cm, topsep=0cm, leftmargin=1cm]
+												\item Der laves ikke ny flyveopsætning.
+										\end{enumerate}
+										\item Bruger vælger at sende flyveopsætning til drone.
+									\end{enumerate} \\\hline	
+
+Undtagelser							& 
+
+									\renewcommand{\labelenumi}{\Roman{enumi}:}
+									\renewcommand{\labelenumii}{\alph{enumii})}
+									\begin{enumerate}[topsep=0.0cm,leftmargin=0.5cm]
+										\item Fejl i login.
+											\begin{enumerate}[topsep=0cm, leftmargin=1cm]
+												\item Bruger føres tilbage til login.
+											\end{enumerate}
+										\vspace{0.4cm}
+										\item Der laves ikke ny flyveopsætning.
+											\begin{enumerate}[topsep=0cm, leftmargin=1cm]
+												\item Gemt flyveopsætning benyttes.
+											\end{enumerate}
+									\end{enumerate} \\\hline
+										
+
+\end{tabular}
+\caption{Use Case 2}
+\label{tab:UC2}
+\end{table}

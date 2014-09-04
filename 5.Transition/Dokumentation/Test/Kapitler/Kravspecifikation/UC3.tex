@@ -1,0 +1,53 @@
+\subsection*{UC3 - Flyv til position}
+
+\begin{table}[H]
+\begin{tabular}{| p{3cm}| p{11.5cm}|}
+\hline
+
+
+Mål	 							& Drone flyver til ønsket position. \\\hline
+Initiering 							& UC\#2 eller UC\#4. \\\hline
+Aktører og interesserede			& Bruger (primær) 
+
+										\begin{itemize}
+											\item Bruger ønsker at drone flyver som angivet i flyveopsætning.
+										\end{itemize} \\\hline
+Startbetingelser							& UC\#1 og UC\#2 er succesfuld gennemført. \\\hline
+Slutbetingelser						& Position er nået. \\\hline
+Hovedforløb				&
+ 
+									\renewcommand{\labelenumi}{\arabic{enumi}.}
+									\renewcommand{\labelenumii}{\Roman{enumii}:}
+
+									\begin{enumerate}[topsep=0.0cm, leftmargin=0.5cm]
+										\item Nuværende position opdateres.
+											\begin{enumerate}[partopsep=4cm, topsep=0cm, leftmargin=1cm]
+												\item Ugyldig GPS koordinat.
+											\end{enumerate}
+										\item Flyvehøjde tilpasses.
+											\begin{enumerate}[partopsep=4cm, topsep=0cm, leftmargin=1cm]
+												\item Ugyldig flyvehøjde.
+											\end{enumerate}
+										\item Flyveretning tilpasses.
+										\item Drone flyver mod ønsket position.
+									\end{enumerate} \\\hline	
+
+Undtagelser							& 
+
+									\renewcommand{\labelenumi}{\Roman{enumi}:}
+									\renewcommand{\labelenumii}{\alph{enumii})}
+									\begin{enumerate}[topsep=0.0cm,leftmargin=0.5cm]
+										\item Ugyldig GPS koordinat.
+											\begin{enumerate}[topsep=0cm, leftmargin=1cm]
+												\item Drone går i fejlmode.
+											\end{enumerate}
+										\item Ugyldig flyvehøjde.
+											\begin{enumerate}[topsep=0cm, leftmargin=1cm]
+												\item Drone går i fejlmode.
+											\end{enumerate}
+									\end{enumerate} \\\hline	
+
+\end{tabular}
+\caption{Use Case 3}
+\label{tab:UC3}
+\end{table}
