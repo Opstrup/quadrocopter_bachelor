@@ -68,8 +68,8 @@ Det overordnede testresultat angives på sidste side i dette dokument. Ved kunde
 
 \newpage
 
-\subsection*{Test case 1: Start quadrocopter}
-Use case under test: UC 1: Start quadrocopter.\\
+\subsection*{Test case 1: Start drone}
+Use case under test: UC 1: Start drone.\\
 Forudsætninger:	Ingen.
 
 \textbf{Hovedscenarie}
@@ -78,9 +78,9 @@ Forudsætninger:	Ingen.
 		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{3.5 cm}|} 
 		\hline
 			Step & Handling & Forventet resultat & Resultat\\ \hline
-			1 & Bruger tænder quadrocopter. & Det indikeres at systemet er tilsluttet forsyning. &   \\ \hline
-			2 & Quadrocopter intialiseres. & Arduino bootes og ESC'er signalerer de er flyve klar. &   \\ \hline
-			3 & Forbindelse fra quadrocopter til webapplikation oprettes. & Fra webapplikation ses at quadrocopter er connected. &  \\ \hline
+			1 & Bruger tænder drone. & Det indikeres at systemet er tilsluttet forsyning. &   \\ \hline
+			2 & Drone intialiseres. & Arduino bootes og ESC'er signalerer de er flyve klar. &   \\ \hline
+			3 & Forbindelse fra drone til webapplikation oprettes. & Fra webapplikation ses at drone er connected. &  \\ \hline
 		\end{tabular}
 \end{table}
 
@@ -98,7 +98,7 @@ Forudsætninger:	Bruger er oprettet i systemet og UC\#1 er succesfuld gennemfør
 			1 & Bruger logger på webapplikation. & Login lykkes, og webapplikations forside vises. &  \\ \hline
 			3 & Fra forsiden navigerer bruger til flyveopsætning. & Flyveopsætnings siden vises. & \\ \hline
 			4 & Bruger laver en ny flyveopsætning. & Flyveopsætning klargjort & \\ \hline
-			5 & Flyveopsætning sendes til quadrocopter. & Flyveopsætning sendes til quadrocopter & \\ \hline
+			5 & Flyveopsætning sendes til drone. & Flyveopsætning sendes til drone & \\ \hline
 		\end{tabular}
 \end{table}
 
@@ -137,7 +137,7 @@ Forudsætninger:	UC\#1 og UC\#2 er succesfuld gennemført.
 			1 & Nuværende position opdateres. & Ingen handling  &  \\ \hline
 			2 & Flyvehøjde tilpasses. & Flyvehøjde justeres &  \\ \hline
 			3 & Flyveorientering tilpasses. & Orientering justeres &  \\ \hline
-			4 & Quadrocopter flyver mod ønsket position. & Quadrocopter nærmer sig ønsket position  &  \\ \hline
+			4 & Drone flyver mod ønsket position. & Drone nærmer sig ønsket position  &  \\ \hline
 		\end{tabular}
 \end{table}
 
@@ -147,7 +147,7 @@ Forudsætninger:	UC\#1 og UC\#2 er succesfuld gennemført.
 		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{3.5 cm}|} 
 		\hline
 			Step & Handling & Forventet resultat & Resultat\\ \hline
-			a & Quadrocopter går i fejlmode. & Forsøger at finde gyldig GPS koordinat, mislykkes dette lander quadrocopteren. & \\ \hline
+			a & Drone går i fejlmode. & Forsøger at finde gyldig GPS koordinat, mislykkes dette lander dronen. & \\ \hline
 		\end{tabular}
 \end{table}
 
@@ -157,7 +157,7 @@ Forudsætninger:	UC\#1 og UC\#2 er succesfuld gennemført.
 		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{3.5 cm}|} 
 		\hline
 			Step & Handling & Forventet resultat & Resultat\\ \hline
-			a & Quadrocopter går i fejlmode. & Forsøger at finde gyldig flyvehøjde, mislykkes dette lander quadrocopteren. & \\ \hline
+			a & Drone går i fejlmode. & Forsøger at finde gyldig flyvehøjde, mislykkes dette lander dronen. & \\ \hline
 		\end{tabular}
 \end{table}
 
@@ -173,10 +173,11 @@ Forudsætninger:	UC\#1, UC\#2 og UC\#3 er succesfuld gennemført.
 		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{3.5 cm}|} 
 		\hline
 			Step & Handling & Forventet resultat & Resultat\\ \hline
-			1 & Quadrocopter tager et billede af nuværende position. & Kamera aktiveres og der tages et billede. & \\ \hline
+			1 & Drone tager et billede af nuværende position. & Kamera aktiveres og der tages et billede. & \\ \hline
 			2 & Billedet sendes til webapplikation. & Billedet sendes til webapplikation bliver tilgængelig på webapplikationen &  \\ \hline
 			3 & Bruger giver accept af billedet via webapplikation. & Billedet gemmes i database  & \\ \hline
-			4 & Quadrocopter sendes information om næste GPS lokation & Quadrocopter påbegynder flyvning mod næste GPS lokation (UC3). & \\ \hline
+			4 & Drone modtager information om næste GPS lokation & Drone påbegynder flyvning mod næste GPS lokation (UC3). & \\ \hline
+
 		\end{tabular}
 \end{table}
 
@@ -187,7 +188,7 @@ Forudsætninger:	UC\#1, UC\#2 og UC\#3 er succesfuld gennemført.
 		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{3.5 cm}|} 
 		\hline
 			Step & Handling & Forventet resultat & Resultat\\ \hline
-			a & Quadrocopter intrueres til at ændre flyvehøjde, orientering eller position. UC4 genstartes. & Flyvehøjde, orientering eller position ændres. & \\ \hline
+			a & Drone instrueres til at ændre flyvehøjde, orientering eller position. UC4 genstartes. & Flyvehøjde, orientering eller position ændres. & \\ \hline
 		\end{tabular}
 \end{table}
 
@@ -197,7 +198,7 @@ Forudsætninger:	UC\#1, UC\#2 og UC\#3 er succesfuld gennemført.
 		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{3.5 cm}|} 
 		\hline
 			Step & Handling & Forventet resultat & Resultat\\ \hline
-			a & Quadrocopter får automatisk tildelt accept. & Quadrocopter påbegynder flyvning mod næste GPS lokation (UC3). & \\ \hline
+			a & Drone får automatisk tildelt accept. & Drone påbegynder flyvning mod næste GPS lokation (UC3). & \\ \hline
 		\end{tabular}
 \end{table}
 
@@ -238,8 +239,8 @@ Forudsætninger:	UC\#3 er igangværende.
 		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{3.5 cm}|} 
 		\hline
 			Step & Handling & Forventet resultat & Resultat\\ \hline
-			1 & Anti kolliderings system detekterer en forhindring. & Bremser qaudrocopterens fremdrift. &  \\ \hline
-			3 & Ungvigningsmanøvre udføres. & Quadrocopter passere forhindring og flyver videre. & \\ \hline			
+			1 & Anti kolliderings system detekterer en forhindring. & Bremser dronens fremdrift. &  \\ \hline
+			3 & Ungvigningsmanøvre udføres. & Drone passere forhindring og flyver videre. & \\ \hline			
 		\end{tabular}
 \end{table}
 
@@ -249,7 +250,7 @@ Forudsætninger:	UC\#3 er igangværende.
 		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{3.5 cm}|} 
 		\hline
 			Step & Handling & Forventet resultat & Resultat\\ \hline
-			a & Quadrocopter går i fejlmode. & Forsøger at finde måde at passere forhindring, mislykkes dette lander quadrocopteren.. & \\ \hline
+			a & Drone går i fejlmode. & Forsøger at finde måde at passere forhindring, mislykkes dette lander dronen.. & \\ \hline
 		\end{tabular}
 \end{table}
 

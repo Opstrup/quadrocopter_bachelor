@@ -24,7 +24,7 @@ Fully dressed beskrivelse af de use cases der er vist i afsnit \ref{subsec:useCa
 \section{Ikke-funktionelle krav}
 \label{sec:ikkeFunkKrav}
 De ikke-funktionelle krav indeholder specifikke krav som timings, afstande og lydniveauer.
-Ikke-funktionelle inddeles i følgende 3 grupper: Generelle krav, krav til webapplikation og krav til quadrocopter.\newline
+Ikke-funktionelle inddeles i følgende 3 grupper: Generelle krav, krav til webapplikation og krav til drone.\newline
 
 
 \input{Kapitler/Kravspecifikation/ikke_funktionelle_krav}
