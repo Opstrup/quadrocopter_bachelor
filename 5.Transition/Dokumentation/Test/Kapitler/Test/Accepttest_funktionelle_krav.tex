@@ -84,7 +84,17 @@ Forudsætninger:	Ingen.
 		\end{tabular}
 \end{table}
 
+\textbf{Extension 1: Forbindelse kan ikke oprettes.}
+\begin{table}[H]
+	\centering
+		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{3.5 cm}|} 
+		\hline
+			Step & Handling & Forventet resultat & Resultat\\ \hline
+			a & Systemet indikerer fejl og derfor genstart bruger systemet. & Systemet genstartes og forbindelsen oprettes. & \\ \hline
+		\end{tabular}
+\end{table}
 
+\newpage
 \subsection*{Test case 2: Ny flyveopsætning}
 Use case under test: UC 2: Ny flyveopsætning.\\
 Forudsætninger:	Bruger er oprettet i systemet og UC\#1 er succesfuld gennemført.
@@ -97,7 +107,12 @@ Forudsætninger:	Bruger er oprettet i systemet og UC\#1 er succesfuld gennemfør
 			Step & Handling & Forventet resultat & Resultat\\ \hline
 			1 & Bruger logger på webapplikation. & Login lykkes, og webapplikations forside vises. &  \\ \hline
 			3 & Fra forsiden navigerer bruger til flyveopsætning. & Flyveopsætnings siden vises. & \\ \hline
-			4 & Bruger laver en ny flyveopsætning. & Flyveopsætning klargjort & \\ \hline
+			4 & Bruger laver en ny flyveopsætning og vælger: \newline
+				- GPS lokationer der skal flyves til. \newline
+				- Om der skal tages billeder ved de valgte lokationer. \newline
+				- Højde billeder skal tages fra. \newline
+				- Generel flyvehøjde.				
+				 & Flyveopsætning klargjort & \\ \hline
 			5 & Flyveopsætning sendes til drone. & Flyveopsætning sendes til drone & \\ \hline
 		\end{tabular}
 \end{table}
@@ -176,13 +191,13 @@ Forudsætninger:	UC\#1, UC\#2 og UC\#3 er succesfuld gennemført.
 			1 & Drone tager et billede af nuværende position. & Kamera aktiveres og der tages et billede. & \\ \hline
 			2 & Billedet sendes til webapplikation. & Billedet sendes til webapplikation bliver tilgængelig på webapplikationen &  \\ \hline
 			3 & Bruger giver accept af billedet via webapplikation. & Billedet gemmes i database  & \\ \hline
-			4 & Drone modtager information om næste GPS lokation & Drone påbegynder flyvning mod næste GPS lokation (UC3). & \\ \hline
+			4 & Drone modtager information om næste GPS lokation & Drone påbegynder flyvning mod næste GPS lokation. & \\ \hline
 
 		\end{tabular}
 \end{table}
 
 
-\textbf{Extension 1: Bruger accepterer ikke billede.}
+\textbf{Extension 1: Bruger beder om nyt billede.}
 \begin{table}[H]
 	\centering
 		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{3.5 cm}|} 
@@ -198,7 +213,7 @@ Forudsætninger:	UC\#1, UC\#2 og UC\#3 er succesfuld gennemført.
 		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{3.5 cm}|} 
 		\hline
 			Step & Handling & Forventet resultat & Resultat\\ \hline
-			a & Drone får automatisk tildelt accept. & Drone påbegynder flyvning mod næste GPS lokation (UC3). & \\ \hline
+			a & Drone får automatisk tildelt accept. & Drone påbegynder flyvning mod næste GPS lokation. & \\ \hline
 		\end{tabular}
 \end{table}
 
@@ -214,8 +229,8 @@ Forudsætninger:	Bruger er oprettet i systemet.
 		\hline
 			Step & Handling & Forventet resultat & Resultat\\ \hline
 			1 & Bruger logger på webapplikation. & Login lykkes og webapplikations forside vises. &  \\ \hline
-			3 & Fra forsiden navigerer bruger til historik. & Historik side vises. & \\ \hline
-			4 & Matriale tilhørende en tidligere flyvning vælges. & Billeder, video og flyverute tilhørende valgte flyvning vises. & \\ \hline			
+			2 & Fra forsiden navigerer bruger til historik. & En oversigt over tidligere flyvninger vises. & \\ \hline
+			3 & Bruger vælger en specifik tidligere flyvning. &  Billeder, video og flyverute tilhørende valgte flyvning vises. & \\ \hline			
 		\end{tabular}
 \end{table}
 
@@ -229,8 +244,8 @@ Forudsætninger:	Bruger er oprettet i systemet.
 		\end{tabular}
 \end{table}
 
-\subsection*{Test case 6: Alti kollidering}
-Use case under test: UC 6: Alti kollidering.\\
+\subsection*{Test case 6: Anti kollision}
+Use case under test: UC 6: Anti kollision.\\
 Forudsætninger:	UC\#3 er igangværende.
 
 \textbf{Hovedscenarie}
@@ -239,8 +254,8 @@ Forudsætninger:	UC\#3 er igangværende.
 		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{3.5 cm}|} 
 		\hline
 			Step & Handling & Forventet resultat & Resultat\\ \hline
-			1 & Anti kolliderings system detekterer en forhindring. & Bremser dronens fremdrift. &  \\ \hline
-			3 & Ungvigningsmanøvre udføres. & Drone passere forhindring og flyver videre. & \\ \hline			
+			1 & Anti kollisions system detekterer en forhindring. & Bremser dronens fremdrift. &  \\ \hline
+			3 & Undvigelsesmanøvre udføres. & Drone passere forhindring og flyver videre. & \\ \hline			
 		\end{tabular}
 \end{table}
 
