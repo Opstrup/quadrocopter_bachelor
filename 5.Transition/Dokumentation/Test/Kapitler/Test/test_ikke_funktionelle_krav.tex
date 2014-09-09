@@ -9,18 +9,18 @@
 			\textbf{Godkendelse \newline og kommentar} \\ \hline
 			
 			1.1 & Kommunikation mellem drone og webapplikation skal foregå trådløst.
-				& Testperson sender information til drone igennem webapplikationen.
-				& Den sendte information modtages.
+				& Opsætning sendes til drone via webapplikation.
+				& Den sendte opsætning modtages.
 				& \\ \hline
 
 			1.2 & Trådløs kommunikation benytter 3G protokol eller ældre. 
-				& Der undersøges hvilken antenner kommunikationsenheden er forbundet til.
-				& Det verificeres at protokollen passer til kravet.
+				& Der undersøges hvilken slags mobilnet 3G-modul er forbundet til.
+				& Det verificeres at protokollen passer.
 				&  \\ \hline
 			
-			1.3 & Højdemåler skal måle højde $\pm$ 10 cm.
-				& Højdemåler positioneres i en kendt afstand til en væg.
-				& Afstanden måles med korrekt position.
+			1.3 & Ultralyds sensor skal måle højde $\pm$ 10 cm.
+				& Ultralyds sensor placeres i en kendt afstand til en væg.
+				& Afstanden måles med korrekt længde.
 				& \\ \hline						
 		\end{tabular}
 \end{sideways}
@@ -44,8 +44,8 @@
 				&  \\ \hline
 			
 			2.3 & Indholder database med brugere.
-				& Databasen tilgås og det verificeres at brugerne gemmes.
-				& De oprettede bruger er synlige i databasen.
+				& Webapplikation tilgås og det verificeres at bruger kan logge ind.
+				& Bruger kan logge på webapplikation.
 				& \\ \hline				
 		\end{tabular}
 	\label{tab:krav_1}
@@ -62,21 +62,21 @@
 			
 			3.1 & Skal forsynes fra batteri.
 				& Batteri tilsluttes drone.
-				& Lyde indikerer at drone er klar til flyvning.
+				& Lyde fra ESC'er indikerer at drone er klar til flyvning.
 				& \\ \hline
 
 			3.2 & Batterilevetiden skal minimum være 15 minutter.
-				& Måling der viser batterilevetiden foretages.
-				& Batteriet er i stand til at holde 15 minutter.
+				& Der laves teoretiske beregninger.
+				& Beregnet levertid er over 15 minutter.
 				&  \\ \hline
 			
 			3.3 & Flyvehastigheden skal minimum være 2$\frac{m}{s}$.
-				& Dronen flyver 10 meter og hastigheden beregnes.
+				& Det noteres hvor lang tid dronen bruger på at flyve 10 meter.
 				& Flyvehastigheden er minimum 2$\frac{m}{s}$.
 				& \\ \hline		
 				
-			3.4 & Flyvehøjde kan reguleres mellem 1 og 2,5 meter.
-				& Der sendes et ønske om en flyve højde mellem 1 og 2,5 meter til drone.
+			3.4 & Flyvehøjde kan reguleres i følgende 3 intervaller: 1-1.5m, 1.5-2.0m og 2-2.5m.
+				& I flyveopsætning sættes flyvehøjde mellem 1-1.5 meter.
 				& Drone flyver i den ønskede højde.
 				& \\ \hline	
 				
@@ -98,8 +98,8 @@
 			\textbf{Godkendelse \newline og kommentar} \\ \hline
 			
 			4.1 & Gyldig højdemåling ligger i intervallet 0,5 til 4,5 meter.
-				& Drone flyttes udenfor højde intervallet. 
-				& Drone går i fejlmode.
+				& Drone flyttes højde sættes først til mindre end 0,5 meter. Derefter placeres den i en højden 0.5-4.5 meter. Til sidst sættes højde over intervallet. 
+				& Drone går i fejlmode udenfor interval på 0,5-4,5 meter.
 				& \\ \hline
 
 			4.2 & GPS skal angive koordinat indenfor $\pm$ 2,5 meter. 
