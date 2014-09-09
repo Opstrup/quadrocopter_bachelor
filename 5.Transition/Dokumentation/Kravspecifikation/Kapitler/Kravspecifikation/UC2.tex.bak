@@ -1,24 +1,23 @@
 \subsection*{UC2 - Ny flyveopsætning}
 
 \begin{table}[H]
-\begin{tabular}{|l|p{10cm}|}
+\begin{tabular}{| p{3cm}| p{11.5cm}|}
 \hline
 
-Goal	 							& Ny flyveopsætning er oprettet og sendt til quadrocopter. \\\hline
-Initiation 							& Bruger. \\\hline
-No. of concurrent occurrence’s		& 1. \\\hline
-Stakeholders	and Interests			& Bruger (primær) 
+Mål	 							& Ny flyveopsætning er oprettet og sendt til drone. \\\hline
+Initiering							& Bruger. \\\hline
+Aktører og interesserede			& Bruger (primær) 
 										\begin{itemize}
 											\item Bruger ønsker at få adgang til webapplikation.
 											\item Fra webapplikation indstiller bruger flyveopsætning.
 										\end{itemize}
 									  Webapplikation (sekundær)
 										\begin{itemize}
-											\item Sender flyveopsætning til quadropcopter.
+											\item Sender flyveopsætning til drone.
 										\end{itemize} \\\hline
-Precondition							& Bruger er oprettet i systemet og UC\#1 er succesfuld gennemført  \\\hline
-Postcondition						& Ny flyveopsætning er sendt til quadrocopter. \\\hline
-Main success scenario				&
+Startbetingelser						& Bruger er oprettet i systemet og UC\#1 er succesfuld gennemført  \\\hline
+Slutbetingelser						& Ny flyveopsætning er sendt til drone. \\\hline
+Hovedforløb				&
  
 									\renewcommand{\labelenumi}{\arabic{enumi}.}
 									\renewcommand{\labelenumii}{\Roman{enumii}:}
@@ -26,23 +25,32 @@ Main success scenario				&
 									\begin{enumerate}[topsep=0.0cm, leftmargin=0.5cm]
 										\item Bruger logger på webapplikation.
 										\begin{enumerate}[partopsep=4cm, topsep=0cm, leftmargin=1cm]
-												\item Fejl i log-in.
+												\item Fejl i login.
 										\end{enumerate}
-										\item Efter succesfuld log-in vises webapplikations forside.
 										\item Fra forsiden navigerer bruger til flyveopsætning.
-										\item Enten laver bruger en ny flyveopsætning eller anvender en gemt.
+										\item Bruger laver en ny flyveopsætning.
+										\begin{enumerate}[partopsep=4cm, topsep=0cm, leftmargin=1cm]
+												\item Der laves ikke ny flyveopsætning.
+										\end{enumerate}
+										\item Bruger vælger at sende flyveopsætning til drone.
 									\end{enumerate} \\\hline	
 
-Extensions							& 
+Undtagelser							& 
 
 									\renewcommand{\labelenumi}{\Roman{enumi}:}
 									\renewcommand{\labelenumii}{\alph{enumii})}
 									\begin{enumerate}[topsep=0.0cm,leftmargin=0.5cm]
-										\item Fejl i log-in.
+										\item Fejl i login.
 											\begin{enumerate}[topsep=0cm, leftmargin=1cm]
-												\item Bruger bliver ført tilbage til log-in skærm.
+												\item Bruger føres tilbage til login.
 											\end{enumerate}
-									\end{enumerate} \\\hline	
+										\vspace{0.4cm}
+										\item Der laves ikke ny flyveopsætning.
+											\begin{enumerate}[topsep=0cm, leftmargin=1cm]
+												\item Gemt flyveopsætning benyttes.
+											\end{enumerate}
+									\end{enumerate} \\\hline
+										
 
 \end{tabular}
 \caption{Use Case 2}
