@@ -1,13 +1,12 @@
 \subsection*{UC5 - Vis tidligere flyvning}
 
 \begin{table}[H]
-\begin{tabular}{|l|p{10cm}|}
+\begin{tabular}{| p{3cm}| p{11.5cm}|}
 \hline
 
-Goal	 								& Bruger tilgår webapplikation hvor tidligere flyveruter og tilhørende billeder forefindes. \\\hline
-Initiation 							& Bruger. \\\hline
-No. of concurrent occurrence’s		& 1. \\\hline
-Stakeholders	and Interests			& Bruger (primær) 
+Mål	 								& Bruger tilgår webapplikation hvor tidligere flyveruter og tilhørende billeder forefindes. \\\hline
+Initiering 							& Bruger. \\\hline
+Aktører og \newline interesserede			& Bruger (primær) 
 										\begin{itemize}
 											\item Ønsker at få adgang til webapplikation. 
 											\item Fra webapplikation kan bruger undersøge flyveruter og billeder fra tidligere flyvninger.
@@ -16,9 +15,9 @@ Stakeholders	and Interests			& Bruger (primær)
 										\begin{itemize}
 											\item Giver bruger adgang til flyveruter og billeder.
 										\end{itemize} \\\hline
-Precondition							& Bruger er oprettet i systemet. \\\hline
-Postcondition						& Ingen. \\\hline
-Main success scenario				&
+Startbetingelser							& Bruger er oprettet i systemet. \\\hline
+Slutbetingelser						& Ingen. \\\hline
+Hovedforløb				&
  
 									\renewcommand{\labelenumi}{\arabic{enumi}.}
 									\renewcommand{\labelenumii}{\Roman{enumii}:}
@@ -26,22 +25,20 @@ Main success scenario				&
 									\begin{enumerate}[topsep=0.0cm, leftmargin=0.5cm]
 										\item Bruger logger på webapplikation.
 										\begin{enumerate}[partopsep=4cm, topsep=0cm, leftmargin=1cm]
-												\item Fejl i log-in.
+												\item Fejl i login.
 										\end{enumerate}
-										\item Efter succesfuld log-in vises webapplikations forside.
-										\item På forsiden vælges historik.
-										\item Bruger vælger tidligere flyvning.	
-										\item Flyverute samt billeder fra valgte flyvning vises.
+										\item Fra forsiden navigerer bruger til historik.
+										\item Bruger vælger en specifik tidligere flyvning.
 									\end{enumerate} \\\hline	
 
-Extensions							& 
+Undtagelser							& 
 
 									\renewcommand{\labelenumi}{\Roman{enumi}:}
 									\renewcommand{\labelenumii}{\alph{enumii})}
 									\begin{enumerate}[topsep=0.0cm,leftmargin=0.5cm]
-										\item Fejl i log-in.
+										\item Fejl i login.
 											\begin{enumerate}[topsep=0cm, leftmargin=1cm]
-												\item Bruger bliver ført tilbage til log-in skærm.
+												\item Bruger føres tilbage til login skærm.
 											\end{enumerate}
 									\end{enumerate} \\\hline	
 

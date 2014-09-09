@@ -11,7 +11,7 @@ De funktionelle krav beskrives via brugsscenarier, også kaldet use cases. Indle
 \newpage
 \subsection{Use case beskrivelse}
 \label{subsec:useCaseBeskrivelse}
-Fully dressed beskrivelse af de use cases der er vist i afsnit \ref{subsec:useCaseDiagram}. \newline 
+Fully dressed use case beskrivelser af de use cases der er vist i afsnit \ref{subsec:useCaseDiagram}. \newline 
 
 \input{Kapitler/Kravspecifikation/UC1}
 \input{Kapitler/Kravspecifikation/UC2}

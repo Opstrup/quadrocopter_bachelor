@@ -1,58 +1,53 @@
 \subsection*{UC4 - Billede af position}
 
 \begin{table}[H]
-\begin{tabular}{|l|p{10cm}|}
+\begin{tabular}{| p{3cm}| p{11.5cm}|}
 \hline
 
-Goal	 							& Quadrocopter tager et billede af nuværende position som sendes til webapplikation. Fra webapplikation kan bruger inspicere og acceptere billedet. \\\hline
-Initiation 							& UC\#3. \\\hline
-No. of concurrent occurrence’s		& 1. \\\hline
-Stakeholders	and Interests			& Bruger (primær) 
+Mål	 							& Drone tager et billede af nuværende position som sendes til webapplikation. Fra webapplikation kan bruger inspicere og acceptere billedet. \\\hline
+Initiering 							& UC\#3. \\\hline
+Aktører og \newline interesserede			& Bruger (primær) 
 										\begin{itemize}
 											\item Kan inspicere og acceptere billede.
-										\end{itemize} 
-									  Webapplikation (sekundær)
-										\begin{itemize}
-											\item Modtager billede fra quadrocopter.
-											\item Viser bruger billede der skal accepteres.
-										\end{itemize} \\\hline
-Precondition							& UC\#1, UC\#2 og UC\#3 er succesfuld gennemført. \\\hline
-Postcondition						& 	\begin{itemize}
+										\end{itemize} \\ \hline
+										
+Startbetingelser					& UC\#1, UC\#2 og UC\#3 er succesfuld gennemført. \\\hline
+Slutbetingelser						& 	\begin{itemize}
 											\item Bruger kan tilgå billede via webapplikation.
-											\item Quadrocopter flyver til næste GPS-position eller udgangsposition.
+											\item Drone flyver til næste GPS-position eller udgangsposition.
 										\end{itemize} \\\hline
-Main success scenario				&
+Hovedforløb				&
  
 									\renewcommand{\labelenumi}{\arabic{enumi}.}
 									\renewcommand{\labelenumii}{\Roman{enumii}:}
 
 									\begin{enumerate}[topsep=0.0cm, leftmargin=0.5cm]
-										\item Quadrocopter er ved ønsket GPS-position og tager et billede.
+										\item Drone tager et billede af nuværende position.
 										\item Billedet sendes til webapplikation.
-										\item Bruger er online på webapplikation og giver accept af billede.
+										\item Bruger giver accept af billedet via webapplikation.
 											\begin{enumerate}[partopsep=4cm, topsep=0cm, leftmargin=1cm]
-												\item Bruger accepterer ikke billede.
+												\item Bruger beder om et nyt billede.
 												\item Bruger svarer ikke inden for tidsgrænsen.
 											\end{enumerate}
-										\item Quadrocopter flyver til næste GPS-position eller udgangsposition.
+										\item Drone sendes information om næste lokation.
 									\end{enumerate} \\\hline	
 
-Extensions							& 
+Undtagelser							& 
 
 									\renewcommand{\labelenumi}{\Roman{enumi}:}
 									\renewcommand{\labelenumii}{\alph{enumii})}
 									\begin{enumerate}[topsep=0.0cm,leftmargin=0.5cm]
-										\item Bruger accepterer ikke billede.
+										\item Bruger beder om et nyt billede.
 											\begin{enumerate}[topsep=0cm, leftmargin=1cm]
-												\item Quadrocopter instrueres til at ændre højde, orientering eller position Trin 1-3 i main succes scenario gentages.
+												\item Drone instrueres til at ændre højde, orientering eller position. Derefter genstartes UC\#4.
 											\end{enumerate}
 										\item Bruger svarer ikke inden for tidsgrænsen.
 											\begin{enumerate}[topsep=0cm, leftmargin=1cm]
-												\item Quadrocopter får automatisk tildelt accept og sendes instruktioner om atflyve næste GPS-position eller til udgangsposition.
+												\item Drone får automatisk tildelt accept.
 											\end{enumerate}
 									\end{enumerate} \\\hline	
 
 \end{tabular}
-\caption{Use Case 05}
-\label{tab:UC05}
+\caption{Use Case 4}
+\label{tab:UC4}
 \end{table}
