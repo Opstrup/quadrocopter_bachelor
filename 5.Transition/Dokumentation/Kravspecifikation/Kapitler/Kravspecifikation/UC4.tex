@@ -6,16 +6,12 @@
 
 Mål	 							& Drone tager et billede af nuværende position som sendes til webapplikation. Fra webapplikation kan bruger inspicere og acceptere billedet. \\\hline
 Initiering 							& UC\#3. \\\hline
-Aktører og interesserede			& Bruger (primær) 
+Aktører og \newline interesserede			& Bruger (primær) 
 										\begin{itemize}
 											\item Kan inspicere og acceptere billede.
-										\end{itemize} 
-									  Webapplikation (sekundær)
-										\begin{itemize}
-											\item Modtager billede fra drone.
-											\item Viser bruger billede der skal accepteres.
-										\end{itemize} \\\hline
-Startbetingelser							& UC\#1, UC\#2 og UC\#3 er succesfuld gennemført. \\\hline
+										\end{itemize} \\ \hline
+										
+Startbetingelser					& UC\#1, UC\#2 og UC\#3 er succesfuld gennemført. \\\hline
 Slutbetingelser						& 	\begin{itemize}
 											\item Bruger kan tilgå billede via webapplikation.
 											\item Drone flyver til næste GPS-position eller udgangsposition.
@@ -30,7 +26,7 @@ Hovedforløb				&
 										\item Billedet sendes til webapplikation.
 										\item Bruger giver accept af billedet via webapplikation.
 											\begin{enumerate}[partopsep=4cm, topsep=0cm, leftmargin=1cm]
-												\item Bruger accepterer ikke billede.
+												\item Bruger beder om et nyt billede.
 												\item Bruger svarer ikke inden for tidsgrænsen.
 											\end{enumerate}
 										\item Drone sendes information om næste lokation.
@@ -41,9 +37,9 @@ Undtagelser							&
 									\renewcommand{\labelenumi}{\Roman{enumi}:}
 									\renewcommand{\labelenumii}{\alph{enumii})}
 									\begin{enumerate}[topsep=0.0cm,leftmargin=0.5cm]
-										\item Bruger accepterer ikke billede.
+										\item Bruger beder om et nyt billede.
 											\begin{enumerate}[topsep=0cm, leftmargin=1cm]
-												\item Drone instrueres til at ændre højde, orientering eller position. Derefter genstartes UC4.
+												\item Drone instrueres til at ændre højde, orientering eller position. Derefter genstartes UC\#4.
 											\end{enumerate}
 										\item Bruger svarer ikke inden for tidsgrænsen.
 											\begin{enumerate}[topsep=0cm, leftmargin=1cm]

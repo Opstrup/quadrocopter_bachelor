@@ -1,0 +1,19 @@
+\section{\mu Processor}
+
+Arduino board 
+
+Som linklag mellem reguleringsmodul på quadrocopter og webapplikation, er det besluttet at gøre brug af et arduino board. Arduino boardet skal være rimelig kraftig, da det får til opgave at stå for:   
+\begin{enumerate}[label*=\arabic*.]
+	\item Processering af billeder og evt. komprimering.
+	\item Beregne quadrocopterens næste handling. 
+	
+	\begin{enumerate}[label*=\arabic*.]
+		\item Ud fra nuværende position og ønsket position.
+		\item Sørge for at ændre orientering på quadrocopter. 
+	\end{enumerate}
+\end{enumerate}
+
+\vspace{1cm}
+
+Det blev besluttet at bruge et Arduino 2560 board, da det var muligt at låne dette board af Ingeniørhøjskolen. Dette board har et væld af forskellige input/output pin, en 8-bit processer og forsynes med 7-12 volt.
+

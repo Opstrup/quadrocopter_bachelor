@@ -6,15 +6,13 @@
 
 Mål	 							& Ny flyveopsætning er oprettet og sendt til drone. \\\hline
 Initiering							& Bruger. \\\hline
-Aktører og interesserede			& Bruger (primær) 
+Aktører og \newline interesserede			& Bruger (primær) 
 										\begin{itemize}
 											\item Bruger ønsker at få adgang til webapplikation.
 											\item Fra webapplikation indstiller bruger flyveopsætning.
-										\end{itemize}
-									  Webapplikation (sekundær)
-										\begin{itemize}
-											\item Sender flyveopsætning til drone.
-										\end{itemize} \\\hline
+											\item Bruger sender flyveopsætning til drone.
+										\end{itemize} \\ \hline
+									  
 Startbetingelser						& Bruger er oprettet i systemet og UC\#1 er succesfuld gennemført  \\\hline
 Slutbetingelser						& Ny flyveopsætning er sendt til drone. \\\hline
 Hovedforløb				&
@@ -26,9 +24,14 @@ Hovedforløb				&
 										\item Bruger logger på webapplikation.
 										\begin{enumerate}[partopsep=4cm, topsep=0cm, leftmargin=1cm]
 												\item Fejl i login.
+												
 										\end{enumerate}
 										\item Fra forsiden navigerer bruger til flyveopsætning.
-										\item Bruger laver en ny flyveopsætning.
+										\item Bruger laver en ny flyveopsætning og vælger:	\newline	
+											  - GPS lokationer der skal flyves til. \newline
+											  - Om der skal tages billeder ved de valgte lokationer. \newline 
+											  - Højde billeder skal tages fra. \newline
+											  - Generel flyvehøjde.  		
 										\begin{enumerate}[partopsep=4cm, topsep=0cm, leftmargin=1cm]
 												\item Der laves ikke ny flyveopsætning.
 										\end{enumerate}
