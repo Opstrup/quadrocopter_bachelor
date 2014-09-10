@@ -5,6 +5,7 @@
 *.toc
 *.synctex.gz
 *.pdf
+*.DS_Store
 
 # Git now ignore the Rapport.pdf
 Rapport.pdf
