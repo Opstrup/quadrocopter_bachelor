@@ -1,0 +1,22 @@
+\chapter{Fejlmode protokol}
+
+I visse situationer kan dronen gå i fejlmode. Denne protokol beskriver forløbet step-by-step.
+
+\begin{table}[H]
+\begin{tabular}{| p{3cm}| p{11.5cm}|}
+\hline
+
+Fejlmode \#1	 							& Ingen GPS signal. \\\hline
+Beskrivelse 									& Dronen går i dette mode hvis den ikke kan modtaget noget GPS signal. \\\hline
+Forløb											& \begin{itemize}
+															\item Dronen er ude på ruten.
+															\item Dronen befinder sig i et område uden GPS dækning.
+															\item Flyveretning roteres 180\degree.
+															\item GPS signal opfanges.
+															\item Dronen springer waypoint over.
+															\item Markeres fejl ved waypoint på webapplikationen .
+														\end{itemize} \\\hline 
+\end{tabular}
+\caption{Fejlmode \#1 - Ingen GPS signal}
+\label{tab:fejlmode1}
+\end{table}
