@@ -4,19 +4,20 @@
 \textsl{Ingeniørhøjskolen Aarhus Universitet 2014 } \\ \vspace{0.5cm}
 
 \phantom{hul}
-\phantom{hul}
-\phantom{hul}
-\phantom{hul}
 
 \textsl{\HUGE Foranalyse } \\ \vspace{0cm}
 \rule{15cm}{0.5mm}  \\ \vspace{0.5cm}
 \textsl{\LARGE Autonom overvågnings drone } \\ \vspace{0.5cm}
+
+\vspace{2cm}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.7\textwidth]{Billeder/Forsidebillede.png}
 \label{fig:Forside_foranalyse}
 \end{figure}
+
+\vspace{3cm}
 
 \begin{table}[h]
 \begin{tabular}{l|l}
@@ -32,7 +33,7 @@ Antal sider				&	\pageref{LastPage} 				\\ \hline
 \end{tabular}
 \end{table}
 
-\vspace{6cm}
+\vspace{2cm}
 
 \begin{table}[H]
 	\centering

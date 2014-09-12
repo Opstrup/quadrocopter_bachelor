@@ -1,5 +1,7 @@
 \section{3G og GPS shield til arduino}
 
-For at kunne kommunikere mellem webapplikation og quadrocopter er det nødvendigt at quadrocopteren har forbindelse til internettet. Der kræves en hurtig og stabil internetforbindelse, da quadrocopteren under flyvning både skal sende billeder og modtage kommandoer fra webapplikation.
+For at kunne kommunikere mellem webapplikation og drone er det nødvendigt at dronen har forbindelse til internettet. 
+Der kræves en hurtig og stabil internetforbindelse, da dronen under flyvning både skal sende billeder og modtage kommandoer fra webapplikation.
 
+Til at kunne sende informationer mellem webapplikation og dronen er det besluttet at anvende 3G protokollen. Idet der skal sendes billeder fra dronen og til webapplikationen                                        
 Til at skabe forbindelse til internet blev der købt et 3G shield\footnote{http://www.cooking-hacks.com/documentation/tutorials/arduino-3g-gprs-gsm-gps}. Shieldet skal forbindes med et arduino board og kan give upload hastighed op til 5,5 Mbit / sec. Foruden 3G indeholder 3G shieldet også GPS, hvilket er praktisk da det er planlagt at quadrocopterens nuværende position skal løbende bestemmes ved brug af GPS. Ved at sammenholde nuværende position med den ønskede position, er det muligt at bestemme hvorvidt quadrocopteren har nået slutdestination   
