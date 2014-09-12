@@ -18,7 +18,7 @@ Ud fra kriterierne stod valget af drone mellem to forskellige quadrocopterer:
 Ved køb af kittet fås 4x 10 x 4.7 propeller, 20 Amp ESC’er (motor kontrol) og motorer der maksimalt kan rotere 850 gange pr min / volt.  Desuden medfølger et motorstyringsmodul og styringssoftwaren er open source. Den samlede pris for DIY Quad kittet ligger på 549 USD. Det bemærkes, at batteri / batterier til quadrocopteren skal købes separat.
 
 AeroQuad: Det Amerikanske firma AeroQuad har lavet quadrocopteren AeroQuad Cyclone ARF. \newline 
-Aeroquad'en\footnote{http://www.aeroquadstore.com/AeroQuad\textunderscore Cyclone\textunderscore ARF\textunderscore Kit\textunderscore p/aqarf-001.htm} er en kraftigt quadrocopter med 12” propeller og motorer der yder 950 kv ( 950 rpm/V). Til motorstyring følger open source styringssoftware samt fire 20 amperes ESC'er med. Ydermere følger også tre pull og tre push propellere med. Ligesom det var tilfældet for 3DR byg selv kit, skal batteriet til AeroQuad også købes separat. Ønskes yderligere reservedele, kan de købes via AeruoQuad’s hjemmeside. Prisen for en AeroQaud ligger på 509\$.
+Aeroquad'en\footnote{http://www.aeroquadstore.com/AeroQuad\textunderscore Cyclone\textunderscore ARF\textunderscore Kit\textunderscore p/aqarf-001.htm} er en kraftig quadrocopter med 12” propeller og motorer der yder 950 Kv ( 950 rpm/V). Til motorstyring følger open source styringssoftware samt fire 20 amperes ESC'er med. Ydermere følger også tre pull og tre push propellere med. \newline Ligesom det var tilfældet for 3DR byg selv kit, skal batteriet til AeroQuad også købes separat. Ønskes yderligere reservedele, kan de købes via AeruoQuad’s hjemmeside. Prisen for en AeroQaud ligger på 509\$.
 
 Opsummering af de vigtigste funktionaliteterne i de to quadrocoptere:
 \begin{table}[H]
@@ -36,5 +36,5 @@ Opsummering af de vigtigste funktionaliteterne i de to quadrocoptere:
 	%\label{tab:TC1}
 \end{table}
 
-Ud fra den overstående undersøgelse, ses det at Aeroquaden er lidt billigere end 3DR quadrocopter. Derudover har Aeroquaden et større vingefang, samt nogle motorer der kan rotere flere omgange pr V. Dette er med til at øge stabiliteten af quadrocopteren når der flyves udendørs.
+Ud fra den overstående undersøgelse, ses det at Aeroquaden er lidt billigere end 3DR quadrocopter. Derudover har Aeroquaden et større vingefang, samt nogle motorer der kan rotere flere omgange pr V. Dette er med til at øge stabiliteten af quadrocopteren når der flyves udendørs. Derfor blev det også Aeroquad's quadropcopter der blev valgt til projektet.
 
