@@ -7,7 +7,6 @@ For at kunne finde den bedst egnede fjernbetjening til projektet, er der opstill
 	\item Antal kanaler.
 	\item Pris.
 	\item Rækkevidde.
-	\item Modtager output.
 \end{itemize}
 
 Som udgangs punkt skal fjernbetjeningen minimum have 4 kanaler, disse skal bruges til styringen af dronen. 
@@ -21,9 +20,10 @@ Dette betyder at der ønskes en fjernbetjening med minimum 5 kanaler, helst ford
 \label{fig:fjernbetjening}
 \end{figure}
 
-Hvor 4 af kanalerne bruges til selve styringen (Throtte, Yaw, Pitch \& Roll). Med disse kanaler er det muligt at få fuld kontrol over dronen.
+Hvor 4 af kanalerne bruges til selve styringen (Pitch, Roll, Throtte \& Yaw). Med disse kanaler er det muligt at få fuld kontrol over dronen.
 I det fjernbetjeningen ikke har den største funktionalitet i systemet, er prisen en vigtig faktor. 
 
 Rækkevidde er essentielt, idet det ikke hjælper at have en fjernbetjening hvis dronen er udenfor rækkevidden. 
 
-Modtager output
+Udefra valget af drone og hvilke erfaringer andre brugere havde med diverse fjernbetjeninger, blev det besluttet at købe en Spektrum DX5e 5 kanals fjernbetjening.
+Fjernbetjeningen har 5 kanaler hvilket passer til kravene.
