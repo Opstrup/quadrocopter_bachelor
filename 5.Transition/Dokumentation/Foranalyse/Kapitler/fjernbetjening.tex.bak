@@ -24,6 +24,5 @@ Dette betyder at der ønskes en fjernbetjening med minimum 5 kanaler, helst ford
 Hvor 4 af kanalerne bruges til selve styringen (Throtte, Yaw, Pitch \& Roll). Med disse kanaler er det muligt at få fuld kontrol over dronen.
 I det fjernbetjeningen ikke har den største funktionalitet i systemet, er prisen en vigtig faktor. 
 
-Rækkevidde er essentielt, idet det ikke hjælper at have en fjernbetjening hvis dronen er udenfor rækkevidden. 
 
-Modtager output
+
