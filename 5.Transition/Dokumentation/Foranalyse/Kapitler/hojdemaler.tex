@@ -13,11 +13,9 @@ Afstandsmålere vælges ud fra følgende kriterier:
 
 \vspace{0.5cm}
 
-Følgende 3 slags sensorer blev overvejet som afstandsmålere. \newline Ultralyds afstandsmåler - HC-SR04\footnote{http://www.hobbyking.com/hobbyking/store/RC\textunderscore PRODUCT\textunderscore SEARCH.asp?strSearch=HC-SR04}  \newline IR afstandsmåler - Sharp GP2Y0A710K0F\footnote{http://www.adafruit.com/products/1568}  \newline Laser afstandsmåler - LIDAR-Lite\footnote{https://store.3drobotics.com/products/lidar-lite}
-
-\vspace{0.5cm}
-
-Se tabel \ref{tab:Afstands_sensorer} for kort sensor sammenligning.
+Følgende 3 slags sensorer blev overvejet som afstandsmålere. 
+\newline Ultralyds afstandsmåler - HC-SR04\footnote{http://www.hobbyking.com/hobbyking/store/RC\textunderscore PRODUCT\textunderscore SEARCH.asp?strSearch=HC-SR04}  
+\newline IR afstandsmåler - Sharp GP2Y0A710K0F\footnote{http://www.adafruit.com/products/1568}  \newline Laser afstandsmåler - LIDAR-Lite\footnote{https://store.3drobotics.com/products/lidar-lite}  \newline Se tabel \ref{tab:Afstands_sensorer} for kort sensor sammenligning.
 
 \begin{table}[H]
 	\centering
@@ -34,34 +32,34 @@ Se tabel \ref{tab:Afstands_sensorer} for kort sensor sammenligning.
 	\label{tab:Afstands_sensorer}
 \end{table}
 
-\newpage
+\vspace{0.5cm}
 
 Ud fra kriterierne blev det besluttet at gøre brug af Ultralyds sensoren HC-SR04 til både højdemåling og anti kollision. HC-SR04 blev valgt da: Ingeniørhøjskolen havde nogle HC-SR04 tilgængelig for udlån, og fordi HC-SR04 er en meget billig afstandsmåler så der nemt kan købes nye/flere sensorer. Desuden har HC-SR04 sensoren en tilpas rækkevide og et simpelt 4 wires interface. 
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.3\textwidth]{Billeder/Afstandsmåler/ultra_sensor.png}
+\includegraphics[width=0.3\textwidth]{Billeder/Afstandsmaler/ultra_sensor.png}
 \caption{HC-SR04}
 \label{fig:HC-SR04}
 \end{figure}
 
-\vspace{1cm}
+\newpage
 
 HC-SR04 aktiveres ved at modtage en trigger puls på minimum 10 \text{µ-sekunder.}
 Herefter udsender sensoren 8 burst af 40khz fra sin sender. Efter udsending af de 8 burst sættes echo-benet logisk højt. Når et burst rammer et objekt reflekteres signalet tilbage til HC-SR04 og rammer modtager delen - hvilket sættes echo-benet lavt. Ved at måle pulsbredden på echo-benet kan afstanden udregnes. 
 
 Afstand til objekt kan beregnes på følgende vis: $pulslængde * lydenshastighed * 0.5$
 
-\vspace{0.1cm}
+\vspace{0.2cm}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.8\textwidth]{Billeder/Afstandsmåler/ultra_schematic.png}
-\caption{Timing HC-SR04}
+\includegraphics[width=1\textwidth]{Billeder/Afstandsmaler/ultra_schematic.png}
+\caption{HC-SR04}
 \label{fig:HC-SR04}
 \end{figure}
 
-
+\vspace{2cm}
 
 
 
