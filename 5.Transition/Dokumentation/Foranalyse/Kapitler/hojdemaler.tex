@@ -1,15 +1,89 @@
-\section{Højdemåler}
+\section{Afstandsmåler}
 
-For at sikre mod styrt og sikre quadrocopteren ikke flyver for højt er det nødvendigt, at der på ethvert tidspunkt under flyvning vides hvor højt quadrocopteren befinder sig over jorden. 
+For at sikre dronen under flyvning er det besluttet der skal tilføjes afstandsmålere. Afstandsmålerne skal bruges til at måle flyvehøjde og til anti kollision.
 
-Højdemåler vælges ud fra følgende kriterier:  
-\begin{enumerate}[label*=\arabic*.]
-	\item Præcision.
+Dels er det vigtigt at dronen på ethvert tidspunkt under flyvning kender egen flyvehøjde. Dette vil sikre dronen hverken flyver for højt eller for lavt. Desuden er det vigtigt at dronen kan detektere eventuelle fordringer og manøvre udenom dem.
+
+Afstandsmålere vælges ud fra følgende kriterier:  
+\begin{itemize}
+	\item Pris.
 	\item Rækkevide. 
-	\item Vægt. 
-\end{enumerate}
+	\item Størrelse/vægt. 
+\end{itemize}
+
+\vspace{0.5cm}
+
+Følgende 3 slags sensorer blev overvejet som afstandsmålere. 
+
+\centering
+Ultralyds afstandsmåler - HC-SR04\footnote{http://www.hobbyking.com/hobbyking/store/RC\textunderscore PRODUCT\textunderscore SEARCH.asp?strSearch=HC-SR04}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.3\textwidth]{Billeder/Afstandsmaler/ultra_sensor.png}
+\label{fig:ultra_sensor}
+\end{figure}
+
+
+
+IR afstandsmåler - Sharp GP2Y0A710K0F\footnote{http://www.adafruit.com/products/1568}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.3\textwidth]{Billeder/Afstandsmaler/ir_sensor.png}
+\label{fig:ir_sensor}
+\end{figure}
+
+Laser afstandsmåler - LIDAR-Lite\footnote{https://store.3drobotics.com/products/lidar-lite}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.3\textwidth]{Billeder/Afstandsmaler/laser_sensor.png}
+\label{fig:laser_sensor}
+\end{figure}
+
+Se tabel \ref{tab:Afstands_sensorer} på næste side for kort sensor sammenligning.
+
+\raggedright
+\newpage
+
+\begin{table}[H]
+	\centering
+		\begin{tabular}{|p{2.8cm}|p{3.4 cm}|p{3.4 cm}|p{3.4 cm}|} 
+		\hline
+			\textbf{Specifakation} 	& \textbf{Ultralyds sensor} 	& \textbf{Ir sensor} 		& \textbf{Laser sensor} \\ \hline
+			 Forsyning 				& DC 5V 						& DC 5V 					& DC 5V \\ \hline			 
+			 Output 				& Puls, \newline skiftede bredde 		& Spænding \newline 1.4 - 3.4V 		& PWM, \newline skiftede duty cycle\\ \hline
+			 Rækkevide 					& 0.02 - 4.5m 					& 1.0 - 5.0m 				& 1.0 - 40.0m \\ \hline
+			 Vægt 					& 8,5 gram 						& 11 gram 					& 12 gram \\ \hline
+		 	 Pris 					& 20.- kr 						& 150 kr 					& 450 kr \\ \hline			 
+		\end{tabular}
+	\caption{Afstands sensorer}
+	\label{tab:Afstands_sensorer}
+\end{table}
 
 \vspace{1cm}
 
-Ud fra kriterierne blev det besluttet at ultralyds afstandsmåleren HC-SR04 \footnote{https://www.elextra.dk/main.aspx?page=article$\&$artno=H16466} var ideel. HC-SR04 er en meget lille og kompakt ultralyds afstandsmåler. Den har rækkevide fra 0.02 – 4.5 meter og er yderst præcis. Ultralydssensoren opererer ved 5 volt og fungerer ved en strømstyrke på 2 mA. HC-SR04 har desuden et interface der gør det nemt at modtage data fra modulet og højdemåleren kan lånes af Ingeniørhøjskolen.
+Ud fra kriterierne blev det besluttet at gøre brug af Ultralyds sensoren HC-SR04 til både højdemåling og anti kollision. HC-SR04 blev valgt da: Ingeniørhøjskolen havde nogle HC-SR04 tilgængelig for udlån, og fordi HC-SR04 er en meget billig afstandsmåler så der nemt kan købes nye/flere sensorer. Desuden har HC-SR04 sensoren en tilpas rækkevide og et simpelt 4 wires interface. 
+
+HC-SR04 aktiveres ved at modtage en trigger puls på minimum 10 \text{µ-sekunder.}
+Herefter udsender sensoren 8 burst af 40khz fra sin sender. Efter udsending af de 8 burst sættes echo-benet logisk højt. Når et burst rammer et objekt reflekteres signalet tilbage til HC-SR04 og rammer modtager delen - hvilket sættes echo-benet lavt. Ved at måle pulsbredden på echo-benet kan afstanden udregnes. 
+
+Afstand til objekt kan beregnes på følgende vis: $pulslængde * lydenshastighed * 0.5$
+
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{Billeder/Afstandsmaler/ultra_schematic.png}
+\caption{HC-SR04}
+\label{fig:HC-SR04}
+\end{figure}
+
+
+
+
+
+
+
+
+
 
