@@ -34,7 +34,7 @@ Følgende 3 slags sensorer blev overvejet som afstandsmålere.
 
 \vspace{0.5cm}
 
-Ud fra kriterierne blev det besluttet at gøre brug af Ultralyds sensoren HC-SR04 til både højdemåling og anti kollision. HC-SR04 blev valgt da: Ingeniørhøjskolen havde nogle HC-SR04 tilgængelig for udlån, og fordi HC-SR04 er en meget billig afstandsmåler så der nemt kan købes nye/flere sensorer. Desuden har HC-SR04 sensoren en tilpas rækkevide og et simpelt 4 wires interface. 
+Ud fra kriterierne blev det besluttet at gøre brug af ultralyds sensoren HC-SR04 til både højdemåling og anti kollision. HC-SR04 blev valgt da: Ingeniørhøjskolen havde nogle HC-SR04 tilgængelig for udlån, og fordi HC-SR04 er en meget billig afstandsmåler så der nemt kan købes nye/flere sensorer. Desuden har HC-SR04 sensoren en tilpas rækkevide og et simpelt 4 wires interface. 
 
 \begin{figure}[H]
 \centering
@@ -46,9 +46,9 @@ Ud fra kriterierne blev det besluttet at gøre brug af Ultralyds sensoren HC-SR0
 \newpage
 
 HC-SR04 aktiveres ved at modtage en trigger puls på minimum 10 \text{µ-sekunder.}
-Herefter udsender sensoren 8 burst af 40khz fra sin sender. Efter udsending af de 8 burst sættes echo-benet logisk højt. Når et burst rammer et objekt reflekteres signalet tilbage til HC-SR04 og rammer modtager delen - hvilket sættes echo-benet lavt. Ved at måle pulsbredden på echo-benet kan afstanden udregnes. 
+Herefter udsender sensoren 8 burst af 40khz fra sin sender. Efter udsending af de 8 burst sættes echo-benet logisk højt. Når et burst rammer et objekt reflekteres signalet tilbage til HC-SR04 og rammer modtager delen - hvilket sætter echo-benet lavt. Ved at måle pulsbredden på echo-benet kan afstanden udregnes. 
 
-Afstand til objekt kan beregnes på følgende vis: $pulslængde * lydenshastighed * 0.5$
+Afstand til objekt kan beregnes på følgende vis: $pulsbredde * lydenshastighed * 0.5$
 
 \vspace{0.2cm}
 
