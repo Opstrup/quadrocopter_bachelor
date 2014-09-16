@@ -1,6 +1,6 @@
 \section{Fjernbetjening}
 
-For at øge sikkerheden er det besluttet at koble en fjernbetjening til dronen. Fjernbetjeningen skal udelukkende bruges til at overtage styring af dronen, hvis noget skulle gå galt. For at kunne finde den bedst egnede fjernbetjening til projektet, er der opstillet nogle kriterier:
+For at øge sikkerheden er det besluttet at koble en fjernbetjening til dronen. Fjernbetjeningen skal udelukkende bruges til at overtage styring af dronen. Det er udtænkt at fjernbetjeningen skal kunne deaktivere den autonome del af dronen. For at kunne finde den bedst egnede fjernbetjening til projektet, er der opstillet nogle kriterier:
 
 \begin{itemize}
 	\item Antal kanaler.
@@ -8,7 +8,7 @@ For at øge sikkerheden er det besluttet at koble en fjernbetjening til dronen. 
 	\item Rækkevidde.
 \end{itemize}
 
-Som udgangs punkt skal fjernbetjeningen minimum have 4 kanaler, disse skal bruges til styringen af dronen. Udover de 4 kanaler, ønskes en yderligere kanal. Denne kanal skal bruges til at tilkoble/afbryde den autonome del af dronen. Dette betyder at der ønskes en fjernbetjening med minimum 5 kanaler, helst fordelt som på figur~\ref{fig:fjernbetjening} 
+Som udgangs punkt skal fjernbetjeningen minimum have 4 kanaler, disse skal bruges til styringen af dronen. Styringen af dronen foregår ved at der bliver sendt pitch, roll, throtte \& yaw kommandoer fra fjernbetjeningen.  Udover de 4 kanaler, ønskes en yderligere kanal. Denne kanal skal bruges til at tilkoble/afbryde den autonome del af dronen. Dette betyder at der ønskes en fjernbetjening med minimum 5 kanaler, helst fordelt som på figur~\ref{fig:fjernbetjening} 
 
 \begin{figure}[H]
 \centering
@@ -20,6 +20,6 @@ Som udgangs punkt skal fjernbetjeningen minimum have 4 kanaler, disse skal bruge
 Hvor 4 af kanalerne bruges til selve styringen (Pitch, Roll, Throtte \& Yaw). Med disse kanaler er det muligt at få fuld kontrol over dronen.
 Da fjernbetjeningen ikke har den største funktionalitet i systemet, ønskes det at finde en billig løsning. 
 
-Da det ønskes at drone skal flyve autonomt over større områder er det nødvendigt med en stort rækkevidde på fjernbetjeneren.  
+Da det ønskes at drone skal flyve autonomt over større områder er det nødvendigt med en stor rækkevidde på fjernbetjeningen.  
 
 Ud fra valget af drone og erfaringer fra andre brugere, blev det besluttet at købe en Spektrum DX5e 5 kanals fjernbetjening.

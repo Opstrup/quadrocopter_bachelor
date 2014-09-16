@@ -1,4 +1,6 @@
-\section{3G og GPS shield til arduino}
+\section{3G og GPS modul}
+
+I denne section bliver valget af 3g og GPS modul beskrevet. 
 
 \subsection{3G modul}
 For at kunne kommunikere mellem webapplikation og drone er det nødvendigt at dronen har forbindelse til internettet. 
@@ -27,7 +29,20 @@ Sparkfuns\footnote{https://www.sparkfun.com/products/9607} Cellular Shield. \new
 Dette shield kan bruges sammen med en arduino, hvor det fungerer som et shield der skal placeres på arduinoen.
 Dog understøtter dette shield kun mobilnet op til GPRS. Som vist på Figur~\ref{fig:3gtable} kan GPRS kun uploade optil 20 Kbps teoretisk og nok nærmere $\sim$15 Kbps reelt.
 
-Cooking-Hacks har lavet et 3G shield der er kompatibelt med arduino\footnote{http://www.cooking-hacks.com/documentation/tutorials/arduino-3g-gprs-gsm-gps}. Dette shield understøtter brugen af 3G, hvilket giver den en upload hastighed optil $\sim$2Mbps teoretisk og nok nærmere $\sim$700Kbps reelt, se Figur~\ref{fig:3gtable}.
+Cooking-Hacks har lavet et 3G shield der er kompatibelt med arduino\footnote{http://www.cooking-hacks.com/documentation/tutorials/arduino-3g-gprs-gsm-gps}. Dette shield understøtter brugen af 3G, hvilket giver den en upload hastighed op til $\sim$2Mbps teoretisk og nok nærmere $\sim$700Kbps reelt, se Figur~\ref{fig:3gtable}.
+
+\begin{table}[H]
+	\centering
+		\begin{tabular}{|p{3.5cm}|p{5 cm}|p{5 cm}|} 
+		\hline
+			\textbf{ } & \textbf{Sparkfuns} 	& \textbf{Cookings-Hacks} \\ \hline
+					Pris& 99 \$  & 149 \$ \\ \hline			 					 			
+		\end{tabular}
+	\caption{Prisoversigt moduler}
+	%\label{tab:TC1}
+\end{table}
+
+\newpage
 
 Begge shields har mulighed for at transmittere data mellem dronen og webapplikationen. Cookings Hacks' 3G shield er dog en bedre løsning, da det understøtter et nyere mobilt netværk, der giver mulighed for at sende og modtage data med større datarater.
 Ved sammenligning af prisen ses det, at Cooking Hacks shieldet koster mere end Sparkfuns, dog har Cooking Hacks shieldet den fordel at den udover 3G også indeholder GPS.
@@ -42,3 +57,6 @@ Hvis GPS'en anvendes sammen med netværk, bliver GPS koordinaterne bearbejdet og
 \caption{3G/GPS shield - fra cooking hacks}
 \label{fig:3gtable}
 \end{figure}
+
+
+På baggrund af undersøgelsen er det besluttet at anvende Cookings-Hacks' shield til projektet. På grund af at Cookings-Hacks' shieldet har både 3G og GPS indbygget i shieldet, hvilket vil gøre en eventuel sammenkobling lettere.

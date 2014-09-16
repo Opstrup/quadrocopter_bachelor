@@ -1,39 +1,29 @@
-\chapter{Systemarkitektur}
+\chapter{Foranalyse}
 
 \section{Revisionshistorik}
 \begin{table}[H]
 	\centering
-		\begin{tabular}{|p{2 cm}|p{2 cm}|p{3 cm}|p{6 cm}|} 
+		\begin{tabular}{|p{2 cm}|p{2 cm}|p{2 cm}|p{7 cm}|} 
 		\hline
 			\textbf{Rev. Nr} & \textbf{Dato}		& \textbf{Initialer} 	& \textbf{Ændring} \\ \hline
-			1.0 	& & & \\ \hline
-			1.1 	& & & 	\\ \hline
+			1.0 	& 25-08-14	& KG,RL		& Oprettet foranalyse dokument.	\\ \hline
+			1.1 	& 11-09-14	& RL		& Tilføjet afsnit om microcontroller, afstandsmåler og batteri.	\\ \hline
+			1.2 	& 12-09-14	& AO		& Tilføjet afsnit om udviklingsværktøj.	\\ \hline	
+			1.3 	& 15-09-14	& KG		& Tilføjet afsnit om 3G/GPS og fjernbetjening samt ændret drone afsnit.	\\ \hline
+			1.4 	& 16-09-14	& KG		& Ændringer efter vejleders ønske rettet.	\\ \hline
 		\end{tabular}
 	\caption{Revisionshistorik}
 	%\label{tab:TC1}
 \end{table}
 
-\vspace{1.5cm}
+\vspace{6.5cm}
 
-\section{Ordforklaring}
-\begin{table}[H]
-	\centering
-		\begin{tabular}{|p{2.5cm}|p{4.5 cm}|p{6.5 cm}|} 
-		\hline
-			\textbf{Forkortelse} & \textbf{Betydning} & \textbf{Forklaring} \\ \hline
-			 &  &  \\ \hline
-			 &  & \\ \hline
-		\end{tabular}
-	\caption{Ordforklaring}
-	%\label{tab:TC1}
-\end{table}
-
-\vspace{2cm}
 
 \section{Indledning}
-
 
 Dette dokument indeholder foranalyse til projektet \textit{Autonom overvågnings drone}. 
 Foranalysen udarbejdes for at få et overblik over projektets forskellige dele. 
 
 I foranalysen undersøges der hvad der kræves af software og hardware. Blandt andet undersøges forskellige hardware moduler, hvordan server kan sættes op, samt udviklingsmiljøer og udviklingsværktøjer. Foranalysen som helhed bruges til at dokumentere de valg og beslutninger der dannede grund for projektets indkøbsfase. 
+
+Først beskrives den valgte hardware, derefter beskrives server sprog og framework.

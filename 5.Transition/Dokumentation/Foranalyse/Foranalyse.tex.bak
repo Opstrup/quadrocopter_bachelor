@@ -13,13 +13,13 @@
 \mainmatter														% Hovedindhold - nummereres fra side 1
 \include{Kapitler/Intro/Intro_side}
 \include{Kapitler/drone}
-\include{Kapitler/hojdemaler}
-\include{Kapitler/Kamera}
-\include{Kapitler/processor}
-\include{Kapitler/udviklings_verktoj}
-\include{Kapitler/server_opsetning}
 \include{Kapitler/fjernbetjening}
 \include{Kapitler/3G_GPS_shield}
+\include{Kapitler/processor}
+\include{Kapitler/hojdemaler}
+\include{Kapitler/Kamera}
+\include{Kapitler/udviklings_verktoj}
+
 
 %%%% Kilder %%%%
 \begingroup
