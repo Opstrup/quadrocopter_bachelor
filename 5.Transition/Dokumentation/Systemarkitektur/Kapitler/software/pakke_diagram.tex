@@ -1,0 +1,24 @@
+\section{Pakke diagram}
+
+Det overordnet pakke diagram over webapplikationen viser de forskellige ansvars områder der findes i webapplikationen. 
+
+\textbf{CommunicationHandling}\\
+Pakkens ansvar er kommunikation imellem drone og server. Pakken sender flyveinformation til dronen som bruger har lavet på webapplikationen.
+
+\textbf{UserHandling}\\
+Pakkens ansvar er validering af login/log ud på websitet. Pakken har også ansvaret for at hente og gemme data om den pågældende bruger.
+
+\textbf{DatabaseHandling}\\
+Pakkens ansvar er kommunikation imellem databasen og serveren. 
+
+\textbf{FlightPathHandling}\\
+Pakkens ansvar er håndtering af flyveinformation samt validering af dataen.
+
+\vspace{-5pt}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{Billeder/pakke_diagrammer/package_diagram.png}
+	\vspace{-5pt}
+	\caption{Overordnet pakke diagram over webapplikationen}
+	\label{fig:pakke_diagram}
+\end{figure}
