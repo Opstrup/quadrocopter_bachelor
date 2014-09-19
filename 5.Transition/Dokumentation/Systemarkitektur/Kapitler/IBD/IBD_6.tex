@@ -11,14 +11,19 @@
 		\begin{tabular}{|p{2.5 cm}|p{5.5 cm}|p{2.5 cm}|p{2.5 cm}|} 
 		\hline
 			\textbf{Signal navn} 	& \textbf{Signal beskrivelse}		& \textbf{Out} 				& \textbf{In}     \\ \hline
-			User input 			& Via \textit{webapplication} opsætter bruger ny flyvning eller undersøger tidligere & Bruger 		& Webapplication.			    \\ \hline
-			User interface 		& 03-09-14	& KG,RL,AO				& .				\\ \hline
-			Flight setup		& 09-09-14	& KG,RL					& .	\\ \hline
-			Flight feedback		& 25-08-14	& KG,RL,AO				& .			    \\ \hline
-			GPS signal 1		& 03-09-14	& KG,RL,AO				& .				\\ \hline
-			GPS signal 2		& 09-09-14	& KG,RL					& .	\\ \hline  
+			PWM signal1 & 400 Hz signal med en duty cycle på 40-80 $\%$ & Flight control board. & ESC1.	\\ \hline
+			PWM signal2 & 400 Hz signal med en duty cycle på 40-80 $\%$ & Flight control board. & ESC2.	\\ \hline
+			PWM signal3 & 400 Hz signal med en duty cycle på 40-80 $\%$ & Flight control board. &	ESC3. \\ \hline
+			PWM signal4 & 400 Hz signal med en duty cycle på 40-80 $\%$ & Flight control board. & ESC4. \\ \hline
+			DC signal 1 & Et varierende DC signal der forsyner motoren. & ESC1. & Motor1.	\\ \hline
+			DC signal 2 & Et varierende DC signal der forsyner motoren. & ESC2. & Motor2.	\\ \hline
+			DC signal 3 & Et varierende DC signal der forsyner motoren. & ESC3. & Motor3.	\\ \hline
+			DC signal 4 & Et varierende DC signal der forsyner motoren. & ESC4. & Motor4.	\\ \hline
+			FCB supply & 5V DC. & ESC2 & Flight control board.	\\ \hline
+			ESC supply & 12V DC. & Battery. & ESC1/ESC2.	\\ \hline
+			ESC supply & 12V DC. & Battery. & ESC3/ESC4.	\\ \hline
 		\end{tabular}
-	\caption{Forbindelser IDB 1}
-	\label{tab:IDB1}
+	\caption{Forbindelser til: \textbf{ibd} Motor control}
+	\label{tab:IBD_Motor_control}
 \end{table}
 
