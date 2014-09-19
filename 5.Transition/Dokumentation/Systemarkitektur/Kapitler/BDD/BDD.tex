@@ -1,8 +1,9 @@
-\section{Hardware}
+\chapter{Hardware}
+
 I det følgende afsnit beskrives systemet hardware vha. SysML diagrammer. 
 Indledningsvis bruges bdd'er til at identificere og beskrive systemets blokke. Senere i afsnittet vises blokkenes interne og eksterne forbindelser med ibd'er.
 
-\subsection{Block definition diagram}
+\section{Block definition diagram}
 I det overordnede bdd nedenfor vises hvilke blokke systemet består af samt hvilke parts blokkene har. Det ses at systemet helt overordnet set kun består af de to blokke - \textit{Webapplication} og \textit{Drone}. 
 
 \begin{figure}[H]
@@ -13,7 +14,7 @@ I det overordnede bdd nedenfor vises hvilke blokke systemet består af samt hvil
 \end{figure}
 
 \newpage
-\subsubsection{Udvidet - Block definition diagram}
+\subsection{Udvidet - Block definition diagram}
 Figur \ref{fig:bdd_drone} går mere i dybden med drone blokken. På denne figur er drone blokken blevet åbnet op, og det vises nu hvilke blokke dronen er bygget af. 
 
 \begin{figure}[H]
@@ -25,7 +26,7 @@ Figur \ref{fig:bdd_drone} går mere i dybden med drone blokken. På denne figur 
 
 \newpage
 
-\subsubsection{Blokbeskrivelse}
+\subsection{Blokbeskrivelse}
 
 \textbf{Webapplikation}\\
 Denne blok dækker over server, GUI, database og kommunikation. Via GUI tilgår bruger webapplikationens server, herfra er det muligt for bruger at opsætte ny eller undersøger en tidligere flyvning. Webapplikationen kommunikerer med dronen og gemmer vigtig information i databasen.
