@@ -1,15 +1,18 @@
 \subsection{Flight control board}
 
+På figur \ref{fig:ibd_flightcontrolboard} vises ibd til Flight control. Flight control består af Flight control board og motor control. Flight control boardet kommunikerer med main controlleren via seriel kommunikation og 6 PWM signalerne. Kompas information sendes vi den serielle kommunikation, og PWM signalerne bestemmer hvordan motorerne skal køre. 
+
 \begin{figure}[H]
 \centering
 \includegraphics[width=1\textwidth]{Billeder/IBD/ibd5_flightcontrolboard.pdf}
+\vspace{-1cm}
 \caption{ibd - flight control board}
 \label{fig:ibd_flightcontrolboard}
 \end{figure}
 
 \begin{table}[H]
 	\centering
-		\begin{tabular}{|p{2.5 cm}|p{5.5 cm}|p{2.5 cm}|p{2.5 cm}|} 
+		\begin{tabular}{|p{2.6 cm}|p{4.9 cm}|p{2.5 cm}|p{2.5 cm}|} 
 		\hline
 			\textbf{Signal navn} 	& \textbf{Signal beskrivelse}		& \textbf{Out} 				& \textbf{In}     \\ \hline
 			Serial com. 2 & RX / TX. signal. & Arduino. & Flight control board.			    \\ \hline

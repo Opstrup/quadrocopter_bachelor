@@ -1,8 +1,11 @@
 \subsection{Motor styring}
 
+På figur \ref{fig:ibd_motorcontrol} vises ibd til motor control blokken. Blokken består af 4 ESC'er, 4 motorer og et 12V batteri. 12V batteriet står for forsyning til hele blokkken, mens de PWM signaler der sendes ind i ESC'erne bestemmer hvor meget forsyning motorerne tildeles. Den PWM der sendes til ESC'er sender med en ducy cycle mellem 40-80\%. Jo større duty cycle, jo større mere "lukker" ESC'erne op for forsyningen til motorerne, hvilket i sidste ende resultere i højere rotationshastighed.  
+
 \begin{figure}[H]
 \centering
 \includegraphics[width=1\textwidth]{Billeder/IBD/ibd6_motorcontrol.pdf}
+\vspace{-1cm}
 \caption{ibd - motor control}
 \label{fig:ibd_motorcontrol}
 \end{figure}
@@ -16,10 +19,10 @@
 			PWM signal2 & 400 Hz signal med en duty cycle på 40-80 $\%$ & Flight control board. & ESC2.	\\ \hline
 			PWM signal3 & 400 Hz signal med en duty cycle på 40-80 $\%$ & Flight control board. &	ESC3. \\ \hline
 			PWM signal4 & 400 Hz signal med en duty cycle på 40-80 $\%$ & Flight control board. & ESC4. \\ \hline
-			DC signal 1 & Et varierende DC signal der forsyner motoren. & ESC1. & Motor1.	\\ \hline
-			DC signal 2 & Et varierende DC signal der forsyner motoren. & ESC2. & Motor2.	\\ \hline
-			DC signal 3 & Et varierende DC signal der forsyner motoren. & ESC3. & Motor3.	\\ \hline
-			DC signal 4 & Et varierende DC signal der forsyner motoren. & ESC4. & Motor4.	\\ \hline
+			DC signal 1 & Et varierende DC. & ESC1. & Motor1.	\\ \hline
+			DC signal 2 & Et varierende DC. & ESC2. & Motor2.	\\ \hline
+			DC signal 3 & Et varierende DC. & ESC3. & Motor3.	\\ \hline
+			DC signal 4 & Et varierende DC. & ESC4. & Motor4.	\\ \hline
 			FCB supply & 5V DC. & ESC2 & Flight control board.	\\ \hline
 			ESC supply & 12V DC. & Battery. & ESC1/ESC2.	\\ \hline
 			ESC supply & 12V DC. & Battery. & ESC3/ESC4.	\\ \hline
