@@ -1,6 +1,6 @@
 \section{Maincontroller}
 
-Til projektet skal bruges en microcontroller som skal håndtere følgende opgaver:  
+Til projektet skal der bruges en microcontroller som kan håndtere følgende opgaver:  
 \begin{itemize}
 	\item Linklag mellem 3G modul og flight control board
 	\item Processering af billeder og evt. komprimering.
@@ -9,18 +9,17 @@ Til projektet skal bruges en microcontroller som skal håndtere følgende opgave
 	\begin{itemize}
 		\item Ud fra nuværende position og ønsket position.
 		\item Sørge for at ændre orientering på drone. 
+		\item Tilpasse flyvehøjde.
 	\end{itemize}
 \end{itemize}
 
 \vspace{0.5cm}
 
-Microcontrolleren skal kunne håndtere C++ kode, da det ønskes at programmere objekt orienteret. C++ giver et højt abstraktionsniveau og gør det muligt at bruge klasser og objekter. Dette giver en bedre kodestruktur og gør koden nærmere at overskue.
-
-Desuden skal mircocontrolleren være kompatibel med det 3G-shield der er beskrevet i afsnittet \textit{3G/GPS shield}. 
+Microcontrolleren skal kunne håndtere C++ kode, da det ønskes at programmere objekt orienteret. C++ giver et højt abstraktionsniveau og gør det muligt at bruge klasser og objekter. Dette giver en bedre kodestruktur og gør koden nærmere at overskue. Desuden skal mircocontrolleren være kompatibel med det 3G-shield der er beskrevet i afsnittet \textit{3G/GPS shield}. 
 
 Både Raspberry Pi og Arduino kan håndtere C++ og er kompatible med 3G-shieldet. Raspberry Pi og Arduino microcontrollere ens på mange punkter. Dog har Raspberry Pi en noget kraftigere processor og besidder nogle unødvendige funktioner. 
 
-Det blev besluttet at bruge et Arduino 2560 board\footnote{http://arduino.cc/en/Main/arduinoBoardMega2560}. Hovedsageligt blev denne microcontroller valgt, da Raspberry Pi krævede en form for mellemlags board og fordi det var muligt at låne Arduino 2560 af Ingeniørhøjskolen. 
+Det blev besluttet at bruge et Arduino 2560 board\footnote{http://arduino.cc/en/Main/arduinoBoardMega2560}. Hovedsageligt blev denne Arduino 2560 valgt, da Raspberry Pi krævede en form for mellemlags board for at kunne fungere med det valgte 3G/GPS shield. Desuden var det muligt at låne en Arduino 2560 af Ingeniørhøjskolen. 
 
 \vspace{0.5cm}
 

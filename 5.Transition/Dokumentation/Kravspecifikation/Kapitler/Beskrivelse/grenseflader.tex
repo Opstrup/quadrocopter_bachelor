@@ -1,10 +1,10 @@
-\section{Grænseflader}
-Dette afsnit beskriver systemets grænseflader og hvordan bruger kan interagere med systemet.
+\chapter{Grænseflader}
+Dette afsnit bruges til at beskrive systemets grænseflader og forklare hvordan bruger kan interagere med systemet.
 
-\subsection{Brugergrænseflade}
+\section{Brugergrænseflade}
 Brugergrænsefladen består af en webapplikation, hvor bruger kan opsætte nye flyveruter, gemme flyveruter og overvåge drone status. Webapplikationen indeholder en database, som muliggøre arkiv funktioner for bruger. 
 
-\subsection{Webapplikation}
+\section{Webapplikation}
 Webapplikationen er grænseflade mellem bruger og den resterende del af systemet. 
 
 På figur \ref{fig:mockup_login} ses login vinduet, som bruger bliver præsenteret for når der ønskes at interagere med systemet. Her vil bruger kunne logge ind og opsætte flyveruter, se gamle ruter og billeder fra tidligere flyvninger. Der accepteres kun tre fejl indtastninger når koden til systemet indtastes. Hvis disse tre forsøg overskrides bliver brugeren låst og der skal kontaktes en administrator for at låse den pågældende bruger op igen.
@@ -14,7 +14,7 @@ På figur \ref{fig:mockup_login} ses login vinduet, som bruger bliver præsenter
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.9\textwidth]{Billeder/UI_mockups/login.png}
-	\vspace{-5pt}
+	\vspace{-.5cm}
 	\caption{Login vindue}
 	\label{fig:mockup_login}
 \end{figure}
@@ -29,12 +29,10 @@ Fra forsiden kan bruger se om der er forbindelse mellem webapplikation og dronen
  \begin{figure}[H]
  	\centering
  	\includegraphics[width=0.9\textwidth]{Billeder/UI_mockups/index.png}
- 	\vspace{-5pt}
+ 	\vspace{-.5cm}
  	\caption{Velkommen vindue}
  	\label{fig:mockup_welcome}
  \end{figure} 
-
-\vspace{1cm}
 
 I historik menuen har bruger mulighed for at se alle tidligere flyvninger. De tidligere flyvninger præsenteres med hver sin mappe, og mapperne er struktureret efter dato. Da de tidligere flyvninger er struktureret efter dato er det nemt og hurtigt at finde data fra den eller de ønskede flyvninger. Når bruger doubleklikker på en tidligere flyvning åbnes tilhørende mappe, og alt indhold i mappen vises.
 
@@ -43,7 +41,7 @@ I historik menuen har bruger mulighed for at se alle tidligere flyvninger. De ti
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.9\textwidth]{Billeder/UI_mockups/archive.png}
-	\vspace{-5pt}
+	\vspace{-.5cm}
 	\caption{Historik vindue}
 	\label{fig:mockup_archive}
 \end{figure}
@@ -57,12 +55,11 @@ Når en tidligere flyvning er valgt, præsenteres bruger for al information tilk
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.9\textwidth]{Billeder/UI_mockups/archive_choosen.png}
-	\vspace{-5pt}
+	\vspace{-.5cm}
 	\caption{Tidligere flyverute valgt}
 	\label{fig:mockup_archive_choosen}
 \end{figure}
 
-\vspace{1cm}
 
 I Opsæt ny flyvning menuen kan bruger indstille ny flyveopsætning. 
 Bruger kan indstille sin ønskede flyverute ved at klikke på kortet, og vælge hvilke GPS positioner som dronen skal overvåge og tage billeder af. 
@@ -75,7 +72,7 @@ Bruger har mulighed for at gemme nylavede flyveopsætninger til senere brug.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.9\textwidth]{Billeder/UI_mockups/setup_new_flight.png}
-	\vspace{-5pt}
+	\vspace{-.2cm}
 	\caption{Ny flyverute}
 	\label{fig:mockup_setup_new_flight}
 \end{figure}

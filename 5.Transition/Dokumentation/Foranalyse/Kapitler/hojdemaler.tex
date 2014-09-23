@@ -1,6 +1,6 @@
 \section{Afstandsmåler}
 
-For at sikre dronen under flyvning er det besluttet der skal tilføjes afstandsmålere. Afstandsmålerne skal bruges til at måle flyvehøjde og til antikollision.
+For at sikre dronen under flyvning er det besluttet der skal tilføjes minimum to afstandsmålere. En af afstandsmålerne skal bruges til at måle flyvehøjde og en til antikollision.
 
 Dels er det vigtigt at dronen på ethvert tidspunkt under flyvning kender egen flyvehøjde. Dette vil sikre dronen hverken flyver for højt eller for lavt. Desuden er det vigtigt at dronen kan detektere eventuelle forhindringer og manøvre udenom dem.
 
@@ -34,7 +34,7 @@ Følgende 3 slags sensorer blev overvejet som afstandsmålere.
 
 \vspace{0.5cm}
 
-Ud fra kriterierne blev det besluttet at gøre brug af ultralyds sensoren HC-SR04 til både højdemåling og antikollision. HC-SR04 blev valgt da: Ingeniørhøjskolen havde nogle HC-SR04 tilgængelig for udlån, og fordi HC-SR04 er en meget billig afstandsmåler, kan der nemt købes nye/flere sensorer. Desuden har HC-SR04 sensoren en tilpas rækkevide og et simpelt 4 wires interface. 
+Ud fra kriterierne blev det besluttet at gøre brug af ultralyds sensoren HC-SR04 til både højdemåling og antikollision. HC-SR04 blev valgt da: Ingeniørhøjskolen havde nogle HC-SR04 tilgængelig for udlån, og fordi HC-SR04 er en meget billig afstandsmåler. Hvilket betyder der der nemt kan købes nye/flere sensorer. Desuden har HC-SR04 sensoren en tilpas rækkevide og et simpelt 4 wires interface. 
 
 \begin{figure}[H]
 \centering
@@ -46,7 +46,7 @@ Ud fra kriterierne blev det besluttet at gøre brug af ultralyds sensoren HC-SR0
 \newpage
 
 HC-SR04 aktiveres ved at modtage en trigger puls på minimum 10 \text{µ-sekunder.}
-Herefter udsender sensoren 8 bursts af 40khz fra sin sender. Efter udsending af de 8 bursts sættes echo-benet logisk højt. Når et burst rammer et objekt reflekteres signalet tilbage til HC-SR04 og rammer modtager delen - hvilket sætter echo-benet lavt. Ved at måle pulsbredden på echo-benet kan afstanden udregnes. 
+Herefter udsender sensoren 8 bursts af 40khz lydsignal fra sin sender. Efter udsending af de 8 bursts sættes echo-benet logisk højt. Når et burst rammer et objekt reflekteres lydsignalet tilbage til HC-SR04 og rammer modtager delen - hvilket sætter echo-benet lavt. Ved at måle pulsbredden på echo-benet kan afstanden til er objekt udregnes. 
 
 Afstand til objekt kan beregnes på følgende vis: $pulsbredde * lydenshastighed * 0.5$
 
