@@ -6,7 +6,7 @@ På figur \ref{fig:ibd_overordnet} vises et overordnet ibd diagram. Diagrammet b
 \centering
 \includegraphics[width=1\textwidth]{Billeder/IBD/ibd1_overordnet.pdf}
 \vspace{-1cm}
-\caption{ibd - overordnet}
+\caption{Ibd - ASD}
 \label{fig:ibd_overordnet}
 \end{figure}
 
@@ -15,14 +15,14 @@ På figur \ref{fig:ibd_overordnet} vises et overordnet ibd diagram. Diagrammet b
 		\begin{tabular}{|p{2.6 cm}|p{4.9 cm}|p{2.5 cm}|p{2.5 cm}|} 
 		\hline
 			\textbf{Signal navn} 	& \textbf{Signal beskrivelse}		& \textbf{Out} 				& \textbf{In}     \\ \hline
-			User input 			& Via \textit{webapplication} opsætter bruger ny eller undersøger tidligere flyvning & Bruger 		& Webapplication.			    \\ \hline
-			User interface 		& Via GUI kan bruger se hvad der sker i \textit{webapplication}.	& Webapplication.			& Bruger.				\\ \hline
-			Flight setup		& Fra \textit{webapplication} sendes flyveopsætningen til dronen.	& Webapplication.	& Dronen.	\\ \hline
-			Flight feedback		& Informationer fra dronen til \textit{webapplication}.	& 	Dronen.		& Webapplication.			    \\ \hline
+			User input 			& Via \textit{webserver} opsætter bruger ny eller undersøger tidligere flyvning & Bruger 		& Webserver.			    \\ \hline
+			User interface 		& Via GUI kan bruger se hvad der sker i \textit{webserver}.	& Webserver.			& Bruger.				\\ \hline
+			Flight setup		& Fra \textit{webserver} sendes flyveopsætningen til dronen.	& Webserver.	& Dronen.	\\ \hline
+			Flight feedback		& Informationer fra dronen til \textit{webserver}.	& 	Dronen.		& Webserver.			    \\ \hline
 			GPS signal 1		& GPS signal.	& GPS-satellit.			& Dronen.				\\ \hline
-			GPS signal 2		& GPS signal.	& GPS-satellit.				& Webapplication.	\\ \hline  
+			GPS signal 2		& GPS signal.	& GPS-satellit.				& Webserver.	\\ \hline  
 		\end{tabular}
-	\caption{Forbindelser IDB 1}
-	\label{tab:IDB1}
+	\caption{Forbindelser til: Ibd - ASD}
+	\label{tab:IBD1}
 \end{table}
 

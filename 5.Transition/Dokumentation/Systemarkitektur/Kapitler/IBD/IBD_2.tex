@@ -6,7 +6,7 @@ På figur \ref{fig:ibd_drone} vises et ibd over drone. Diagrammet viser hvordan 
 \centering
 \includegraphics[width=1\textwidth]{Billeder/IBD/ibd2_drone.pdf}
 \vspace{-1cm}
-\caption{ibd - drone}
+\caption{Ibd - drone}
 \label{fig:ibd_drone}
 \end{figure}
 
@@ -15,21 +15,22 @@ På figur \ref{fig:ibd_drone} vises et ibd over drone. Diagrammet viser hvordan 
 		\begin{tabular}{|p{2.6 cm}|p{4.9 cm}|p{2.5 cm}|p{2.5 cm}|}  
 		\hline
 			\textbf{Signal navn} 	& \textbf{Signal beskrivelse}		& \textbf{Out} 		& \textbf{In}     \\ \hline
-			Flight feedback		& Handshake og billeder				& 3G/GPS			& Webapplication	\\ \hline
-			Flight setup		& Handshake \& Flyveopsætning  		& Webapplication			& 3G/GPS	\\ \hline
-			3G/GPS signal 		& GPS signal	& GPS-satellitter				& 3G/GPS	\\ \hline			
-			
-			Serial com. 1		& RX / TX signal. Styrer 3G modul. 	& Main controller 	& 3G/GPS    \\ \hline
-			3G/GPS supply 		& 3.2 - 4.2 V DC						& Main controller	& 3G/GPS	\\ \hline
+			Flight feedback		& Handshake og billeder				& 3G/GPS.			& Webserver.	\\ \hline
+			Flight setup		& Handshake \& Flyveopsætning  		& Webserver.			& 3G/GPS.	\\ \hline
+			3G/GPS signal 		& GPS signal	& GPS-satellitter				& 3G/GPS.	\\ \hline			
+			Serial com. 1		& RX / TX signal. Styrer 3G modul. 	& Main controller. 	& 3G/GPS.    \\ \hline
 			Height data.		& Trigger \& echo signal der indikerer afstanden. 	& Main controller.	& Distance sensors.	\\ \hline
 			Kollision data.		& Trigger \& echo signal der indikerer afstanden. 	& Main controller.	& Distance sensors.  \\ \hline
-			Sensor supply [2]	& 5V DC forsyning.	& Main controller. & Distance sensors.	\\ \hline
-			Serial com. 2		& RX / TX signal. Aflæser data fra kompas & Main controller				& 	\\ \hline 
+			Sensor supply [2]	& 5V DC.	& Main controller. & Distance sensors.	\\ \hline
+			Serial com. 2		& RX / TX signal. Aflæser data fra kompas & Main controller.				& 	\\ \hline 
 			PWM control [6]		& 50 Hz 6 kanals signal. Duty cycle 5-10\%. Periode på 20ms	& Main controller.				& Flight control board.	\\ \hline
-			Serial com. 3		& RX / TX signal. Styrer kamera	& Main controller	& Camera	\\ \hline
-			Cam supply			& 5V DC forsyning. 	& Main controller	& Camera	\\ \hline 
+			Serial com. 3		& RX / TX signal. Styrer kamera.	& Main controller.	& Camera.	\\ \hline
+			Cam supply			& 5V DC 	& Main controller.	& Camera.	\\ \hline
+			3G/GPS supply		& 5V DC  	& Flight control board.	& 3G/GPS.	\\ \hline
+			Ultra sound			& Afstand vha. ultralyd. (8 bursts af 40kHz) 	& Distance sensor.	& Omgivelserne.	\\ \hline
+			Optical light		& Kamera billede. 	& Camera.	& Omgivelserne.	\\ \hline			 
 		\end{tabular}
-	\caption{Forbindelser til: \textbf{ibd} drone}
-	\label{tab:ibddrone}
+	\caption{Forbindelser til: Ibd - drone}
+	\label{tab:IBDdrone}
 \end{table}
 
