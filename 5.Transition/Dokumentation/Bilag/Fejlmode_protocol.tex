@@ -20,3 +20,41 @@ Forløb											& \begin{itemize}
 \caption{Fejlmode \#1 - Ingen GPS signal}
 \label{tab:fejlmode1}
 \end{table}
+
+\begin{table}[H]
+\begin{tabular}{| p{3cm}| p{11.5cm}|}
+\hline
+
+Fejlmode \#2	 							& Ugyldig højde. \\\hline
+Beskrivelse 									& Dronen går i dette mode hvis den aflæste højde fra sensorerne er ugyldig. \\\hline
+Forløb											& \begin{itemize}
+															\item Dronen er ude på ruten.
+															\item Dronen aflæser en ugyldig værdig fra højde sensorerne.
+															\item Dronen påbegynder nedstigning.
+															\item Hvis ingen gyldig måling er opstået under nedstigning.
+															\item Fejl vises på webapplikationen.
+														\end{itemize} \\\hline 
+\end{tabular}
+\caption{Fejlmode \#2 - Ugyldig højde}
+\label{tab:fejlmode2}
+\end{table}
+
+\begin{table}[H]
+\begin{tabular}{| p{3cm}| p{11.5cm}|}
+\hline
+
+Fejlmode \#3	 							& Anti kollision. \\\hline
+Beskrivelse 									& Dronen går i dette mode hvis dronen prøver at undvige et objekt, men ingen vej udenom objektet er fundet. \\\hline
+Forløb											& \begin{itemize}
+															\item Dronen er ude på ruten.
+															\item Dronen stopper pga anti kollision funktionen træder i kræft.
+															\item Dronen forsøger at undvige objektet.
+															\item Dronen finder ingen vej uden om objektet.
+															\item Dronen påbegynder nedstigning.
+															\item Dronen lander.
+															\item Fejl vises på webapplikation
+														\end{itemize} \\\hline 
+\end{tabular}
+\caption{Fejlmode \#3 - Anti kollision}
+\label{tab:fejlmode3}
+\end{table}
