@@ -4,12 +4,12 @@
 Databasen har til formål at, hjælpe brugeren overskue hvilke droner han har til rådighed. Se hvilke status de har i systemet, om de er ude og flyve eller om de er i dock. Databasen trackker også hvilke events der forgår på nuværende tidspunkt og historik over events. Tilhørende events er information omkring flyve ruten, billeder tager på turen samt en log.
 
 \subsection{Design}
-På figuren \ref{fig:database_design} ses designet af databasen. Som beskrevet tidligere er database typen en SQLight database. Alt kommunikation til og fra databasen vil fungere igennem et database API. Hvert tabel vil blive beskrevet mere detaljeret under dette afsnit.
+På figuren \ref{fig:database_design} ses designet af databasen. Som beskrevet tidligere er database typen en SQLight database. Alt kommunikation til og fra databasen vil fungere igennem et database API som ligger på serveren. Hvert tabel vil blive beskrevet mere detaljeret under dette afsnit.
 
 \vspace{-5pt}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\textwidth]{Billeder/database/database_design.png}
+	\includegraphics[width=1\textwidth]{Billeder/database/database_design.png}
 	\vspace{-5pt}
 	\caption{Database design}
 	\label{fig:database_design}
@@ -34,7 +34,7 @@ Tabellen indeholder data om den givet bruger i systemet. Tabellen giver også mu
 \hline
 
 Formål	 							& Holde data om brugeren i systemet, samt tjekke om brugeren eksterre ved forsøg på login.\\\hline
-Forbindelser						& Tabellen har tre Foring keys til User-Route, User-Drone og User-Event hjælpe tabellerne.\\\hline
+Forbindelser						& Tabellen har tre Foring keys til Helper_User_Drone og Helper_User_Event hjælpe tabellerne.\\\hline
 Attributter						& \begin{itemize}
 												\item ID: Primary key.
 												\item Username: Brugernavnet til systemet.
