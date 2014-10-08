@@ -1,17 +1,33 @@
 \chapter{Software}
 
-I det følgende afsnit beskrives systemet software vha. UML diagrammer. Afsnittet er opdelt i to dele, en del der beskæftiger sig med software tilhørende webapplikation og en del med software til dronen. 
+I det følgende afsnit beskrives systemet softwarearkitektur vha. N+1 view modellen og en række UML diagrammer. Der gøres bla. brug af statemachines, designoverview-, klasse- og pakkediagrammer. N+1 view modellen tager udgangspunkt i de use cases der er beskrevet i kravspecifikationen. Dette betyder at softwarearkitekturen i høj grad er use case baseret.
 
-Indledningsvis vises design overview diagrammer, disse bruges til at danne overblink over hvordan webapplikationen skal reagere på input fra bruger. Herefter vises pakkediagrammer med tilhørende beskrivelser. De pakker der vises i pakkediagrammerne består af en eller flere klasser, der med stort samspil udfører opgaver indenfor et fælles ansvarsområde. Efter pakkediagrammerne vises en række klassediagrammer, disse bruges til at vise struktur og sammenhæng mellem pakkernes forskellige klasser, eksempelvis arv.
+\input{kapitler/software/views/_n+1}
 
 \newpage
-\input{kapitler/software/design_overview}
+\input{kapitler/software/views/logicalview}
+
+\newpage
+\input{kapitler/software/views/procesview}
+
+\newpage
+\input{kapitler/software/views/dataview}
+
+\newpage
+\input{kapitler/software/views/deploymentview}
+
+\newpage
+\input{kapitler/software/views/implementationview}
+
+
+%\newpage
+%\input{kapitler/software/design_overview}
 
 \newpage
 \input{kapitler/software/pakke_diagram}
 
-\newpage
-\input{kapitler/software/_iterationer}
+%\newpage
+%\input{kapitler/software/_iterationer}
 
 \newpage
 \input{kapitler/software/klasse_diagram}

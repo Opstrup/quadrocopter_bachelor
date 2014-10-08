@@ -1,6 +1,6 @@
-\section{Database design}
+\section{Data view}
 
-\subsection{Misson}
+\subsection{Mission}
 Databasen har til formål at, hjælpe brugeren overskue hvilke droner han har til rådighed. Se hvilke status de har i systemet, om de er ude og flyve eller om de er i dock. Databasen trackker også hvilke events der forgår på nuværende tidspunkt og historik over events. Tilhørende events er information omkring flyve ruten, billeder tager på turen samt en log.
 
 \subsection{Design}
@@ -34,7 +34,7 @@ Tabellen indeholder data om den givet bruger i systemet. Tabellen giver også mu
 \hline
 
 Formål	 							& Holde data om brugeren i systemet, samt tjekke om brugeren eksterre ved forsøg på login.\\\hline
-Forbindelser						& Tabellen har tre Foring keys til Helper_User_Drone og Helper_User_Event hjælpe tabellerne.\\\hline
+Forbindelser						& Tabellen har tre Foring keys til Helper\_User\_Drone og Helper\_User\_Event hjælpe tabellerne.\\\hline
 Attributter						& \begin{itemize}
 												\item ID: Primary key.
 												\item Username: Brugernavnet til systemet.
@@ -47,3 +47,4 @@ Attributter						& \begin{itemize}
 \caption{Fejlmode \#1 - Ingen GPS signal}
 \label{tab:fejlmode1}
 \end{table}
+

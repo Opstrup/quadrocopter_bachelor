@@ -78,9 +78,10 @@ Forudsætninger:	Ingen.
 		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{3.5 cm}|} 
 		\hline
 			Step & Handling & Forventet resultat & Resultat\\ \hline
-			1 & Bruger tænder drone. & Det indikeres at systemet er tilsluttet forsyning. &   \\ \hline
-			2 & Drone intialiseres. & Arduino bootes og ESC'er signalerer de er flyve klar. &   \\ \hline
-			3 & Forbindelse fra drone til webapplikation oprettes. & Fra webapplikation ses at drone er connected. &  \\ \hline
+			1 & Bruger tilslutter batteri og dronen tændes. & Systemet tilføres forsyning. Arduino bootes og ESC'er signalerer de er flyveklar. &   \\ \hline
+			2 & 3G/GPS initialiseres og GPS position opdateres. & Nuværende GPS position opdateres. &   \\ \hline
+			3 & Forbindelse fra drone til webapplikation oprettes. & Fra webapplikation vises at drone er connected. &  \\ \hline
+			4 & Dronens nuværende GPS position sendes til webapplikation. & På webapplikation vises dronens nuværende position. &  \\ \hline
 		\end{tabular}
 \end{table}
 
