@@ -3,25 +3,17 @@
 #include "standAloneGps.h"
 #include "GPS.h"
 #include "sendATCommand.h"
+#include "sendAT.h"
 
 standAloneGps :: standAloneGps()
 {
-	initGPS();
-	getGPS();
 }
 
 void standAloneGps :: initGPS()
 {
 	Serial.println("Start of GPS setup");
 	delay(2000);
-	//standAlonemode_ = sendATcommand("AT+CGPS=1,1","OK",2000);
-	ATcommand sendAT;
-	
-	Version = "AT+CGPS=1,1";
-	expected_answer = "OK";
-	waitTime = 2000;
-	//
-	standAlonemode_ = sendAT.ATComSend(Version,expected_answer,waitTime);	
+	standAlonemode_ = sendATcommand("AT+CGPS=1,1","OK",1000);
 
 	if (standAlonemode_ != 1)
 	{
@@ -33,37 +25,16 @@ void standAloneGps :: initGPS()
 	}
 }
 
-char* standAloneGps :: getGPS()
+void standAloneGps :: updateGPSPosition()
 {
-	//char gps_data[100];
-	//char* p_gps_data[sizeof(gps_data)];
-	ATcommand sendAT;
-	getGPS_ = sendAT.ATComSend("AT+CGPSINFO", "+CGPSINFO:",1000);
+	getGPS_ = sendATcommand("AT+CGPSINFO", "+CGPSINFO:",1000);
 	int counter;
 	if (getGPS_ == 1)
 	{
-		
-		counter = 0;
-		do{
-			while(Serial.available() == 0);
-			gps_data[counter] = Serial.read();
-			counter++;
-		}
-		while(gps_data[counter - 1] != '\r');
-		gps_data[counter] = '\0';
-		
-		if(gps_data[0] == ',')
+		do
 		{
-			Serial.println("Ingen GPS data - section 1.");
-		}
-		else
-		{
-			Serial.println("Der er data.");
-		}
-		
-		while (gps_data[0] == ',')
-		{
-			getGPS_ = sendAT.ATComSend("AT+CGPSINFO", "+CGPSINFO:",1000);
+			getGPS_ = sendATcommand("AT+CGPSINFO", "+CGPSINFO:",1000);
+			counter = 0;
 			do{
 				while(Serial.available() == 0);
 				gps_data[counter] = Serial.read();
@@ -72,39 +43,46 @@ char* standAloneGps :: getGPS()
 			while(gps_data[counter - 1] != '\r');
 			gps_data[counter] = '\0';
 			Serial.println("Ingen data.");
-			delay(3000);
-		}
-		
-		
-		Serial.print("GPS data:");
-		Serial.println(gps_data);
-		Serial.println("");
-		
-		
+			delay(1200);
+			
+		}while (gps_data[0] == ',');
+
 	}
 	else
 	{
 		Serial.println("Could not start GPSINFO.");
 	}
 	
-	return gps_data;
-	//p_gps_data[sizeof(gps_data)];
+	char gps_data2[100];
+	for (int x = 0; x< sizeof(gps_data);x++)
+	{
+		gps_data2[x] = gps_data[x];
+	}
 	
-	//return p_gps_data;
-	
-	char * longitude;
-	char * latitude;
-	char * NorthSouth;
-	char * WestEast;
-	
-	latitude = strtok (gps_data,",");
-	NorthSouth = strtok (NULL, ",");
+	latitude = strtok (gps_data2,",");
 	longitude = strtok (NULL, ",");
-	WestEast = strtok (NULL, ",");
+	longitude = strtok (NULL, ",");
+
+	float_latitude =atof(latitude);
+	float_longitude =atof(longitude);
 	
+	int_latitude = int(float_latitude);
+	int_longitude = int(float_longitude);
 	
-	Serial.println(latitude);
-	Serial.println(NorthSouth);
-	Serial.println(longitude);
-	Serial.println(WestEast);
+}
+
+float standAloneGps :: getLatitude()
+{
+	float_latitude = float_latitude/100;
+	int_latitude = int(float_latitude);
+	float_latitude = (float_latitude -(float_latitude - int_latitude))+(((float_latitude - int_latitude)*100)/60);
+ 	return float_latitude;
+}
+
+float standAloneGps :: getLongitude()
+{
+	float_longitude = float_longitude/100;
+	int_longitude = int(float_longitude);
+	float_longitude = (float_longitude -(float_longitude - int_longitude))+(((float_longitude - int_longitude)*100)/60);
+	return float_longitude;
 }
