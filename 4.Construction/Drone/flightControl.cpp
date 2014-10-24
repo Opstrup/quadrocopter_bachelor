@@ -1,110 +1,92 @@
 ﻿#include <avr/io.h>
+#include <string.h>
 #include "Arduino.h"
-#include "standAloneGps.h"
-#include "GPS.h"
-#include "sendATCommand.h"
+#include "flightControl.h"
 
-standAloneGps :: standAloneGps()
+flightControl :: flightControl()
 {
-	initGPS();
-	getGPS();
+	
 }
 
-void standAloneGps :: initGPS()
+float flightControl :: getBearingFromCompas()
 {
-	Serial.println("Start of GPS setup");
-	delay(2000);
-	//standAlonemode_ = sendATcommand("AT+CGPS=1,1","OK",2000);
-	ATcommand sendAT;
+	char *X, *Y, *Z;
+	char currentBearing[100];
+	int counter = 0;
 	
-	Version = "AT+CGPS=1,1";
-	expected_answer = "OK";
-	waitTime = 2000;
-	//
-	standAlonemode_ = sendAT.ATComSend(Version,expected_answer,waitTime);	
-
-	if (standAlonemode_ != 1)
-	{
-		Serial.println("Cannot set GPS mode 1.");
+	// send command to flightcontrolboard "vehicle attitude"
+	Serial1.println('r');
+		
+	counter = 0;
+	do{
+		// wait for available data
+		while(Serial1.available() == 0);
+		
+		// save data in currentBearing
+		currentBearing[counter] = Serial1.read();	
+		counter++;
 	}
-	else
-	{
-		Serial.println("CGPSINFO okay!");
-	}
+	while(currentBearing[counter - 1] != '\r');
+	currentBearing[counter] = '\0';
+	
+	// vehicle attitude data looks like: "12.1,27.3,1.4\r\n"
+	// We are only interested in the last part.
+	X = strtok (currentBearing,",");
+	Y = strtok (NULL, ",");
+	Z = strtok (NULL, ",");	
+		
+	// convert bearing from radian to degrees
+	float bearing = atof(Z);
+	bearing = bearing / 0.0175;
+	
+	return bearing;
 }
 
-char* standAloneGps :: getGPS()
+float flightControl :: calDistToTarget(float current_lat, float current_long, float target_lat, float target_long)
 {
-	//char gps_data[100];
-	//char* p_gps_data[sizeof(gps_data)];
-	ATcommand sendAT;
-	getGPS_ = sendAT.ATComSend("AT+CGPSINFO", "+CGPSINFO:",1000);
-	int counter;
-	if (getGPS_ == 1)
+	float dist, a, b, jord_radius = 6371000;
+	float lat1, lat2, dlat, lon1, lon2, dlon;
+		
+	lat1 = current_lat*(3.14/180);
+	lat2 = target_lat*(3.14/180);
+	
+	lon1 = current_long*(3.14/180);
+	lon2 = target_long*(3.14/180);
+	
+	dlat = lat2 - lat1;
+	dlon = lon2 - lon1;
+	
+	a = sin(dlat/2)*sin(dlat/2)+sin(dlon/2)*sin(dlon/2)*cos(lat1)*cos(lat2);
+	b = 2*atan2(sqrt(a),sqrt(1-a));
+	
+	dist = jord_radius * b;
+	
+	return dist;
+}
+
+float flightControl :: calBearingToTarget(float current_lat, float current_long, float target_lat, float target_long)
+{
+	float bearing, x, y;
+	float lat1, lat2, dlat, lon1, lon2, dlon;
+	
+	lat1 = current_lat*(3.14/180);
+	lat2 = target_lat*(3.14/180);
+	
+	lon1 = current_long*(3.14/180);
+	lon2 = target_long*(3.14/180);
+	
+	dlat = lat2 - lat1;
+	dlon = lon2 - lon1;
+	
+	x = sin(dlon)*cos(lat2);
+	y = cos(lat1)*sin(lat2)-sin(lat1)*cos(lat2)*cos(dlon);
+	
+	bearing = (atan2(x,y))*(180/PI);
+		
+	if(bearing <0)
 	{
-		
-		counter = 0;
-		do{
-			while(Serial.available() == 0);
-			gps_data[counter] = Serial.read();
-			counter++;
-		}
-		while(gps_data[counter - 1] != '\r');
-		gps_data[counter] = '\0';
-		
-		if(gps_data[0] == ',')
-		{
-			Serial.println("Ingen GPS data - section 1.");
-		}
-		else
-		{
-			Serial.println("Der er data.");
-		}
-		
-		while (gps_data[0] == ',')
-		{
-			getGPS_ = sendAT.ATComSend("AT+CGPSINFO", "+CGPSINFO:",1000);
-			do{
-				while(Serial.available() == 0);
-				gps_data[counter] = Serial.read();
-				counter++;
-			}
-			while(gps_data[counter - 1] != '\r');
-			gps_data[counter] = '\0';
-			Serial.println("Ingen data.");
-			delay(3000);
-		}
-		
-		
-		Serial.print("GPS data:");
-		Serial.println(gps_data);
-		Serial.println("");
-		
-		
-	}
-	else
-	{
-		Serial.println("Could not start GPSINFO.");
+		bearing = bearing + 360;
 	}
 	
-	return gps_data;
-	//p_gps_data[sizeof(gps_data)];
-	
-	//return p_gps_data;
-	
-	char * longitude;
-	char * latitude;
-	char * NorthSouth;
-	char * WestEast;
-	
-	latitude = strtok (gps_data,",");
-	NorthSouth = strtok (NULL, ",");
-	longitude = strtok (NULL, ",");
-	WestEast = strtok (NULL, ",");
-	
-	
-	Serial.println(latitude);
-	Serial.println(NorthSouth);
-	Serial.println(longitude);
-	Serial.println(WestEast);
+	return bearing;
 }

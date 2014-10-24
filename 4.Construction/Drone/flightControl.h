@@ -1,29 +1,20 @@
-#ifndef standAloneGps
+#ifndef flightControl
 #include <avr/io.h>
 #include "Arduino.h"
-#include "GPS.h"
 
 #pragma once
 
-class standAloneGps : public GPS
+class flightControl
 {
 public:	
-	standAloneGps();
-	void initGPS();
-	char* getGPS();
+	flightControl();
+	float getBearingFromCompas();
+	float calDistToTarget(float current_lat, float current_long, float target_lat, float target_long);
+	float calBearingToTarget(float current_lat, float current_long, float target_lat, float target_long);
 	
+private:
 	
-	
-	private:
-		
-		int standAlonemode_;
-	 	int getGPS_;
-	 	char gps_data[100];
-		//char* p_gps_data[sizeof(gps_data)];
- 		char * Version;
-	 	char * expected_answer;
-	 	int waitTime;
-	};
+};
 
 
 #endif
