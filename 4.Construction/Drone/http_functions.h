@@ -10,6 +10,7 @@ class http
 public:
 	http();
 	char* get_http(char request[]);
+	
 	//void post_http();
 private:
 	

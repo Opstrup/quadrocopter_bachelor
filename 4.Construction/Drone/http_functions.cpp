@@ -14,7 +14,6 @@ char* http :: get_http(char request[])
 	// define values for the request:
 	char url[ ]="pruebas.libelium.com";
 	int port= 80;
-	int test=12;
 	request_ = request;
 
 	sprintf(aux_str, "AT+CHTTPACT=\"%s\",%d", url, port);
@@ -94,3 +93,23 @@ char* http :: get_http(char request[])
 	}
 	return data;
 }
+
+/*void http :: post_http()
+{
+	// define values for the request:
+	char url[ ]="pruebas.libelium.com";
+	int port= 80;
+	request_ = "POST /test/demo_form.asp  HTTP/1.1\r\nHost: w3schools.com\r\n name1=value1&name2=value2";
+	
+	sprintf(aux_str, "AT+CHTTPACT=\"%s\",%d", url, port);
+	http_answer = sendATcommand(aux_str, "+CHTTPACT: REQUEST", 60000);
+	
+	if (http_answer == 1)
+	{
+		Serial.println(request_);
+		// Sends <Ctrl+Z>
+		aux_str[0] = 0x1A;
+		aux_str[1] = 0x00;
+		http_answer = sendATcommand(aux_str, "+CHTTPACT: DATA,", 60000);
+	}
+}*/

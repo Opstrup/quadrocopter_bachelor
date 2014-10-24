@@ -7,7 +7,7 @@ class GPS
 {
 public:
 	virtual void initGPS();
-	virtual char* getGPS();
+	virtual void updateGPSPosition();
 private:
 };	
 #endif
