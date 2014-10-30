@@ -90,3 +90,397 @@ float flightControl :: calBearingToTarget(float current_lat, float current_long,
 	
 	return bearing;
 }
+
+void flightControl :: initPWM()
+{
+	Serial.println("InitPWM");
+	
+	// INIT TIMER_1
+	pinMode(11, OUTPUT);
+	pinMode(12, OUTPUT);
+	
+	// Amount of steps in counter
+	ICR1 = 0xFFFF;
+	
+	// Timer/Counter is defined by 
+	TCCR1A = 0xAA;
+	TCCR1B = 0x19;
+	TCCR3C = 0x00;
+	
+	// At what step output a and b should change
+	OCR1A = 24000;
+	OCR1B = 24000;
+	
+	
+	// INIT TIMER_3
+	pinMode(5, OUTPUT);
+	pinMode(2, OUTPUT);
+	
+	// Amount of steps in counter
+	ICR3 = 0xFFFF;
+	
+	// Timer/Counter is defined by 
+	TCCR3A = 0xAA;
+	TCCR3B = 0x19;
+	TCCR3C = 0x00;
+
+	// At what step output a and b should change
+	OCR3A = 24000;
+	OCR3B = 24000;
+	
+	
+	// INIT TIMER_4
+	pinMode(6, OUTPUT);
+	pinMode(7, OUTPUT);
+	
+	// Amount of steps in counter
+	ICR4 = 0xFFFF;
+	
+	// Timer/Counter is defined by 
+	TCCR4A = 0xAA;
+	TCCR4B = 0x19;
+	TCCR3C = 0x00;
+	
+	// At what step output a and b should react
+	OCR4A = 24000;
+	OCR4B = 24000;
+	
+	delay(2500);
+}
+
+void flightControl :: setPWM(int change_value, String mode)
+{
+	int tempint;
+	Serial.print("Change value: ");
+	Serial.println(change_value);
+	Serial.print("Mode: ");
+	Serial.println(mode);
+	
+	if(mode == "Throttlecontrol")
+	{			
+		if(change_value > 0)
+		{
+			for(int i = 0; i < change_value; i++)
+			{
+				tempint = OCR1B;
+				if(tempint + 160 <= 32000)
+				{
+					OCR1B = tempint + 160;
+					tempint = OCR1B;
+				}
+			}
+		}
+			
+		else if(change_value < 0)
+		{
+			for(int i = 0; i > change_value; i--)
+			{
+				tempint = OCR1B;
+				if(tempint - 160 >= 16000)
+				{
+					OCR1B = tempint - 160;
+					tempint = OCR1B;
+				}
+			}
+		}
+	}
+	
+	else if(mode == "Yawcontrol")
+	{			
+		if(change_value > 0)
+		{
+			for(int i = 0; i < change_value; i++)
+			{
+				tempint = OCR1A;
+				if(tempint + 160 <= 32000)
+				{
+					OCR1A = tempint + 160;
+					tempint = OCR1A;
+				}
+			}
+		}
+			
+		else if(change_value < 0)
+		{
+			for(int i = 0; i > change_value; i--)
+			{
+				tempint = OCR1A;
+				if(tempint - 160 >= 16000)
+				{
+					OCR1A = tempint - 160;
+					tempint = OCR1A;
+				}
+			}
+		}
+	}
+		
+	else if(mode == "Pitchcontrol")
+	{
+		if(change_value > 0)
+		{
+			for(int i = 0; i < change_value; i++)
+			{
+				tempint = OCR4B;
+				if(tempint + 160 <= 32000)
+				{
+					OCR4B = tempint + 160;
+					tempint = OCR4B;
+				}
+			}
+		}
+		
+		else if(change_value < 0)
+		{
+			for(int i = 0; i > change_value; i--)
+			{
+				tempint = OCR4B;
+				if(tempint - 160 >= 16000)
+				{
+					OCR4B = tempint - 160;
+					tempint = OCR4B;
+				}
+			}
+		}
+	}
+		
+	else if(mode == "Rollcontrol")
+	{
+		if(change_value > 0)
+		{
+			for(int i = 0; i < change_value; i++)
+			{
+				tempint = OCR3A;
+				if(tempint + 160 <= 32000)
+				{
+					OCR3A = tempint + 160;
+					tempint = OCR3A;
+				}
+			}
+		}
+		
+		else if(change_value < 0)
+		{
+			for(int i = 0; i > change_value; i--)
+			{
+				tempint = OCR3A;
+				if(tempint - 160 >= 16000)
+				{
+					OCR3A = tempint - 160;
+					tempint = OCR3A;
+				}
+			}
+		}
+	}
+		
+	else if(mode == "Flightmodecontrol")
+	{		
+		if(change_value > 0)
+		{
+			for(int i = 0; i < change_value; i++)
+			{
+				tempint = OCR3B;
+				if(tempint + 160 <= 32000)
+				{
+					OCR3B = tempint + 160;
+					tempint = OCR3B;
+				}
+			}
+		}
+			
+		else if(change_value < 0)
+		{
+			for(int i = 0; i > change_value; i--)
+			{
+				tempint = OCR3B;
+				if(tempint - 160 >= 16000)
+				{
+					OCR3B = tempint - 160;
+					tempint = OCR3B;					
+				}
+			}
+		}
+	}
+		
+	else if(mode == "Alttitudeholdcontrol")
+	{		
+		if(change_value > 0)
+		{
+			for(int i = 0; i < change_value; i++)
+			{
+				tempint = OCR4A;
+				if(tempint + 160 <= 32000)
+				{
+					OCR4A = tempint + 160;
+					tempint = OCR4A;
+				}
+			}
+		}
+		
+		else if(change_value < 0)
+		{
+			for(int i = 0; i > change_value; i--)
+			{
+				tempint = OCR4A;
+				if(tempint - 160 >= 16000)
+				{
+					OCR4A = tempint - 160;
+					tempint = OCR4A;
+				}
+			}
+		}
+	}
+	
+	Serial.print("New value : ");
+	Serial.println(tempint);
+	Serial.println();
+	Serial.println();
+		
+}
+
+void flightControl :: armMotors()
+{
+	Serial.println("Arm motors");
+	
+	while(OCR1B > 16001 || OCR1A < 31999)
+	{
+		if(OCR1B > 16001)
+		{
+			throttle(-1);
+		}
+		
+		if(OCR1A < 31999)
+		{
+			yaw(1);
+		}
+		
+		delay(20);
+	}
+	
+}
+
+void flightControl :: disarmMotors()
+{
+	Serial.println("Disarm motors");
+	
+	while(OCR1B > 16001 || OCR1A > 16001)
+	{
+		if(OCR1B > 16001)
+		{
+			throttle(-1);
+		}
+		
+		if(OCR1A > 16001)
+		{
+			yaw(-1);
+		}
+		
+		delay(20);
+	}
+	
+}
+
+void flightControl :: calibrateMotors()
+{
+	Serial.println("Calibrate motors");
+	
+	// 	throttle		OCR1B
+	// 	yaw				OCR1A
+	// 	pitch			OCR4B
+	// 	roll			OCR3A
+	// 	flightmode		OCR3B
+	// 	alttitudehold 	OCR4A
+	
+	
+	// Calibrate left side - throttle and yaw
+	OCR1B = 16000;
+	OCR1A = 16000;
+	delay(1000);
+	
+	OCR1B = 16000;
+	OCR1A = 32000;
+	delay(1000);
+	
+	OCR1B = 32000;
+	OCR1A = 32000;
+	delay(1000);
+	
+	OCR1B = 32000;
+	OCR1A = 16000;
+	delay(1000);
+	
+	OCR1B = 24000;
+	OCR1A = 24000;
+	delay(1000);
+		
+	// Calibrate right side - pitch and roll
+	OCR4B = 16000;
+	OCR3A = 16000;
+	delay(1000);
+	
+	OCR4B = 16000;
+	OCR3A = 32000;
+	delay(1000);
+	
+	OCR4B = 32000;
+	OCR3A = 32000;
+	delay(1000);
+	
+	OCR4B = 32000;
+	OCR3A = 16000;
+	delay(1000);
+	
+	OCR4B = 24000;
+	OCR3A = 24000;
+	delay(1000);
+	
+	// Calibrate flightmode and alttitudehold
+	OCR3B = 32000;
+	delay(1000);
+	OCR3B = 16000;
+	delay(1500);
+	OCR3B = 24000;
+	delay(1000);
+	
+	OCR4A = 32000;
+	delay(1000);
+	OCR4A = 16000;
+	delay(1000);
+	OCR4A = 24000;
+	
+}
+
+void flightControl :: throttle(int value_)
+{
+	String Throttlecontrol = "Throttlecontrol";
+	setPWM(value_, Throttlecontrol);
+}
+
+void flightControl :: yaw(int value_)
+{
+	String Yawcontrol = "Yawcontrol";
+	setPWM(value_, Yawcontrol);
+}
+
+void flightControl :: pitch(int value_)
+{
+	String Pitchcontrol = "Pitchcontrol";
+	setPWM(value_, Pitchcontrol);
+}
+
+void flightControl :: roll(int value_)
+{
+	String Rollcontrol = "Rollcontrol";
+	setPWM(value_, Rollcontrol);
+}
+
+void flightControl :: flightmode(int value_)
+{
+	String Flightmodecontrol = "Flightmodecontrol";
+	setPWM(value_, Flightmodecontrol);
+}
+
+void flightControl :: alttitudehold(int value_)
+{
+	String Alttitudeholdcontrol = "Alttitudeholdcontrol";
+	setPWM(value_, Alttitudeholdcontrol);
+}
