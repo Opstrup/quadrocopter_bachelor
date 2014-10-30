@@ -78,10 +78,11 @@ Forudsætninger:	Ingen.
 		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{3.5 cm}|} 
 		\hline
 			Step & Handling & Forventet resultat & Resultat\\ \hline
-			1 & Bruger tilslutter batteri og dronen tændes. & Systemet tilføres forsyning. Arduino bootes og ESC'er signalerer de er flyveklar. &   \\ \hline
-			2 & 3G/GPS initialiseres og GPS position opdateres. & Nuværende GPS position opdateres. &   \\ \hline
-			3 & Forbindelse fra drone til webapplikation oprettes. & Fra webapplikation vises at drone er connected. &  \\ \hline
-			4 & Dronens nuværende GPS position sendes til webapplikation. & På webapplikation vises dronens nuværende position. &  \\ \hline
+			1 & Bruger tilslutter batteri og dronen tændes. & Systemet tilføres forsyning og ESC'er signalerer de er forbundet til forsyning. &   \\ \hline
+			2 & Main controller initialiseres. & Main controller startes. &   \\ \hline
+			3 & GPS initialiseres og dronens nuværende GPS position opdateres. & Nuværende GPS position opdateres og gemmes lokalt på main controller. &   \\ \hline
+			4 & 3G initialiseres og dronen opretter forbindelse til 3G-netværket. & Dronen tilsluttes det mobile 3G-netværk. &  \\ \hline
+			5 & Dronens nuværende GPS position sendes til webapplikation. & På webapplikation vises dronens nuværende position og at dronen er online. &  \\ \hline
 		\end{tabular}
 \end{table}
 
@@ -107,14 +108,14 @@ Forudsætninger:	Bruger er oprettet i systemet og UC\#1 er succesfuld gennemfør
 		\hline
 			Step & Handling & Forventet resultat & Resultat\\ \hline
 			1 & Bruger logger på webapplikation. & Login lykkes, og webapplikations forside vises. &  \\ \hline
-			3 & Fra forsiden navigerer bruger til flyveopsætning. & Flyveopsætnings siden vises. & \\ \hline
-			4 & Bruger laver en ny flyveopsætning og vælger: \newline
+			2 & Fra forsiden navigerer bruger til flyveopsætning. & Flyveopsætnings siden vises. & \\ \hline
+			3 & Bruger laver en ny flyveopsætning og vælger: \newline
 				- GPS lokationer der skal flyves til. \newline
 				- Om der skal tages billeder ved de valgte lokationer. \newline
 				- Højde billeder skal tages fra. \newline
 				- Generel flyvehøjde.				
 				 & Flyveopsætning klargjort & \\ \hline
-			5 & Flyveopsætning sendes til drone. & Flyveopsætning sendes til drone & \\ \hline
+			4 & Bruger vælger at gemme flyveopsætning. & Flyveopsætning gøres tilgængelig på server & \\ \hline
 		\end{tabular}
 \end{table}
 
@@ -150,10 +151,12 @@ Forudsætninger:	UC\#1 og UC\#2 er succesfuld gennemført.
 		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{3.5 cm}|} 
 		\hline
 			Step & Handling & Forventet resultat & Resultat\\ \hline
-			1 & Nuværende position opdateres. & Ingen handling  &  \\ \hline
-			2 & Flyvehøjde tilpasses. & Flyvehøjde justeres &  \\ \hline
-			3 & Flyveorientering tilpasses. & Orientering justeres &  \\ \hline
-			4 & Drone flyver mod ønsket position. & Drone nærmer sig ønsket position  &  \\ \hline
+			1 & Drone henter flyveopsætning fra server. & Der oprettes forbindelse mellem server og drone, og flyveopsætning sendes. & \\ \hline
+			2 & Nuværende position opdateres. & Ingen handling  &  \\ \hline
+			3 & Flyvehøjde tilpasses. & Flyvehøjde justeres &  \\ \hline
+			4 & Flyveorientering tilpasses. & Orientering justeres &  \\ \hline
+			5 & Drone flyver mod ønsket position. & Drone nærmer sig ønsket position  &  \\ \hline
+			6 & Ønsket position er nået. & Ønsket position er nået. \\ \hline
 		\end{tabular}
 \end{table}
 
@@ -174,6 +177,27 @@ Forudsætninger:	UC\#1 og UC\#2 er succesfuld gennemført.
 		\hline
 			Step & Handling & Forventet resultat & Resultat\\ \hline
 			a & Drone går i fejlmode \#2. & Forsøger at finde gyldig flyvehøjde, mislykkes dette lander dronen. & \\ \hline
+		\end{tabular}
+\end{table}
+
+\textbf{Extension 3: Ønsket position er ikke nået.}
+\begin{table}[H]
+	\centering
+		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{3.5 cm}|} 
+		\hline
+			Step & Handling & Forventet resultat & Resultat\\ \hline
+			a & UC \#3 genstartes. & Dronen flyver til position. & \\ \hline
+		\end{tabular}
+\end{table}
+
+\textbf{Extension 4: Dronen henter ikke flyveopsætning, da flyvning
+med en anden flyveopsætning er aktiv.}
+\begin{table}[H]
+	\centering
+		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{3.5 cm}|} 
+		\hline
+			Step & Handling & Forventet resultat & Resultat\\ \hline
+			a & Ingen handling. & UC \#3 fortsættes med den aktive flyveopsætning. & \\ \hline
 		\end{tabular}
 \end{table}
 

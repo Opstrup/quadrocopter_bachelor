@@ -26,6 +26,10 @@ Hovedforløb				&
 									\renewcommand{\labelenumii}{\Roman{enumii}:}
 
 									\begin{enumerate}[topsep=0.0cm, leftmargin=0.5cm]
+										\item Drone henter flyveopsætning fra server.
+											\begin{enumerate}[partopsep=4cm, topsep=0cm, leftmargin=1cm]
+												\item Dronen henter ikke flyveopsætning, da flyvning \newline med en anden flyveopsætning er aktiv.
+											\end{enumerate}
 										\item Nuværende position opdateres.
 											\begin{enumerate}[partopsep=4cm, topsep=0cm, leftmargin=1cm]
 												\item Ugyldig GPS koordinat.
@@ -35,7 +39,11 @@ Hovedforløb				&
 												\item Ugyldig flyvehøjde.
 											\end{enumerate}
 										\item Flyveorientering tilpasses.
-										\item Drone flyver mod ønsket position.
+										\item Drone flyver mod ønsket position i ønsket flyvehøjde.
+										\item Ønsket position er nået.
+										\begin{enumerate}[partopsep=4cm, topsep=0cm, leftmargin=1cm]
+												\item Ønsket position er ikke nået.
+											\end{enumerate}
 									\end{enumerate} \\\hline	
 
 Undtagelser							& 
@@ -50,6 +58,10 @@ Undtagelser							&
 										\item Ugyldig flyvehøjde.
 											\begin{enumerate}[topsep=0cm, leftmargin=1cm]
 												\item Drone går i fejlmode \#2.
+											\end{enumerate}
+										\item Ønsket position er ikke nået.
+											\begin{enumerate}[topsep=0cm, leftmargin=1cm]
+												\item UC \#3 genstartes.
 											\end{enumerate}
 									\end{enumerate} \\\hline	
 
