@@ -50,6 +50,26 @@ User klassen indeholder alle data om brugerne i systemet. Klassen bliver også b
 \textbf{UserValidation}\\
 UserValidation klassen har ansvaret for at validere en user når der bliver forsøgt login.\\
 
+
+\subsubsection*{CommunicationHandling}
+Klasse diagrammet viser hvilket klasser som udgør CommunicationHandling pakken som vist på figur \ref{fig:pakke_diagram}.
+
+\vspace{-5pt}
+%kommentar
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\textwidth]{Billeder/klasse_diagrammer/CommunicationHandling.png}
+	\vspace{-5pt}
+	\caption{CommunicationHandling klasse diagram}
+	\label{fig:CommunicationHandling_klasse_diagram}
+\end{figure}
+
+\textbf{Connection}\\
+Connection klassen har til ansvar for at skabe forbindelse imellem serveren og dronen.
+
+\textbf{Datatransfer}\\
+Datatransfer klassen bruger connection klassen til at oprette forbindelse til dronen inden data'en sendes. 
+
 \newpage
 \subsubsection*{DatabaseHandling}
 Klasse diagrammet viser hvilket klasser som udgør DatabaseHandling pakken som vist på figur \ref{fig:pakke_diagram}.
@@ -75,23 +95,3 @@ StoreFlightdata gemmer alle data omkring flyvning. Denne klasse bruges løbende 
 
 \textbf{UserValidation}\\
 UserValidation validaere bruger ved forsøg på login og giver adgang til systemet hvis brugeren er valid.
-
-\newpage
-\subsubsection*{CommunicationHandling}
-Klasse diagrammet viser hvilket klasser som udgør CommunicationHandling pakken som vist på figur \ref{fig:pakke_diagram}.
-
-\vspace{-5pt}
-%kommentar
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.7\textwidth]{Billeder/klasse_diagrammer/CommunicationHandling.png}
-	\vspace{-5pt}
-	\caption{CommunicationHandling klasse diagram}
-	\label{fig:CommunicationHandling_klasse_diagram}
-\end{figure}
-
-\textbf{Connection}\\
-Connection klassen har til ansvar for at skabe forbindelse imellem serveren og dronen.
-
-\textbf{Datatransfer}\\
-Datatransfer klassen bruger connection klassen til at oprette forbindelse til dronen inden data'en sendes. 
