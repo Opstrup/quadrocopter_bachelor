@@ -3,9 +3,76 @@
 #include "Arduino.h"
 #include "flightControl.h"
 
+#define THROTTLE		OCR1B	// pin 12
+#define YAW				OCR1A	// pin 11
+#define PITCH			OCR4B	// pin 7
+#define ALTTITUDEHOLD	OCR4A	// pin 6
+#define ROLL			OCR3A	// pin 5
+#define FLIGHTMODE		OCR3B	// pin 2
+
 flightControl :: flightControl()
 {
 	
+}
+
+void flightControl :: checkIfControllerIsOn()
+{
+	int pin = 40;
+	pinMode(pin, OUTPUT);
+	
+	char *Roll, *Pitch, *Yaw, *Throttle, *Mode, *AUX1, *AUX2, *AUX3;
+	char currentAUX1[100];
+	int counter = 0;
+	
+	// send command to flightcontrolboard "vehicle attitude"
+	Serial1.println('t');
+	
+	counter = 0;
+	do{
+		// wait for available data
+		while(Serial1.available() == 0);
+		
+		// save data in currentBearing
+		currentAUX1[counter] = Serial1.read();
+		counter++;
+	}
+	while(currentAUX1[counter - 1] != '\r');
+	currentAUX1[counter] = '\0';
+	
+	Serial.println("Read Processed Transmitter Values");
+	Serial.println(currentAUX1);
+	Serial.println();
+	
+	// vehicle attitude data looks like: "12.1,27.3,1.4\r\n"
+	// We are only interested in the last part.
+	Roll = strtok (currentAUX1,",");
+	Pitch = strtok (NULL, ",");
+	Yaw = strtok (NULL, ",");
+	Throttle = strtok (NULL, ",");
+	Mode = strtok (NULL, ",");
+	AUX1 = strtok (NULL, ",");
+	AUX2 = strtok (NULL, ",");
+	
+	// convert bearing from radian to degrees
+	float AUX2_Value = atof(AUX2);
+	
+	Serial.println("AUX2 Value: ");
+	Serial.println(AUX2);
+	Serial.println();
+		
+	if(AUX2_Value < 1500)
+	{
+		digitalWrite(pin, HIGH);
+		Serial.println("Drone styres nu manuelt");
+		Serial.println();
+	}
+	
+	else if(AUX2_Value > 1500)
+	{
+		digitalWrite(pin, LOW);
+		Serial.println("Drone styres af arduino");
+		Serial.println();
+	}
 }
 
 float flightControl :: getBearingFromCompas()
@@ -34,10 +101,15 @@ float flightControl :: getBearingFromCompas()
 	X = strtok (currentBearing,",");
 	Y = strtok (NULL, ",");
 	Z = strtok (NULL, ",");	
+	
+	Serial.println(Z);
 		
 	// convert bearing from radian to degrees
 	float bearing = atof(Z);
 	bearing = bearing / 0.0175;
+	
+	//Serial.println(bearing);
+	//Serial.println();
 	
 	return bearing;
 }
@@ -108,8 +180,8 @@ void flightControl :: initPWM()
 	TCCR3C = 0x00;
 	
 	// At what step output a and b should change
-	OCR1A = 24000;
-	OCR1B = 24000;
+	YAW = 24000;
+	THROTTLE = 16000;
 	
 	
 	// INIT TIMER_3
@@ -125,8 +197,8 @@ void flightControl :: initPWM()
 	TCCR3C = 0x00;
 
 	// At what step output a and b should change
-	OCR3A = 24000;
-	OCR3B = 24000;
+	ROLL = 24000;
+	FLIGHTMODE = 24000;
 	
 	
 	// INIT TIMER_4
@@ -142,10 +214,8 @@ void flightControl :: initPWM()
 	TCCR3C = 0x00;
 	
 	// At what step output a and b should react
-	OCR4A = 24000;
-	OCR4B = 24000;
-	
-	delay(2500);
+	ALTTITUDEHOLD = 24000;
+	PITCH = 24000;
 }
 
 void flightControl :: setPWM(int change_value, String mode)
@@ -162,11 +232,11 @@ void flightControl :: setPWM(int change_value, String mode)
 		{
 			for(int i = 0; i < change_value; i++)
 			{
-				tempint = OCR1B;
+				tempint = THROTTLE;
 				if(tempint + 160 <= 32000)
 				{
-					OCR1B = tempint + 160;
-					tempint = OCR1B;
+					THROTTLE = tempint + 160;
+					tempint = THROTTLE;
 				}
 			}
 		}
@@ -175,11 +245,11 @@ void flightControl :: setPWM(int change_value, String mode)
 		{
 			for(int i = 0; i > change_value; i--)
 			{
-				tempint = OCR1B;
+				tempint = THROTTLE;
 				if(tempint - 160 >= 16000)
 				{
-					OCR1B = tempint - 160;
-					tempint = OCR1B;
+					THROTTLE = tempint - 160;
+					tempint = THROTTLE;
 				}
 			}
 		}
@@ -191,11 +261,11 @@ void flightControl :: setPWM(int change_value, String mode)
 		{
 			for(int i = 0; i < change_value; i++)
 			{
-				tempint = OCR1A;
+				tempint = YAW;
 				if(tempint + 160 <= 32000)
 				{
-					OCR1A = tempint + 160;
-					tempint = OCR1A;
+					YAW = tempint + 160;
+					tempint = YAW;
 				}
 			}
 		}
@@ -204,11 +274,11 @@ void flightControl :: setPWM(int change_value, String mode)
 		{
 			for(int i = 0; i > change_value; i--)
 			{
-				tempint = OCR1A;
+				tempint = YAW;
 				if(tempint - 160 >= 16000)
 				{
-					OCR1A = tempint - 160;
-					tempint = OCR1A;
+					YAW = tempint - 160;
+					tempint = YAW;
 				}
 			}
 		}
@@ -220,11 +290,11 @@ void flightControl :: setPWM(int change_value, String mode)
 		{
 			for(int i = 0; i < change_value; i++)
 			{
-				tempint = OCR4B;
+				tempint = PITCH;
 				if(tempint + 160 <= 32000)
 				{
-					OCR4B = tempint + 160;
-					tempint = OCR4B;
+					PITCH = tempint + 160;
+					tempint = PITCH;
 				}
 			}
 		}
@@ -233,11 +303,11 @@ void flightControl :: setPWM(int change_value, String mode)
 		{
 			for(int i = 0; i > change_value; i--)
 			{
-				tempint = OCR4B;
+				tempint = PITCH;
 				if(tempint - 160 >= 16000)
 				{
-					OCR4B = tempint - 160;
-					tempint = OCR4B;
+					PITCH = tempint - 160;
+					tempint = PITCH;
 				}
 			}
 		}
@@ -249,11 +319,11 @@ void flightControl :: setPWM(int change_value, String mode)
 		{
 			for(int i = 0; i < change_value; i++)
 			{
-				tempint = OCR3A;
+				tempint = ROLL;
 				if(tempint + 160 <= 32000)
 				{
-					OCR3A = tempint + 160;
-					tempint = OCR3A;
+					ROLL = tempint + 160;
+					tempint = ROLL;
 				}
 			}
 		}
@@ -262,11 +332,11 @@ void flightControl :: setPWM(int change_value, String mode)
 		{
 			for(int i = 0; i > change_value; i--)
 			{
-				tempint = OCR3A;
+				tempint = ROLL;
 				if(tempint - 160 >= 16000)
 				{
-					OCR3A = tempint - 160;
-					tempint = OCR3A;
+					ROLL = tempint - 160;
+					tempint = ROLL;
 				}
 			}
 		}
@@ -278,11 +348,11 @@ void flightControl :: setPWM(int change_value, String mode)
 		{
 			for(int i = 0; i < change_value; i++)
 			{
-				tempint = OCR3B;
+				tempint = FLIGHTMODE;
 				if(tempint + 160 <= 32000)
 				{
-					OCR3B = tempint + 160;
-					tempint = OCR3B;
+					FLIGHTMODE = tempint + 160;
+					tempint = FLIGHTMODE;
 				}
 			}
 		}
@@ -291,11 +361,11 @@ void flightControl :: setPWM(int change_value, String mode)
 		{
 			for(int i = 0; i > change_value; i--)
 			{
-				tempint = OCR3B;
+				tempint = FLIGHTMODE;
 				if(tempint - 160 >= 16000)
 				{
-					OCR3B = tempint - 160;
-					tempint = OCR3B;					
+					FLIGHTMODE = tempint - 160;
+					tempint = FLIGHTMODE;					
 				}
 			}
 		}
@@ -307,11 +377,11 @@ void flightControl :: setPWM(int change_value, String mode)
 		{
 			for(int i = 0; i < change_value; i++)
 			{
-				tempint = OCR4A;
+				tempint = ALTTITUDEHOLD;
 				if(tempint + 160 <= 32000)
 				{
-					OCR4A = tempint + 160;
-					tempint = OCR4A;
+					ALTTITUDEHOLD = tempint + 160;
+					tempint = ALTTITUDEHOLD;
 				}
 			}
 		}
@@ -320,11 +390,11 @@ void flightControl :: setPWM(int change_value, String mode)
 		{
 			for(int i = 0; i > change_value; i--)
 			{
-				tempint = OCR4A;
+				tempint = ALTTITUDEHOLD;
 				if(tempint - 160 >= 16000)
 				{
-					OCR4A = tempint - 160;
-					tempint = OCR4A;
+					ALTTITUDEHOLD = tempint - 160;
+					tempint = ALTTITUDEHOLD;
 				}
 			}
 		}
@@ -341,112 +411,89 @@ void flightControl :: armMotors()
 {
 	Serial.println("Arm motors");
 	
-	while(OCR1B > 16001 || OCR1A < 31999)
-	{
-		if(OCR1B > 16001)
-		{
-			throttle(-1);
-		}
-		
-		if(OCR1A < 31999)
-		{
-			yaw(1);
-		}
-		
-		delay(20);
-	}
+	THROTTLE = 16000;
+	YAW = 32000;
 	
+	delay(100);
+	
+	THROTTLE = 16000;	
+	YAW = 24000;
 }
 
 void flightControl :: disarmMotors()
 {
 	Serial.println("Disarm motors");
 	
-	while(OCR1B > 16001 || OCR1A > 16001)
-	{
-		if(OCR1B > 16001)
-		{
-			throttle(-1);
-		}
+	THROTTLE = 16000;
+	YAW = 16000;
 		
-		if(OCR1A > 16001)
-		{
-			yaw(-1);
-		}
-		
-		delay(20);
-	}
+	delay(100);
 	
+	THROTTLE = 16000;
+	YAW = 24000;
 }
 
 void flightControl :: calibrateMotors()
 {
 	Serial.println("Calibrate motors");
 	
-	// 	throttle		OCR1B
-	// 	yaw				OCR1A
-	// 	pitch			OCR4B
-	// 	roll			OCR3A
-	// 	flightmode		OCR3B
-	// 	alttitudehold 	OCR4A
-	
-	
 	// Calibrate left side - throttle and yaw
-	OCR1B = 16000;
-	OCR1A = 16000;
+	THROTTLE = 32000;
+	YAW = 16000;
 	delay(1000);
 	
-	OCR1B = 16000;
-	OCR1A = 32000;
+	THROTTLE = 32000;
+	YAW = 32000;
 	delay(1000);
 	
-	OCR1B = 32000;
-	OCR1A = 32000;
+	THROTTLE = 16000;
+	YAW = 32000;
 	delay(1000);
 	
-	OCR1B = 32000;
-	OCR1A = 16000;
+	THROTTLE = 16000;
+	YAW = 16000;
 	delay(1000);
-	
-	OCR1B = 24000;
-	OCR1A = 24000;
+			
+	THROTTLE = 24000;
+	YAW = 24000;
 	delay(1000);
 		
+		
 	// Calibrate right side - pitch and roll
-	OCR4B = 16000;
-	OCR3A = 16000;
+	PITCH = 32000;
+	ROLL = 16000;
 	delay(1000);
 	
-	OCR4B = 16000;
-	OCR3A = 32000;
+	PITCH = 32000;
+	ROLL = 32000;
 	delay(1000);
 	
-	OCR4B = 32000;
-	OCR3A = 32000;
+	PITCH = 16000;
+	ROLL = 32000;
 	delay(1000);
 	
-	OCR4B = 32000;
-	OCR3A = 16000;
+	PITCH = 16000;
+	ROLL = 16000;
 	delay(1000);
 	
-	OCR4B = 24000;
-	OCR3A = 24000;
+	PITCH = 24000;
+	ROLL = 24000;
 	delay(1000);
+	
 	
 	// Calibrate flightmode and alttitudehold
-	OCR3B = 32000;
+	FLIGHTMODE = 32000;
 	delay(1000);
-	OCR3B = 16000;
+	FLIGHTMODE = 16000;
 	delay(1500);
-	OCR3B = 24000;
+	FLIGHTMODE = 24000;
 	delay(1000);
 	
-	OCR4A = 32000;
+	ALTTITUDEHOLD = 32000;
 	delay(1000);
-	OCR4A = 16000;
+	ALTTITUDEHOLD = 16000;
 	delay(1000);
-	OCR4A = 24000;
-	
+	ALTTITUDEHOLD = 24000;
 }
 
 void flightControl :: throttle(int value_)
