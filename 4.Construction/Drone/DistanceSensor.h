@@ -5,13 +5,11 @@
 class DistanceSensor
 {
 public:	
-	DistanceSensor();
+	DistanceSensor(int tpin,int epin);
 	long getDistance();
 	
-// 	long microsecondsToCentimeters(long microseconds)
-// 	{
-// 		return microseconds / 74 / 2;
-// 	}
+	long microsecondsToCentimeters(long microseconds);
+	
 		
 private:
 
@@ -19,6 +17,9 @@ private:
 	int echoPin;
 	long duration;
 	long cm;
+	long cm_return;
+	
+	char totalData[];
 	
 	};
 
