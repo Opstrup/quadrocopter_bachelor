@@ -11,11 +11,12 @@ standAloneGps :: standAloneGps()
 
 void standAloneGps :: initGPS()
 {
+	int _ATanswer;
 	Serial.println("Start of GPS setup");
 	delay(2000);
-	standAlonemode_ = sendATcommand("AT+CGPS=1,1","OK",1000);
+	_ATanswer = sendATcommand("AT+CGPS=1,1","OK",1000);
 
-	if (standAlonemode_ != 1)
+	if (_ATanswer != 1)
 	{
 		Serial.println("Cannot set GPS mode 1.");
 	}
@@ -27,13 +28,15 @@ void standAloneGps :: initGPS()
 
 void standAloneGps :: updateGPSPosition()
 {
-	getGPS_ = sendATcommand("AT+CGPSINFO", "+CGPSINFO:",1000);
+	int _ATanswer;
+	char gps_data[100];
+	_ATanswer = sendATcommand("AT+CGPSINFO", "+CGPSINFO:",1000);
 	int counter;
-	if (getGPS_ == 1)
+	if (_ATanswer == 1)
 	{
 		do
 		{
-			getGPS_ = sendATcommand("AT+CGPSINFO", "+CGPSINFO:",1000);
+			_ATanswer = sendATcommand("AT+CGPSINFO", "+CGPSINFO:",1000);
 			counter = 0;
 			do{
 				while(Serial.available() == 0);
@@ -58,7 +61,8 @@ void standAloneGps :: updateGPSPosition()
 	{
 		gps_data2[x] = gps_data[x];
 	}
-	
+	char * latitude;
+	char* longitude;
 	latitude = strtok (gps_data2,",");
 	longitude = strtok (NULL, ",");
 	longitude = strtok (NULL, ",");
@@ -66,23 +70,23 @@ void standAloneGps :: updateGPSPosition()
 	float_latitude =atof(latitude);
 	float_longitude =atof(longitude);
 	
-	int_latitude = int(float_latitude);
-	int_longitude = int(float_longitude);
+	int int_latitude = int(float_latitude);
+	int int_longitude = int(float_longitude);
 	
 }
 
-float standAloneGps :: getLatitude()
+float standAloneGps :: getLat()
 {
 	float_latitude = float_latitude/100;
-	int_latitude = int(float_latitude);
+	int int_latitude = int(float_latitude);
 	float_latitude = (float_latitude -(float_latitude - int_latitude))+(((float_latitude - int_latitude)*100)/60);
  	return float_latitude;
 }
 
-float standAloneGps :: getLongitude()
+float standAloneGps :: getLong()
 {
 	float_longitude = float_longitude/100;
-	int_longitude = int(float_longitude);
+	int int_longitude = int(float_longitude);
 	float_longitude = (float_longitude -(float_longitude - int_longitude))+(((float_longitude - int_longitude)*100)/60);
 	return float_longitude;
 }
