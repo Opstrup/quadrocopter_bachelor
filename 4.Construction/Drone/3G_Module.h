@@ -12,41 +12,45 @@ class Module_3G
 {
 public:
 
-	Module_3G();		
-	char* get_FlightSetup();
-	//void get_Nextevent();
+	Module_3G(char* url,String requestDrone, String requestWaypoints);		
+	int get_FlightSetup();
 	void put_isOnline_CurrPos(float longitude, float latitude);
+	
+	void sortWayPoints(int wayPointNumber);
+	float getLong();
+	float getLat();
+	float getHeight();
+	char* getTakePhoto();
 	
 	
 private:
-	char aux_str[100];
-	char data[420];
-	char * body_data;
-	char data_v2[500];
-	char data_body[50];
-	char* body1;
-	char * body;
+	// PUT and GET attributes
+	char data[700];
+	char * bodyEvent;
+	char* bodyWaypoints;
+	int numberOfWaypoints = 0;
+	int allowModify;
 	
-	aJsonObject* sortJSON();
-	char* _id_char;
+	//For the contructor
+	char* _url;
+	String _requestDrone;
+	String _requestWaypoints;
+	
+	aJsonObject* sortJSON();	
 	int _id = 0;
-	char* _nextEvent_char;
 	int _nextEvent = 0;
-	char* _latitude_char;
-	char* _longitude_char;
-	float _latitude;
-	float _longitude;
-	char* _status;
+
 	char* _is_online;
 	char* _model;
+	int setNextEvent;
 	
-	aJsonObject* id_json;
-	aJsonObject* status_json;
-	aJsonObject* is_online_json;
-	aJsonObject* model_json;
-	aJsonObject* next_event_json;
-	aJsonObject* latitude_json;
-	aJsonObject* longitude_json;
+	aJsonObject* findNumberOfWayPoints();
+	String safeWayPoints[10];
+	char* _takePhoto;
+	float _height;
+	float _latitude;
+	float _longitude;
+	
 };
 
 

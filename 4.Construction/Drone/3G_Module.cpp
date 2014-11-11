@@ -2,41 +2,39 @@
 #include "Arduino.h"
 #include "3G_Module.h"
 
-Module_3G::Module_3G()
+Module_3G::Module_3G(char* url, String requestDrone,String requestWaypoints)
 {
+	_url = url;
+	_requestDrone = requestDrone;
+	_requestWaypoints = requestWaypoints;
 	
 }
 
-char* Module_3G::get_FlightSetup()
+int Module_3G::get_FlightSetup()
 {
-	
+	char aux_str[100];
 	int8_t http_answer;
 	// define values for the request:
-	char url[ ]="iha-11726.iha.dk";
 	int port= 80;
 	
-//	char request[]  = "GET /api/drones/1/?format=json HTTP/1.1\r\nHost: iha-11726.iha.dk\r\nContent-Length: 0\r\n\r\n";
-	char* request = "GET /api/";
-	char* request_path = "drones/";
-	char* request_event = "1/?format=json";
-	char* http_part = " HTTP/1.1\r\nHost: iha-11726.iha.dk\r\nContent-Length: 0\r\n\r\n";
-	
+	// If nextevent == 0
+	String request = _requestDrone;
+
 	int x, aux, data_size;
 	
-	sprintf(aux_str, "AT+CHTTPACT=\"%s\",%d", url, port);
+	sprintf(aux_str, "AT+CHTTPACT=\"%s\",%d", _url, port);
 	http_answer = sendATcommand(aux_str, "+CHTTPACT: REQUEST", 60000);
 
 	if (http_answer == 1)
 	{
+
 		if (_nextEvent > 0)
 		{
-			request_path = "drones/";
-			request_event = _nextEvent_char;
+			request = _requestWaypoints + _nextEvent + "/";
+			
 		}
-		Serial.print(request);
-		Serial.print(request_path);
-		Serial.print(request_event);
-		Serial.print(http_part);
+		String getRequest = "GET " + request + " HTTP/1.1\r\nHost: " + _url + "\r\nContent-Length: 0\r\n\r\n";
+		Serial.print(getRequest);
 		// Sends <Ctrl+Z>
 		aux_str[0] = 0x1A;
 		aux_str[1] = 0x00;
@@ -87,45 +85,171 @@ char* Module_3G::get_FlightSetup()
 	{
 		Serial.println("Error waiting the request");
 	}
-	char * header;
-	header = strtok (data,"\r\n\r\n");
-	for (int y = 0; y < 10; y++ )
+	
+	if (_nextEvent > 0)
 	{
-		body = strtok (NULL,"\r\n\r\n");
+		char * header;
+		header = strtok (data,"\r\n\r\n");
+		for (int y = 0; y < 10; y++ )
+		{
+			bodyWaypoints = strtok (NULL,"\r\n\r\n");
+		}
+		findNumberOfWayPoints();
+		data_size = 0;
+		setNextEvent = 1;
+		return numberOfWaypoints;
 	}
-
-	sortJSON();
-	return body;
+	else
+	{
+		char * header;
+		header = strtok (data,"\r\n\r\n");
+		for (int y = 0; y < 10; y++ )
+		{
+			bodyEvent = strtok (NULL,"\r\n\r\n");
+		}
+		data_size = 0;
+		sortJSON();
+		return _nextEvent;
+	}
+	
+	
 }
+
+aJsonObject* Module_3G :: findNumberOfWayPoints()
+{
+	int w = 0;
+ 	String strBodyWayPoints = bodyWaypoints;
+
+	
+	if (strBodyWayPoints[0] == '[')
+	{
+		while (strBodyWayPoints[w] != ']')
+		{
+			if (strBodyWayPoints[w] == '{')
+			{
+				numberOfWaypoints++;
+			}
+			w++;
+		}
+	}
+	else
+	{
+		numberOfWaypoints = 1;
+	}
+	
+}
+
+void Module_3G :: sortWayPoints(int wayPointNumber)
+{
+	aJsonObject* latitude_json;
+	aJsonObject* longitude_json;
+	aJsonObject* height_json;
+	aJsonObject* takePhoto_json;
+	char* _latitude_char;
+	char* _longitude_char;
+	String devide_waypoints;
+	char* trash;
+
+	if (wayPointNumber <= numberOfWaypoints)
+	{
+		String wayPoints[numberOfWaypoints];
+		
+		if (allowModify == 1)
+		{
+			
+			if (numberOfWaypoints > 1)
+			{
+				trash = strtok (bodyWaypoints,"{");
+				for (int i = 0 ; i < numberOfWaypoints; i++)
+				{
+					devide_waypoints = strtok (NULL,"}");
+					trash = strtok (NULL,"{");
+					devide_waypoints = "{" + devide_waypoints + "}";
+					wayPoints[i] = devide_waypoints;
+					//wayPoints[i] = devide_waypoints;
+					}
+				}
+			else if (numberOfWaypoints == 1)
+			{
+				devide_waypoints = strtok (NULL,"}");
+				devide_waypoints = devide_waypoints + "}";
+				wayPoints[0] = devide_waypoints;
+			}
+			for (int u = 0; u < numberOfWaypoints; u++)
+			{
+				safeWayPoints[u] = wayPoints[u];
+			}
+		}
+		
+		
+		char chosenWayPoint[150];
+		safeWayPoints[wayPointNumber].toCharArray(chosenWayPoint,150);
+		
+		aJsonObject* waypoints_object = aJson.parse(chosenWayPoint);
+
+	
+	
+	
+		latitude_json = aJson.getObjectItem(waypoints_object, "latitude");
+		longitude_json = aJson.getObjectItem(waypoints_object, "longitude");
+		takePhoto_json = aJson.getObjectItem(waypoints_object, "take_photo");
+		height_json = aJson.getObjectItem(waypoints_object, "height");
+		
+		
+		_latitude_char = aJson.print(latitude_json);
+		_longitude_char = aJson.print(longitude_json);
+		for (int y = 0; y < 1;y++ )
+		{
+			_latitude_char = strtok(_latitude_char,"\"");
+		}
+		for (int y = 0; y < 1;y++ )
+		{
+			_longitude_char = strtok(_longitude_char,"\"");
+		}
+		_latitude = atof(_latitude_char);
+		_longitude = atof(_longitude_char);
+		_takePhoto = aJson.print(takePhoto_json);
+		_height = atof(aJson.print(height_json));
+		
+		allowModify = 0;
+
+	}
+		
+	else
+	{
+		
+	}
+}
+
 
 void Module_3G ::put_isOnline_CurrPos(float longitude,float latitude)
 {
-	delay(1000);
-	
-	int x,aux, data_size;
+	char aux_str[100];
+	int x, data_size;
 	int8_t put_answer;
-	char url[] = "iha-11726.iha.dk";
 	int port = 80;
-	float _longitude,_latitude;
-	char * putlink_;
-	// For testing!
-	//body1 = "{\"id\":1,\"status\":\"Ready\",\"is_online\":false,\"model\":\"aeroquad\",\"next_event\":2,\"latitude\":60.171,\"longitude\":20.191}";
-	//Serial.println(body1);
-		
 	aJsonObject* put_object = aJson.createObject();
 
 	
 	aJson.addNumberToObject(put_object,"id",_id);
-	aJson.addStringToObject(put_object,"status","Ready");
  	aJson.addStringToObject(put_object,"is_online" ,"true");
-	aJson.addStringToObject(put_object,"model","Aeroquad");
-	aJson.addNumberToObject(put_object,"next_event",_nextEvent);
+	aJson.addStringToObject(put_object,"model", _model);
+	if (setNextEvent > 0)
+	{
+		aJson.addNumberToObject(put_object,"next_event",0);
+		setNextEvent = 0;
+	}
+	else
+	{
+		aJson.addNumberToObject(put_object,"next_event",_nextEvent);
+	}
+	
 	aJson.addNumberToObject(put_object,"latitude",latitude);
 	aJson.addNumberToObject(put_object,"longitude",longitude);
 	
-	char * put_data = aJson.print(put_object);
+	String dataToPut = aJson.print(put_object);
+	char* put_data = aJson.print(put_object);
 	
-	int put_size = sizeof(body);
 	int p = 0;
 	while (put_data[p] != '}')
 	{
@@ -133,19 +257,14 @@ void Module_3G ::put_isOnline_CurrPos(float longitude,float latitude)
 	}
 	p++;
 
-	putlink_ = "PUT /api/drones/1/ HTTP/1.1\r\nHost: iha-11726.iha.dk\r\nCache-Control: no-cache\r\nContent-Type: application/json\r\nContent-Length: ";
+	String putRequest = "PUT " + _requestDrone + " HTTP/1.1\r\nHost: " + _url + "\r\nCache-Control: no-cache\r\nContent-Type: application/json\r\nContent-Length: " + p + "\r\n\r\n" + dataToPut + "\r\n\r\n";
 	
-	sprintf(aux_str, "AT+CHTTPACT=\"%s\",%d", url, port);
+	sprintf(aux_str, "AT+CHTTPACT=\"%s\",%d", _url, port);
 	put_answer = sendATcommand(aux_str, "+CHTTPACT: REQUEST", 5000);
 
 	if (put_answer == 1)
 	{
-		Serial.print(putlink_);
-		Serial.print(p);
-		Serial.print("\r\n\r\n");
-		Serial.print(put_data);
-		Serial.print("\r\n\r\n");
-
+		Serial.print(putRequest);
 		// Sends <Ctrl+Z>
 		aux_str[0] = 0x1A;
 		aux_str[1] = 0x00;
@@ -171,37 +290,42 @@ void Module_3G ::put_isOnline_CurrPos(float longitude,float latitude)
 
 aJsonObject* Module_3G :: sortJSON()
 {
+		
 	// Char* to JSON
-	aJsonObject* data_object = aJson.parse(body);
+	aJsonObject* data_object = aJson.parse(bodyEvent);
 	// Items in JSON seperated:
 	
-	id_json = aJson.getObjectItem(data_object, "id");
-	status_json = aJson.getObjectItem(data_object, "status");
-	is_online_json = aJson.getObjectItem(data_object, "is_online");
-	model_json = aJson.getObjectItem(data_object, "model");
-	next_event_json = aJson.getObjectItem(data_object, "next_event");
-	latitude_json = aJson.getObjectItem(data_object, "latitude");
-	longitude_json = aJson.getObjectItem(data_object, "longitude");
+	aJsonObject* id_json = aJson.getObjectItem(data_object, "id");
+	aJsonObject* is_online_json = aJson.getObjectItem(data_object, "is_online");
+	aJsonObject* model_json = aJson.getObjectItem(data_object, "model");
+	aJsonObject* next_event_json = aJson.getObjectItem(data_object, "next_event");
+	aJsonObject* latitude_json = aJson.getObjectItem(data_object, "latitude");
+	aJsonObject* longitude_json = aJson.getObjectItem(data_object, "longitude");
 	
-	_id_char = aJson.print(id_json);
+	_id = atoi(aJson.print(id_json));
 	_is_online = aJson.print(is_online_json);
 	_model = aJson.print(model_json);
-	_nextEvent_char = aJson.print(next_event_json);
-	_status = aJson.print(status_json);
-	_latitude_char = aJson.print(latitude_json);
-	_longitude_char = aJson.print(longitude_json);
-	
-	
-	_id = atoi(_id_char);
-	_nextEvent = atoi(_nextEvent_char);
-	_latitude = atof(_latitude_char);
-	_longitude = atof(_longitude_char);
-	
-// 	
-// 	Serial.println(_id);
-// 	Serial.println(_nextEvent);
-// 	Serial.println(_status);
-// 	Serial.println(_model);
-// 	Serial.println(_is_online);
-	
+	_model = strtok(_model,"\"");
+	_model = strtok(_model,"\"");
+	_nextEvent = atoi(aJson.print(next_event_json));
+
+}
+
+float Module_3G::getLat()
+{
+	return _latitude;
+}
+float Module_3G::getLong()
+{
+	return _longitude;
+}
+
+float Module_3G::getHeight()
+{
+	return _height;
+}
+
+char* Module_3G :: getTakePhoto()
+{
+	return _takePhoto;
 }
