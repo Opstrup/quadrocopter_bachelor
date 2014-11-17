@@ -108,30 +108,6 @@ int main()
 				com.putDroneStatus(40,10);
 				requestDelay = millis();
 		}
-		
-/*		drone.checkIfControllerIsOn();*/
-		
-		//Serial.println(Height.getDistance());
-// 		while ((Height.getDistance()) < 10)
-// 		{
-// 			Drone.throttle(1);
-// 			Serial.println(Height.getDistance());
-// 			
-// 			//Serial.println(OCR1B);
-// 		}
-// 		while ((Height.getDistance()) > 20)
-// 		{
-// 			Drone.throttle(-1);
-// 			Serial.println(Height.getDistance());
-// 		}
-		
-		//
-		
-		//distance = nysensor.getDistance();
-		//Serial.println(distance);
-		//loop();
-
-        //TODO:: Please write your application code 
     }
 }
 
