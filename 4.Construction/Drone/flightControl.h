@@ -9,13 +9,13 @@ class flightControl
 public:	
 	flightControl();
 	
-	void checkIfControllerIsOn();
+	boolean checkIfControllerIsOn();
 	
 	float getBearingFromCompas();
 	float calDistToTarget(float current_lat, float current_long, float target_lat, float target_long);
 	float calBearingToTarget(float current_lat, float current_long, float target_lat, float target_long);
 	
-	void initPWM();
+	void initMotors();
 	void calibrateMotors();
 	
 	void setPWM(int change_value, String mode);

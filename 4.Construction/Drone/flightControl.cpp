@@ -15,9 +15,10 @@ flightControl :: flightControl()
 	
 }
 
-void flightControl :: checkIfControllerIsOn()
+boolean flightControl :: checkIfControllerIsOn()
 {
-	int pin = 40;
+	bool ControllerIsOn = 0;
+	int pin = 53;
 	pinMode(pin, OUTPUT);
 	
 	char *Roll, *Pitch, *Yaw, *Throttle, *Mode, *AUX1, *AUX2, *AUX3;
@@ -56,12 +57,19 @@ void flightControl :: checkIfControllerIsOn()
 	// convert bearing from radian to degrees
 	float AUX2_Value = atof(AUX2);
 	
-	Serial.println("AUX2 Value: ");
+	Serial.println();
+	Serial.println();
+	Serial.println();
+	Serial.println();
+	Serial.print("AUX2 Value: ");
 	Serial.println(AUX2);
 	Serial.println();
+	
+	//AUX2_Value = 1000;
 		
 	if(AUX2_Value < 1500)
 	{
+		ControllerIsOn = true;
 		digitalWrite(pin, HIGH);
 		Serial.println("Drone styres nu manuelt");
 		Serial.println();
@@ -69,10 +77,13 @@ void flightControl :: checkIfControllerIsOn()
 	
 	else if(AUX2_Value > 1500)
 	{
+		ControllerIsOn = false;
 		digitalWrite(pin, LOW);
 		Serial.println("Drone styres af arduino");
 		Serial.println();
 	}
+	
+	return ControllerIsOn;
 }
 
 float flightControl :: getBearingFromCompas()
@@ -102,14 +113,14 @@ float flightControl :: getBearingFromCompas()
 	Y = strtok (NULL, ",");
 	Z = strtok (NULL, ",");	
 	
-	Serial.println(Z);
+	//Serial.println(Z);
 		
 	// convert bearing from radian to degrees
 	float bearing = atof(Z);
 	bearing = bearing / 0.0175;
 	
-	//Serial.println(bearing);
-	//Serial.println();
+	Serial.println(bearing);
+	Serial.println();
 	
 	return bearing;
 }
@@ -132,7 +143,7 @@ float flightControl :: calDistToTarget(float current_lat, float current_long, fl
 	b = 2*atan2(sqrt(a),sqrt(1-a));
 	
 	dist = jord_radius * b;
-	
+		
 	return dist;
 }
 
@@ -163,7 +174,7 @@ float flightControl :: calBearingToTarget(float current_lat, float current_long,
 	return bearing;
 }
 
-void flightControl :: initPWM()
+void flightControl :: initMotors()
 {
 	Serial.println("InitPWM");
 	
@@ -197,7 +208,7 @@ void flightControl :: initPWM()
 	TCCR3C = 0x00;
 
 	// At what step output a and b should change
-	ROLL = 24000;
+	ROLL = 24000-120;
 	FLIGHTMODE = 24000;
 	
 	
@@ -215,7 +226,7 @@ void flightControl :: initPWM()
 	
 	// At what step output a and b should react
 	ALTTITUDEHOLD = 24000;
-	PITCH = 24000;
+	PITCH = 24000 + 240;
 }
 
 void flightControl :: setPWM(int change_value, String mode)
@@ -233,9 +244,9 @@ void flightControl :: setPWM(int change_value, String mode)
 			for(int i = 0; i < change_value; i++)
 			{
 				tempint = THROTTLE;
-				if(tempint + 160 <= 32000)
+				if(tempint + 40 <= 32000)
 				{
-					THROTTLE = tempint + 160;
+					THROTTLE = tempint + 40;
 					tempint = THROTTLE;
 				}
 			}
@@ -246,9 +257,9 @@ void flightControl :: setPWM(int change_value, String mode)
 			for(int i = 0; i > change_value; i--)
 			{
 				tempint = THROTTLE;
-				if(tempint - 160 >= 16000)
+				if(tempint - 40 >= 16000)
 				{
-					THROTTLE = tempint - 160;
+					THROTTLE = tempint - 40;
 					tempint = THROTTLE;
 				}
 			}
@@ -262,9 +273,9 @@ void flightControl :: setPWM(int change_value, String mode)
 			for(int i = 0; i < change_value; i++)
 			{
 				tempint = YAW;
-				if(tempint + 160 <= 32000)
+				if(tempint + 40 <= 32000)
 				{
-					YAW = tempint + 160;
+					YAW = tempint + 40;
 					tempint = YAW;
 				}
 			}
@@ -275,9 +286,9 @@ void flightControl :: setPWM(int change_value, String mode)
 			for(int i = 0; i > change_value; i--)
 			{
 				tempint = YAW;
-				if(tempint - 160 >= 16000)
+				if(tempint - 40 >= 16000)
 				{
-					YAW = tempint - 160;
+					YAW = tempint - 40;
 					tempint = YAW;
 				}
 			}
@@ -291,9 +302,9 @@ void flightControl :: setPWM(int change_value, String mode)
 			for(int i = 0; i < change_value; i++)
 			{
 				tempint = PITCH;
-				if(tempint + 160 <= 32000)
+				if(tempint + 40 <= 32000)
 				{
-					PITCH = tempint + 160;
+					PITCH = tempint + 40;
 					tempint = PITCH;
 				}
 			}
@@ -304,9 +315,9 @@ void flightControl :: setPWM(int change_value, String mode)
 			for(int i = 0; i > change_value; i--)
 			{
 				tempint = PITCH;
-				if(tempint - 160 >= 16000)
+				if(tempint - 40 >= 16000)
 				{
-					PITCH = tempint - 160;
+					PITCH = tempint - 40;
 					tempint = PITCH;
 				}
 			}
@@ -320,9 +331,9 @@ void flightControl :: setPWM(int change_value, String mode)
 			for(int i = 0; i < change_value; i++)
 			{
 				tempint = ROLL;
-				if(tempint + 160 <= 32000)
+				if(tempint + 40 <= 32000)
 				{
-					ROLL = tempint + 160;
+					ROLL = tempint + 40;
 					tempint = ROLL;
 				}
 			}
@@ -333,9 +344,9 @@ void flightControl :: setPWM(int change_value, String mode)
 			for(int i = 0; i > change_value; i--)
 			{
 				tempint = ROLL;
-				if(tempint - 160 >= 16000)
+				if(tempint - 40 >= 16000)
 				{
-					ROLL = tempint - 160;
+					ROLL = tempint - 40;
 					tempint = ROLL;
 				}
 			}
@@ -349,9 +360,9 @@ void flightControl :: setPWM(int change_value, String mode)
 			for(int i = 0; i < change_value; i++)
 			{
 				tempint = FLIGHTMODE;
-				if(tempint + 160 <= 32000)
+				if(tempint + 40 <= 32000)
 				{
-					FLIGHTMODE = tempint + 160;
+					FLIGHTMODE = tempint + 40;
 					tempint = FLIGHTMODE;
 				}
 			}
@@ -362,9 +373,9 @@ void flightControl :: setPWM(int change_value, String mode)
 			for(int i = 0; i > change_value; i--)
 			{
 				tempint = FLIGHTMODE;
-				if(tempint - 160 >= 16000)
+				if(tempint - 40 >= 16000)
 				{
-					FLIGHTMODE = tempint - 160;
+					FLIGHTMODE = tempint - 40;
 					tempint = FLIGHTMODE;					
 				}
 			}
@@ -378,9 +389,9 @@ void flightControl :: setPWM(int change_value, String mode)
 			for(int i = 0; i < change_value; i++)
 			{
 				tempint = ALTTITUDEHOLD;
-				if(tempint + 160 <= 32000)
+				if(tempint + 40 <= 32000)
 				{
-					ALTTITUDEHOLD = tempint + 160;
+					ALTTITUDEHOLD = tempint + 40;
 					tempint = ALTTITUDEHOLD;
 				}
 			}
@@ -391,9 +402,9 @@ void flightControl :: setPWM(int change_value, String mode)
 			for(int i = 0; i > change_value; i--)
 			{
 				tempint = ALTTITUDEHOLD;
-				if(tempint - 160 >= 16000)
+				if(tempint - 40 >= 16000)
 				{
-					ALTTITUDEHOLD = tempint - 160;
+					ALTTITUDEHOLD = tempint - 40;
 					tempint = ALTTITUDEHOLD;
 				}
 			}
@@ -403,20 +414,20 @@ void flightControl :: setPWM(int change_value, String mode)
 	Serial.print("New value : ");
 	Serial.println(tempint);
 	Serial.println();
-	Serial.println();
 		
 }
 
 void flightControl :: armMotors()
 {
 	Serial.println("Arm motors");
+	Serial.println();
 	
 	THROTTLE = 16000;
 	YAW = 32000;
 	
 	delay(100);
 	
-	THROTTLE = 16000;	
+	THROTTLE = 32000;	
 	YAW = 24000;
 }
 

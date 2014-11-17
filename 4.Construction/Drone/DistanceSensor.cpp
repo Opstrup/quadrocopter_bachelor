@@ -11,7 +11,7 @@ DistanceSensor::DistanceSensor(int tpin,int epin)
 long DistanceSensor::getDistance()
 {
 	cm_return = 0;
-	for (int x = 0; x<10;x++)
+	for (int x = 0; x<1;x++)
 	{
 		pinMode(trigPin, OUTPUT);
 		digitalWrite(trigPin, LOW);
@@ -31,9 +31,10 @@ long DistanceSensor::getDistance()
 		cm_return = cm_return + cm;
 	}
 	
-	cm_return = cm_return/10;
+	cm_return = cm_return;//10;
 	return cm_return;
 }
+
 long DistanceSensor :: microsecondsToCentimeters(long microseconds)
 {
 	return microseconds / 29 / 2;
