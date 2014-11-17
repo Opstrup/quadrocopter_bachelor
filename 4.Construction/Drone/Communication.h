@@ -21,6 +21,7 @@ public:
 	waypoint* getwayPoints();
 	void putDroneStatus(float latitude, float longitude);
 	void initialGet();
+	int putURL();
 private:
 
 	
@@ -28,7 +29,7 @@ private:
 	getAndput _gap;
 	waypointsHandler _wpHandler;
 	eventHandler _eHandler;
-	float __put_latitude;
+	float _put_latitude;
 	float _put_longitude;
 	int _nEvent;
 };

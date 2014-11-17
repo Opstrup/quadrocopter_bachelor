@@ -18,7 +18,7 @@ public:
 	eventHandler();
 	int getNextEvent(String request);
 	void setOnlineLocation(String request, float _latitude, float _longitude);
-	void putResetNextEvent(String request, float _latitude, float _longitude, int nEvent);
+	void putResetNextEvent(String request, float _latitude, float _longitude);
 		
 
 private:

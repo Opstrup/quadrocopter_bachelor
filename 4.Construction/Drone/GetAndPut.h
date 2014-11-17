@@ -20,6 +20,7 @@ public:
 	getAndput();
 	char* getMethod(String request);
 	void putMethod(String request, aJsonObject* jSON);
+	void putBruteForce(String request, aJsonObject* jSON);
 	
 private:	
 	

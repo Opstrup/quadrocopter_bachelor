@@ -98,7 +98,7 @@ void getAndput::putMethod(String request, aJsonObject* jSON)
 	char aux_str[100];
 	int x, data_size;
 	int8_t put_answer;
-	int port = 80;
+//	int port = 80;
 	_url = "iha-11726.iha.dk";
 	String dataToPut = aJson.print(put_jsondata);
 	// To find Size!
@@ -109,19 +109,20 @@ void getAndput::putMethod(String request, aJsonObject* jSON)
 		p++;
 	}
 	p++;
-
+	
 	String putRequest = "PUT " + request + " HTTP/1.1\r\nHost: " + _url + "\r\nCache-Control: no-cache\r\nContent-Type: application/json\r\nContent-Length: " + p + "\r\n\r\n" + dataToPut + "\r\n\r\n";
 	
-	sprintf(aux_str, "AT+CHTTPACT=\"%s\",%d", _url, port);
-	put_answer = sendATcommand(aux_str, "+CHTTPACT: REQUEST", 5000);
-
+//	sprintf(aux_str, "AT+CHTTPACT=\"%s\",%d", _url, port);
+//	put_answer = sendATcommand(aux_str, "+CHTTPACT: REQUEST", 5000);
+	put_answer = 1;
 	if (put_answer == 1)
 	{
 		Serial.print(putRequest);
 		// Sends <Ctrl+Z>
 		aux_str[0] = 0x1A;
 		aux_str[1] = 0x00;
-		put_answer = sendATcommand(aux_str, "+CHTTPACT: DATA,", 3000);
+		Serial.print(aux_str);
+//		put_answer = sendATcommand(aux_str, "+CHTTPACT: DATA,", 3000);
 
 		x=0;
 		if (put_answer == 1)
@@ -134,6 +135,70 @@ void getAndput::putMethod(String request, aJsonObject* jSON)
 			data_size = 0;
 		}
 
+	}
+	else
+	{
+		Serial.println("Error waiting the request");
+	}
+}
+
+void getAndput ::putBruteForce(String request, aJsonObject* jSON)
+{
+	aJsonObject* put_brutedata = aJson.createObject();
+	put_brutedata = jSON;
+	char aux_str[100];
+	int x, data_size;
+	int8_t put_answer;
+	int port = 80;
+	_url = "iha-11726.iha.dk";
+	String dataToPut = aJson.print(put_brutedata);
+	// To find Size!
+	char* put_data = aJson.print(put_brutedata);
+	int p = 0;
+	while (put_data[p] != '}')
+	{
+		p++;
+	}
+	p++;
+	
+	
+
+	String putRequest = "PUT " + request + " HTTP/1.1\r\nHost: " + _url + "\r\nCache-Control: no-cache\r\nContent-Type: application/json\r\nContent-Length: " + p + "\r\n\r\n" + dataToPut + "\r\n\r\n";
+
+	
+// 	Serial.println(aux_str);
+ 	put_answer = 1;
+// 	delay(3000);
+//	put_answer = sendATcommand(aux_str, "+CHTTPACT: REQUEST", 5000);
+
+	if (put_answer == 1)
+	{
+		Serial.println(putRequest);
+		// Sends <Ctrl+Z>
+		aux_str[0] = 0x1A;
+		aux_str[1] = 0x00;
+		Serial.print(aux_str);
+		
+		
+//		put_answer = sendATcommand(aux_str, "+CHTTPACT: DATA,", 3000);
+//		Serial.print(put_answer);
+/*		
+		x=0;
+		if (put_answer == 1)
+		{
+			Serial.println("sent");
+		}
+		else
+		{
+			Serial.println("Error getting the url");
+			data_size = 0;
+		}
+*/
+		
+			Serial.println("");
+			Serial.print("After: ");
+			Serial.print(millis());
+			Serial.println("");
 	}
 	else
 	{

@@ -24,135 +24,90 @@
 
 void init_3G_GPS_Module();
 
+getAndput gap;
+communication com;
+waypoint* waypoints;
+standAloneGps standAloneGPS1;
+
+
 int main()
 {
-	//char gpsdata[100];
+	float startingLAT, startingLONG;
+	long puttimer, requestDelay, httpWait;
+	int firstrun;
 	
 	init();
-//	Serial.begin(115200);
-//	Serial1.begin(115200);
 	init_3G_GPS_Module();
+	standAloneGPS1.initGPS();
 
-
+	 for (int i = 0; i< 10;i++)
+	 {
+		 standAloneGPS1.updateGPSPosition();
+	 }
+	startingLAT = standAloneGPS1.getLat();
+	startingLONG = standAloneGPS1.getLong(); 
 	
-// 	float longitude, latitude;
-// 	//http_get();
-// 	standAloneGps standAloneGPS1;
-// 	standAloneGPS1.initGPS();
-// 	standAloneGPS1.updateGPSPosition();
-// 	
-// 	latitude = standAloneGPS1.getLat();
-// 	longitude = standAloneGPS1.getLong();
-// 	
-// 	
-// 	Serial.println("GPS coordinates");
-// 	Serial.println(longitude,10);
-// 	Serial.println(latitude,10);
-	
-// 	float curr_height;
-// 	DistanceSensor Height(53,51);
-//  	flightControl Drone;
-// 	
-	//Drone.initPWM();
-	 
-	//Drone.armMotors();
-	
-	//Drone.initPWM();
-
-//   	char* http_gps = http_f.get_http("GET /api/drones/1/?format=json HTTP/1.1\r\nHost: iha-11726.iha.dk\r\nContent-Length: 0\r\n\r\n");
-// // // 	
-//  	Serial.println("\n\n\nGPS coordinates from the web are:");
-//  	Serial.println(http_gps);
-
-// 	float latitude, longitude;
-// 	
-
-	//Serial.println(wayPoints);
-
-// 	flightdata = getandput.get_FlightSetup();
-// 	Serial.println(flightdata);
-
-// 	delay(40000);
-// 
-// 	flightdata = getandput.get_FlightSetup();
-// 	Serial.println(flightdata);
-// 	standAloneGps standAloneGPS1;
-// 	standAloneGPS1.initGPS();
-// 	standAloneGPS1.updateGPSPosition();
-// 	
-// 	latitude = standAloneGPS1.getLat();
-// 	longitude = standAloneGPS1.getLong(); 
-//
- 	
-	getAndput gap;
-	String drone_request = "/api/waypointsForEvent/1/";
-	waypointsHandler wphand;
-	waypoint* onewp;
-	
-	communication com;
- 	com.initialGet();
- 	delay(40000);
-	com.putDroneStatus(60,8);
+	com.initialGet();
 	delay(40000);
 	
+	int values = com.putURL();
+	delay(4000);
+	
+	com.putDroneStatus(startingLAT,startingLONG);
+	delay(40000);
+	puttimer millis();
 	do 
 	{
-		onewp = com.getwayPoints();
-	} while (onewp == NULL);
+		
+		
+		if (millis()-puttimer > 300000)
+		{
+			int values = com.putURL();
+			delay(4000);
+			com.putDroneStatus(startingLAT,startingLONG);
+			puttimer = millis();
+		}
+		// check for nextevent, if nextevent == 0 - stay in loop
+		waypoints = com.getwayPoints();
+	} while (waypoints == NULL);
 
 	
 
-		float lat = onewp[1].getlat();
-		float longi = onewp[1].getlong();
-		float height = onewp[1].getheight();
-		char* photo = onewp[1].getphoto();
-		Serial.println("test");
-		Serial.println(lat,10);
-		Serial.println(longi,10);
-		Serial.println(height);
-		Serial.println(photo);
+// 		float lat = waypoints[1].getlat();
+// 		float longi = waypoints[1].getlong();
+// 		float height = waypoints[1].getheight();
+// 		char* photo = waypoints[1].getphoto();
+// 		Serial.println("test");
+// 		Serial.println(lat,10);
+// 		Serial.println(longi,10);
+// 		Serial.println(height);
+// 		Serial.println(photo);
+	
+	firstrun = 0;
+	
+	Serial.println("Drone is ready for takeoff");
 
-	Serial.println("done");
 	
+//	aJson.deleteItem(put_resetevent);
+	requestDelay = millis();
+	httpWait = millis();
 	
-
-/*
-waypoint strwayPoints[3];
-char* trash;
-String devide_waypoints;
-char* waypoints = "[{\"id\": 1, \"latitude\": \"56.17214933633902\", \"longitude\": \"10.191493034362793\", \"height\": 2, \"take_photo\": true, \"event_id\": 1}, {\"id\": 2, \"latitude\": \"56.171838752735496\", \"longitude\": \"10.19106388092041\", \"height\": 1, \"take_photo\": false, \"event_id\": 1}, {\"id\": 3, \"latitude\": \"56.17251964427522\", \"longitude\": \"10.189926624298096\", \"height\": 3, \"take_photo\": true, \"event_id\": 1}]";
-Serial.println(waypoints);
-devide_waypoints = strtok (waypoints,"{");
-	
-	int i = 0;
-	while (i < 3)
-	{
-	devide_waypoints = strtok (NULL,"}");
-	devide_waypoints = "{" + devide_waypoints + "}";
-	char wp[150];
-	Serial.println(devide_waypoints);
-	devide_waypoints.toCharArray(wp,150);
-	//JSON
-	
-	aJsonObject* waypoints_object = aJson.parse(wp);
-	
-	char* _latitude_char = aJson.print(aJson.getObjectItem(waypoints_object, "latitude"));
-	char* _longitude_char = aJson.print(aJson.getObjectItem(waypoints_object, "longitude"));
-	char* _takePhoto = aJson.print(aJson.getObjectItem(waypoints_object, "take_photo"));
-	float _height = atof(aJson.print(aJson.getObjectItem(waypoints_object, "height")));
-	//wayPoints[i] = devide_waypoints;
-	aJson.deleteItemFromObject(waypoints_object,"latitude");
-	aJson.deleteItem(waypoints_object);
-	
-	devide_waypoints = strtok (NULL,"{");
-		i++;
-	
-	}
-*/
-
-
     while(1)
     {
+		if ((millis() -  httpWait > 40000))
+		{
+			firstrun = com.putURL();
+			requestDelay = millis();
+			httpWait = millis();
+		}
+		
+		
+		if ((millis() -  requestDelay > 3000) && firstrun == 1)
+		{
+				firstrun = 0;
+				com.putDroneStatus(40,10);
+				requestDelay = millis();
+		}
 		
 /*		drone.checkIfControllerIsOn();*/
 		
@@ -186,6 +141,7 @@ void init_3G_GPS_Module(){
 	int onModulePin= 2;
 	pinMode(onModulePin, OUTPUT);
 	Serial.begin(115200);
+	Serial1.begin(115200);
 	Serial.println("Starting...");
 	answer = sendATcommand("AT", "OK", 2000);
 	if (answer == 0)

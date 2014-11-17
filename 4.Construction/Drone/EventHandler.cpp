@@ -58,34 +58,27 @@ void eventHandler::setOnlineLocation(String request, float _latitude, float _lon
 }
 
 
-void eventHandler :: putResetNextEvent(String request, float _latitude, float _longitude, int nEvent)
+void eventHandler :: putResetNextEvent(String request, float _latitude, float _longitude)
 {
+	aJsonObject* put_resetevent = aJson.createObject();
 	
-	String _request;
-	
-	
-	aJsonObject* put_object = aJson.createObject();
-	
-	int _id = atoi(aJson.print(aJson.getObjectItem(data_object, "id")));
-	
-	
-	char* _model = aJson.print(aJson.getObjectItem(data_object, "model"));
-	_model = strtok(_model,"\"");
-	_model = strtok(_model,"\"");
-	int _nextEvent = atoi(aJson.print(aJson.getObjectItem(data_object, "next_event")));
-
-	
-	aJson.addNumberToObject(put_object,"id",_id);
-	aJson.addStringToObject(put_object,"is_online" ,"true");
-	aJson.addStringToObject(put_object,"model", _model);
-	aJson.addNumberToObject(put_object,"next_event",nEvent);
+	aJson.addNumberToObject(put_resetevent,"id",1);
+	aJson.addStringToObject(put_resetevent,"is_online" ,"true");
+	aJson.addStringToObject(put_resetevent,"model", "aeroquad");
+	aJson.addNumberToObject(put_resetevent,"next_event",0);
 	
 	
-	aJson.addNumberToObject(put_object,"latitude",_latitude);
-	aJson.addNumberToObject(put_object,"longitude",_longitude);
+	aJson.addNumberToObject(put_resetevent,"latitude",_latitude);
+	aJson.addNumberToObject(put_resetevent,"longitude",_longitude);
 	
+	char* _url = "iha-11726.iha.dk";
+	int port = 80;
+	char aux_str[100];
+	sprintf(aux_str, "AT+CHTTPACT=\"%s\",%d", _url, port);
+	Serial.println(aux_str);
 	
-	_request = request;
+	delay(4000);
 	
-	_getAndput.putMethod(_request,put_object);	
+	_getAndput.putMethod(request,put_resetevent);
+	aJson.deleteItem(put_resetevent);	
 }
