@@ -1,5 +1,5 @@
-\subsubsection{User table}
-Tabellen indeholder data om brugerne i systemet. Tabellen giver også mulighed for brugeren at tilgå dronerne, events og de gemte ruter i systemet, via tabellens Foring keys.
+\subsubsection*{User table}
+Tabellen indeholder data om systemets brugere. Tabellen gør det via Foring keys muligt for systemets brugere at tilgå droner, events og de gemte flyruter i systemet.
 \vspace{-5pt}
 \begin{figure}[H]
 	\centering
@@ -13,8 +13,8 @@ Tabellen indeholder data om brugerne i systemet. Tabellen giver også mulighed f
 \begin{tabular}{| p{3cm}| p{11.5cm}|}
 \hline
 
-Formål	 							& Holde data om brugeren i systemet, samt tjekke om brugeren eksterre ved forsøg på login.\\\hline
-Forbindelser						& Tabellen har en Foring key til Helper User Drone og Helper User Event hjælpe tabellerne.\\\hline
+Formål	 							& Holde data om brugere i systemet, samt tjekke om brugere eksisterer, når de forsøger at logge på webapplikation.\\\hline
+Forbindelser						& Tabellen har en Foring keys til hjælpe tabellerne Helper User Drone og Helper User Event.\\\hline
 Attributter						& \begin{itemize}
 												\item ID: Primary key.
 												\item Username: Brugernavnet til systemet. Max length: 50 char

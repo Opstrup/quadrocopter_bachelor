@@ -2,22 +2,22 @@
 
 \subsection{Database design}
 
-\subsection{Mission}
-Databasen har til formål at, hjælpe brugeren overskue hvilke droner han har til rådighed. Se hvilke status de har i systemet, om de er ude og flyve eller om de er i dock. Databasen trackker også hvilke events der forgår på nuværende tidspunkt og historik over events. Tilhørende events er information omkring flyve ruten, billeder tager på turen samt en log.
+\subsubsection*{Mission}
+Databasen har til formål at vise systemets brugere hvilke droner de har til rådighed. Blandt andet skal det være muligt for bruger at se hvilke droner der er ude og flyve og hvilke der ikke er aktive. Databasen tracker også hvilke events der foregår med hver drone og danner historik over det. Eksempler på events kan være information om flyveruten og om der tages billeder på flyveturen.
 
-\subsection{Design}
-På figuren \ref{fig:database_design} ses designet af databasen. Som beskrevet tidligere er database typen en SQLight database. Alt kommunikation til og fra databasen vil fungere igennem et database API. Database API'et er et REST API som er udviklet ved brug af Django og Django REST frameworket. Ved kombinering af disse frameworks bliver databasen "pakket ind" og kan kun tilgås igennem API'et. Kommunikationen til og fra API'et forgå ved at sende/modtage JSON filer ved brug af API endpoints. Hjælpe tabellerne som ses på figuren bliver automatisk oprettet af django frameworket, så derfor er de ikke til at finde i koden for databasen. Tabellerne er dog tegnet med på diagrammet, da de stadig eksistere i systemet, de bliver bare automatisk oprettet. Ved at tegne tabellerne på med bliver forståelsen af systemet også forstærket. 
+\subsubsection*{Design}
+På figur \ref{fig:database_design} ses det overordnede designet af databasen. Som beskrevet i foranalysen er det valgt at gøre brug af en SQLight database. Alt kommunikation til og fra databasen vil fungere igennem et database API. Database API'et er et REST API som er udviklet ved brug af Django og Django REST frameworket. Ved kombination af disse Django og Django REST fås en databasen som er "indkapslet" og kun kan tilgås gennem API'et. Kommunikationen til og fra API'et foregår ved sende eller modtage JSON filer til API'ets endpoints. Hjælpe tabellerne som ses på figur \ref{fig:database_design} bliver automatisk oprettet af django frameworket, hvilket betyder de senere ikke er til at finde i koden for databasen. Hjælpe tabellerne er dog tegnet med på diagrammet, da de eksistere i systemet og fordi de kan være med til at forstærke forståelsen af databasen. 
 
 \vspace{-5pt}
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1\textwidth]{Billeder/database/database_design.png}
-	\vspace{-5pt}
+	\vspace{-.5cm}
 	\caption{Database design}
 	\label{fig:database_design}
 \end{figure}
 
-\subsubsection{Tilgængelige endpoints}
+\subsubsection*{Tilgængelige endpoints}
 De tilgængelige endpoint i API'et er følgende:
 
 \begin{table}[H]
@@ -99,7 +99,7 @@ Kommentar:							& Det er muligt at tilføje "?format=json" til URL'en for at f�
 \end{table}
 
 \newpage
-\subsection{Database detaljeret beskrivelse}
+\subsection{Detaljeret database beskrivelse}
 
 \input{Kapitler/database/user_table_detail}
 \newpage
