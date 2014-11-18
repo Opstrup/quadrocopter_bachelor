@@ -37,8 +37,18 @@ På sekvensdiagrammet på figur \ref{fig:Sekvens_diagram_iteration1}, vises hvil
 	\caption{Sekvens diagram \#iteration 1}
 	\label{fig:Sekvens_diagram_iteration1}
 \end{figure}
-
 \newpage
+
+\subsubsection*{Sekvens diagram - webapplikation}
+På figur \ref{fig:Sekvens_diagram_login} ses sekvens diagrammet over login på webapplikationen. På diagrammet vises det at useren ført bliver ført til næste side ved succesfuld login. Diagrammet viser også kommunikationen med CRUDServiceDrone som kommunikere med databasen. Diagrammet viser også hvordan AuthenticationServices setter den givet users data inden useren bliver ført vider i systemet.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.93\textwidth]{Billeder/sekvens/login_sq_diagram.png}
+	\caption{Sekvens diagram login}
+	\label{fig:Sekvens_diagram_login}
+\end{figure}
+\newpage
+
 \subsubsection*{State machine diagram}
 \vspace{-0.1cm}
 I state machine diagrammet på figur \ref{fig:Statemachine_iteration1}, vises de forskellige states der eksisterer i iteration 1 og hvordan flowet imellem dem ser ud. Der eksisterer givet vis kun 2 states i iteration 1, men state machinen er medtaget fordi den på nem og overskuelig vis illustrerer systemflowet.
@@ -50,6 +60,7 @@ I state machine diagrammet på figur \ref{fig:Statemachine_iteration1}, vises de
 	\caption{Statemachine \#iteration 1}
 	\label{fig:Statemachine_iteration1}
 \end{figure}
+\newpage
 
 \subsubsection*{Klasse diagram}
 \vspace{-0.1cm}
@@ -77,7 +88,35 @@ Denne klasse er ansvarlig for al kommunikation med GPS'en når standalone mode e
 \textbf{Module\_3G} \\
 Module\_3G er ansvarlig for alt kommunikation mellem drone og server. I klassen bruges to forskellige slags http request. Når der ønskes at trække information fra sever til drone gøres der brug af GET request mens der gøres brug af PUT request når dronen ønsker at informere server om ny lokation.
 
+\newpage
 
+\subsubsection*{Klasse diagram - webapplikation}
+\vspace{-0.1cm}
+Figur \ref{fig:classDiagram_login} viser klassediagrammet tilhørende webapplikationen for iteration 1. De enkle klasser er beskrevet mere i detaljer her under.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{Billeder/klasse_diagrammer/login_class_diagram.png}
+	\vspace{-0.5cm}
+	\caption{Klassediagram login}
+	\label{fig:classDiagram_login}
+\end{figure}
+
+\newpage
+
+\textbf{login} \\
+Login view filen er det generede html dokument som useren ser på sin webclient. Denne fil er two-way databinded med loginCtrl klassen og via denne binding kan der sendes og modtages data direkte.
+
+\textbf{loginCtrl} \\
+LoginCtrl er controller klassen som er forbundet med view klassen via two-way databinding. Klassen uddelegere også opgaver til dens services.
+
+\textbf{AuthenticationServices} \\
+AuthenticationServices er den service der afgøre om useren er authenticated eller ej. Hvis useren er authenticated bliver han redirected til webapplikations home-page. Klassen gør brug af UserServices til at gemme information omkring den nuværende user der er logget ind i systemet.
+
+\textbf{UserServices}\\
+UserServices indeholder information omkring den nuværende user der er logget ind i systemet.
+
+\textbf{CRUDServiceDrone} \\
+CRUDServiceDrone er den service der styre alt kontakt til databasen i systemet. Igennem denne service er det muligt at hente, opdater og poste data til databasen.
 
 
 \newpage
