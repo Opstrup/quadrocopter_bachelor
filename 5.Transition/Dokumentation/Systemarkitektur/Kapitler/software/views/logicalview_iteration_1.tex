@@ -16,7 +16,7 @@ Bruger tænder dronen ved at tilslutte batteri. Main controller samt 3G/GPS modu
 
 
 \newpage
-\subsubsection*{Sekvens diagram}
+\subsubsection*{Sekvens diagram - drone}
 På sekvensdiagrammet på figur \ref{fig:Sekvens_diagram_iteration1}, vises hvilke klasser der indgår og bruges i første iteration. Af sekvensdiagrammet fremgår det, at sekvensen først startes når bruger tilslutter batteri og tænder dronen. Når der er tilkoblet forsyning initialiseres main controller samt 3G/GPS og nuværende GPS position  (longitude og latitude) opdateres. Dronens nuværende GPS position opdateres når dronen sender PUT requests til websitet. PUT requests bruges dels til at fortælle websitet at dronen er online og dels til at give websitet information om dronens nuværende position. 
 
 
@@ -29,8 +29,25 @@ På sekvensdiagrammet på figur \ref{fig:Sekvens_diagram_iteration1}, vises hvil
 \end{figure}
 \newpage
 
+På figur \ref{fig:Sekvens_diagram_initialget} og figur \ref{fig:Sekvens_diagram_putDroneStatus} bliver 3G modulet uddybet yderligere ifht. iteration 1.
+\ref{fig:Sekvens_diagram_initialget} viser hvilke klasser der anvendes til at hente værdier fra serveren. De data der hendes ned med GET requesten, skal bruges sammen med PUT request i den anden klasse. For at kunne udføre et PUT funktion, skal de id'er der ønskes at blive sendt stemme overens med dem der ligger på serveren.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.93\textwidth]{Billeder/sekvens/sekvens_iteration1_initialget}
+	\caption{Sekvens diagram \#iteration 1 - initialget}
+	\label{fig:Sekvens_diagram_initialget}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.93\textwidth]{Billeder/sekvens/sekvens_iteration1_putdronestatus}
+	\caption{Sekvens diagram \#iteration 1 - putDroneStatus}
+	\label{fig:Sekvens_diagram_putDroneStatus}
+\end{figure}
+
 \subsubsection*{Sekvens diagram - website}
-På figur \ref{fig:Sekvens_diagram_login} ses sekvens diagrammet over login på websitet. På diagrammet vises det at useren ført bliver ført til næste side ved succesfuld login. Diagrammet viser også kommunikationen med CRUDServiceDrone som kommunikere med databasen. Diagrammet viser også hvordan AuthenticationServices setter den givet users data inden useren bliver ført vider i systemet.
+På figur \ref{fig:Sekvens_diagram_login} ses sekvens diagrammet over login på websitet. På diagrammet vises det at useren først bliver ført til næste side ved succesfuld login. Diagrammet viser også kommunikationen med CRUDServiceDrone som kommunikerer med databasen. Diagrammet viser også hvordan AuthenticationServices setter den givet users data inden useren bliver ført vider i systemet.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.93\textwidth]{Billeder/sekvens/login_sq_diagram.png}
@@ -38,6 +55,9 @@ På figur \ref{fig:Sekvens_diagram_login} ses sekvens diagrammet over login på 
 	\label{fig:Sekvens_diagram_login}
 \end{figure}
 \newpage
+
+
+
 
 \subsubsection*{State machine diagram}
 \vspace{-0.1cm}
@@ -65,8 +85,6 @@ Figur \ref{fig:classDiagram_iteration1} vises et klassediagram tilhørende itera
 	\label{fig:classDiagram_iteration1}
 \end{figure}
 
-\newpage
-
 \textbf{Main.cpp} \\
 Main.cpp filen bruges til at sætte arduino board korrekt op, bla. sættes baudrate på de forskellige serielle forbindelser. Desuden bruges Main.cpp til at kalde og eksekverer forskellige klasse, objekter og funktioner.
 
@@ -76,8 +94,33 @@ GPS klassen fungerer som en virtuel klasse, og sikre som minimum implementering 
 \textbf{StandaloneGPS}\\
 Denne klasse er ansvarlig for al kommunikation med GPS'en når standalone mode er valgt. 
 
-\textbf{Module\_3G} \\
-Module\_3G er ansvarlig for alt kommunikation mellem drone og server. I klassen bruges to forskellige slags http request. Når der ønskes at trække information fra sever til drone gøres der brug af GET request mens der gøres brug af PUT request når dronen ønsker at informere server om ny lokation.
+\newpage
+
+Nedenfor ses figur \ref{fig:udvidet3G_it1} som er en udvidet klasse diagram over 3G modulet. Klasse diagrammet viser hvilke metoder der indgår i iteration 1 for 3G modulet. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.50\textwidth]{Billeder/klasse_diagrammer/udvidet3G_iteration1.png}
+	\vspace{0.5cm}
+	\caption{Udvidet klasse diagram for 3G modulet - iteration 1}
+	\label{fig:udvidet3G_it1}
+\end{figure}
+
+
+\textbf{GetAndPut} \\
+GetAndPut klassen er den klasse der er tættest på hardwaren. Det er denne klasse der håndterer selve PUT og GET requesten på selve modulet. 
+Denne metode henter data ned fra en server og getmetoden sorterer efterfølgende det modtagede data. 
+
+\textbf{Communication} \\
+Communication klassen håndterer sammen med andre klasser, alt der har med 3G at gøre. 
+I klassen bruges to forskellige slags http request. Når der ønskes at trække information fra sever til drone gøres der brug af GET request mens der gøres brug af PUT request når dronen ønsker at informere server om ny lokation.
+
+\textbf{EventHandler} \\
+EventHandleren er den klasse der håndterer Events. EventHandleren er bindeledet mellem communication- og GetAndPut klassen. 
+
+
+
+
 
 \newpage
 
