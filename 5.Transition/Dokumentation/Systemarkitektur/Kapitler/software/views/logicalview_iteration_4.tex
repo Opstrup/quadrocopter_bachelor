@@ -1,55 +1,54 @@
-\subsection{Iteration \#3}
+\subsection{Iteration \#4}
+I iteration 4 ønskes det at udvide systemet med anti kollision. Inden tilføjelsen af anti kollision kan dronen udelukkende flyve i områder uden forhindringer. Men med tilføjelsen af anti kollision vil det være muligt at flyve med dronen i normale områder med forskellige forhindringer. Hvordan systemet er tiltænkt at bruges beskrives i user story nedenfor:
 
 
 \subsubsection*{User story}
-
-
+Under flyvning kontrolleres det løbende hvorvidt der er et objekt foran dronen. Hvis der detekteres et objekt foran dronen, skal dronen holde om med at flyve fremad. I stedet skal dronen dreje horisontalt indtil der ikke længere er et objekt foran den. Når der er frit foran dronen fortsættes den afbrudte flyvning. 
+Bruger af systemet har ingen direkte kontakt med anti kollisionssystemet. For bruger ses anti kollision blot som en ekstra feature, som gør dronen i stand til at flyve uden at kollidere med objekter foran sig.
+ 
 %kommentar
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=1\textwidth]{Billeder/design_overview/design_overview_iteration1.png}
+	\includegraphics[width=1\textwidth]{Billeder/design_overview/design_overview_iteration4.png}
 	\vspace{-.5cm}
-	\caption{Design overview \#iteration 1}
-	\label{fig:design_overview_UC1}
+	\caption{Designoverview \#iteration 4}
+	\label{fig:design_overview_UC4}
 \end{figure}
 
 
 \newpage
 \subsubsection*{Sekvens diagram}
-
+\vspace{-0.2cm}
+På sekvensdiagrammet vises de klasser der indgår og bruges i fjerde iteration. 
+På diagrammet vises det hvordan afstanden til eventuelle objekter foran dronen kontrolleres. Hvis afstanden til et objekt er under den definerede kollisionsgrænse stoppes dronens fremdrift og der skiftes orientering. 
 
 
 %kommentar
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.93\textwidth]{Billeder/sekvens/sekvens_iteration1}
-	\caption{Sekvens diagram \#iteration 1}
-	\label{fig:Sekvens_diagram_iteration1}
+	\includegraphics[width=0.8\textwidth]{Billeder/sekvens/sekvens_iteration4}
+	\caption{Sekvens diagram \#iteration 4}
+	\label{fig:Sekvens_diagram_iteration4}
 \end{figure}
-\newpage
 
-\subsubsection*{Sekvens diagram - webapplikation}
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.93\textwidth]{Billeder/sekvens/login_sq_diagram.png}
-	\caption{Sekvens diagram login}
-	\label{fig:Sekvens_diagram_login}
-\end{figure}
-\newpage
 
 \subsubsection*{State machine diagram}
-\vspace{-0.1cm}
+\vspace{-0.2cm}
+
+I state machine diagrammet på figur \ref{fig:Statemachine_iteration4}, vises de to states der eksisterer i iteration 4. Desuden vises hvordan flowet imellem de to states ser ud.
+
 
 %kommentar
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=1\textwidth]{Billeder/statemachine/State_iteration1.png}
+	\includegraphics[width=1\textwidth]{Billeder/statemachine/State_iteration4.png}
 	\vspace{-0.5cm}
-	\caption{Statemachine \#iteration 1}
-	\label{fig:Statemachine_iteration1}
+	\caption{Statemachine \#iteration 4}
+	\label{fig:Statemachine_iteration4}
 \end{figure}
-\newpage
+
+
 
 \subsubsection*{Klasse diagram}
 \vspace{-0.1cm}
@@ -57,22 +56,16 @@
 %kommentar
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=1\textwidth]{Billeder/klasse_diagrammer/classdiagram_iteration1.png}
+	\includegraphics[width=1\textwidth]{Billeder/klasse_diagrammer/classdiagram_iteration4.png}
 	\vspace{-0.5cm}
-	\caption{Klassediagram \#iteration 1}
-	\label{fig:classDiagram_iteration1}
+	\caption{Klasse diagram \#iteration 4}
+	\label{fig:classDiagram_iteration4}
 \end{figure}
 
-\newpage
 
 \textbf{Main.cpp} \\
 Main.cpp filen bruges til at sætte arduino board korrekt op, bla. sættes baudrate på de forskellige serielle forbindelser. Desuden bruges Main.cpp til at kalde og eksekverer forskellige klasse, objekter og funktioner.
 
-\textbf{GPS} \\
-GPS klassen fungerer som en virtuel klasse, og sikre som minimum implementering af init og updateGPSPosition uanset hvilken GPS der bruges. Klassen er lavet fordi der i udgangspunkt var mulighed for at bruge 3 forskellige slags GPS med 3G/GPS shieldet. 
 
-\textbf{StandaloneGPS}\\
-Denne klasse er ansvarlig for al kommunikation med GPS'en når standalone mode er valgt. 
-
-\textbf{Module\_3G} \\
+\textbf{Anti collision} \\
 Module\_3G er ansvarlig for alt kommunikation mellem drone og server. I klassen bruges to forskellige slags http request. Når der ønskes at trække information fra sever til drone gøres der brug af GET request mens der gøres brug af PUT request når dronen ønsker at informere server om ny lokation.
