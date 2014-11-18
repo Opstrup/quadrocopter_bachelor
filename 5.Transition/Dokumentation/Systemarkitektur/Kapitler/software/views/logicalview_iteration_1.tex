@@ -1,9 +1,9 @@
 \subsection{Iteration \#1}
 I iteration 1 arbejdes der med blokke som dækker over systemets mest grundlæggende funktionalitet. Batteri,
-ESC’er, motorer og sensorer tilsluttes dronen. Desuden gøres dronen i stand til oprette forbindelse til webapplikation via 3G-shield’et. Hvordan systemet er tiltænkt at bruges beskrives i user story nedenfor:
+ESC’er, motorer og sensorer tilsluttes dronen. Server opsætning så kommunikation imellem dronen og websitet kan føre sted, her henvises der til data view'et for flere detaljer vedrørende serveren. Desuden gøres dronen i stand til oprette forbindelse til websitet via 3G-shield’et. Hvordan systemet er tiltænkt at bruges beskrives i user story nedenfor:
 
 \subsubsection*{User story}
-Bruger tænder dronen ved at tilslutte batteri. Main controller samt 3G/GPS module initialiseres og nuværende GPS position opdateres. Herefter oprettes forbindelse mellem drone og webapplikation, og information om dronen er online samt information om dronens nuværende GPS position sendes til webapplikation. Fra webapplikationen er det muligt for bruger løbende at observere hvorvidt dronen er online og på hvilken GPS position dronen sidst har befundet sig.
+Bruger tænder dronen ved at tilslutte batteri. Main controller samt 3G/GPS module initialiseres og nuværende GPS position opdateres. Herefter oprettes forbindelse mellem drone og websitet, og information om dronen er online samt information om dronens nuværende GPS position sendes til websitet. Fra websitet er det muligt for bruger løbende at observere hvorvidt dronen er online og på hvilken GPS position dronen sidst har befundet sig.
 
 %kommentar
 \begin{figure}[H]
@@ -17,7 +17,7 @@ Bruger tænder dronen ved at tilslutte batteri. Main controller samt 3G/GPS modu
 
 \newpage
 \subsubsection*{Sekvens diagram}
-På sekvensdiagrammet på figur \ref{fig:Sekvens_diagram_iteration1}, vises hvilke klasser der indgår og bruges i første iteration. Af sekvensdiagrammet fremgår det, at sekvensen først startes når bruger tilslutter batteri og tænder dronen. Når der er tilkoblet forsyning initialiseres main controller samt 3G/GPS og nuværende GPS position  (longitude og latitude) opdateres. Dronens nuværende GPS position opdateres når dronen sender PUT requests til webapplikation. PUT requests bruges dels til at fortælle webapplikationen at dronen er online og dels til at give webapplikation information om dronens nuværende position. 
+På sekvensdiagrammet på figur \ref{fig:Sekvens_diagram_iteration1}, vises hvilke klasser der indgår og bruges i første iteration. Af sekvensdiagrammet fremgår det, at sekvensen først startes når bruger tilslutter batteri og tænder dronen. Når der er tilkoblet forsyning initialiseres main controller samt 3G/GPS og nuværende GPS position  (longitude og latitude) opdateres. Dronens nuværende GPS position opdateres når dronen sender PUT requests til websitet. PUT requests bruges dels til at fortælle websitet at dronen er online og dels til at give websitet information om dronens nuværende position. 
 
 
 %kommentar
@@ -29,8 +29,8 @@ På sekvensdiagrammet på figur \ref{fig:Sekvens_diagram_iteration1}, vises hvil
 \end{figure}
 \newpage
 
-\subsubsection*{Sekvens diagram - webapplikation}
-På figur \ref{fig:Sekvens_diagram_login} ses sekvens diagrammet over login på webapplikationen. På diagrammet vises det at useren ført bliver ført til næste side ved succesfuld login. Diagrammet viser også kommunikationen med CRUDServiceDrone som kommunikere med databasen. Diagrammet viser også hvordan AuthenticationServices setter den givet users data inden useren bliver ført vider i systemet.
+\subsubsection*{Sekvens diagram - website}
+På figur \ref{fig:Sekvens_diagram_login} ses sekvens diagrammet over login på websitet. På diagrammet vises det at useren ført bliver ført til næste side ved succesfuld login. Diagrammet viser også kommunikationen med CRUDServiceDrone som kommunikere med databasen. Diagrammet viser også hvordan AuthenticationServices setter den givet users data inden useren bliver ført vider i systemet.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.93\textwidth]{Billeder/sekvens/login_sq_diagram.png}
@@ -81,9 +81,9 @@ Module\_3G er ansvarlig for alt kommunikation mellem drone og server. I klassen 
 
 \newpage
 
-\subsubsection*{Klasse diagram - webapplikation}
+\subsubsection*{Klasse diagram - website}
 \vspace{-0.1cm}
-Figur \ref{fig:classDiagram_login} viser klassediagrammet tilhørende webapplikationen for iteration 1. De enkle klasser er beskrevet mere i detaljer her under.
+Figur \ref{fig:classDiagram_login} viser klassediagrammet tilhørende websitet for iteration 1. De enkle klasser er beskrevet mere i detaljer her under.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1\textwidth]{Billeder/klasse_diagrammer/login_class_diagram.png}
@@ -101,7 +101,7 @@ Login view filen er det generede html dokument som useren ser på sin webclient.
 LoginCtrl er controller klassen som er forbundet med view klassen via two-way databinding. Klassen uddelegere også opgaver til dens services.
 
 \textbf{AuthenticationServices} \\
-AuthenticationServices er den service der afgøre om useren er authenticated eller ej. Hvis useren er authenticated bliver han redirected til webapplikations home-page. Klassen gør brug af UserServices til at gemme information omkring den nuværende user der er logget ind i systemet.
+AuthenticationServices er den service der afgøre om useren er authenticated eller ej. Hvis useren er authenticated bliver han redirected til websitets home-page. Klassen gør brug af UserServices til at gemme information omkring den nuværende user der er logget ind i systemet.
 
 \textbf{UserServices}\\
 UserServices indeholder information omkring den nuværende user der er logget ind i systemet.
