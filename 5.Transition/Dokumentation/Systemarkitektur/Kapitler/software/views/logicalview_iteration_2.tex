@@ -62,6 +62,17 @@ Som det fremgår af while loopet fortsætter flyvningen indtil dronen er 15 mete
 \end{figure}
 
 \newpage
+\subsubsection*{Sekvens diagram - website}
+\vspace{-0.1cm}
+På figur \ref{fig:page_load} ses hvordan klasserne på websitet interagere med hinanden ved et page load. Kortet bliver initialiseret med centrum over århus og drone markeren bliver initialiseret. Useren som blev gemt ved login bliver brugt til at give en velkomst besked oppe i højre hjørne og sener vil blive brugt når der skal oprettet nye events. Listen med tilgængelige droner bliver loaded. Et click event bliver også oprettet som trigger ved click på kortet til oprettelse af nye waypoints.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{Billeder/sekvens/sd_page_load.png}
+	\caption{Sekvensdiagram page load}
+	\label{fig:page_load}
+\end{figure}
+
+\newpage
 \subsubsection*{Klasse diagram - website}
 \vspace{-0.1cm}
 På figur \ref{fig:classDiagram_home} ses klasse diagrammet tilhørende iteration to for websitet. Funktionaliteten er blevet udvidet med overblik over droner i systemet og deres status. Mulighed for at oprette events til den ønskede drone. 
