@@ -5,7 +5,7 @@ I kravspecifikation beskrives hvad der sker ved interaktion med systemet. Mens s
 
 På figur \ref{fig:domain_model} vises domain model tilhørende systemet. De fire øverste enheder i domain modellen dækker ansvarsområder som har med systemets webapplikation at gøre. De resterende enheder er alle tilknyttet ansvarsområder der omhandler dronen.
 
-På domain modellen vises det, at bruger kommunikerer med dronen gennem en website. Websiden har forbindelse til en server som videresender instruktioner til main controller. Det vises desuden at kommunikation mellem server og main controller går gennem det mobile 3G netværk. Under flyvning styrer main controlleren både kamera, GPS, afstandssensorer og dronens motorer. 
+På domain modellen vises det, at bruger kommunikerer med dronen gennem en website. Websiden har forbindelse til en server som gør instruktioner til main controller tilgængelige. Det vises desuden at kommunikation mellem server og main controller går gennem det mobile 3G netværk. Under flyvning styrer main controlleren både kamera, GPS, afstandssensorer og dronens motorer. 
 
 \vspace{-5pt}
 %kommentar
@@ -18,20 +18,20 @@ På domain modellen vises det, at bruger kommunikerer med dronen gennem en websi
 
 \newpage
 
-Som det fremgik af figur \ref{fig:domain_model} er domain modellen opbygget af tre forskellige typer klasser. Nedenfor beskrives de tre forskellige klasser:
+Af figur \ref{fig:domain_model} ses det at domain modellen er opbygget af tre forskellige typer klasser. Nedenfor beskrives de tre forskellige klasser:
 
 \textbf{Domain klasser}\newline
 Domain klasser repræsenterer systemets domæne. Domain klasser er passive elementer, der er ansvarlige for væsentlige delparter af systemets funktionalitet.  
 
 \textbf{Boundary klasser}\newline
-Boundary klasser repræsenterer use case-aktører og aktørernes grænseflader til systemet. Boundary klasser er elementer der ligger i den yderste periferi af systemet. I nogle tilfælde er boundary klasser "front-end" elementer, der er designet til at håndtere output samt at tage imod input fra systemets bruger. I andre tilfælde er boundary klasser "back-end" elementer der bruges til at hjælpe/understøtte controller klasser.
+Boundary klasser repræsenterer use case-aktører og aktørernes grænseflader til systemet. Boundary klasser er elementer der ligger i den yderste periferi af systemet. I nogle tilfælde er boundary klasser "front-end" elementer, der er designet til at udsende output samt at tage imod input fra systemets bruger. I andre tilfælde er boundary klasser "back-end" elementer der bruges til at hjælpe/understøtte controller klasser.
 
 \textbf{Controller klasser} \newline
 Controller klasser indeholder systemets domænelogik og står for at kontrollere systemets boundary og domain klasser. Desuden er controller klasserne ansvarlige for at håndtere input og output fra systemets boundary klasser.
 
 \vspace{1cm}
 
-Domain modellen bruges ikke i beskrivelsen af systemets hardware arkitektur. Men i det afsnit hvor systemets software arkitektur beskrives gøres stor brug af domain modellen. I software afsnittet bruges domain modellens klasser bla. til at danne grundlag for systemets softwareklasser, klassenavne og klassernes indbyrdes forhold.
+Domain modellen bruges både i beskrivelsen af systemets hardware og software arkitektur. Men der gøres primært brug domain modellen i software arkitektur afsnittet. I software afsnittet bruges domain modellens klasser bla. til at danne grundlag for systemets softwareklasser, klassenavne og klassernes indbyrdes forhold.
 
 
 
