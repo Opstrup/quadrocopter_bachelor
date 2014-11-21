@@ -13,13 +13,17 @@ Blokken består af to forskellige sensorer, en sensor til højdemåling og en ti
 
 \begin{table}[H]
 	\centering
-		\begin{tabular}{|p{2.6 cm}|p{4.9 cm}|p{2.5 cm}|p{2.5 cm}|} 
+		\begin{tabular}{|p{2.6 cm}|p{4.9 cm}|p{2.3 cm}|p{2.7 cm}|} 
 		\hline
 			\textbf{Signal navn} 	& \textbf{Signal beskrivelse}		& \textbf{Out} 				& \textbf{In}     \\ \hline
-			Sensor supply & 5V DC.  & Arduino. & Height sensor.  \\ \hline
-			Height data & RX / TX signal. & Arduino.	& Height sensor.	\\ \hline
-			Sensor supply & 5V DC. & Arduino. & Collision sensor.	\\ \hline
-			Collision data & RX /TX signal & Arduino. & Collision sensor.			    \\ \hline  
+			Sensor supply 		& 5V DC.  				& Arduino. 			& Højde sensor.  \\ \hline
+			Height data 		& RX / TX signal. 		& Arduino.			& Højde sensor.	\\ \hline
+			Ultra sound \newline Height 	& Måling af flyvehøjde 	& Omgivelserne		& Højde sensor.	\\ \hline
+			
+			Sensor supply & 5V DC. & Arduino. & Kollision sensor.	\\ \hline
+			Collision data & RX /TX signal & Arduino. & Kollision sensor.			    \\ \hline
+			Ultra sound \newline Collision 	& Detektion af objekt	& Omgivelserne		& Kollision sensor.	\\ \hline
+			
 		\end{tabular}
 	\caption{Forbindelser til: \textbf{ibd} Distance sensor}
 	\label{tab:IBDDistancesensor}

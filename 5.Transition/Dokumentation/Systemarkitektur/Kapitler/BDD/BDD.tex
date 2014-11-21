@@ -1,7 +1,7 @@
 \chapter{Hardware}
 
 I det følgende afsnit beskrives systemets hardware vha. SysML diagrammer. 
-Indledningsvis bruges bdd'er til at identificere og beskrive systemets blokke. Senere i afsnittet vises blokkenes interne og eksterne forbindelser med ibd'er.
+Indledningsvis bruges bdd'er til at identificere og beskrive systemets blokke. Senere i afsnittet åbnes udvalgte blokke og de interne og eksterne forbindelser vises med ibd'er.
 
 \section{Block definition diagram}
 I det overordnede bdd nedenfor vises hvilke blokke systemet består af, samt hvilke parts blokkene har. Det ses at systemet helt overordnet set kun består af de to blokke: \textit{Webserver} og \textit{Drone}. 
@@ -29,10 +29,13 @@ Figur \ref{fig:bdd_drone} går mere i dybden med drone blokken. På denne figur 
 \subsection{Blokbeskrivelse}
 
 \textbf{Webapplikation}\\
-Denne blok dækker over server, GUI, database og kommunikation. Via GUI tilgår bruger webapplikationens server, hvorfra det er muligt for bruger at opsætte en ny, eller undersøger en tidligere, flyvning. Webapplikationen kommunikerer med dronen og gemmer vigtig information i databasen.
+Denne blok dækker over server, GUI, database og kommunikation. Via GUI tilgår bruger webapplikationens server, hvorfra det er muligt for bruger at opsætte en ny, eller undersøger en tidligere flyvning. Webapplikationen kommunikerer med dronen og gemmer vigtig information i databasen.
 
 \textbf{Main controller}\\
-Main controlleren fungerer som dronens hjerne. Ud fra kommunikation med webapplikation og input fra de forskellige sensorer styrer main controlleren dronens motorer. Skal dronen fx. flyve højere udsendes PWM signaler fra main controller til flight control board, som sørger for motorerne øger deres rotationshastigheden. 
+Main controlleren fungerer som dronens hjerne. Ud fra kommunikation med webapplikation og input fra de forskellige sensorer styrer main controlleren dronens motorer. Skal dronen fx. flyve højere udsendes PWM signaler som sørger for motorerne øger deres rotationshastigheden. Under autonom flyvning bruges PWM signaler udsendt fra main controller til styre dronen. 
+
+\textbf{Remote controller}\\
+Denne blok består af receiver, transmitter og switch board. Blokken gør det muligt at switche mellem autonom og manuel styring. Afhængig af hvordan transmitteren (fjernbetjening) er opsat benyttes henholdsvis manuel eller autonom flyvning.
 
 \textbf{Flight control board}\\
 Flight control boardet indholder software til styring, derunder PID regulering. Boardet har indbygget kompas, gyroskop, accelerometer og barometer, disse bruges under flyvning. Flight control boardets vigtigste opgave er at viderebringe control signaler fra main controller til ESC'er som åbner/lukker for forsyning til dronens motorer. 
