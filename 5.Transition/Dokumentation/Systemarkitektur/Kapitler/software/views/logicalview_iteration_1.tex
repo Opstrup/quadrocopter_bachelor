@@ -72,7 +72,7 @@ I state machine diagrammet på figur \ref{fig:Statemachine_iteration1}, vises de
 \end{figure}
 \newpage
 
-\subsubsection*{Klasse diagram}
+\subsubsection*{Klasse diagram - drone}
 \vspace{-0.1cm}
 Figur \ref{fig:classDiagram_iteration1} vises et klassediagram tilhørende iteration 1. Klassediagrammet viser iterationens vigtigste klasser, samt deres tilhørende metoder og attributter. På den følgende side forefindes en kort beskrivelse klasserne og deres metoder.
 
@@ -89,14 +89,15 @@ Figur \ref{fig:classDiagram_iteration1} vises et klassediagram tilhørende itera
 Main.cpp filen bruges til at sætte arduino board korrekt op, bla. sættes baudrate på de forskellige serielle forbindelser. Desuden bruges Main.cpp til at kalde og eksekverer forskellige klasse, objekter og funktioner.
 
 \textbf{GPS} \\
-GPS klassen fungerer som en virtuel klasse, og sikre som minimum implementering af init og updateGPSPosition uanset hvilken GPS der bruges. Klassen er lavet fordi der i udgangspunkt var mulighed for at bruge 3 forskellige slags GPS med 3G/GPS shieldet. 
+GPS klassen er implementeret som en abstract klasse, idet den ikke selv har nogle metoder den skal bruge, men med virtuelle metoder der sikrer at de implementeres i de afledte klasser. 
+Init og updateGPSPosition er valgt til at være virtuelle klasser, hvilket gør at de skal implementeres uanset hvilken GPS der bruges. Klassen er lavet fordi der i udgangspunkt var mulighed for at bruge 3 forskellige slags GPS modes med 3G/GPS shieldet. 
 
 \textbf{StandaloneGPS}\\
 Denne klasse er ansvarlig for al kommunikation med GPS'en når standalone mode er valgt. 
 
 \newpage
 
-Nedenfor ses figur \ref{fig:udvidet3G_it1} som er en udvidet klasse diagram over 3G modulet. Klasse diagrammet viser hvilke metoder der indgår i iteration 1 for 3G modulet. 
+Nedenfor ses figur \ref{fig:udvidet3G_it1} som er en udvidet klasse diagram over 3G modulet. Klasse diagrammet viser et udvidet klasse diagram, der viser hvilke metoder der indgår i iteration 1 for 3G modulet. 
 
 \begin{figure}[H]
 	\centering
@@ -108,18 +109,13 @@ Nedenfor ses figur \ref{fig:udvidet3G_it1} som er en udvidet klasse diagram over
 
 
 \textbf{GetAndPut} \\
-GetAndPut klassen er den klasse der er tættest på hardwaren. Det er denne klasse der håndterer selve PUT og GET requesten på selve modulet. 
-Denne metode henter data ned fra en server og getmetoden sorterer efterfølgende det modtagede data. 
+GetAndPut klassen er den klasse der er tættest på hardwaren. Klassen indeholder de http metoder der bruges til kommunikation mellem dronen og serveren. 
 
 \textbf{Communication} \\
-Communication klassen håndterer sammen med andre klasser, alt der har med 3G at gøre. 
-I klassen bruges to forskellige slags http request. Når der ønskes at trække information fra sever til drone gøres der brug af GET request mens der gøres brug af PUT request når dronen ønsker at informere server om ny lokation.
+Communication klassen er den øverste klasse og den håndterer sammen med andre klasser, alt der har med 3G at gøre.
 
 \textbf{EventHandler} \\
-EventHandleren er den klasse der håndterer Events. EventHandleren er bindeledet mellem communication- og GetAndPut klassen. 
-
-
-
+EventHandleren er den klasse der håndterer Events. EventHandleren er bindeledet mellem communication- og GetAndPut klassen. EventHandleren sorterer eventID'et fra de data den modtager og returnerer værdien til communication klassen. 
 
 
 \newpage

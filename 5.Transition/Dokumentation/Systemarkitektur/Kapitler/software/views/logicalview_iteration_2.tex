@@ -19,10 +19,10 @@ Når en drone er tændt og færdig initialiseret fortæller den server webserver
 
 \newpage
 
-\subsubsection*{Sekvens diagram}
+\subsubsection*{Sekvens diagram - drone}
 
-Til iteration 2 er systemsekvensen beskrevet med 3 mindre sekvensdiagrammer i stedet for 1 stort. 
-Denne fremstilling gør det muligt at repræsentere systemets funktionalitet på mere overskuelig vis, hvilket burde gøre indirekte øger forståelsen af diagrammerne. Hvert af de 3 sekvensdiagrammet bruges til at fortælle hvordan en delmængde af systemet fungerer.
+Til iteration 2 er systemsekvensen beskrevet med 3 mindre sekvensdiagrammer i stedet for 1 stort. Ydermere er der lavet 2 sekvens diagrammer der går mere i dybden med 3G modulet og dens klasser. 
+Denne fremstilling gør det muligt at repræsentere systemets funktionalitet på mere overskuelig vis, hvilket indirekte øger forståelsen af diagrammerne. Hvert af de 3 overordnede sekvensdiagrammer bruges til at fortælle hvordan en delmængde af systemet fungerer.
 
 Af figur \ref{fig:Sekvens_diagram_iteration2_1} fremgår det hvordan bruger opretter en ny flyveopsætning. Det vises desuden hvilke interaktioner der foretages mellem bruger og website, samt hvordan server løbende indgår og benyttes i sekvensen. 
 
@@ -47,10 +47,19 @@ På figur \ref{fig:Sekvens_diagram_iteration2_2} fremgår det hvordan dronens ma
 	\label{fig:Sekvens_diagram_iteration2_2}
 \end{figure}
 
+På Figur \ref{fig:Sekvens_getwaypoints} ses en mere detaljeret beskrivelse af 3G modulets klasser. Disse klasser håndterer al kommunikation mellem drone og server.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{Billeder/sekvens/sekvens_getwaypoints.png}
+	\caption{Sekvensdiagram udvidet 3G module - getwaypoints}
+	\label{fig:Sekvens_getwaypoints}
+\end{figure}
+
 \newpage
 
 Af figur \ref{fig:Sekvens_diagram_iteration2_3} fremgår det hvordan dronen opererer når den flyver autonomt mod en givet GPS position. Main controlleren indsamler kompas data fra flight control boardet, latitude og longitude fra 3G/GPS modulet og flyvehøjde fra ultralyds sensoren. Den indhentede data processeres og bruges til at korrigerer de nuværende flyveindstillinger.
-Som det fremgår af while loopet fortsætter flyvningen indtil dronen er 15 meter fra den GPS bruger valgte i flyveopsætningen. 
+Som det fremgår af while loopet fortsætter flyvningen indtil dronen er 15 meter fra den GPS destination bruger valgte i flyveopsætningen. 
 
 
 %kommentar
@@ -59,4 +68,77 @@ Som det fremgår af while loopet fortsætter flyvningen indtil dronen er 15 mete
 	\includegraphics[width=1\textwidth]{Billeder/sekvens/sekvens_iteration2_3}
 	\caption{Sekvensdiagram \#iteration 2}
 	\label{fig:Sekvens_diagram_iteration2_3}
+\end{figure}
+
+\newpage
+\subsubsection*{Sekvens diagram - website}
+\vspace{-0.1cm}
+På figur \ref{fig:page_load} ses hvordan klasserne på websitet interagere med hinanden ved et page load. Kortet bliver initialiseret med centrum over århus og drone markeren bliver initialiseret. Useren som blev gemt ved login bliver brugt til at give en velkomst besked oppe i højre hjørne og sener vil blive brugt når der skal oprettet nye events. Listen med tilgængelige droner bliver loaded. Et click event bliver også oprettet som trigger ved click på kortet til oprettelse af nye waypoints.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{Billeder/sekvens/sd_page_load.png}
+	\caption{Sekvensdiagram page load}
+	\label{fig:page_load}
+\end{figure}
+
+\newpage
+
+\subsubsection*{Klasse diagram - drone}
+
+På figur \ref{fig:classDiagram_drone_underflyvning} ses klasse diagrammet for dronen. Det er klasserne der bruges af dronen, når den er flyve klar. På den følgende side er der en forklaring af klasserne og deres metoder. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1.1\textwidth]{Billeder/klasse_diagrammer/classdiagram_iteration2_fly.png}
+	\vspace{0cm}
+	\caption{Klassediagram drone}
+	\label{fig:classDiagram_drone_underflyvning}
+\end{figure}
+
+\textbf{FlightControl} \\
+Det er Flight Control klassen der har alt med styring af dronen at gøre, lige fra calibrering af motorerne til at hente data fra kompasset. 
+
+\textbf{DistanceSensor} \\
+DistanceSensor klassen bruges til at kontrollere de sensorer der er monteret på dronen. Her er det både sensorer til højdemåling og anti kollision. 
+
+\textbf{GPS} \\
+GPS klassen er implementeret som en abstract klasse, idet den ikke selv har nogle metoder den skal bruge, men med virtuelle metoder der sikrer at de implementeres i de afledte klasser. 
+Init og updateGPSPosition er valgt til at være virtuelle klasser, hvilket gør at de skal implementeres uanset hvilken GPS der bruges. Klassen er lavet fordi der i udgangspunkt var mulighed for at bruge 3 forskellige slags GPS modes med 3G/GPS shieldet. 
+
+På Figur \ref{fig:classDiagram_3Gmodul} er der vist en udvidet klasse diagram for 3G modulet. På diagrammet vises de metoder og attributter der indgår i klasserne. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1.1\textwidth]{Billeder/klasse_diagrammer/classdiagram_3gmodule.png}
+	\vspace{0cm}
+	\caption{Klassediagram 3G modul}
+	\label{fig:classDiagram_3Gmodul}
+\end{figure}
+
+
+\textbf{GetAndPut} \\
+GetAndPut klassen er den klasse der er tættest på hardwaren. Klassen indeholder de http metoder der bruges til kommunikation mellem dronen og serveren. 
+
+\textbf{Communication} \\
+Communication klassen er den øverste klasse og den håndterer sammen med andre klasser, alt der har med 3G at gøre.
+
+\textbf{EventHandler} \\
+EventHandleren er den klasse der håndterer Events. EventHandleren er bindeledet mellem communication- og GetAndPut klassen. EventHandleren sorterer eventID'et fra de data den modtager og returnerer værdien til communication klassen.
+
+\textbf{WayPointsHandler} \\
+WayPointsHandler klassen er den klasse der håndterer de waypoints der hentes ned fra serveren. Klassen tager de waypoints den får fra serveren og gør dem tilgængeligt for resten af systemet. WayPointsHandleren bruger set metoderne i WayPoint klassen.
+
+\textbf{WayPoint} \\
+WayPoint klassen bruges til at kunne hente de forskellige waypoints ud af arrayet.  
+
+
+\subsubsection*{Klasse diagram - website}
+\vspace{-0.1cm}
+På figur \ref{fig:classDiagram_home} ses klasse diagrammet tilhørende iteration to for websitet. Funktionaliteten er blevet udvidet med overblik over droner i systemet og deres status. Mulighed for at oprette events til den ønskede drone. 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1.1\textwidth]{Billeder/klasse_diagrammer/home_class_diagram.png}
+	\vspace{-0.5cm}
+	\caption{Klassediagram home}
+	\label{fig:classDiagram_home}
 \end{figure}
