@@ -1,16 +1,39 @@
 \section{Deployment view}
 
-Som det fremgår af illustrationen på figur \ref{fig:systemskitse_deployment}, er hele systemet bygget op om de tre grundlæggende moduler drone, website og server. I dette afsnit beskrives hvilke softwareklasser der bruges i hver af de grundlæggende moduler. Desuden beskrives hvilke protokoller der er anvendt i systemet, fx. beskrives layout af meddelelser mellem drone og server.
-
-\subsection{•}
+I dette afsnit beskrives hvilke softwareklasser der bruges i systemets mest grundlæggende moduler. Desuden beskrives hvilke protokoller der anvendes mellem de grundlæggende moduler i systemet, fx. beskrives layout af meddelelser der sendes mellem drone og server.
 
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=1\textwidth]{Billeder/systemskitse_deployment_view.png}
-\caption{Systemskitse}
-\label{fig:systemskitse_deployment}
+\includegraphics[width=1\textwidth]{Billeder/deployment_overview.png}
+\caption{Overordnet deployment diagram}
+\label{fig:deployment_generel}
 \end{figure}
 
 
+På illustrationen figur \ref{fig:systemskitse_deployment} vises systemet opdelt i de 3 mest grundlæggende moduler. Som det ses af illustrationen består systemet overordnet set af drone, webapplikation og sever. I de følgende afsnit vil de tre overordnede moduler blive pakket op og forklaret hver for sig, og desuden vil HTTP 1.1 protokollen blive beskrevet.
+
+
+
+\newpage
+\subsection{Drone}
+På denne side beskrives hvordan drone modulet er opbygget.
+Dronen foruden stel og motorer består af  
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth]{Billeder/deployment_drone.png}
+\caption{Systemskitse}
+\label{fig:deployment_drone}
+\end{figure}
+
+\newpage
+\subsection{Server}
+
+
+\newpage
+\subsection{Webapplikation}
+
+
+\newpage
 \input{kapitler/software/views/http_protokol}
