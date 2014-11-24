@@ -16,7 +16,7 @@ Linux:
 	$ sudo apt-get install Git
 \end{lstlisting}
 
-\textbf{OS X: Kommer som standart med git installeret.}
+\textit{OS X: Kommer som standart med git installeret.}
 
 Efter git er installeret på maskinen skal source koden klones fra github. Skriv følgende i terminalen.
 
@@ -128,3 +128,12 @@ På figur \ref{fig:browser_eksempel} ses et eksempel på hvordan browseren også
 	\caption{Browser eksempel}
 	\label{fig:browser_eksempel}
 \end{figure}
+
+\subsubsection{Treide part teknologier}
+Til udviklingen af server softwaren er der benyttet nogle treide parts teknologier, dette underafsnit beskriver hvilke og hvordan de er blevet brugt.
+
+\textbf{Djangorestframework}\\
+Django frameworket i sig selv er rigtig god til at udvikle webapplikationer, men da der til dette projekt ønskede et RESTful api, er der lagt django-rest-frameworket\footnote{http://www.django-rest-framework.org/} oven på django frameworket. Hvilke gør udviklingen af RESTful api'er med django frameworket en del mere simpel.  
+
+\textbf{django-cors-headers}\\
+Cors headers\footnote{https://github.com/ottoyiu/django-cors-headers} er en django applikation som tilføjer CORS (Cross-Origin Resource Sharing) til applikationen. Dette gør det muligt at tilgå applikationen fra andre server, som fx vores client software som kunne ligge på en anden server eller vores drone som tilgår serveren. 
