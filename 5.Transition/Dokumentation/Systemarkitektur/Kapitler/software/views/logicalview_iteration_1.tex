@@ -1,6 +1,7 @@
 \subsection{Iteration \#1}
-I iteration 1 arbejdes der med blokke som dækker over systemets mest grundlæggende funktionalitet. Batteri,
-ESC’er, motorer og sensorer tilsluttes dronen. Server opsætning så kommunikation imellem dronen og websitet kan føre sted, her henvises der til data view'et for flere detaljer vedrørende serveren. Desuden gøres dronen i stand til oprette forbindelse til websitet via 3G-shield’et. Hvordan systemet er tiltænkt at bruges beskrives i user story nedenfor:
+I iteration 1 arbejdes der med blokke som dækker over systemets mest grundlæggende funktionalitet. Batteri, ESC’er, motorer og sensorer tilsluttes dronen, og dronen gøres desuden i stand til oprette forbindelse til webapplikationen via 3G-shield’et.
+Server opsættes, så at basal kommunikation mellem dronen og server er muligt. Det skal bla. være muligt for dronen at uploade sin nuværende position til server. For flere detaljer vedrørende opsætning og funktionalitet af server henvises til data view'et. 
+Hvordan systemet er tiltænkt at bruges beskrives i user story nedenfor:
 
 \subsubsection*{User story}
 Bruger tænder dronen ved at tilslutte batteri. Main controller samt 3G/GPS module initialiseres og nuværende GPS position opdateres. Herefter oprettes forbindelse mellem drone og websitet, og information om dronen er online samt information om dronens nuværende GPS position sendes til websitet. Fra websitet er det muligt for bruger løbende at observere hvorvidt dronen er online og på hvilken GPS position dronen sidst har befundet sig.
@@ -13,6 +14,132 @@ Bruger tænder dronen ved at tilslutte batteri. Main controller samt 3G/GPS modu
 	\caption{Design overview \#iteration 1}
 	\label{fig:design_overview_UC1}
 \end{figure}
+
+
+\newpage
+\subsubsection*{Pakke diagram Drone}
+
+I denne sektion vises pakkediagrammer tilhørende drone. De pakker der vises i pakkediagrammerne består af en eller flere klasser, der med stort samspil udfører opgaver indenfor et fælles ansvarsområde. På hver pakke findes en lille beskrivelse, der tydeliggør pakkens ansvarsområde. 
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{Billeder/pakke_diagrammer/iteration1_drone.png}
+	\vspace{-0.5cm}
+	\caption{Pakkediagram drone}
+	\label{fig:iteration1_pakke_diagram_drone}
+\end{figure}
+
+\textbf{CommunicationHandling}\\
+Pakkens ansvar er kommunikation imellem drone og server. Der er fokus på at drone kan sende GPS position til server.
+
+\textbf{SensorHandling}\\
+Pakkens ansvar er håndtering af 3G, GPS og højdesensor data.
+
+
+\newpage
+\subsubsection*{Pakke diagram Webapplikation}
+
+I denne sektion vises pakkediagrammer tilhørende drone. De pakker der vises i pakkediagrammerne består af en eller flere klasser, der med stort samspil udfører opgaver indenfor et fælles ansvarsområde. På hver pakke findes en lille beskrivelse, der tydeliggør pakkens ansvarsområde.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{Billeder/pakke_diagrammer/iteration1_server.png}
+	\vspace{-0.5cm}
+	\caption{Overordnet pakke diagram over webapplikationen}
+	\label{fig:iteration1_pakke_diagram_webapp}
+\end{figure}
+
+\textbf{CommunicationHandling}\\
+Pakkens ansvar er kommunikation imellem drone og server. Pakken sender flyveinformation til dronen, som bruger har lavet på webapplikationen.
+
+\textbf{UserHandling}\\
+Pakkens ansvar er validering af login/log ud på websitet. Pakken har også ansvaret for at hente og gemme data om den pågældende bruger.
+
+\textbf{DatabaseHandling}\\
+Pakkens ansvar er kommunikation imellem databasen og serveren. 
+
+
+\newpage
+
+\subsubsection*{Klasse diagram - drone}
+\vspace{-0.2cm}
+Figur \ref{fig:classDiagram_iteration1} vises et klassediagram tilhørende iteration 1. Klassediagrammet viser iterationens vigtigste klasser, samt deres tilhørende metoder og attributter. På den følgende side forefindes en kort beskrivelse klasserne og deres metoder.
+
+\vspace{-0.2cm}
+%kommentar
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{Billeder/klasse_diagrammer/classdiagram_iteration1.png}
+	\vspace{-0.5cm}
+	\caption{Klassediagram \#iteration 1}
+	\label{fig:classDiagram_iteration1}
+\end{figure}
+\vspace{-0.1cm}
+
+\textbf{Main.cpp} \\
+Main.cpp filen bruges til at sætte arduino board korrekt op, bla. sættes baudrate på de forskellige serielle forbindelser. Desuden bruges Main.cpp til at kalde og eksekverer forskellige klasse, objekter og funktioner.
+
+\textbf{GPS} \\
+GPS klassen er implementeret som en abstract klasse, idet den ikke selv har nogle metoder den skal bruge, men med virtuelle metoder der sikrer at de implementeres i de afledte klasser. 
+Init og updateGPSPosition er valgt til at være virtuelle klasser, hvilket gør at de skal implementeres uanset hvilken GPS der bruges. Klassen er lavet fordi der i udgangspunkt var mulighed for at bruge 3 forskellige slags GPS modes med 3G/GPS shieldet. 
+
+\textbf{StandaloneGPS}\\
+Denne klasse er ansvarlig for al kommunikation med GPS'en når standalone mode er valgt. 
+
+\newpage
+
+Nedenfor ses figur \ref{fig:udvidet3G_it1} som er en udvidet klasse diagram over 3G modulet. Klasse diagrammet viser et udvidet klasse diagram, der viser hvilke metoder der indgår i iteration 1 for 3G modulet. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.50\textwidth]{Billeder/klasse_diagrammer/udvidet3G_iteration1.png}
+	\vspace{0.5cm}
+	\caption{Udvidet klasse diagram for 3G modulet - iteration 1}
+	\label{fig:udvidet3G_it1}
+\end{figure}
+
+\textbf{GetAndPut} \\
+GetAndPut klassen er den klasse der er tættest på hardwaren. Klassen indeholder de http metoder der bruges til kommunikation mellem dronen og serveren. 
+
+\textbf{Communication} \\
+Communication klassen er den øverste klasse og den håndterer sammen med andre klasser, alt der har med 3G at gøre.
+
+\textbf{EventHandler} \\
+EventHandleren er den klasse der håndterer Events. EventHandleren er bindeledet mellem communication- og GetAndPut klassen. EventHandleren sorterer eventID'et fra de data den modtager og returnerer værdien til communication klassen. 
+
+
+\newpage
+
+\subsubsection*{Klasse diagram - website}
+\vspace{-0.2cm}
+Figur \ref{fig:classDiagram_login} viser klassediagrammet tilhørende websitet for iteration 1.
+\vspace{-0.2cm}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{Billeder/klasse_diagrammer/login_class_diagram.png}
+	\vspace{-0.5cm}
+	\caption{Klassediagram login}
+	\label{fig:classDiagram_login}
+\end{figure}
+
+\vspace{-0.2cm}
+
+\textbf{login} \\
+Login view filen er det html script som useren ser på sin webclient. Filen er two-way databinded med loginCtrl klassen. Via denne binding kan der sendes og modtages data direkte.
+
+\textbf{loginCtrl} \\
+LoginCtrl er controller klassen som er forbundet med view klassen via two-way databinding. Klassen uddelegere også opgaver til dens services.
+
+\textbf{AuthenticationServices} \\
+AuthenticationServices er en service der afgør om user er authenticated eller ej. Hvis user er authenticated bliver han redirected til websitets home-page. Klassen gør brug af UserServices til at gemme information om den user der er logget ind i systemet.
+
+\textbf{UserServices}\\
+UserServices indeholder information om user der er logget ind i systemet.
+
+\textbf{CRUDServiceDrone} \\
+CRUDServiceDrone er den service der styre alt kontakt til databasen i systemet. Igennem denne service er det muligt at hente, opdater og poste data til databasen.
+
 
 
 \newpage
@@ -70,80 +197,3 @@ I state machine diagrammet på figur \ref{fig:Statemachine_iteration1}, vises de
 	\caption{Statemachine \#iteration 1}
 	\label{fig:Statemachine_iteration1}
 \end{figure}
-\newpage
-
-\subsubsection*{Klasse diagram - drone}
-\vspace{-0.1cm}
-Figur \ref{fig:classDiagram_iteration1} vises et klassediagram tilhørende iteration 1. Klassediagrammet viser iterationens vigtigste klasser, samt deres tilhørende metoder og attributter. På den følgende side forefindes en kort beskrivelse klasserne og deres metoder.
-
-%kommentar
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=1\textwidth]{Billeder/klasse_diagrammer/classdiagram_iteration1.png}
-	\vspace{-0.5cm}
-	\caption{Klassediagram \#iteration 1}
-	\label{fig:classDiagram_iteration1}
-\end{figure}
-
-\textbf{Main.cpp} \\
-Main.cpp filen bruges til at sætte arduino board korrekt op, bla. sættes baudrate på de forskellige serielle forbindelser. Desuden bruges Main.cpp til at kalde og eksekverer forskellige klasse, objekter og funktioner.
-
-\textbf{GPS} \\
-GPS klassen er implementeret som en abstract klasse, idet den ikke selv har nogle metoder den skal bruge, men med virtuelle metoder der sikrer at de implementeres i de afledte klasser. 
-Init og updateGPSPosition er valgt til at være virtuelle klasser, hvilket gør at de skal implementeres uanset hvilken GPS der bruges. Klassen er lavet fordi der i udgangspunkt var mulighed for at bruge 3 forskellige slags GPS modes med 3G/GPS shieldet. 
-
-\textbf{StandaloneGPS}\\
-Denne klasse er ansvarlig for al kommunikation med GPS'en når standalone mode er valgt. 
-
-\newpage
-
-Nedenfor ses figur \ref{fig:udvidet3G_it1} som er en udvidet klasse diagram over 3G modulet. Klasse diagrammet viser et udvidet klasse diagram, der viser hvilke metoder der indgår i iteration 1 for 3G modulet. 
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.50\textwidth]{Billeder/klasse_diagrammer/udvidet3G_iteration1.png}
-	\vspace{0.5cm}
-	\caption{Udvidet klasse diagram for 3G modulet - iteration 1}
-	\label{fig:udvidet3G_it1}
-\end{figure}
-
-
-\textbf{GetAndPut} \\
-GetAndPut klassen er den klasse der er tættest på hardwaren. Klassen indeholder de http metoder der bruges til kommunikation mellem dronen og serveren. 
-
-\textbf{Communication} \\
-Communication klassen er den øverste klasse og den håndterer sammen med andre klasser, alt der har med 3G at gøre.
-
-\textbf{EventHandler} \\
-EventHandleren er den klasse der håndterer Events. EventHandleren er bindeledet mellem communication- og GetAndPut klassen. EventHandleren sorterer eventID'et fra de data den modtager og returnerer værdien til communication klassen. 
-
-
-\newpage
-
-\subsubsection*{Klasse diagram - website}
-\vspace{-0.1cm}
-Figur \ref{fig:classDiagram_login} viser klassediagrammet tilhørende websitet for iteration 1. De enkle klasser er beskrevet mere i detaljer her under.
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=1\textwidth]{Billeder/klasse_diagrammer/login_class_diagram.png}
-	\vspace{-0.5cm}
-	\caption{Klassediagram login}
-	\label{fig:classDiagram_login}
-\end{figure}
-
-\newpage
-
-\textbf{login} \\
-Login view filen er det generede html dokument som useren ser på sin webclient. Denne fil er two-way databinded med loginCtrl klassen og via denne binding kan der sendes og modtages data direkte.
-
-\textbf{loginCtrl} \\
-LoginCtrl er controller klassen som er forbundet med view klassen via two-way databinding. Klassen uddelegere også opgaver til dens services.
-
-\textbf{AuthenticationServices} \\
-AuthenticationServices er den service der afgøre om useren er authenticated eller ej. Hvis useren er authenticated bliver han redirected til websitets home-page. Klassen gør brug af UserServices til at gemme information omkring den nuværende user der er logget ind i systemet.
-
-\textbf{UserServices}\\
-UserServices indeholder information omkring den nuværende user der er logget ind i systemet.
-
-\textbf{CRUDServiceDrone} \\
-CRUDServiceDrone er den service der styre alt kontakt til databasen i systemet. Igennem denne service er det muligt at hente, opdater og poste data til databasen.

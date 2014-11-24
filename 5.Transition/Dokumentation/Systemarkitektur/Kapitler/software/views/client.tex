@@ -7,7 +7,7 @@ For at kunne opsætte et udviklings miljø til client applikationen skal source 
 	$ git clone https://github.com/Opstrup/drone_frontend
 \end{lstlisting}
 
-\subsubsection{Mappestruktur}
+\subsubsection*{Mappestruktur}
 Dette underafsnit vil forklare om den overordnede mappe struktur i projektet og give en overordnet forståelse af angular client udvikling. \\
 
 På figur \ref{fig:mappestruktur_client} ses mappestrukturen for client applikationen. Da Angular frameworket er opbygget over MVC\footnote{MVC model i forbindelse med Angular: https://docs.angularjs.org/guide/databinding} modellen er mappestrukturen opdelt så det afspejler denne model. I roden af projekt mappen findes to væsentlige file, app.js og index.html. app.js er settings filen for projektet, her bliver alle afhængigheder af projektet hentet ind og initialiseret, states i applikationen og dertilhørende controller bliver også registeret her\footnote{Information omkring app.js indstillingerne: https://docs.angularjs.org/guide/introduction}.\\
@@ -35,7 +35,7 @@ I denne mappe findes alle services\footnote{https://docs.angularjs.org/guide/ser
 \textbf{templates}\\
 I denne mappe findes alle html filerne for systemet, disser filer danner sammen med controllerne de views som bliver præsenteret i browseren\footnote{https://docs.angularjs.org/guide/templates}.
 
-\subsubsection{Udviklings miljø}
+\subsubsection*{Udviklings miljø}
 Opsætning af et udviklings miljø til client applikationen er rimelig simpel da source koden indeholder alt hvad der skal bruges for at kunne compile, der skal kun bruges en browser for at kunne starte applikationen. Til vider udvikling af applikationen vil det dog anbefales at der installeres nogle applikationer for at gøre udviklingen nemmere.
 
 \textbf{Text editor}\\
@@ -47,7 +47,9 @@ For at applikationen fungere optimalt er det at anbefale at der installeres en w
 \textbf{Package management}\\
 Som før nævnt er bower brugt til package management og det anbefales at der fortættes med dette da bower\footnote{http://bower.io/} selv downloader og installere de påkrævet filer, så udvikleren ikke skal tænke yderligere over dette.  
 
-\subsubsection{Treide part teknologier}
+\newpage
+
+\subsubsection*{Treide part teknologier}
 Til udviklingen af web applikationen er der blevet brugt nogle treide parts teknologier, som er beskrevet yderligere i dette underafsnit.
 
 \textbf{bootstrap}\\

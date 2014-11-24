@@ -15,6 +15,8 @@ Efter installationen skal megunolink sættes op til at kunne compilere til en ar
 	\item I dropdown menuen vælges den arduino der skal bruges til projektet.
 \end{enumerate}
 
+\newpage
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.85\textwidth]{Billeder/implementation/megunolink_config.png}
@@ -25,7 +27,7 @@ Efter installationen skal megunolink sættes op til at kunne compilere til en ar
 
 For at kunne compilere, skal der linkes til projektets source fil. Hvis dette er udført korrekt, burde det være muligt at uploade source filen til arduino.
 
-\subsection{Eksterne bibliotekter til Atmel}
+\subsection{Opsætning af eksterne bibliotekter til Atmel}
 
 Når dronen henter informationer ned fra serveren, sker det med en karakter af gangen. Dette giver nogle vanskeligheder ifht. at skulle sortere i dataet der er modtaget. Når der hentes data, kan det bl.a. være længde- og breddegrader. Når det modtages, ved man ikke hvilken plads det ligger på i arrayet og hvilken størrelse værdierne har. Man kan, mellem server og drone, forud definere størrelserne der sendes/modtages, men det er hverken dynamisk eller præcis. Fra server siden er flyveopsætningen defineret som JSon objekter, hvilket er overskueligt og nem at sortere i. \\
 I Atmel eller arduino findes der ikke et standard JSon bibliotek, der kan søge eller erstatte informationerne i et JSon objekt. Derfor har det været nødvendigt at finde et bibliotek der har kunnet tage denne type fil og bearbejde det som almindeligt data. Det anvendte bibliotek hedder aJson\footnote{https://github.com/interactive-matter/aJson} og er et frit tilgængeligt JSon bibliotek.Dette bibliotek er kombatibel med arduino. Ved hjælp af dette bibliotek, er det blevet muligt at hente flyveopsætningen fra serveren og afkode, oprette og ændre i dataet.

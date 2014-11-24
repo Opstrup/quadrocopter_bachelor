@@ -1,13 +1,13 @@
-\subsection{Server opsætning}
+\subsection{Opsæning af server}
 Dette afsnit har til formål at beskrive hvordan et udviklingsmiljø sættes op på en givet maskine så vider udvikling af systemet kan finde sted. Afsnittet forklare også hvilke tredjeparts teknologier der er anvendt og eventuelle afhængigheder.
 
-\subsubsection{OS}
+\subsubsection*{OS}
 Det anbefales at udviklingen finder sted på en OS X eller Linux maskine, da UNIX-terminalen er et meget brugt værktøj og som standart er windows cmd meget "begrænset", det kan dog lade sig gøre med nogle tweaks at forbedre windows cmd. Dette er ikke noget der vil blive yderligere forklaret og derfor er dokumentet skrevet som udgangspunkt at arbejdet forgår i en UNIX-terminal.
 
-\subsubsection{IDE/Text Editor}
+\subsubsection*{IDE/Text Editor}
 Da alt server opsætningen og logikken er skrevet i python som er et højniveau script sprog, er der ikke nogle specielle krav til et IDE. En simpel texeditor er at fortrække. Her anbefales det at enten bruge Sublime\footnote{http://www.sublimetext.com/2} Text Editoren eller Atom\footnote{https://atom.io/} Editoren. Begge text editor tilbyder god code highlighting og med treide parts pakker installeret som "PyLinter", "pep8" eller "Linter", som tjekker koden for evt. fejl i indentringen, manglende kommentar eller kode standart, er disse text editor rigtig gode til arbejdet.
 
-\subsubsection{Installering af software}
+\subsubsection*{Installation af software}
 Dette underafsnit vil forklare hvordan div. software pakker bliver installeret på udviklingernes maske og hvordan udvikleren starter den lokale server op. \\
 Det første program der skal installeres er git. Skriv følgende i terminalen.
 
@@ -59,13 +59,12 @@ På figur \ref{fig:server_startup} ses et udklip af terminal vinduet ved server 
 \end{figure}
 \newpage
 
-\subsubsection{Mappestruktur}
+\subsubsection*{Mappestruktur}
 Dette underafsnit vil forklare om den overordnede mappe struktur i projektet og give en overordnet forståelse af django udvikling. \\
 
 På figur \ref{fig:mappestruktur_1} ses den overordnet mappe struktur. I roden af mappen findes to væsentlige filer. db.sqlite3 hvilket er database filen til serveren, denne fil vil aldrig blive brugt direkte, men kun indirekte igennem django-frameworket. Den anden fil er manage.py, denne fil er main filen i hele projektet. Den fil vil aldrig blive redigeret, men bruges kun via terminalen til at køre forskellige kommandoer på django-applikationen. \\
 
-I roden findes der også to mapper "backend\_api" og "drone\_backend\_api". \\
-"drone\_backend\_api"  mappen er selve projekt mappen og "backend\_api" er applikations mappen.
+I roden findes der også to mapper "backend\_api" og "drone\_backend\_api". "drone\_backend\_api"  mappen er selve projekt mappen og "backend\_api" er applikations mappen.
 
 \begin{figure}[H]
 	\centering
@@ -82,6 +81,8 @@ På figur \ref{fig:mappestruktur_2} ses projekt mappen, de væsentlige filer i d
 	\caption{Mappestruktur projekt mappe}
 	\label{fig:mappestruktur_2}
 \end{figure}
+
+\newpage
 
 På figur \ref{fig:mappestruktur_3} ses applikations mappen. Denne mappe indeholder alt logikken til serveren.
 
@@ -105,7 +106,7 @@ Denne fil indeholder serializers, disse bliver kaldt når et api-endpoint bliver
 Denne fil håndtere de requests som der bliver kaldt og ud fra dem afgøre den hvilke serializer der skal generes og præsenteres. Yderligere dokumentation omkring views.py kan findes på\footnote{https://docs.djangoproject.com/en/dev/topics/class-based-views/}.
 \newpage
 
-\subsubsection{Debug}
+\subsubsection*{Debug}
 Dette underafsnit vil beskrive hvordan server software kan debugges og hvordan de forskellige værktøjer kan bruges.\\
 
 \textbf{Terminal}\\
@@ -129,7 +130,9 @@ På figur \ref{fig:browser_eksempel} ses et eksempel på hvordan browseren også
 	\label{fig:browser_eksempel}
 \end{figure}
 
-\subsubsection{Treide part teknologier}
+\newpage
+
+\subsubsection*{Tredje part teknologier}
 Til udviklingen af server softwaren er der benyttet nogle treide parts teknologier, dette underafsnit beskriver hvilke og hvordan de er blevet brugt.
 
 \textbf{Djangorestframework}\\
