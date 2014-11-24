@@ -82,7 +82,24 @@ På figur \ref{fig:page_load} ses hvordan klasserne på websitet interagere med 
 \end{figure}
 
 \newpage
+På figur \ref{fig:send_waypoints} ses hvilke hændelser der finder sted i systemet, når useren trykker på "send event". Hvert services har et ansvar og det er dem der kommunikere ud til CRUD-servicesen, på den måde er logikken for data håndtering skubbet ud i div. services. 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{Billeder/sekvens/sd_send_waypoints.png}
+	\caption{Sekvensdiagram send waypoints}
+	\label{fig:send_waypoints}
+\end{figure}
 
+\newpage
+På figur \ref{fig:update_view} ses hvilke hændelser der finder sted i systemet, når useren trykker på forskellige droner i tabellen. Når et klik på tabellen finder sted skal view'et opdateret i forhold til den givet drone, dvs. hvis dronen har et event, så skal det vises og dertilhørende waypoints. Hvis der ikke er noget event tilknyttet til dronen skal useren have mulighed for at oprette et nyt event.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{Billeder/sekvens/sd_update_view.png}
+	\caption{Sekvensdiagram opdater }
+	\label{fig:update_view}
+\end{figure}
+
+\newpage
 \subsubsection*{Klasse diagram - drone}
 
 På figur \ref{fig:classDiagram_drone_underflyvning} ses klasse diagrammet for dronen. Det er klasserne der bruges af dronen, når den er flyve klar. På den følgende side er der en forklaring af klasserne og deres metoder. 
