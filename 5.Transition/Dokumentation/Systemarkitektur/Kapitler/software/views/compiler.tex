@@ -1,36 +1,113 @@
 \subsection{Opsætning af udviklings IDE til Arduino}
 
-- Setup guide
-- 
+Dette afsnit har til formål at beskrive opsætningen af udviklings IDE'et til Arduino.
+For at kunne gennemføre guiden skal AVR's Atmel Studio 6 og Arduino 1.0 eller højere være installeret på computeren. 
 
-
-For at kunne anvende Atmel til projektet, skulle det først sættes op med de rigtige stier, clock indstillinger mm. Her blev der fulgt en guide \footnote{http://www.engblaze.com/tutorial-using-atmel-studio-6-with-arduino-projects/}, som trin for trin beskriver opsætningen af Atmel IDE'et. Guiden blev kun fulgt til og med \textit{"Build your project”}. 
-For at kunne anvende Arduino biblioteker i Atmel kræver det at Arduino 1.0 eller højere er installeret. Det er muligt at tilføje eksterne biblioteker, ved at vælge Project i menuen og derefter vælge: "Add Existing Item", dette tilføjer et bibliotek til ens bibliotek. Derudover skal eksterne biblioteker også tilføjes compiler stien. Dette gøres ved at vælge Projects -> projektnavn properties. Her inde skal man vælge menuen ToolChain og ved Configurations vælge: All Configurations. Under menuen GNU C++ compiler vælges Directories, her inde skal man skrive stien for de eksterne biblioteker.
-
-Megunolink er et program med en brugergrænseflade der kan anvendes til at sende og modtage seriel data fra en arduino.
-For at kunne bruge megunolink sammen med Arduino kræver det at det bliver sat op på den rigtige måde.
-Først hentes en gratis udgave af MegunoLink: MegunoLink Lite \footnote{http://www.megunolink.com/megunolink-lite/megunolink-lite-plotting-tool/}.
-
-Efter installationen skal megunolink sættes op til at kunne compilere til en arduino.
-
-\begin{enumerate}
-	\item I configuration benyttes "use custom path" og ved AVRDude stien linkes til stien med AVRDude til arduino og configurationens stien. 
-	\item I dropdown menuen vælges den arduino der skal bruges til projektet.
-\end{enumerate}
-
-\newpage
+For at kunne compilere projekter til Arduino, kræves Arduino Core biblioteket i Atmel. Dette bibliotek bliver oprettet automatisk i Arduino IDE'et, men skal inkluderes i Atmel Studio.
+Åben Arduino IDE'et og sæt flueben ved: Vis tydeligt output under kompilation.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.85\textwidth]{Billeder/implementation/megunolink_config.png}
-	\vspace{-.5cm}
-	\caption{MegunoLink config}
-	\label{fig:meglinkconf}
+	\includegraphics[width=0.5\textwidth]{Billeder/implementation/Howtoguide/Arduino_kompiler.png}
 \end{figure}
 
-For at kunne compilere, skal der linkes til projektets source fil. Hvis dette er udført korrekt, burde det være muligt at uploade source filen til arduino.
+I Arduino vælges et tilfældigt projekt, den rigtige arduino vælges under Værktøjer -> kort. Hvorefter skal koden kompileres. I vinduet i bunden vises en masse information, bla. stien for hvor core filen ligger. Stien ser ca. sådan ud, hvor det røde skiftes ud med dit brugernavn: 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.85\textwidth]{Billeder/implementation/Howtoguide/core_sti.png}
+\end{figure}
+Inde i mappen ligger en core fil, denne fil skal kopieres over i Atmel Studio's workspace. Som standard ligger workspacet i "C:\textbackslash Users\textbackslash din bruger\textbackslash Documents\textbackslash Atmel Studio. 
+Inde i Atmels workspace oprettes en mappe: "ArduinoCore" eller lignende. Core filen kopieres, lægges i mappen og navnet på filen ændres til libcore.
+Ved opstart af Atmel, vælges hvilken type chip arduino bruger.
 
-\subsection{Opsætning af eksterne bibliotekter til Atmel}
+\textbf{Compiler opsætning} \\
+For at kunne kompilere koden, skal de rette indstillinger til Atmel Studio vælges. 
+Inde i Atmel vælges: Project -> Projektnavn properties:
+Toolchain menuen vælges. I configuration vælges All Configurations.
 
-Når dronen henter informationer ned fra serveren, sker det med en karakter af gangen. Dette giver nogle vanskeligheder ifht. at skulle sortere i dataet der er modtaget. Når der hentes data, kan det bl.a. være længde- og breddegrader. Når det modtages, ved man ikke hvilken plads det ligger på i arrayet og hvilken størrelse værdierne har. Man kan, mellem server og drone, forud definere størrelserne der sendes/modtages, men det er hverken dynamisk eller præcis. Fra server siden er flyveopsætningen defineret som JSon objekter, hvilket er overskueligt og nem at sortere i. \\
-I Atmel eller arduino findes der ikke et standard JSon bibliotek, der kan søge eller erstatte informationerne i et JSon objekt. Derfor har det været nødvendigt at finde et bibliotek der har kunnet tage denne type fil og bearbejde det som almindeligt data. Det anvendte bibliotek hedder aJson\footnote{https://github.com/interactive-matter/aJson} og er et frit tilgængeligt JSon bibliotek.Dette bibliotek er kombatibel med arduino. Ved hjælp af dette bibliotek, er det blevet muligt at hente flyveopsætningen fra serveren og afkode, oprette og ændre i dataet.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.85\textwidth]{Billeder/implementation/Howtoguide/atmel_toolchain.png}
+\end{figure}
+
+I menuen for GNU C++ compiler vælges Symbols. Her tilføjes clockfrekvens for arduino chippen og version af Arduino IDE.
+For at tilføje clockfrekvens skrives fx: F\_CPU = 16000000L, hvis ens clockfrekvens er 16MHz.
+Arduino IDE version skrives: ARDUINO=106, 106 for version 1.06. \\ \\
+
+Næste trin er at opsætte Directories, det er stierne til de eksterne biblioteker til Atmel. Arduino har nogle biblioteker, som Atmel skal bruge, så dem skal der linkes til.
+Bibliotekerne er henholdsvis Arduino.h og pins\_arduino.h
+Stien til Arduino IDE'et er installations stien og resten af stien er som vist på billedet.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{Billeder/implementation/Howtoguide/atmel_directories.png}
+\end{figure}
+
+Gå til Optimization menuen under GNU C++ compiler og sæt flueben ved: Prepare functions for garbage collection (-ffunction-sections).\\ \\
+
+I menuen for GNU Linker vælges Libraries. Her tilføjes core filen fra tidligere samt den sti den ligger i. En vigtig detalje er at core skal flyttes op over libm.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{Billeder/implementation/Howtoguide/atmel_linker.png}
+\end{figure}
+
+Atmel Studio er nu sat op til at fungere sammen med Arduino biblioteker. For at gøre brug af Arduino biblioteket tilføjes Arduino.h til projektet.
+
+
+\subsection{Opsætning af serial programmerings link}
+
+For at kunne uploade kode til en arduino, skal der anvendes et andet program.
+Megunolink lite er et program med en brugergrænseflade der kan anvendes til at sende og modtage seriel data fra en arduino.\\
+MegunoLink lite hentes her\footnote{http://www.megunolink.com/megunolink-lite/megunolink-lite-plotting-tool/}.
+
+MegunoLink skal sættes op til at uploade til den korrekte Arduino. 
+
+I configuration benyttes "use custom path" og ved AVRDude stien linkes til stien med AVRDude til arduino og configurationens stien. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\textwidth]{Billeder/implementation/Howtoguide/megunolink_config.png}
+\end{figure}
+
+For at kunne uploade, skal MegunoLink vide hvor hex filen ligger, denne vælges i edit project properties også stien for det valgte projekt.
+I dropdown menuen vælges den arduino der skal bruges til projektet.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{Billeder/implementation/Howtoguide/meguno_bar.png}
+\end{figure}
+
+
+
+\subsection{Eksterne bibliotekter til Atmel}
+
+I Atmel og arduino findes der ikke standard JSon biblioteker, der kan håndtere JSon objekter. Det har derfor været nødvendigt at bruge et eksternt bibliotek, der kan håndtere disse JSon objekter.
+Det anvendte bibliotek hedder aJson\footnote{https://github.com/interactive-matter/aJson} og er et frit tilgængeligt JSon bibliotek som er lavet til Arduino.
+
+
+\subsection{Filoversigt Drone}
+
+Dette afsnit omhandler de forskellige filer og biblioteker der er anvendt i Atmel Studio. 
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.25\textwidth]{Billeder/implementation/Howtoguide/atmel_filer.png}
+\end{figure}
+
+\textbf{aJSon}\\
+JSon biblioteket håndterer sammen med stringbuffer biblioteket de JSon objekter der bruges af dronen. Der kan læses mere om JSon biblioteket her\footnote{https://github.com/interactive-matter/aJson} \\ \\
+\textbf{Communication}\\
+Communication klassen er den klasse der håndterer kommunikationen for dronen. Communication klassen er den øverste klasse der håndterer 3G modulet. \\ \\
+\textbf{DistanceSensor}\\
+Denne klasses funktionalitet er aflæsningen af sensorværdierne. \\ \\
+\textbf{Drone\_fly}\\
+Dette er selve mainen til systemet. Det er denne fil der håndterer alle andre klasser der anvendes i drone systemet. \\ \\
+\textbf{EventHandler}\\
+\\ \\
+\textbf{FlightControl}\\
+\textbf{GetAndPut}\\
+\textbf{GPS}\\
+\textbf{sendAT}\\
+\textbf{standAloneGps}\\
+\textbf{waypoint}\\
+\textbf{WayPointsHandler}\\
+
