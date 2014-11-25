@@ -16,10 +16,59 @@ Når en drone er tændt og færdig initialiseret fortæller den server webserver
 \end{figure}
 
 
+\newpage
+\subsubsection*{Pakkediagram drone}
+I dette afsnit vises pakkediagram tilhørende drone. De pakker der vises i pakkediagrammet består af en eller flere klasser, der med stort samspil udfører opgaver indenfor et fælles ansvarsområde. På hver pakke findes en lille beskrivelse, der tydeliggør pakkens ansvarsområde. De dele af pakkerne der er gråskraveret, er funktionalitet udarbejdet i tidligere iteration.
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{Billeder/pakke_diagrammer/iteration2_drone.png}
+	\vspace{-0.5cm}
+	\caption{Pakkediagram drone}
+	\label{fig:iteration2_pakke_diagram_drone}
+\end{figure}
+
+\textbf{CommunicationHandling}\\
+Pakkens ansvar er kommunikation imellem drone og server. Efter denne iteration skal dronen både kunne hente flyveopsætninger fra server og sende sin nuværende GPS position til server.
+
+\textbf{GPSHandling}\\
+Pakkens ansvar er håndtering af GPS. Dels er pakken ansvarlig for opstart og initiering af GPS, og desuden bruges pakken hver gang dronens nuværende GPS position skal opdateres.
+
+\textbf{SensorHandling}\\
+Pakken er ansvarlig for indsamling af sensor data. I denne iteration skal pakken bruges til aflæsning af højdemåler og kompasset på flight control boardet. 
+
+\textbf{FlightHandling}\\
+Pakkens ansvar er kontrol og styring af drone under flyvning. Ved sammenligning af sensor data og data fra flyveopsætning tilpasses flyvehøjde, orientering mm
+
+
+
+\newpage
+\subsubsection*{Pakkediagram webapplikation og webserver}
+
+I dette afsnit vises pakkediagram tilhørende webapplikation og webserver. De pakker der vises i pakkediagrammet består af en eller flere klasser, der med stort samspil udfører opgaver indenfor et fælles ansvarsområde. På hver pakke findes en lille beskrivelse, der tydeliggør pakkens ansvarsområde. De dele af pakkerne der er gråskraveret, er funktionalitet udarbejdet i tidligere iteration.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{Billeder/pakke_diagrammer/iteration1_server.png}
+	\vspace{-0.5cm}
+	\caption{Overordnet pakke diagram over webapplikationen}
+	\label{fig:iteration1_pakke_diagram_webapp}
+\end{figure}
+
+\textbf{CommunicationHandling}\\
+Pakkens ansvar er kommunikation imellem drone og server. Pakken sender flyveinformation til dronen, som bruger har lavet på webapplikationen.
+
+\textbf{UserHandling}\\
+Pakkens ansvar er validering af login/log ud på websitet. Pakken har også ansvaret for at hente og gemme data om den pågældende bruger.
+
+\textbf{DatabaseHandling}\\
+Pakkens ansvar er kommunikation imellem databasen og serveren. 
+
 
 \newpage
 
-\subsubsection*{Sekvens diagram - drone}
+\subsubsection*{Sekvensdiagram drone}
 
 Til iteration 2 er systemsekvensen beskrevet med 3 mindre sekvensdiagrammer i stedet for 1 stort. Ydermere er der lavet 2 sekvens diagrammer der går mere i dybden med 3G modulet og dens klasser. 
 Denne fremstilling gør det muligt at repræsentere systemets funktionalitet på mere overskuelig vis, hvilket indirekte øger forståelsen af diagrammerne. Hvert af de 3 overordnede sekvensdiagrammer bruges til at fortælle hvordan en delmængde af systemet fungerer.
@@ -47,6 +96,8 @@ På figur \ref{fig:Sekvens_diagram_iteration2_2} fremgår det hvordan dronens ma
 	\label{fig:Sekvens_diagram_iteration2_2}
 \end{figure}
 
+\newpage
+
 På Figur \ref{fig:Sekvens_getwaypoints} ses en mere detaljeret beskrivelse af 3G modulets klasser. Disse klasser håndterer al kommunikation mellem drone og server.
 
 \begin{figure}[H]
@@ -71,7 +122,7 @@ Som det fremgår af while loopet fortsætter flyvningen indtil dronen er 15 mete
 \end{figure}
 
 \newpage
-\subsubsection*{Sekvens diagram - website}
+\subsubsection*{Sekvensdiagram website}
 \vspace{-0.1cm}
 På figur \ref{fig:page_load} ses hvordan klasserne på websitet interagere med hinanden ved et page load. Kortet bliver initialiseret med centrum over århus og drone markeren bliver initialiseret. Useren som blev gemt ved login bliver brugt til at give en velkomst besked oppe i højre hjørne og sener vil blive brugt når der skal oprettet nye events. Listen med tilgængelige droner bliver loaded. Et click event bliver også oprettet som trigger ved click på kortet til oprettelse af nye waypoints.
 \begin{figure}[H]
@@ -100,13 +151,13 @@ På figur \ref{fig:update_view} ses hvilke hændelser der finder sted i systemet
 \end{figure}
 
 \newpage
-\subsubsection*{Klasse diagram - drone}
+\subsubsection*{Klassediagram drone}
 
 På figur \ref{fig:classDiagram_drone_underflyvning} ses klasse diagrammet for dronen. Det er klasserne der bruges af dronen, når den er flyve klar. På den følgende side er der en forklaring af klasserne og deres metoder. 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=1.1\textwidth]{Billeder/klasse_diagrammer/classdiagram_iteration2_fly.png}
+	\includegraphics[width=1\textwidth]{Billeder/klasse_diagrammer/classdiagram_iteration2_fly.png}
 	\vspace{0cm}
 	\caption{Klassediagram drone}
 	\label{fig:classDiagram_drone_underflyvning}
@@ -122,11 +173,12 @@ DistanceSensor klassen bruges til at kontrollere de sensorer der er monteret på
 GPS klassen er implementeret som en abstract klasse, idet den ikke selv har nogle metoder den skal bruge, men med virtuelle metoder der sikrer at de implementeres i de afledte klasser. 
 Init og updateGPSPosition er valgt til at være virtuelle klasser, hvilket gør at de skal implementeres uanset hvilken GPS der bruges. Klassen er lavet fordi der i udgangspunkt var mulighed for at bruge 3 forskellige slags GPS modes med 3G/GPS shieldet. 
 
+\newpage
 På Figur \ref{fig:classDiagram_3Gmodul} er der vist en udvidet klasse diagram for 3G modulet. På diagrammet vises de metoder og attributter der indgår i klasserne. 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=1.1\textwidth]{Billeder/klasse_diagrammer/classdiagram_3gmodule.png}
+	\includegraphics[width=1\textwidth]{Billeder/klasse_diagrammer/classdiagram_3gmodule.png}
 	\vspace{0cm}
 	\caption{Klassediagram 3G modul}
 	\label{fig:classDiagram_3Gmodul}
@@ -142,6 +194,8 @@ Communication klassen er den øverste klasse og den håndterer sammen med andre 
 \textbf{EventHandler} \\
 EventHandleren er den klasse der håndterer Events. EventHandleren er bindeledet mellem communication- og GetAndPut klassen. EventHandleren sorterer eventID'et fra de data den modtager og returnerer værdien til communication klassen.
 
+\newpage
+
 \textbf{WayPointsHandler} \\
 WayPointsHandler klassen er den klasse der håndterer de waypoints der hentes ned fra serveren. Klassen tager de waypoints den får fra serveren og gør dem tilgængeligt for resten af systemet. WayPointsHandleren bruger set metoderne i WayPoint klassen.
 
@@ -149,12 +203,12 @@ WayPointsHandler klassen er den klasse der håndterer de waypoints der hentes ne
 WayPoint klassen bruges til at kunne hente de forskellige waypoints ud af arrayet.  
 
 
-\subsubsection*{Klasse diagram - website}
+\subsubsection*{Klassediagram website}
 \vspace{-0.1cm}
 På figur \ref{fig:classDiagram_home} ses klasse diagrammet tilhørende iteration to for websitet. Funktionaliteten er blevet udvidet med overblik over droner i systemet og deres status. Mulighed for at oprette events til den ønskede drone. 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=1.1\textwidth]{Billeder/klasse_diagrammer/home_class_diagram.png}
+	\includegraphics[width=1.\textwidth]{Billeder/klasse_diagrammer/home_class_diagram.png}
 	\vspace{-0.5cm}
 	\caption{Klassediagram home}
 	\label{fig:classDiagram_home}

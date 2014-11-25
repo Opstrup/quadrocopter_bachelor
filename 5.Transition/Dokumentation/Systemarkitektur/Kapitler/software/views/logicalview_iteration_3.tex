@@ -14,6 +14,46 @@ Under flyvning tager dronen billeder som sendes via 3G/GPS modulet til serveren.
 \end{figure}
 \newpage
 
+\newpage
+\subsubsection*{Pakkediagram drone}
+I dette afsnit vises pakkediagram tilhørende drone. Hver pakke i pakkediagrammet består af en eller flere klasser, der med stort samspil udfører opgaver indenfor et fælles ansvarsområde. 
+På hver pakke findes en lille beskrivelse, der tydeliggør pakkens ansvarsområde. De dele af pakkerne der er gråskraveret, er funktionalitet udarbejdet i tidligere iteration.
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{Billeder/pakke_diagrammer/iteration3_drone.png}
+	\vspace{-0.5cm}
+	\caption{Pakkediagram drone}
+	\label{fig:iteration2_pakke_diagram_drone}
+\end{figure}
+
+\textbf{SensorHandling}\\
+Pakken er ansvarlig for indsamling af sensor data. I denne iteration skal pakken bruges til aflæsning af højdemåler og kompasset på flight control boardet. 
+
+\textbf{FlightHandling}\\
+Pakkens ansvar er kontrol og styring af drone under flyvning. Ved sammenligning af sensor data og data fra flyveopsætning tilpasses flyvehøjde, orientering mm
+
+\textbf{GPSHandling}\\
+Pakkens ansvar er håndtering af GPS. Dels er pakken ansvarlig for opstart og initiering af GPS, og desuden bruges pakken hver gang dronens nuværende GPS position skal opdateres.
+
+\textbf{CommunicationHandling}\\
+Pakkens ansvar er kommunikation imellem drone og server. Efter denne iteration skal dronen kunne hente flyveopsætninger fra server, sende sin nuværende GPS position til server og sende billeder til server.
+
+\textbf{CameraHandling}\\
+Pakkens ansvar er håndtering af kamera. Pakken bruges til at starte, initierer, bruge og slukke kameraet.
+
+
+\newpage
+\subsubsection*{Pakkediagram webapplikation}
+I dette afsnit vises pakkediagram tilhørende drone. Hver pakke i pakkediagrammet består af en eller flere klasser, der med stort samspil udfører opgaver indenfor et fælles ansvarsområde. 
+På hver pakke findes en lille beskrivelse, der tydeliggør pakkens ansvarsområde. De dele af pakkerne der er gråskraveret, er funktionalitet udarbejdet i tidligere iteration. \\
+
+
+BILLEDE OG BESKRIVELSE MANGLER
+
+
+\newpage
 
 \subsubsection*{Sekvens diagram}
 \vspace{-0.3cm}
@@ -43,7 +83,7 @@ I state machine diagrammet på figur \ref{fig:Statemachine_iteration3}, vises de
 \end{figure}
 
 
-\subsubsection*{Klasse diagram}
+\subsubsection*{Klasse diagram drone}
 
 Figur \ref{fig:classDiagram_iteration3} vises et klassediagram tilhørende iteration 4. Klassediagrammet viser foruden main.cpp filen iteration 4's eneste centrale klasse og dens tilhørende metode. 
 
@@ -62,6 +102,27 @@ Main.cpp filen bruges til at oprette objekter af de Anti collision klassen og ti
 \textbf{Camera} \\
 Klassen eneste funktion er at kontrollere afstanden til eventuelle objekter foran dronen. 
 
+
+\newpage
+
+\subsubsection*{Klasse diagram webapplikation}
+
+Figur \ref{fig:classDiagram_iteration3} vises et klassediagram tilhørende iteration 4. Klassediagrammet viser foruden main.cpp filen iteration 4's eneste centrale klasse og dens tilhørende metode. 
+
+%kommentar
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{Billeder/klasse_diagrammer/classdiagram_iteration3.png}
+	\vspace{-0.5cm}
+	\caption{Klassediagram \#iteration 3}
+	\label{fig:classDiagram_iteration3}
+\end{figure}
+
+\textbf{Main.cpp} \\
+Main.cpp filen bruges til at oprette objekter af de Anti collision klassen og til at kalde dens tilhørende funktioner.
+
+\textbf{Camera} \\
+Klassen eneste funktion er at kontrollere afstanden til eventuelle objekter foran dronen.
 
 
 

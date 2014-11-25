@@ -24,3 +24,57 @@ Mellem server og website er der lavet en socket connection. Det betyder at indho
 
 
 Der er lagt megen energi i at designe og bygge systemet på en vis der tillader udvidelser og tilføjelser. Dels kan server nemt tilgås af flere forskellige websites og desuden kan websitet nemt håndtere flere droner og client’er samtidig.
+
+\newpage
+\subsection{Kommunikations timing}
+For at de forskellige enheder i systemet kan kommunikere optimalt, er der blevet designet nogle bestemte kommunikations timing tabeller som skal overholders for at kunne kommunikere optimalt.\\
+Disse tabeller skal køres i følgende rækkefølge:
+
+\begin{enumerate}
+	\item Dronen tændes
+	\item Handlingen i tabel et udføres og gentages hvert 5min
+	\item Handlingen i tabel to udføres og gentages hvert 5min
+	\item Handlingen i tabel to retunere andet end 0
+	\item Handlingen i tabel tre udføres
+	\item Dronen er nu klar til at flyve
+	\item Handlingen i tabel to gentages ikke mere
+	\item Efter flyvning gentages det hele, bortset fra step 1
+\end{enumerate}
+
+\begin{table}[H]
+	\centering
+		\begin{tabular}{| m {1cm} | m {3cm} | m {4cm} | m {7cm} |}
+			\hline
+			Enhed & HTTP Request & Data & Handling \\ \hline
+			Drone & PUT & Online og Location & Opdatere sin position og sætter sig online\\ \hline
+			Server & Response & 200 OK & Giver ok svar tilbage \\ \hline
+		\end{tabular}
+	\caption{Kommunikation imellem drone og server step 1}
+	\label{tab:kom_drone_server_1}
+\end{table}
+
+\begin{table}[H]
+	\centering
+		\begin{tabular}{| m {1cm} | m {3cm} | m {4cm} | m {7cm} |}
+			\hline
+			Enhed & HTTP Request & Data & Handling \\ \hline
+			Drone & GET & NextEvent & Efterspørg nextevent værdig \\ \hline
+			Server & Response & NextEvent & Retunere drone data, med nextevent \\ \hline
+		\end{tabular}
+	\caption{Kommunikation imellem drone og server step 2}
+	\label{tab:kom_drone_server_2}
+\end{table}
+
+\begin{table}[H]
+	\centering
+		\begin{tabular}{| m {1cm} | m {3cm} | m {4cm} | m {7cm} |}
+			\hline
+			Enhed & HTTP Request & Data & Handling \\ \hline
+			Drone & GET & Waypoint & Dronen henter waypoints tilhørende event\\ \hline
+			Server & Response & Waypoints & Retunere waypoints tilhørende event \\ \hline
+			Drone & PUT & NextEvent = 0 & Dronen ændre sin NextEvent værdig til 0 \\ \hline
+			Server & Response & 200 OK & Giver ok svar tilbage \\ \hline
+		\end{tabular}
+	\caption{Kommunikation imellem drone og server step 3}
+	\label{tab:kom_drone_server_3}
+\end{table}
