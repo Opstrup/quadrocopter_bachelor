@@ -39,9 +39,9 @@ Pakkens ansvar er kommunikation imellem drone og server. I denne iteration er de
 Pakkens ansvar er håndtering af GPS. Dels er pakken ansvarlig for opstart og initiering af GPS, og desuden bruges pakken hver gang dronens nuværende GPS position skal opdateres.
 
 \newpage
-\subsubsection*{Pakkediagram webapplikation og server}
+\subsubsection*{Pakkediagram webapplikation}
 
-I dette afsnit vises pakkediagram tilhørende webapplikation og webserver. De pakker der vises i pakkediagrammet består af en eller flere klasser, der med stort samspil udfører opgaver indenfor et fælles ansvarsområde. På hver pakke findes en lille beskrivelse, der tydeliggør pakkens ansvarsområde. 
+I dette afsnit vises pakkediagram tilhørende webapplikationen. De pakker der vises i pakkediagrammet består af en eller flere klasser, der med stort samspil udfører opgaver indenfor et fælles ansvarsområde. På hver pakke findes en lille beskrivelse, der tydeliggør pakkens ansvarsområde. 
 
 \begin{figure}[H]
 	\centering
@@ -50,9 +50,6 @@ I dette afsnit vises pakkediagram tilhørende webapplikation og webserver. De pa
 	\caption{Overordnet pakke diagram over webapplikationen}
 	\label{fig:iteration1_pakke_diagram_webapp}
 \end{figure}
-
-\textbf{CommunicationHandling}\\
-Pakkens ansvar er kommunikation imellem drone og server. Pakken sender flyveinformation til dronen, som bruger har lavet på webapplikationen.
 
 \textbf{UserHandling}\\
 Pakkens ansvar er validering af login/log ud på websitet. Pakken har også ansvaret for at hente og gemme data om den pågældende bruger.
