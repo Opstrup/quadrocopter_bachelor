@@ -44,9 +44,9 @@ Pakkens ansvar er kontrol og styring af drone under flyvning. Ved sammenligning 
 
 
 \newpage
-\subsubsection*{Pakkediagram webapplikation og webserver}
+\subsubsection*{Pakkediagram webapplikation}
 
-I dette afsnit vises pakkediagram tilhørende webapplikation og webserver. De pakker der vises i pakkediagrammet består af en eller flere klasser, der med stort samspil udfører opgaver indenfor et fælles ansvarsområde. På hver pakke findes en lille beskrivelse, der tydeliggør pakkens ansvarsområde. De dele af pakkerne der er gråskraveret, er funktionalitet udarbejdet i tidligere iteration.
+I dette afsnit vises pakkediagram tilhørende webapplikation. De pakker der vises i pakkediagrammet består af en eller flere klasser, der med stort samspil udfører opgaver indenfor et fælles ansvarsområde. På hver pakke findes en lille beskrivelse, der tydeliggør pakkens ansvarsområde. De dele af pakkerne der er gråskraveret, er funktionalitet udarbejdet i tidligere iteration.
 
 \begin{figure}[H]
 	\centering
@@ -56,15 +56,14 @@ I dette afsnit vises pakkediagram tilhørende webapplikation og webserver. De pa
 	\label{fig:iteration1_pakke_diagram_webapp}
 \end{figure}
 
-\textbf{CommunicationHandling}\\
-Pakkens ansvar er kommunikation imellem drone og server. Pakken sender flyveinformation til dronen, som bruger har lavet på webapplikationen.
-
 \textbf{UserHandling}\\
 Pakkens ansvar er validering af login/log ud på websitet. Pakken har også ansvaret for at hente og gemme data om den pågældende bruger.
 
 \textbf{DatabaseHandling}\\
 Pakkens ansvar er kommunikation imellem databasen og serveren. 
 
+\textbf{DroneHandling}\\
+Pakkens ansvar er alt data vedrørende dronen, så som håndteringen af events, waypoints og div droner.
 
 \newpage
 
