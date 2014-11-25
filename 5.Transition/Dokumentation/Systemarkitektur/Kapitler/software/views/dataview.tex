@@ -1,5 +1,9 @@
 \section{Data view}
 
+I data viewet beskrives layout af data der gemmes og hvordan det lagres. Desuden beskrives hvordan data sendes rundt i systemet og hvordan database tilgås. 
+
+MANGLER LIDT INDLEDENDE TEKST
+
 \subsection{Database design}
 
 \subsubsection*{Mission}
@@ -8,7 +12,7 @@ Databasen har til formål at vise systemets brugere hvilke droner de har til rå
 \subsubsection*{Design}
 På figur \ref{fig:database_design} ses det overordnede designet af databasen. Som beskrevet i foranalysen er det valgt at gøre brug af en SQLight database. Alt kommunikation til og fra databasen vil fungere igennem et database API. Database API'et er et REST API som er udviklet ved brug af Django og Django REST frameworket. Ved kombination af disse Django og Django REST fås en databasen som er "indkapslet" og kun kan tilgås gennem API'et. Kommunikationen til og fra API'et foregår ved sende eller modtage JSON filer til API'ets endpoints. Hjælpe tabellerne som ses på figur \ref{fig:database_design} bliver automatisk oprettet af django frameworket, hvilket betyder de senere ikke er til at finde i koden for databasen. Hjælpe tabellerne er dog tegnet med på diagrammet, da de eksistere i systemet og fordi de kan være med til at forstærke forståelsen af databasen. 
 
-\vspace{-5pt}
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1\textwidth]{Billeder/database/database_design.png}
@@ -17,6 +21,8 @@ På figur \ref{fig:database_design} ses det overordnede designet af databasen. S
 	\label{fig:database_design}
 \end{figure}
 
+
+\newpage
 \subsubsection*{Tilgængelige endpoints}
 De tilgængelige endpoint i API'et er følgende:
 

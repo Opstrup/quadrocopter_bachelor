@@ -1,4 +1,4 @@
-\section{Detaljeret timer opsætning}
+\subsection{Opsætning af timere til PWM}
 
 Da dronen skal flyve autonomt er det påkrævet at dronen skal styres via main controlleren (arduino boardet). Main controlleren styrer dronen ved at sende 6 forskellige pwm signaler til flight control boardet. De 6 pwm signaler bruges til at kontrollere og regulerer henholdsvis: Throttle, yaw, pitch, roll, alttitudehold og flightmode.
 
@@ -125,6 +125,7 @@ Bemærk: Dette delafsnit tager udgangspunkt i TCCR3C registeret tilhørende time
 	\label{fig:Timing_diagram}
 \end{figure}
  
+\vspace{1cm}
 
 \subsection*{Indstilling Top og Compare match}
 Reelt set er opsætningen af duty cycle og periodetid fuldstændig ligegyldigt. Det eneste der betyder noget, er at de PWM signaler der sendes til flight control boardet har pulsbredde mellem 1-2 ms.

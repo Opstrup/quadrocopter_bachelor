@@ -4,11 +4,12 @@ I det følgende afsnit beskrives systemets hardware vha. SysML diagrammer.
 Indledningsvis bruges bdd'er til at identificere og beskrive systemets blokke. Senere i afsnittet åbnes udvalgte blokke og de interne og eksterne forbindelser vises med ibd'er.
 
 \section{Block definition diagram}
-I det overordnede bdd nedenfor vises hvilke blokke systemet består af, samt hvilke parts blokkene har. Det ses at systemet helt overordnet set kun består af de to blokke: \textit{Webserver} og \textit{Drone}. 
+I det overordnede bdd nedenfor vises de blokke systemet består af, samt hvilke parts blokkene har. Helt overordnet set består systemet af blokkene: \textit{Webserver} og \textit{Drone}. 
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=1\textwidth]{Billeder/BDD/bdd_overordnet.pdf}
+\vspace{-1cm}
 \caption{Bdd - overordnet}
 \label{fig:bdd_overordnet}
 \end{figure}
@@ -19,7 +20,8 @@ Figur \ref{fig:bdd_drone} går mere i dybden med drone blokken. På denne figur 
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=1\textwidth]{Billeder/BDD/bdd_drone.pdf}
+\includegraphics[width=1.\textwidth]{Billeder/BDD/bdd_drone.pdf}
+\vspace{-0.7cm}
 \caption{Bdd - drone}
 \label{fig:bdd_drone}
 \end{figure}
@@ -29,25 +31,26 @@ Figur \ref{fig:bdd_drone} går mere i dybden med drone blokken. På denne figur 
 \subsection{Blokbeskrivelse}
 
 \textbf{Webapplikation}\\
-Denne blok dækker over server, GUI, database og kommunikation. Via GUI tilgår bruger webapplikationens server, hvorfra det er muligt for bruger at opsætte en ny, eller undersøger en tidligere flyvning. Webapplikationen kommunikerer med dronen og gemmer vigtig information i databasen.
+Denne blok indeholder server, GUI, database og kommunikation. 
+Ved interaktion med GUI er det muligt for bruger at tilgå webapplikationens server. Sammenspil mellem GUI og server gør det muligt for bruger at lave en ny flyveopsætning eller undersøger en tidligere flyvning. Webapplikationen kommunikerer med dronen og gemmer løbende vigtig information i databasen.
 
 \textbf{Main controller}\\
-Main controlleren fungerer som dronens hjerne. Ud fra kommunikation med webapplikation og input fra de forskellige sensorer styrer main controlleren dronens motorer. Skal dronen fx. flyve højere udsendes PWM signaler som sørger for motorerne øger deres rotationshastigheden. Under autonom flyvning bruges PWM signaler udsendt fra main controller til styre dronen. 
+Main controlleren fungerer som dronens hjerne. Ud fra kommunikation med webserver og input fra de forskellige sensorer styrer main controlleren dronens motorer. Skal dronen fx. flyve højere udsendes styrings signaler, som sørger for motorerne øger deres rotationshastigheden. Under autonom flyvning bruges PWM signaler udsendt fra main controller til styre dronen. 
 
 \textbf{Remote controller}\\
-Denne blok består af receiver, transmitter og switch board. Blokken gør det muligt at switche mellem autonom og manuel styring. Afhængig af hvordan transmitteren (fjernbetjening) er opsat benyttes henholdsvis manuel eller autonom flyvning.
+Denne blok består af receiver, transmitter og switch board. Blokken gør det muligt at switche mellem autonom og manuel styring. Afhængig af hvordan transmitteren (fjernbetjening) er indstillet benyttes henholdsvis manuel eller autonom flyvning.
 
 \textbf{Flight control board}\\
-Flight control boardet indholder software til styring, derunder PID regulering. Boardet har indbygget kompas, gyroskop, accelerometer og barometer, disse bruges under flyvning. Flight control boardets vigtigste opgave er at viderebringe control signaler fra main controller til ESC'er som åbner/lukker for forsyning til dronens motorer. 
+Flight control boardet indholder software til styring, derunder PID regulering. Boardet har indbygget kompas, gyroskop, accelerometer og barometer, som alle bruges under flyvning. Flight control boardets vigtigste opgave er at viderebringe control signaler fra main controller til ESC'er som åbner/lukker for forsyning til dronens motorer. 
 
 \textbf{3G/GPS}\\
-3G/GPS blokken har to funktioner i systemet. For det første er 3G/GPS blokken ansvarlig for opdatering af dronens GPS position. Desuden fungerer blokken som kommunikationslag mellem webapplikation og main controller. Al information der udvekles mellem webapplikation og drone går gennem 3G/GPS modulet.
+3G/GPS blokken har to funktioner i systemet. For det første er 3G/GPS blokken ansvarlig for opdatering af dronens GPS position. Desuden fungerer blokken som kommunikationslag mellem webserver og main controller. Al information der udvekles mellem webserver og drone går gennem 3G/GPS modulet.
 
 \textbf{Afstandssensorer}\\
-Afstandssensorerne bruges både til måling af flyvehøjde og til antikollision. Sensorerne aktiveres af main controlleren, når ny højdemåling eller tjek af forhindring skal foretages. Sensorerne bruger 40 kHz signaler til at måle distancen til jorden eller eventuelle forhindringer.
+Afstands sensorerne bruges både til måling af flyvehøjde og til anti kollision. Sensorerne aktiveres af main controlleren, når højdemåling eller tjek af forhindring foretages. Sensorerne bruger 40 kHz signaler til at måle distancen til jorden eller eventuelle forhindringer.
 
 \textbf{Kamera}\\
 Når dronen er i rette position modtager kameraet besked og tager et billede. Billedet tages og sendes videre i systemet til godkendelse. Der tages et nyt billede hvis billedet ikke godkendes.
 
 \textbf{Motor control}\\
-Denne blok består af ESC, batteri og motorer. Blokken styres med PWM signaler som udsendes fra flight control boardet.
+Denne blok består af ESC, batteri og motorer. Blokken styres med PWM signaler, som udsendes fra flight control boardet.
