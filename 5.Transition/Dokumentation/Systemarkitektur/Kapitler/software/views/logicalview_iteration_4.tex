@@ -15,6 +15,43 @@ Bruger af systemet har ingen direkte kontakt med anti kollisionssystemet. For br
 	\label{fig:design_overview_UC4}
 \end{figure}
 
+\subsubsection*{Pakkediagram drone}
+I dette afsnit vises pakkediagram tilhørende drone. Hver pakke i pakkediagrammet består af en eller flere klasser, der med stort samspil udfører opgaver indenfor et fælles ansvarsområde. 
+På hver pakke findes en lille beskrivelse, der tydeliggør pakkens ansvarsområde. De dele af pakkerne der er gråskraveret, er funktionalitet udarbejdet i tidligere iteration.
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{Billeder/pakke_diagrammer/iteration3_drone.png}
+	\vspace{-0.5cm}
+	\caption{Pakkediagram drone}
+	\label{fig:iteration2_pakke_diagram_drone}
+\end{figure}
+
+\textbf{SensorHandling}\\
+Pakken er ansvarlig for indsamling af sensor data. I denne iteration skal pakken bruges til aflæsning af højdemåler og kompasset på flight control boardet. 
+
+\textbf{FlightHandling}\\
+Pakkens ansvar er kontrol og styring af drone under flyvning. Ved sammenligning af sensor data og data fra flyveopsætning tilpasses flyvehøjde, orientering mm
+
+\textbf{GPSHandling}\\
+Pakkens ansvar er håndtering af GPS. Dels er pakken ansvarlig for opstart og initiering af GPS, og desuden bruges pakken hver gang dronens nuværende GPS position skal opdateres.
+
+\textbf{CommunicationHandling}\\
+Pakkens ansvar er kommunikation imellem drone og server. Efter denne iteration skal dronen kunne hente flyveopsætninger fra server, sende sin nuværende GPS position til server og sende billeder til server.
+
+\textbf{CameraHandling}\\
+Pakkens ansvar er håndtering af kamera. Pakken bruges til at starte, initierer, bruge og slukke kameraet.
+
+
+\newpage
+\subsubsection*{Pakkediagram webapplikation}
+I dette afsnit vises pakkediagram tilhørende drone. Hver pakke i pakkediagrammet består af en eller flere klasser, der med stort samspil udfører opgaver indenfor et fælles ansvarsområde. 
+På hver pakke findes en lille beskrivelse, der tydeliggør pakkens ansvarsområde. De dele af pakkerne der er gråskraveret, er funktionalitet udarbejdet i tidligere iteration. \\
+
+
+BILLEDE OG BESKRIVELSE MANGLER
+
 
 \newpage
 \subsubsection*{Sekvens diagram}
