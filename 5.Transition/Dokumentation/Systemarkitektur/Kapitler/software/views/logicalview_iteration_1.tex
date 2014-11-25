@@ -1,10 +1,12 @@
 \subsection{Iteration \#1}
+\vspace{-0.4cm}
 I iteration 1 arbejdes der med blokke som dækker over systemets mest grundlæggende funktionalitet. Batteri, ESC’er, motorer og sensorer tilsluttes dronen, og dronen gøres desuden i stand til oprette forbindelse til webapplikationen via 3G-shield’et.
 Server opsættes, så at basal kommunikation mellem dronen og server er muligt. Det skal bla. være muligt for dronen at uploade sin nuværende position til server. For flere detaljer vedrørende opsætning og funktionalitet af server henvises til data view'et. 
 Hvordan systemet er tiltænkt at bruges beskrives i user story nedenfor:
 
 \subsubsection*{User story}
-Bruger tænder dronen ved at tilslutte batteri. Main controller samt 3G/GPS module initialiseres og nuværende GPS position opdateres. Herefter oprettes forbindelse mellem drone og websitet, og information om dronen er online samt information om dronens nuværende GPS position sendes til websitet. Fra websitet er det muligt for bruger løbende at observere hvorvidt dronen er online og på hvilken GPS position dronen sidst har befundet sig.
+\vspace{-0.4cm}
+Bruger tænder dronen ved at tilslutte batteri. Main controller samt 3G/GPS module initialiseres og nuværende GPS position opdateres. Herefter opretter dronen forbindelse til webapplikation og sender information om sin nuværende GPS position. Fra webapplikationen er det muligt for bruger løbende at observere hvorvidt dronen er online og på hvilken GPS position dronen sidst har befundet sig.
 
 %kommentar
 \begin{figure}[H]
@@ -17,9 +19,9 @@ Bruger tænder dronen ved at tilslutte batteri. Main controller samt 3G/GPS modu
 
 
 \newpage
-\subsubsection*{Pakke diagram Drone}
+\subsubsection*{Pakkediagram drone}
 
-I denne sektion vises pakkediagrammer tilhørende drone. De pakker der vises i pakkediagrammerne består af en eller flere klasser, der med stort samspil udfører opgaver indenfor et fælles ansvarsområde. På hver pakke findes en lille beskrivelse, der tydeliggør pakkens ansvarsområde. 
+I dette afsnit vises pakkediagram tilhørende drone. De pakker der vises i pakkediagrammet består af en eller flere klasser, der med stort samspil udfører opgaver indenfor et fælles ansvarsområde. På hver pakke findes en lille beskrivelse, der tydeliggør pakkens ansvarsområde. 
 
 
 \begin{figure}[H]
@@ -31,16 +33,15 @@ I denne sektion vises pakkediagrammer tilhørende drone. De pakker der vises i p
 \end{figure}
 
 \textbf{CommunicationHandling}\\
-Pakkens ansvar er kommunikation imellem drone og server. Der er fokus på at drone kan sende GPS position til server.
+Pakkens ansvar er kommunikation imellem drone og server. I denne iteration er der fokus på, at dronen skal kunne sende sin nuværende GPS position til server.
 
-\textbf{SensorHandling}\\
-Pakkens ansvar er håndtering af 3G, GPS og højdesensor data.
-
+\textbf{GPSHandling}\\
+Pakkens ansvar er håndtering af GPS. Dels er pakken ansvarlig for opstart og initiering af GPS, og desuden bruges pakken hver gang dronens nuværende GPS position skal opdateres.
 
 \newpage
-\subsubsection*{Pakke diagram Webapplikation}
+\subsubsection*{Pakkediagram webapplikation og server}
 
-I denne sektion vises pakkediagrammer tilhørende drone. De pakker der vises i pakkediagrammerne består af en eller flere klasser, der med stort samspil udfører opgaver indenfor et fælles ansvarsområde. På hver pakke findes en lille beskrivelse, der tydeliggør pakkens ansvarsområde.
+I dette afsnit vises pakkediagram tilhørende webapplikation og webserver. De pakker der vises i pakkediagrammet består af en eller flere klasser, der med stort samspil udfører opgaver indenfor et fælles ansvarsområde. På hver pakke findes en lille beskrivelse, der tydeliggør pakkens ansvarsområde. 
 
 \begin{figure}[H]
 	\centering
@@ -61,8 +62,55 @@ Pakkens ansvar er kommunikation imellem databasen og serveren.
 
 
 \newpage
+\subsubsection*{Sekvensdiagram drone}
+På sekvensdiagrammet på figur \ref{fig:Sekvens_diagram_iteration1}, vises hvilke klasser der indgår og bruges i første iteration. Af sekvensdiagrammet fremgår det, at sekvensen først startes når bruger tilslutter batteri og tænder dronen. Når der er tilkoblet forsyning initialiseres main controller samt 3G/GPS og nuværende GPS position  (longitude og latitude) opdateres. Dronens nuværende GPS position opdateres når dronen sender PUT requests til websitet. PUT requests bruges dels til at fortælle websitet at dronen er online og dels til at give websitet information om dronens nuværende position. 
 
-\subsubsection*{Klasse diagram - drone}
+%kommentar
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{Billeder/sekvens/sekvens_iteration1}
+	\caption{Sekvens diagram \#iteration 1}
+	\label{fig:Sekvens_diagram_iteration1}
+\end{figure}
+\newpage
+
+På figur \ref{fig:Sekvens_diagram_initialget} og figur \ref{fig:Sekvens_diagram_putDroneStatus} bliver 3G modulet yderligere uddybet.\\
+\ref{fig:Sekvens_diagram_initialget} viser hvilke klasser der anvendes til at hente data fra serveren. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{Billeder/sekvens/sekvens_iteration1_initialget}
+	\caption{Sekvens diagram \#iteration 1 - initialget}
+	\label{fig:Sekvens_diagram_initialget}
+\end{figure}
+
+\vspace{.5cm}
+
+De data der hentes med GET requestet, bruges sammen med PUT requestet. For at kunne udføre et PUT request, skal data der ønskes sendt til server stemme overens med det data der i forvejen ligger på serveren.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{Billeder/sekvens/sekvens_iteration1_putdronestatus}
+	\caption{Sekvens diagram \#iteration 1 - putDroneStatus}
+	\label{fig:Sekvens_diagram_putDroneStatus}
+\end{figure}
+
+
+\newpage
+
+\subsubsection*{Sekvensdiagram webapplikation}
+På figur \ref{fig:Sekvens_diagram_login} ses sekvens diagrammet over login på webappplikationen. På diagrammet vises det at useren først bliver ført til næste side ved succesfuld login. Diagrammet viser også kommunikationen med CRUDServiceDrone som kommunikerer med databasen. Diagrammet viser også hvordan AuthenticationServices setter den givet users data inden useren bliver ført vider i systemet.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{Billeder/sekvens/login_sq_diagram.png}
+	\caption{Sekvens diagram login}
+	\label{fig:Sekvens_diagram_login}
+\end{figure}
+\newpage
+
+
+\subsubsection*{Klassediagram drone}
 \vspace{-0.2cm}
 Figur \ref{fig:classDiagram_iteration1} vises et klassediagram tilhørende iteration 1. Klassediagrammet viser iterationens vigtigste klasser, samt deres tilhørende metoder og attributter. På den følgende side forefindes en kort beskrivelse klasserne og deres metoder.
 
@@ -111,7 +159,7 @@ EventHandleren er den klasse der håndterer Events. EventHandleren er bindeledet
 
 \newpage
 
-\subsubsection*{Klasse diagram - website}
+\subsubsection*{Klassediagram website}
 \vspace{-0.2cm}
 Figur \ref{fig:classDiagram_login} viser klassediagrammet tilhørende websitet for iteration 1.
 \vspace{-0.2cm}
@@ -139,51 +187,6 @@ UserServices indeholder information om user der er logget ind i systemet.
 
 \textbf{CRUDServiceDrone} \\
 CRUDServiceDrone er den service der styre alt kontakt til databasen i systemet. Igennem denne service er det muligt at hente, opdater og poste data til databasen.
-
-
-
-\newpage
-\subsubsection*{Sekvens diagram - drone}
-På sekvensdiagrammet på figur \ref{fig:Sekvens_diagram_iteration1}, vises hvilke klasser der indgår og bruges i første iteration. Af sekvensdiagrammet fremgår det, at sekvensen først startes når bruger tilslutter batteri og tænder dronen. Når der er tilkoblet forsyning initialiseres main controller samt 3G/GPS og nuværende GPS position  (longitude og latitude) opdateres. Dronens nuværende GPS position opdateres når dronen sender PUT requests til websitet. PUT requests bruges dels til at fortælle websitet at dronen er online og dels til at give websitet information om dronens nuværende position. 
-
-
-%kommentar
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.93\textwidth]{Billeder/sekvens/sekvens_iteration1}
-	\caption{Sekvens diagram \#iteration 1}
-	\label{fig:Sekvens_diagram_iteration1}
-\end{figure}
-\newpage
-
-På figur \ref{fig:Sekvens_diagram_initialget} og figur \ref{fig:Sekvens_diagram_putDroneStatus} bliver 3G modulet uddybet yderligere ifht. iteration 1.
-\ref{fig:Sekvens_diagram_initialget} viser hvilke klasser der anvendes til at hente værdier fra serveren. De data der hendes ned med GET requesten, skal bruges sammen med PUT request i den anden klasse. For at kunne udføre et PUT funktion, skal de id'er der ønskes at blive sendt stemme overens med dem der ligger på serveren.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.93\textwidth]{Billeder/sekvens/sekvens_iteration1_initialget}
-	\caption{Sekvens diagram \#iteration 1 - initialget}
-	\label{fig:Sekvens_diagram_initialget}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.93\textwidth]{Billeder/sekvens/sekvens_iteration1_putdronestatus}
-	\caption{Sekvens diagram \#iteration 1 - putDroneStatus}
-	\label{fig:Sekvens_diagram_putDroneStatus}
-\end{figure}
-
-\subsubsection*{Sekvens diagram - website}
-På figur \ref{fig:Sekvens_diagram_login} ses sekvens diagrammet over login på websitet. På diagrammet vises det at useren først bliver ført til næste side ved succesfuld login. Diagrammet viser også kommunikationen med CRUDServiceDrone som kommunikerer med databasen. Diagrammet viser også hvordan AuthenticationServices setter den givet users data inden useren bliver ført vider i systemet.
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.93\textwidth]{Billeder/sekvens/login_sq_diagram.png}
-	\caption{Sekvens diagram login}
-	\label{fig:Sekvens_diagram_login}
-\end{figure}
-\newpage
-
-
 
 
 \subsubsection*{State machine diagram}
