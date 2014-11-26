@@ -121,7 +121,7 @@ Som det fremgår af while loopet fortsætter flyvningen indtil dronen er 15 mete
 \end{figure}
 
 \newpage
-\subsubsection*{Sekvensdiagram website}
+\subsubsection*{Sekvensdiagram webapplikation}
 \vspace{-0.1cm}
 På figur \ref{fig:page_load} ses hvordan klasserne på websitet interagere med hinanden ved et page load. Kortet bliver initialiseret med centrum over århus og drone markeren bliver initialiseret. Useren som blev gemt ved login bliver brugt til at give en velkomst besked oppe i højre hjørne og sener vil blive brugt når der skal oprettet nye events. Listen med tilgængelige droner bliver loaded. Et click event bliver også oprettet som trigger ved click på kortet til oprettelse af nye waypoints.
 \begin{figure}[H]
@@ -202,7 +202,7 @@ WayPointsHandler klassen er den klasse der håndterer de waypoints der hentes ne
 WayPoint klassen bruges til at kunne hente de forskellige waypoints ud af arrayet.  
 
 
-\subsubsection*{Klassediagram website}
+\subsubsection*{Klassediagram webapplikation}
 \vspace{-0.1cm}
 På figur \ref{fig:classDiagram_home} ses klasse diagrammet tilhørende iteration to for websitet. Funktionaliteten er blevet udvidet med overblik over droner i systemet og deres status. Mulighed for at oprette events til den ønskede drone. 
 \begin{figure}[H]
@@ -212,3 +212,27 @@ På figur \ref{fig:classDiagram_home} ses klasse diagrammet tilhørende iteratio
 	\caption{Klassediagram home}
 	\label{fig:classDiagram_home}
 \end{figure}
+
+\textbf{home}
+Denne klasse er view'et tilhørende iteration to. Denne klasse sammen med homeCtrl skaber det endelig view som brugeren ser i sin browser når han besøger siden.
+
+\textbf{homeCtrl}
+HomeCtrl klassen er controller klassen til iteration to. Det er den eneste klasse der har direkte forbindelse til view'et, homeCtrl klassen deler også hukommelse med view'et igennem two-way-binding med scopes.
+
+\textbf{DroneServices}
+Denne klasse indeholder logikken om drone håndteringen. Den har ansvaret for at hente informationer omkring droner fra serveren via CRUDServiceDrone klassen.
+
+\textbf{WaypointServices}
+Denne klasse indeholder logikken om waypoint håndtering. Denne klasse henter henter waypoints tilhørende et event til controller klassen. Klassen bliver også brugt til at sende waypoints til serveren via CRUDServiceDrone klassen.
+
+\textbf{EventServices}
+Denne klasse indeholder logikken om event håndtering. Klassen bruges til at hente en event liste, et enkelt event for en givet drone og sende et nyoprettet event til serveren via CRUDServiceDrone klassen.
+
+\textbf{MapServices}
+Denne klasse indeholder logikken om map håndtering. Klassen bruges til at opdatere kortet i view'et, tegne waypoints og dronen på kortet.
+
+\textbf{CRUDServicesDrone}
+Denne klasse fungere som bindeled imellem server og webapplikation. Klassen indeholder alt logikken omkring kommunikation til serveren, alle der vil kommunikere med serveren i systemet skal benytte sig af denne klasse. Igennem denne service er det muligt at hente, opdater og poste data til serveren.
+
+\textbf{UserServices}
+Denne klasse blev oprettet i iteration et og bruges til at gemme information omkring hvilke bruger der er logget ind i systemet.
