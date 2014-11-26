@@ -171,19 +171,19 @@ Figur \ref{fig:classDiagram_login} viser klassediagrammet tilhørende websitet f
 \vspace{-0.2cm}
 
 \textbf{login} \\
-Login view filen er det html script som useren ser på sin webclient. Filen er two-way databinded med loginCtrl klassen. Via denne binding kan der sendes og modtages data direkte.
+Denne klasse er view'et tilhørende iteration et. Denne klasse sammen med loginCtrl skaber det endelig view som brugeren ser i sin browser når han besøger siden.
 
 \textbf{loginCtrl} \\
 LoginCtrl er controller klassen som er forbundet med view klassen via two-way databinding. Klassen uddelegere også opgaver til dens services.
 
 \textbf{AuthenticationServices} \\
-AuthenticationServices er en service der afgør om user er authenticated eller ej. Hvis user er authenticated bliver han redirected til websitets home-page. Klassen gør brug af UserServices til at gemme information om den user der er logget ind i systemet.
+AuthenticationServices klassen har ansvaret for at afgør om user er authenticated eller ej. Hvis user er authenticated bliver han redirected til websitets home-page. Klassen gør brug af UserServices klassen til at gemme information om den user der er logget ind i systemet.
 
 \textbf{UserServices}\\
-UserServices indeholder information om user der er logget ind i systemet.
+UserServices bruges til at gemme information omkring hvilke bruger der er logget ind i systemet.
 
-\textbf{CRUDServiceDrone} \\
-CRUDServiceDrone er den service der styre alt kontakt til databasen i systemet. Igennem denne service er det muligt at hente, opdater og poste data til databasen.
+\textbf{CRUDServicesDrone}
+Denne klasse fungere som bindeled imellem server og webapplikation. Klassen indeholder alt logikken omkring kommunikation til serveren, alle der vil kommunikere med serveren i systemet skal benytte sig af denne klasse. Igennem denne service er det muligt at hente, opdater og poste data til serveren.
 
 
 \subsubsection*{State machine diagram}
