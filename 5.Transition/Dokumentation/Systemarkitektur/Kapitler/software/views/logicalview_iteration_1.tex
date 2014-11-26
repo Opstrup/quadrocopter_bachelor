@@ -111,7 +111,6 @@ På figur \ref{fig:Sekvens_diagram_login} ses sekvens diagrammet over login på 
 \vspace{-0.2cm}
 Figur \ref{fig:classDiagram_iteration1} vises et klassediagram tilhørende iteration 1. Klassediagrammet viser iterationens vigtigste klasser, samt deres tilhørende metoder og attributter. På den følgende side forefindes en kort beskrivelse klasserne og deres metoder.
 
-\vspace{-0.2cm}
 %kommentar
 \begin{figure}[H]
 	\centering
@@ -120,10 +119,15 @@ Figur \ref{fig:classDiagram_iteration1} vises et klassediagram tilhørende itera
 	\caption{Klassediagram \#iteration 1}
 	\label{fig:classDiagram_iteration1}
 \end{figure}
-\vspace{-0.1cm}
+
+
+\vspace{0.5cm}
+
 
 \textbf{Main.cpp} \\
 Main.cpp filen bruges til at sætte arduino board korrekt op, bla. sættes baudrate på de forskellige serielle forbindelser. Desuden bruges Main.cpp til at kalde og eksekverer forskellige klasse, objekter og funktioner.
+
+\newpage
 
 \textbf{GPS} \\
 GPS klassen er implementeret som en abstract klasse, idet den ikke selv har nogle metoder den skal bruge, men med virtuelle metoder der sikrer at de implementeres i de afledte klasser. 
@@ -131,18 +135,6 @@ Init og updateGPSPosition er valgt til at være virtuelle klasser, hvilket gør 
 
 \textbf{StandaloneGPS}\\
 Denne klasse er ansvarlig for al kommunikation med GPS'en når standalone mode er valgt. 
-
-\newpage
-
-Nedenfor ses figur \ref{fig:udvidet3G_it1} som er en udvidet klasse diagram over 3G modulet. Klasse diagrammet viser et udvidet klasse diagram, der viser hvilke metoder der indgår i iteration 1 for 3G modulet. 
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.50\textwidth]{Billeder/klasse_diagrammer/udvidet3G_iteration1.png}
-	\vspace{0.5cm}
-	\caption{Udvidet klasse diagram for 3G modulet - iteration 1}
-	\label{fig:udvidet3G_it1}
-\end{figure}
 
 \textbf{GetAndPut} \\
 GetAndPut klassen er den klasse der er tættest på hardwaren. Klassen indeholder de http metoder der bruges til kommunikation mellem dronen og serveren. 
@@ -171,19 +163,19 @@ Figur \ref{fig:classDiagram_login} viser klassediagrammet tilhørende websitet f
 \vspace{-0.2cm}
 
 \textbf{login} \\
-Login view filen er det html script som useren ser på sin webclient. Filen er two-way databinded med loginCtrl klassen. Via denne binding kan der sendes og modtages data direkte.
+Denne klasse er view'et tilhørende iteration et. Denne klasse sammen med loginCtrl skaber det endelig view som brugeren ser i sin browser når han besøger siden.
 
 \textbf{loginCtrl} \\
 LoginCtrl er controller klassen som er forbundet med view klassen via two-way databinding. Klassen uddelegere også opgaver til dens services.
 
 \textbf{AuthenticationServices} \\
-AuthenticationServices er en service der afgør om user er authenticated eller ej. Hvis user er authenticated bliver han redirected til websitets home-page. Klassen gør brug af UserServices til at gemme information om den user der er logget ind i systemet.
+AuthenticationServices klassen har ansvaret for at afgør om user er authenticated eller ej. Hvis user er authenticated bliver han redirected til websitets home-page. Klassen gør brug af UserServices klassen til at gemme information om den user der er logget ind i systemet.
 
 \textbf{UserServices}\\
-UserServices indeholder information om user der er logget ind i systemet.
+UserServices bruges til at gemme information omkring hvilke bruger der er logget ind i systemet.
 
-\textbf{CRUDServiceDrone} \\
-CRUDServiceDrone er den service der styre alt kontakt til databasen i systemet. Igennem denne service er det muligt at hente, opdater og poste data til databasen.
+\textbf{CRUDServicesDrone}
+Denne klasse fungere som bindeled imellem server og webapplikation. Klassen indeholder alt logikken omkring kommunikation til serveren, alle der vil kommunikere med serveren i systemet skal benytte sig af denne klasse. Igennem denne service er det muligt at hente, opdater og poste data til serveren.
 
 
 \subsubsection*{State machine diagram}
