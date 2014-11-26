@@ -52,6 +52,50 @@ I menuen for GNU Linker vælges Libraries. Her tilføjes core filen fra tidliger
 
 Atmel Studio er nu sat op til at fungere sammen med Arduino biblioteker. For at gøre brug af Arduino biblioteket tilføjes Arduino.h til projektet.
 
+\subsubsection*{Eksterne bibliotekter til Atmel}
+
+I Atmel og arduino findes der ikke standard JSon biblioteker, der kan håndtere JSon objekter. Det har derfor været nødvendigt at bruge et eksternt bibliotek, der kan håndtere disse JSon objekter.
+Det anvendte bibliotek hedder aJson\footnote{https://github.com/interactive-matter/aJson} og er et frit tilgængeligt JSon bibliotek som er lavet til Arduino.
+
+
+\subsubsection*{Filoversigt Drone}
+
+Dette afsnit omhandler de forskellige filer og biblioteker der er anvendt i Atmel Studio. 
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.25\textwidth]{Billeder/implementation/Howtoguide/atmel_filer.png}
+\end{figure}
+
+\textbf{aJSon}\\
+JSon biblioteket håndterer sammen med stringbuffer biblioteket de JSon objekter der bruges af dronen. Der kan læses mere om JSon biblioteket her\footnote{https://github.com/interactive-matter/aJson} \\ \\
+\textbf{Communication}\\
+Communication klassen er den klasse der håndterer al kommunikation til dronen. Communication klassen er den øverste klasse i forhold til kommunikationen over 3G. \\ \\
+\textbf{DistanceSensor}\\
+Denne klasses funktionalitet er aflæsningen af sensorværdierne. \\ \\
+\textbf{Drone\_fly}\\
+Dette er selve mainen til systemet. Det er denne fil der håndterer alle andre klasser der anvendes i drone systemet. \\ \\
+\textbf{EventHandler}\\
+EventHandleren håndterer alle GET og PUT metoder der har med events at gøre. \\ \\
+\textbf{FlightControl}\\
+FlightControl klassen styrer selve dronen. Den får input fra både Flight Control boarded og 3G/GPS shieldet og udregner bl.a. orientering. \\ \\
+\textbf{GetAndPut}\\
+GetAndPut klassen er den klasse der er mest hardware nær i forhold til kommunikationen over 3G. Det er denne klasse der kontrollerer hvilken GET og PUT requests der skal sendes og til hvilken server. \\ \\ 
+\textbf{GPS}\\
+Denne klasse er en abstrakt klasse, som kun indeholder virtuelle metoder. Det gør at andre klasser der bruger denne abstrakte klasse, som minimum skal implementere de virtuelle metoder. \\ \\
+\textbf{sendAT}\\
+sendAT er taget med for at kunne sende AT kommandoer til 3G/GPS shieldet. \\ \\
+\textbf{standAloneGps}\\
+standAloneGps håndterer den valgte GPS og de metoder der skal bruges for at hente GPS koordinater. \\ \\
+\textbf{waypoint}\\
+Waypoint klassen håndterer det data WayPointsHandleren får.\\ \\
+\textbf{WayPointsHandler}\\
+WayPointsHandleren håndterer alle GET og PUT metoder der har med  waypoints at gøre. \\ \\
+
+
+
+
 
 \subsection{Opsætning af serial programmerings link}
 
@@ -77,37 +121,6 @@ I dropdown menuen vælges den arduino der skal bruges til projektet.
 
 
 
-\subsection{Eksterne bibliotekter til Atmel}
-
-I Atmel og arduino findes der ikke standard JSon biblioteker, der kan håndtere JSon objekter. Det har derfor været nødvendigt at bruge et eksternt bibliotek, der kan håndtere disse JSon objekter.
-Det anvendte bibliotek hedder aJson\footnote{https://github.com/interactive-matter/aJson} og er et frit tilgængeligt JSon bibliotek som er lavet til Arduino.
 
 
-\subsection{Filoversigt Drone}
-
-Dette afsnit omhandler de forskellige filer og biblioteker der er anvendt i Atmel Studio. 
-
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.25\textwidth]{Billeder/implementation/Howtoguide/atmel_filer.png}
-\end{figure}
-
-\textbf{aJSon}\\
-JSon biblioteket håndterer sammen med stringbuffer biblioteket de JSon objekter der bruges af dronen. Der kan læses mere om JSon biblioteket her\footnote{https://github.com/interactive-matter/aJson} \\ \\
-\textbf{Communication}\\
-Communication klassen er den klasse der håndterer kommunikationen for dronen. Communication klassen er den øverste klasse der håndterer 3G modulet. \\ \\
-\textbf{DistanceSensor}\\
-Denne klasses funktionalitet er aflæsningen af sensorværdierne. \\ \\
-\textbf{Drone\_fly}\\
-Dette er selve mainen til systemet. Det er denne fil der håndterer alle andre klasser der anvendes i drone systemet. \\ \\
-\textbf{EventHandler}\\
-\\ \\
-\textbf{FlightControl}\\
-\textbf{GetAndPut}\\
-\textbf{GPS}\\
-\textbf{sendAT}\\
-\textbf{standAloneGps}\\
-\textbf{waypoint}\\
-\textbf{WayPointsHandler}\\
 
