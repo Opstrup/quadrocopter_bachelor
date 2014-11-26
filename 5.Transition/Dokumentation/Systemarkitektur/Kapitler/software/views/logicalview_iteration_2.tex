@@ -156,11 +156,14 @@ På figur \ref{fig:classDiagram_drone_underflyvning} ses klasse diagrammet for d
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=1\textwidth]{Billeder/klasse_diagrammer/classdiagram_iteration2_fly.png}
-	\vspace{0cm}
+	\includegraphics[width=1\textwidth]{Billeder/klasse_diagrammer/classdiagram_iteration2_drone.png}
+	\vspace{-0.7cm}
 	\caption{Klassediagram drone}
 	\label{fig:classDiagram_drone_underflyvning}
 \end{figure}
+
+\textbf{Main.cpp} \\
+Main.cpp bruges til at sætte arduino board korrekt op, bla. sættes baudrate på de forskellige serielle forbindelser. Desuden bruges Main.cpp til at kalde og eksekverer forskellige klasse, objekter og funktioner.
 
 \textbf{FlightControl} \\
 Det er Flight Control klassen der har alt med styring af dronen at gøre, lige fra calibrering af motorerne til at hente data fra kompasset. 
@@ -168,21 +171,14 @@ Det er Flight Control klassen der har alt med styring af dronen at gøre, lige f
 \textbf{DistanceSensor} \\
 DistanceSensor klassen bruges til at kontrollere de sensorer der er monteret på dronen. Her er det både sensorer til højdemåling og anti kollision. 
 
+\newpage
+
 \textbf{GPS} \\
 GPS klassen er implementeret som en abstract klasse, idet den ikke selv har nogle metoder den skal bruge, men med virtuelle metoder der sikrer at de implementeres i de afledte klasser. 
 Init og updateGPSPosition er valgt til at være virtuelle klasser, hvilket gør at de skal implementeres uanset hvilken GPS der bruges. Klassen er lavet fordi der i udgangspunkt var mulighed for at bruge 3 forskellige slags GPS modes med 3G/GPS shieldet. 
 
-\newpage
-På Figur \ref{fig:classDiagram_3Gmodul} er der vist en udvidet klasse diagram for 3G modulet. På diagrammet vises de metoder og attributter der indgår i klasserne. 
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=1\textwidth]{Billeder/klasse_diagrammer/classdiagram_3gmodule.png}
-	\vspace{0cm}
-	\caption{Klassediagram 3G modul}
-	\label{fig:classDiagram_3Gmodul}
-\end{figure}
-
+\textbf{StandaloneGPS}\\
+Denne klasse er ansvarlig for al kommunikation med GPS'en når standalone mode er valgt. 
 
 \textbf{GetAndPut} \\
 GetAndPut klassen er den klasse der er tættest på hardwaren. Klassen indeholder de http metoder der bruges til kommunikation mellem dronen og serveren. 
@@ -193,13 +189,13 @@ Communication klassen er den øverste klasse og den håndterer sammen med andre 
 \textbf{EventHandler} \\
 EventHandleren er den klasse der håndterer Events. EventHandleren er bindeledet mellem communication- og GetAndPut klassen. EventHandleren sorterer eventID'et fra de data den modtager og returnerer værdien til communication klassen.
 
-\newpage
-
 \textbf{WayPointsHandler} \\
 WayPointsHandler klassen er den klasse der håndterer de waypoints der hentes ned fra serveren. Klassen tager de waypoints den får fra serveren og gør dem tilgængeligt for resten af systemet. WayPointsHandleren bruger set metoderne i WayPoint klassen.
 
 \textbf{WayPoint} \\
 WayPoint klassen bruges til at kunne hente de forskellige waypoints ud af arrayet.  
+
+\newpage
 
 
 \subsubsection*{Klassediagram webapplikation}
@@ -231,8 +227,25 @@ Denne klasse indeholder logikken om event håndtering. Klassen bruges til at hen
 \textbf{MapServices}
 Denne klasse indeholder logikken om map håndtering. Klassen bruges til at opdatere kortet i view'et, tegne waypoints og dronen på kortet.
 
+
+\newpage
+
 \textbf{CRUDServicesDrone}
 Denne klasse fungere som bindeled imellem server og webapplikation. Klassen indeholder alt logikken omkring kommunikation til serveren, alle der vil kommunikere med serveren i systemet skal benytte sig af denne klasse. Igennem denne service er det muligt at hente, opdater og poste data til serveren.
 
 \textbf{UserServices}
 Denne klasse blev oprettet i iteration et og bruges til at gemme information omkring hvilke bruger der er logget ind i systemet.
+
+\vspace{1cm}
+
+\subsubsection*{State machine diagram}
+\vspace{-0.1cm}
+I state machine diagrammet på figur \ref{fig:Statemachine_iteration2}, vises de fire forskellige states der eksisterer til iteration 2 og hvordan flowet imellem dem ser ud. 
+%kommentar
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{Billeder/statemachine/State_iteration2.png}
+	\vspace{-0.5cm}
+	\caption{State machine \#iteration 2}
+	\label{fig:Statemachine_iteration2}
+\end{figure}
