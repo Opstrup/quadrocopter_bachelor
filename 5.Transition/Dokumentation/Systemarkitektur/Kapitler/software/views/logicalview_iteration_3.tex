@@ -85,28 +85,16 @@ På sekvensdiagrammet på figur \ref{fig:Sekvens_diagram_iteration3}, vises hvil
 \end{figure}
 \vspace{-0.2cm}
 
-\subsubsection*{State machine diagram}
-\vspace{-0.3cm}
-I state machine diagrammet på figur \ref{fig:Statemachine_iteration3}, vises de to states der eksisterer i iteration 3 og hvordan flowet imellem dem ser ud. Der eksisterer givet vis kun 2 states i iteration 3, men state machinen er medtaget fordi den fint illustrerer systemflowet.
+\newpage
 
-\vspace{-0.2cm}
-%kommentar
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.9\textwidth]{Billeder/statemachine/State_iteration3.png}
-	\caption{State machine \#iteration 3}
-	\label{fig:Statemachine_iteration3}
-\end{figure}
-
-
-\subsubsection*{Klasse diagram drone}
+\subsubsection*{Klassediagram drone}
 
 Figur \ref{fig:classDiagram_iteration3} vises et klassediagram tilhørende iteration 3. Klassediagrammet viser foruden main.cpp filen iteration 3's eneste centrale klasse og dens tilhørende metode. 
 
 %kommentar
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=1\textwidth]{Billeder/klasse_diagrammer/classdiagram_iteration3.png}
+	\includegraphics[width=1\textwidth]{Billeder/klasse_diagrammer/classdiagram_iteration3_drone.png}
 	\vspace{-0.5cm}
 	\caption{Klassediagram \#iteration 3}
 	\label{fig:classDiagram_iteration3}
@@ -121,7 +109,7 @@ Klassen eneste funktion er at kontrollere afstanden til eventuelle objekter fora
 
 \newpage
 
-\subsubsection*{Klasse diagram webapplikation}
+\subsubsection*{Klassediagram webapplikation}
 
 Figur \ref{fig:classDiagram_iteration3} vises klassediagrammet tilhørende iteration 3 for webapplikationen. 
 
@@ -149,11 +137,26 @@ Denne klasse indeholder logikken om foto håndtering. Klassen bruges til at hent
 \textbf{CalendarServices}\\
 Denne klasse indeholder logikken for kalenderen i view'et, klassen bruges til at oprette en kalender og navigering i kalenderen. Desuden bruges den også til at fortælle hvilke dato brugeren har valgt når han ønsker at finde billeder taget fra en givet dato.
 
+\newpage
+
 \textbf{UserServices}\\
 Denne klasse blev oprettet i iteration et og bruges til at gemme information omkring hvilke bruger der er logget ind i systemet.
 
 \textbf{CRUDServicesDrone}\\
 Denne klasse fungere som bindeled imellem server og webapplikation. Klassen indeholder alt logikken omkring kommunikation til serveren, alle der vil kommunikere med serveren i systemet skal benytte sig af denne klasse. Igennem denne service er det muligt at hente, opdater og poste data til serveren.
 
+\vspace{0.3cm}
 
+\subsubsection*{State machine diagram}
+\vspace{-0.3cm}
+I state machine diagrammet på figur \ref{fig:Statemachine_iteration3}, vises de to states der eksisterer i iteration 3 og hvordan flowet imellem dem ser ud. Der eksisterer givet vis kun 2 states i iteration 3, men state machinen er medtaget fordi den fint illustrerer systemflowet.
+
+\vspace{-0.2cm}
+%kommentar
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{Billeder/statemachine/State_iteration3.png}
+	\caption{State machine \#iteration 3}
+	\label{fig:Statemachine_iteration3}
+\end{figure}
 

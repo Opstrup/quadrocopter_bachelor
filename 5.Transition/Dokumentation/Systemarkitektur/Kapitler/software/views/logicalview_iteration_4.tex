@@ -15,6 +15,8 @@ Bruger af systemet har ingen direkte kontakt med anti kollisionssystemet. For br
 	\label{fig:design_overview_UC4}
 \end{figure}
 
+\newpage
+
 \subsubsection*{Pakkediagram drone}
 I dette afsnit vises pakkediagram tilhørende drone. Hver pakke i pakkediagrammet består af en eller flere klasser, der med stort samspil udfører opgaver indenfor et fælles ansvarsområde. 
 På hver pakke findes en lille beskrivelse, der tydeliggør pakkens ansvarsområde. De dele af pakkerne der er gråskraveret, er funktionalitet udarbejdet i tidligere iteration.
@@ -60,6 +62,27 @@ På diagrammet vises det hvordan afstanden til eventuelle objekter foran dronen 
 \end{figure}
 
 
+\subsubsection*{Klassediagram}
+\vspace{-0.1cm}
+
+%kommentar
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{Billeder/klasse_diagrammer/classdiagram_iteration4_drone.png}
+	\vspace{-0.5cm}
+	\caption{Klasse diagram \#iteration 4}
+	\label{fig:classDiagram_iteration4}
+\end{figure}
+
+
+\textbf{Main.cpp} \\
+Main.cpp filen bruges til at sætte arduino board korrekt op, bla. sættes baudrate på de forskellige serielle forbindelser. Desuden bruges Main.cpp til at kalde og eksekverer forskellige klasse, objekter og funktioner.
+
+
+\textbf{Anti collision} \\
+Module\_3G er ansvarlig for alt kommunikation mellem drone og server. I klassen bruges to forskellige slags http request. Når der ønskes at trække information fra sever til drone gøres der brug af GET request mens der gøres brug af PUT request når dronen ønsker at informere server om ny lokation.
+
+\newpage
 
 \subsubsection*{State machine diagram}
 \vspace{-0.2cm}
@@ -75,25 +98,3 @@ I state machine diagrammet på figur \ref{fig:Statemachine_iteration4}, vises de
 	\caption{Statemachine \#iteration 4}
 	\label{fig:Statemachine_iteration4}
 \end{figure}
-
-
-
-\subsubsection*{Klasse diagram}
-\vspace{-0.1cm}
-
-%kommentar
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=1\textwidth]{Billeder/klasse_diagrammer/classdiagram_iteration4.png}
-	\vspace{-0.5cm}
-	\caption{Klasse diagram \#iteration 4}
-	\label{fig:classDiagram_iteration4}
-\end{figure}
-
-
-\textbf{Main.cpp} \\
-Main.cpp filen bruges til at sætte arduino board korrekt op, bla. sættes baudrate på de forskellige serielle forbindelser. Desuden bruges Main.cpp til at kalde og eksekverer forskellige klasse, objekter og funktioner.
-
-
-\textbf{Anti collision} \\
-Module\_3G er ansvarlig for alt kommunikation mellem drone og server. I klassen bruges to forskellige slags http request. Når der ønskes at trække information fra sever til drone gøres der brug af GET request mens der gøres brug af PUT request når dronen ønsker at informere server om ny lokation.
