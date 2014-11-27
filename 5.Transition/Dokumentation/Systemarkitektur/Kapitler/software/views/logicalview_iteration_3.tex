@@ -1,8 +1,8 @@
 \subsection{Iteration \#3}
-I iteration 3 arbejdes med blokke som skal håndterer hvordan der tages billeder, forsendelse af billeder og billede visning. Der monteres kamera på dronen, så den under flyvning kan tage billeder ved de GPS lokationer som bruger har defineret i flyveopsætningen. Alle billeder der tages under flyvning sendes via mobilnet fra dronen til server. Websiden henter automatisk de seneste billeder fra serveren og gør disse tilgængelige for bruger. Hvordan systemet er tiltænkt at bruges beskrives i user story nedenfor:
+I iteration 3 arbejdes med kamera blokken, som håndterer billedtagning, forsendelse af billeder og billede visning. Der monteres kamera på dronen, så den under flyvning kan tage billeder ved de GPS lokationer som bruger har defineret. Alle billeder der tages under flyvning sendes via mobilnet til server. Websiden henter automatisk de seneste billeder fra serveren og gør disse tilgængelige for bruger. Hvordan systemet er tiltænkt at bruges beskrives i user story nedenfor:
 
 \subsubsection*{User story}
-Under flyvning tager dronen billeder som sendes via 3G/GPS modulet til serveren. Websiden kontrollerer løbende hvilke billeder der er findes på serveren og gør disse tilgængelig for bruger. Login er påkrævet før bruger kan få lov at se billeder fra forskellige flyvninger. Efter succesfuld login på websiden vælger bruger historik og vises information fra tidligere flyvninger. 
+Under flyvning tager dronen billeder som sendes via 3G/GPS modulet til serveren. Websiden kontrollerer løbende hvilke billeder der er findes på serveren og gør disse tilgængelig for bruger. Login er påkrævet før bruger kan få lov at se information fra forskellige flyvninger.
 
 %kommentar
 \begin{figure}[H]
@@ -17,8 +17,7 @@ Under flyvning tager dronen billeder som sendes via 3G/GPS modulet til serveren.
 \newpage
 \subsubsection*{Pakkediagram drone}
 I dette afsnit vises pakkediagram tilhørende drone. Hver pakke i pakkediagrammet består af en eller flere klasser, der med stort samspil udfører opgaver indenfor et fælles ansvarsområde. 
-På hver pakke findes en lille beskrivelse, der tydeliggør pakkens ansvarsområde. De dele af pakkerne der er gråskraveret, er funktionalitet udarbejdet i tidligere iteration.
-
+På hver pakke findes en lille beskrivelse, der tydeliggør pakkens ansvarsområde.
 
 \begin{figure}[H]
 	\centering
@@ -47,7 +46,7 @@ Pakkens ansvar er håndtering af kamera. Pakken bruges til at starte, initierer,
 \newpage
 \subsubsection*{Pakkediagram webapplikation}
 I dette afsnit vises pakkediagram tilhørende webapplikation. Hver pakke i pakkediagrammet består af en eller flere klasser, der med stort samspil udfører opgaver indenfor et fælles ansvarsområde. 
-På hver pakke findes en lille beskrivelse, der tydeliggør pakkens ansvarsområde. De dele af pakkerne der er gråskraveret, er funktionalitet udarbejdet i tidligere iteration. 
+På hver pakke findes en lille beskrivelse, der tydeliggør pakkens ansvarsområde.
 
 \begin{figure}[H]
 	\centering
@@ -58,22 +57,22 @@ På hver pakke findes en lille beskrivelse, der tydeliggør pakkens ansvarsområ
 \end{figure}
 
 \textbf{UserHandling}\\
-Pakkens ansvar er validering af login/log ud på websitet. Pakken har også ansvaret for at hente og gemme data om den pågældende bruger.
+Pakkens ansvar er validering af login/log ud på webapplikationen. Pakken har også ansvaret for at hente og gemme data om brugeren.
 
 \textbf{DatabaseHandling}\\
 Pakkens ansvar er kommunikation imellem databasen og serveren. 
 
 \textbf{DroneHandling}\\
-Pakkens ansvar er alt data vedrørende dronen, så som håndteringen af events, waypoints og div droner.
+Pakken er ansvarslig for håndtering af events, waypoints og forskellige droner.
 
 \textbf{PhotoHandling}\\
-Pakkens ansvar er at håndtere de billeder dronen har taget under flyvning og præsentere dem for brugeren.
+Pakkens ansvar er at håndtere de billeder dronen har taget under flyvning, præsentere dem for brugeren og sende dem videre i systemet.
 
 \newpage
 
 \subsubsection*{Sekvens diagram}
 \vspace{-0.3cm}
-På sekvensdiagrammet på figur \ref{fig:Sekvens_diagram_iteration3}, vises hvilke klasser der indgår og bruges i tredje iteration. På sekvensdiagrammet vises det hvordan kamera delen af 3G/GPS modulet håndteres og hvordan ny tagede billeder sendes med post request til serveren. 
+På sekvensdiagrammet på figur \ref{fig:Sekvens_diagram_iteration3}, vises hvilke klasser der indgår og bruges i tredje iteration. På sekvensdiagrammet vises det, hvordan kamera delen af 3G/GPS modulet håndteres og hvordan nye billeder sendes via en post request til serveren. 
 
 \vspace{-0.2cm}
 %kommentar
@@ -89,7 +88,7 @@ På sekvensdiagrammet på figur \ref{fig:Sekvens_diagram_iteration3}, vises hvil
 
 \subsubsection*{Klassediagram drone}
 
-Figur \ref{fig:classDiagram_iteration3} vises et klassediagram tilhørende iteration 3. Klassediagrammet viser foruden main.cpp filen iteration 3's eneste centrale klasse og dens tilhørende metode. 
+Figur \ref{fig:classDiagram_iteration3} viser et klassediagram tilhørende iteration 3. Klassediagrammet viser foruden main.cpp filen iteration 3's eneste centrale klasse og dens tilhørende metode. 
 
 %kommentar
 \begin{figure}[H]
@@ -101,11 +100,10 @@ Figur \ref{fig:classDiagram_iteration3} vises et klassediagram tilhørende itera
 \end{figure}
 
 \textbf{Main.cpp} \\
-Main.cpp filen bruges til at oprette objekter af de Anti collision klassen og til at kalde dens tilhørende funktioner.
+Main.cpp filen bruges til at oprette kamera objektet og kalde de dertilhørende metoder.
 
 \textbf{Camera} \\
-Klassen eneste funktion er at kontrollere afstanden til eventuelle objekter foran dronen. 
-
+Klassens funktion er at håndtere kameraet.
 
 \newpage
 
@@ -123,7 +121,7 @@ Figur \ref{fig:classDiagram_iteration3} vises klassediagrammet tilhørende itera
 \end{figure}
 
 \textbf{archive}\\
-Denne klasse er view'et tilhørende iteration tre. Denne klasse sammen med archiveCtrl skaber det endelig view som brugeren ser i sin browser når han besøger siden.
+Denne klasse er view'et tilhørende iteration tre. Denne klasse sammen med archiveCtrl skaber det endelige view som brugeren ser i sin browser når han besøger siden.
 
 \textbf{archiveCtrl}\\
 ArchiveCtrl klassen er controller klassen til iteration tre. Det er den eneste klasse der har direkte forbindelse til view'et, archiveCtrl klassen deler også hukommelse med view'et igennem two-way-binding med scopes.
@@ -133,17 +131,16 @@ Denne klasse indeholder logikken om event håndtering. Klassen bruges til at hen
 
 \textbf{PhotoServices}\\
 Denne klasse indeholder logikken om foto håndtering. Klassen bruges til at hente fotos via CRUDServiceDrone klassen, PhotoServices har også ansvaret for at slette uønskede billeder.
+\newpage
 
 \textbf{CalendarServices}\\
 Denne klasse indeholder logikken for kalenderen i view'et, klassen bruges til at oprette en kalender og navigering i kalenderen. Desuden bruges den også til at fortælle hvilke dato brugeren har valgt når han ønsker at finde billeder taget fra en givet dato.
-
-\newpage
 
 \textbf{UserServices}\\
 Denne klasse blev oprettet i iteration et og bruges til at gemme information omkring hvilke bruger der er logget ind i systemet.
 
 \textbf{CRUDServicesDrone}\\
-Denne klasse fungere som bindeled imellem server og webapplikation. Klassen indeholder alt logikken omkring kommunikation til serveren, alle der vil kommunikere med serveren i systemet skal benytte sig af denne klasse. Igennem denne service er det muligt at hente, opdater og poste data til serveren.
+Denne klasse fungerer som bindeled imellem server og webapplikation. Klassen indeholder alt logikken omkring kommunikation til serveren, alle der vil kommunikere med serveren i systemet skal benytte sig af denne klasse. Igennem denne service er det muligt at hente, opdater og poste data til serveren.
 
 \vspace{0.3cm}
 
