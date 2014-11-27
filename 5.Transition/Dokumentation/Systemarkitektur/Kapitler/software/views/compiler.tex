@@ -32,7 +32,7 @@ Toolchain menuen vælges. I configuration vælges All Configurations.
 
 I menuen for GNU C++ compiler vælges Symbols. Her tilføjes clockfrekvens for arduino chippen og version af Arduino IDE.
 For at tilføje clockfrekvens skrives fx: F\_CPU = 16000000L, hvis ens clockfrekvens er 16MHz.
-Arduino IDE version skrives: ARDUINO=106, 106 for version 1.06. \\ \\
+Arduino IDE version skrives: ARDUINO=106, 106 for version 1.06. \\
 
 Næste trin er at opsætte Directories, det er stierne til de eksterne biblioteker til Atmel. Arduino har nogle biblioteker, som Atmel skal bruge, så dem skal der linkes til.
 Bibliotekerne er henholdsvis Arduino.h og pins\_arduino.h
@@ -42,7 +42,7 @@ Stien til Arduino IDE'et er installations stien og resten af stien er som vist p
 	\includegraphics[width=1\textwidth]{Billeder/implementation/Howtoguide/atmel_directories.png}
 \end{figure}
 
-Gå til Optimization menuen under GNU C++ compiler og sæt flueben ved: Prepare functions for garbage collection (-ffunction-sections).\\ \\
+Gå til Optimization menuen under GNU C++ compiler og sæt flueben ved: Prepare functions for garbage collection (-ffunction-sections).\\
 
 I menuen for GNU Linker vælges Libraries. Her tilføjes core filen fra tidligere samt den sti den ligger i. En vigtig detalje er at core skal flyttes op over libm.
 \begin{figure}[H]
@@ -95,7 +95,7 @@ WayPointsHandleren håndterer alle GET og PUT metoder der har med  waypoints at 
 
 
 
-
+\newpage
 
 \subsection{Opsætning af serial programmerings link}
 
