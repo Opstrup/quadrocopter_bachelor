@@ -69,52 +69,56 @@ Pakken er ansvarslig for håndtering af events, waypoints og forskellige droner.
 
 \subsubsection*{Sekvensdiagram drone}
 
-Til iteration 2 er systemsekvens beskrevet med flere mindre sekvensdiagrammer i stedet for et stort. Denne fremstilling gør det muligt at repræsentere systemets funktionalitet på mere overskuelig vis, hvilket bør øger forståelsen af diagrammerne. 
-
-Det første sekvens diagram beskriver kommunikation mellem main controller, 3G og server. Det næste går mere i dybden med 3G modulet og underliggende klasser. Det sidste diagram viser hvordan dronen agerer sig under flyvning.
+Til iteration 2 er systemsekvensen for drone beskrevet med flere mindre sekvensdiagrammer i stedet for et stort. Denne fremstilling gør det muligt at repræsentere systemets funktionalitet på mere overskuelig vis, hvilket bør øger forståelsen af diagrammerne. Det første sekvens diagram beskriver kommunikation mellem main controller, 3G og server. Det næste går mere i dybden med 3G modulet og underliggende klasser. Det sidste diagram viser hvordan dronen agerer under flyvning.
 
 
-Af figur \ref{fig:Sekvens_diagram_iteration2_2} fremgår det hvordan dronens main controller via 3G-shieldet kommunikerer med serveren for at kontrollere om en ny flyveopsætning tilgængelig. Det vises også hvilke beskeder der flyder frem og tilbage mellem main controller og server.
+Af figur \ref{fig:Sekvens_diagram_iteration2_2} fremgår det hvordan dronens main controller via 3G-shieldet kommunikerer med serveren for at kontrollere om en ny flyveopsætning tilgængelig. Når en flyveopsætning stilles tilgængelig hentes den af dronen. 
 
 %kommentar
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1\textwidth]{Billeder/sekvens/sekvens_iteration2_2}
-	\caption{Sekvensdiagram \#iteration 2}
+	\caption{Sekvensdiagram - hent flyveopsætning}
 	\label{fig:Sekvens_diagram_iteration2_2}
 \end{figure}
 
 \newpage
 
-På Figur \ref{fig:Sekvens_getwaypoints} ses en mere detaljeret beskrivelse af 3G modulets klasser. Disse klasser håndterer al kommunikation mellem drone og server.
+Sekvensdiagrammet på figur \ref{fig:Sekvens_getwaypoints} viser en mere detaljeret beskrivelse af hvordan 3G og underliggende klasser fungerer. 3G og de underliggende klasser håndterer al kommunikation mellem drone og server.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1\textwidth]{Billeder/sekvens/sekvens_getwaypoints.png}
-	\caption{Sekvensdiagram udvidet 3G module - getwaypoints}
+	\caption{Sekvensdiagram - Detaljeret kommunikation}
 	\label{fig:Sekvens_getwaypoints}
 \end{figure}
 
 \newpage
 
-Af figur \ref{fig:Sekvens_diagram_iteration2_3} fremgår det hvordan dronen opererer når den flyver autonomt mod en givet GPS position. Main controlleren indsamler kompas data fra flight control boardet, latitude og longitude fra 3G/GPS modulet og flyvehøjde fra ultralyds sensoren. Den indhentede data processeres og bruges til at korrigerer de nuværende flyveindstillinger.
-Som det fremgår af while loopet fortsætter flyvningen indtil dronen er 15 meter fra den GPS destination bruger valgte i flyveopsætningen. 
+Af figur \ref{fig:Sekvens_diagram_iteration2_3} fremgår det hvordan dronen agerer når den flyver autonomt mod en given GPS position. Main controlleren indsamler kompas data fra flight control boardet, latitude og longitude fra GPS og flyvehøjde fra ultralyds sensor. De indhentede data processeres og bruges til at korrigere og optimere de nuværende flyveindstillinger.
+Som det fremgår af while loopet fortsætter flyvningen indtil dronen er tilpas tæt på den GPS destination bruger valgte i flyveopsætningen. 
 
 
 %kommentar
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1\textwidth]{Billeder/sekvens/sekvens_iteration2_3}
-	\caption{Sekvensdiagram \#iteration 2}
+	\caption{Sekvensdiagram - Drone under flyvning}
 	\label{fig:Sekvens_diagram_iteration2_3}
 \end{figure}
+
+
+
 
 \newpage
 \subsubsection*{Sekvensdiagram webapplikation}
 \vspace{-0.1cm}
-På figur \ref{fig:page_load} ses hvordan klasserne på websitet interagere med hinanden ved et page load. Kortet bliver initialiseret med centrum over århus og drone markeren bliver initialiseret. Useren som blev gemt ved login bliver brugt til at give en velkomst besked oppe i højre hjørne og sener vil blive brugt når der skal oprettet nye events. Listen med tilgængelige droner bliver loaded. Et click event bliver også oprettet som trigger ved click på kortet til oprettelse af nye waypoints.
 
-Af figur \ref{fig:Sekvens_diagram_iteration2_1} fremgår det hvordan bruger opretter en ny flyveopsætning. Det vises desuden hvilke interaktioner der foretages mellem bruger og website, samt hvordan server løbende indgår og benyttes i sekvensen. 
+Der er udformet 4 forskellige sekvensdiagrammer for webapplikationen tilhørende iteration 2. Det første sekvensdiagram viser hvordan bruger logger ind på webapplikationen og opretter en flyveopsætning. Det næste sekvensdiagram viser hvordan webapplikationen fungerer og reagerer på bruger input.
+
+
+Af figur \ref{fig:Sekvens_diagram_iteration2_1} fremgår det hvordan bruger opretter en ny flyveopsætning. Det vises desuden hvilke interaktioner der foretages mellem bruger og webapplikation, samt hvordan server løbende indgår og benyttes i sekvensen. 
+
 %kommentar
 \begin{figure}[H]
 	\centering
@@ -123,7 +127,10 @@ Af figur \ref{fig:Sekvens_diagram_iteration2_1} fremgår det hvordan bruger opre
 	\label{fig:Sekvens_diagram_iteration2_1}
 \end{figure}
 
+
 \newpage
+
+Sekvensdiagrammet på figur \ref{fig:page_load} viser hvordan klasserne i webapplikationen interagere med hinanden ved et page load. 
 
 \begin{figure}[H]
 	\centering
@@ -133,7 +140,7 @@ Af figur \ref{fig:Sekvens_diagram_iteration2_1} fremgår det hvordan bruger opre
 \end{figure}
 
 \newpage
-På figur \ref{fig:send_waypoints} ses hvilke hændelser der finder sted i systemet, når useren trykker på "send event". Hvert services har et ansvar og det er dem der kommunikere ud til CRUD-servicesen, på den måde er logikken for data håndtering skubbet ud i div. services. 
+På figur \ref{fig:send_waypoints} ses hvilke hændelser der finder sted i systemet, når bruger trykker på "send event". Hver service har et bestemt ansvar og de kommunikerer ud til CRUD-servicesen. Denne opbygning sikre at logikken for data håndtering skubbes ud i diverse services. 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1\textwidth]{Billeder/sekvens/sd_send_waypoints.png}
@@ -142,7 +149,9 @@ På figur \ref{fig:send_waypoints} ses hvilke hændelser der finder sted i syste
 \end{figure}
 
 \newpage
-På figur \ref{fig:update_view} ses hvilke hændelser der finder sted i systemet, når useren trykker på forskellige droner i tabellen. Når et klik på tabellen finder sted skal view'et opdateret i forhold til den givet drone, dvs. hvis dronen har et event, så skal det vises og dertilhørende waypoints. Hvis der ikke er noget event tilknyttet til dronen skal useren have mulighed for at oprette et nyt event.
+På figur \ref{fig:update_view} ses hvilke hændelser der finder sted, når bruger trykker på forskellige droner i tabellen. 
+
+Når et klik på tabellen finder sted, skal view'et opdateres i forhold til den givne drone. Har dronen et event, skal eventet og dertilhørende waypoints vises. Hvis der ikke er noget event tilknyttet dronen, får bruger mulighed for at oprette et nyt.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1\textwidth]{Billeder/sekvens/sd_update_view.png}
@@ -153,7 +162,7 @@ På figur \ref{fig:update_view} ses hvilke hændelser der finder sted i systemet
 \newpage
 \subsubsection*{Klassediagram drone}
 
-På figur \ref{fig:classDiagram_drone_underflyvning} ses klasse diagrammet for dronen. Det er klasserne der bruges af dronen, når den er flyve klar. På den følgende side er der en forklaring af klasserne og deres metoder. 
+På figur \ref{fig:classDiagram_drone_underflyvning} ses klassediagrammet for drone. I det følgende findes en forklaring af klasserne og deres ansvarsområder. 
 
 \begin{figure}[H]
 	\centering
@@ -201,7 +210,7 @@ WayPoint klassen bruges til at kunne hente de forskellige waypoints ud af arraye
 
 \subsubsection*{Klassediagram webapplikation}
 \vspace{-0.1cm}
-På figur \ref{fig:classDiagram_home} ses klasse diagrammet tilhørende iteration to for websitet. Funktionaliteten er blevet udvidet med overblik over droner i systemet og deres status. Mulighed for at oprette events til den ønskede drone. 
+På figur \ref{fig:classDiagram_home} ses klasse diagrammet tilhørende iteration 2 for websitet. Funktionaliteten af systemet er blevet udvidet, så der nu er overblik over droner i systemet og deres status. Desuden er der mulighed for at oprette events til bestemte drone. 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1.\textwidth]{Billeder/klasse_diagrammer/home_class_diagram.png}
@@ -241,7 +250,7 @@ Denne klasse blev oprettet i iteration et og bruges til at gemme information omk
 
 \subsubsection*{State machine diagram}
 \vspace{-0.1cm}
-I state machine diagrammet på figur \ref{fig:Statemachine_iteration2}, vises de fire forskellige states der eksisterer til iteration 2 og hvordan flowet imellem dem ser ud. 
+I state machine diagrammet på figur \ref{fig:Statemachine_iteration2}, vises de forskellige states der eksisterer til iteration 2 og hvordan flowet imellem dem ser ud. 
 %kommentar
 \begin{figure}[H]
 	\centering
