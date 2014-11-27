@@ -46,12 +46,28 @@ Pakkens ansvar er håndtering af kamera. Pakken bruges til at starte, initierer,
 
 \newpage
 \subsubsection*{Pakkediagram webapplikation}
-I dette afsnit vises pakkediagram tilhørende drone. Hver pakke i pakkediagrammet består af en eller flere klasser, der med stort samspil udfører opgaver indenfor et fælles ansvarsområde. 
-På hver pakke findes en lille beskrivelse, der tydeliggør pakkens ansvarsområde. De dele af pakkerne der er gråskraveret, er funktionalitet udarbejdet i tidligere iteration. \\
+I dette afsnit vises pakkediagram tilhørende webapplikation. Hver pakke i pakkediagrammet består af en eller flere klasser, der med stort samspil udfører opgaver indenfor et fælles ansvarsområde. 
+På hver pakke findes en lille beskrivelse, der tydeliggør pakkens ansvarsområde. De dele af pakkerne der er gråskraveret, er funktionalitet udarbejdet i tidligere iteration. 
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{Billeder/pakke_diagrammer/iteration3_server.png}
+	\vspace{-0.5cm}
+	\caption{Pakkediagram webapplikation}
+	\label{fig:iteration3_pakke_diagram_webapplikation}
+\end{figure}
 
-BILLEDE OG BESKRIVELSE MANGLER
+\textbf{UserHandling}\\
+Pakkens ansvar er validering af login/log ud på websitet. Pakken har også ansvaret for at hente og gemme data om den pågældende bruger.
 
+\textbf{DatabaseHandling}\\
+Pakkens ansvar er kommunikation imellem databasen og serveren. 
+
+\textbf{DroneHandling}\\
+Pakkens ansvar er alt data vedrørende dronen, så som håndteringen af events, waypoints og div droner.
+
+\textbf{PhotoHandling}\\
+Pakkens ansvar er at håndtere de billeder dronen har taget under flyvning og præsentere dem for brugeren.
 
 \newpage
 
@@ -69,28 +85,16 @@ På sekvensdiagrammet på figur \ref{fig:Sekvens_diagram_iteration3}, vises hvil
 \end{figure}
 \vspace{-0.2cm}
 
-\subsubsection*{State machine diagram}
-\vspace{-0.3cm}
-I state machine diagrammet på figur \ref{fig:Statemachine_iteration3}, vises de to states der eksisterer i iteration 3 og hvordan flowet imellem dem ser ud. Der eksisterer givet vis kun 2 states i iteration 3, men state machinen er medtaget fordi den fint illustrerer systemflowet.
+\newpage
 
-\vspace{-0.2cm}
-%kommentar
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.9\textwidth]{Billeder/statemachine/State_iteration3.png}
-	\caption{State machine \#iteration 3}
-	\label{fig:Statemachine_iteration3}
-\end{figure}
+\subsubsection*{Klassediagram drone}
 
-
-\subsubsection*{Klasse diagram drone}
-
-Figur \ref{fig:classDiagram_iteration3} vises et klassediagram tilhørende iteration 4. Klassediagrammet viser foruden main.cpp filen iteration 4's eneste centrale klasse og dens tilhørende metode. 
+Figur \ref{fig:classDiagram_iteration3} vises et klassediagram tilhørende iteration 3. Klassediagrammet viser foruden main.cpp filen iteration 3's eneste centrale klasse og dens tilhørende metode. 
 
 %kommentar
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=1\textwidth]{Billeder/klasse_diagrammer/classdiagram_iteration3.png}
+	\includegraphics[width=1\textwidth]{Billeder/klasse_diagrammer/classdiagram_iteration3_drone.png}
 	\vspace{-0.5cm}
 	\caption{Klassediagram \#iteration 3}
 	\label{fig:classDiagram_iteration3}
@@ -105,25 +109,54 @@ Klassen eneste funktion er at kontrollere afstanden til eventuelle objekter fora
 
 \newpage
 
-\subsubsection*{Klasse diagram webapplikation}
+\subsubsection*{Klassediagram webapplikation}
 
-Figur \ref{fig:classDiagram_iteration3} vises et klassediagram tilhørende iteration 4. Klassediagrammet viser foruden main.cpp filen iteration 4's eneste centrale klasse og dens tilhørende metode. 
+Figur \ref{fig:classDiagram_iteration3} vises klassediagrammet tilhørende iteration 3 for webapplikationen. 
 
 %kommentar
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=1\textwidth]{Billeder/klasse_diagrammer/classdiagram_iteration3.png}
+	\includegraphics[width=1\textwidth]{Billeder/klasse_diagrammer/classdiagram_iteration3_server.png}
 	\vspace{-0.5cm}
 	\caption{Klassediagram \#iteration 3}
 	\label{fig:classDiagram_iteration3}
 \end{figure}
 
-\textbf{Main.cpp} \\
-Main.cpp filen bruges til at oprette objekter af de Anti collision klassen og til at kalde dens tilhørende funktioner.
+\textbf{archive}\\
+Denne klasse er view'et tilhørende iteration tre. Denne klasse sammen med archiveCtrl skaber det endelig view som brugeren ser i sin browser når han besøger siden.
 
-\textbf{Camera} \\
-Klassen eneste funktion er at kontrollere afstanden til eventuelle objekter foran dronen.
+\textbf{archiveCtrl}\\
+ArchiveCtrl klassen er controller klassen til iteration tre. Det er den eneste klasse der har direkte forbindelse til view'et, archiveCtrl klassen deler også hukommelse med view'et igennem two-way-binding med scopes.
 
+\textbf{EventServices}\\
+Denne klasse indeholder logikken om event håndtering. Klassen bruges til at hente en event liste, et enkelt event for en givet drone og sende et nyoprettet event til serveren via CRUDServiceDrone klassen.
 
+\textbf{PhotoServices}\\
+Denne klasse indeholder logikken om foto håndtering. Klassen bruges til at hente fotos via CRUDServiceDrone klassen, PhotoServices har også ansvaret for at slette uønskede billeder.
 
+\textbf{CalendarServices}\\
+Denne klasse indeholder logikken for kalenderen i view'et, klassen bruges til at oprette en kalender og navigering i kalenderen. Desuden bruges den også til at fortælle hvilke dato brugeren har valgt når han ønsker at finde billeder taget fra en givet dato.
+
+\newpage
+
+\textbf{UserServices}\\
+Denne klasse blev oprettet i iteration et og bruges til at gemme information omkring hvilke bruger der er logget ind i systemet.
+
+\textbf{CRUDServicesDrone}\\
+Denne klasse fungere som bindeled imellem server og webapplikation. Klassen indeholder alt logikken omkring kommunikation til serveren, alle der vil kommunikere med serveren i systemet skal benytte sig af denne klasse. Igennem denne service er det muligt at hente, opdater og poste data til serveren.
+
+\vspace{0.3cm}
+
+\subsubsection*{State machine diagram}
+\vspace{-0.3cm}
+I state machine diagrammet på figur \ref{fig:Statemachine_iteration3}, vises de to states der eksisterer i iteration 3 og hvordan flowet imellem dem ser ud. Der eksisterer givet vis kun 2 states i iteration 3, men state machinen er medtaget fordi den fint illustrerer systemflowet.
+
+\vspace{-0.2cm}
+%kommentar
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{Billeder/statemachine/State_iteration3.png}
+	\caption{State machine \#iteration 3}
+	\label{fig:Statemachine_iteration3}
+\end{figure}
 
