@@ -70,7 +70,7 @@ På sekvensdiagrammet på figur \ref{fig:Sekvens_diagram_iteration1}, vises hvil
 \end{figure}
 \newpage
 
-Da boundary klassen \textit{3G} benytter tre underliggende klasser til håndtering af GET og PUT requests er sekvensdiagrammet på figur \ref{fig:Sekvens_diagram_iteration1} simplificeret. Sekvensdiagrammerne på figur \ref{fig:Sekvens_diagram_initialget} og \ref{fig:Sekvens_diagram_putDroneStatus} vises mere detaljeret hvordan 3G og underliggende klasser bruges til GET og PUT. \\
+Da boundary klassen \textit{3G} benytter tre underliggende klasser til håndtering af GET og PUT requests er sekvensdiagrammet på figur \ref{fig:Sekvens_diagram_iteration1} simplificeret. Sekvensdiagrammerne på figur \ref{fig:Sekvens_diagram_initialget} og \ref{fig:Sekvens_diagram_putDroneStatus} vises detaljeret hvordan 3G og underliggende klasser bruges til GET og PUT. \\
 
 Sekvensdiagrammet på figur \ref{fig:Sekvens_diagram_initialget} viser hvilke klasser der anvendes til håndtering af GET. 
 
@@ -144,13 +144,14 @@ EventHandleren klassen håndterer Events, og bruges som bindeled mellem communic
 \newpage
 
 \subsubsection*{Klassediagram webapplikation}
-\vspace{-0.2cm}
+\vspace{-0.3cm}
 Figur \ref{fig:classDiagram_webapplikation} viser klassediagrammet tilhørende webapplikation tilhørende iteration 1.
+
 \vspace{-0.2cm}
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1\textwidth]{Billeder/klasse_diagrammer/login_class_diagram.png}
-	\vspace{-0.5cm}
+	\vspace{-0.6cm}
 	\caption{Klassediagram webapplikation}
 	\label{fig:classDiagram_webapplikation}
 \end{figure}
@@ -169,8 +170,8 @@ AuthenticationServices klassen er ansvarlig for at afgøre om bruger er authenti
 \textbf{UserServices}\\
 UserServices bruges til at gemme information om hvilken bruger der er logget ind på webapplikationen.
 
-\textbf{CRUDServicesDrone}
-Denne klasse bruges som bindeled imellem server og webapplikation. Klassen indeholder alt logik til kommunikation til serveren. Hver gang noget kommunikere med serveren benyttet klassen. Ved brug af CRUDServicesDrone kan man hente, opdatere og poste data til serveren.
+\textbf{CRUDServicesDrone} \\
+Denne klasse bruges som bindeled imellem server og webapplikation, og indeholder logik til serveren. CRUDServicesDrone bruges når der sendes Get, Put og Post til serveren.
 
 
 \subsubsection*{State machine diagram}

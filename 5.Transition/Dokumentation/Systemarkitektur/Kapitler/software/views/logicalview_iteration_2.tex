@@ -1,10 +1,11 @@
 \subsection{Iteration \#2}
-I iteration 2 er formålet at færdiggøre funktionalitet på websitet så det muliggøres at oprette nye waypoints til dronen og at muliggøre autonome flyvning. Bruger skal kunne oprette flyveopsætninger og gøre dem tilgængelig for dronen, hvilket kræver yderlige kommunikations opsætning hos mellem drone. Ydermere skal dronen kunne finde egen GPS position, flyvehøjde og orientering. Ud fra viden om egen position, flyvehøjde og orientering skal dronen flyve til de lokationer som er fastsat i flyveopsætningen. 
-Hvordan systemet er tiltænkt at bruges beskrives i user story nedenfor:
+I iteration 2 udvides systemet, så bruger kan logge på webapplikationen og lave flyveopsætninger, som dronen skal flyve efter. Funktionaliteten af webapplikationen udvides, så det bliver muligt at lave flyveopsætninger. Når en flyveopsætning er lavet, skal den gøres tilgængelig for dronen, hvilket kræver tilføjelser i kommunikationen mellem drone og server. 
+Desuden skal dronen finde egen GPS position, flyvehøjde og orientering. Ud fra viden om egen position, flyvehøjde og orientering skal dronen flyve til de lokationer som er fastsat i flyveopsætningen. 
+
 
 \subsubsection*{User story}
-Bruger logger på webapplikationen med sit brugernavn og password. Når der er logget korrekt ind vises bruger sin eller sine droner på en liste. Ved at trykke på en drone vises bruger information om den pågældende drone. Informationen beståer af waypoints, om der skal tages billeder ved de forskellige waypoints samt indstilling af flyvehøjde. Brugeren klikker på en drone fra listen og derefter klikker på kortet for at oprette waypoints, i det waypoints bliver oprettet bliver et nyt event også oprettet. Brugeren giver eventet et navn og en kommentar og trykker på knappen "publish to drone".
-Når en drone er tændt og færdig initialiseret fortæller den server webserveren om sin nuværende position og kontrollerer om en ny flyveopsætning er tilgængelig. Er der en ny flyveopsætning tilgængelig hentes den og dronen påbegynder flyvning.
+Bruger logger på webapplikationen med sit brugernavn og password. Når der er logget korrekt ind vises bruger sin eller sine droner på en liste. Ved at trykke på en drone vises bruger information om den pågældende drone. Informationen består af waypoints, om der skal tages billeder ved de forskellige waypoints samt indstilling af flyvehøjde. Bruger klikker på en drone fra listen og klikker derefter på kortet for at tilføje waypoints som tilsammen udgør et event. Bruger tildeler eventet navn og en kommentar og trykker "publish to drone".
+Når en drone er tændt og færdig initialiseret fortæller den server om sin nuværende position og kontrollerer om en ny flyveopsætning er tilgængelig. Er der en ny flyveopsætning tilgængelig hentes den og dronen påbegynder flyvning.
 
 %kommentar
 \begin{figure}[H]
@@ -18,8 +19,7 @@ Når en drone er tændt og færdig initialiseret fortæller den server webserver
 
 \newpage
 \subsubsection*{Pakkediagram drone}
-I dette afsnit vises pakkediagram tilhørende drone. De pakker der vises i pakkediagrammet består af en eller flere klasser, der med stort samspil udfører opgaver indenfor et fælles ansvarsområde. På hver pakke findes en lille beskrivelse, der tydeliggør pakkens ansvarsområde. De dele af pakkerne der er gråskraveret, er funktionalitet udarbejdet i tidligere iteration.
-
+I dette afsnit vises pakkediagram tilhørende drone. De pakker der vises i pakkediagrammet består af en eller flere klasser, der med stort samspil udfører opgaver indenfor et fælles ansvarsområde. På hver pakke findes en lille beskrivelse, der tydeliggør pakkens ansvarsområde. 
 
 \begin{figure}[H]
 	\centering
@@ -52,40 +52,29 @@ I dette afsnit vises pakkediagram tilhørende webapplikation. De pakker der vise
 	\centering
 	\includegraphics[width=1\textwidth]{Billeder/pakke_diagrammer/iteration1_server.png}
 	\vspace{-0.5cm}
-	\caption{Overordnet pakke diagram over webapplikationen}
+	\caption{Pakkediagram webapplikationen}
 	\label{fig:iteration1_pakke_diagram_webapp}
 \end{figure}
 
 \textbf{UserHandling}\\
-Pakkens ansvar er validering af login/log ud på websitet. Pakken har også ansvaret for at hente og gemme data om den pågældende bruger.
+Pakkens ansvar er validering af login/log ud på websitet. Pakken har også ansvaret for at hente og gemme data om de forskellige brugere.
 
 \textbf{DatabaseHandling}\\
 Pakkens ansvar er kommunikation imellem databasen og serveren. 
 
 \textbf{DroneHandling}\\
-Pakkens ansvar er alt data vedrørende dronen, så som håndteringen af events, waypoints og div droner.
+Pakken er ansvarslig for håndtering af events, waypoints og forskellige droner.
 
 \newpage
 
 \subsubsection*{Sekvensdiagram drone}
 
-Til iteration 2 er systemsekvensen beskrevet med 3 mindre sekvensdiagrammer i stedet for 1 stort. Ydermere er der lavet 2 sekvens diagrammer der går mere i dybden med 3G modulet og dens klasser. 
-Denne fremstilling gør det muligt at repræsentere systemets funktionalitet på mere overskuelig vis, hvilket indirekte øger forståelsen af diagrammerne. Hvert af de 3 overordnede sekvensdiagrammer bruges til at fortælle hvordan en delmængde af systemet fungerer.
+Til iteration 2 er systemsekvens beskrevet med flere mindre sekvensdiagrammer i stedet for et stort. Denne fremstilling gør det muligt at repræsentere systemets funktionalitet på mere overskuelig vis, hvilket bør øger forståelsen af diagrammerne. 
 
-Af figur \ref{fig:Sekvens_diagram_iteration2_1} fremgår det hvordan bruger opretter en ny flyveopsætning. Det vises desuden hvilke interaktioner der foretages mellem bruger og website, samt hvordan server løbende indgår og benyttes i sekvensen. 
-
-%kommentar
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=1\textwidth]{Billeder/sekvens/sekvens_iteration2_1}
-	\caption{Sekvensdiagram \#iteration 2}
-	\label{fig:Sekvens_diagram_iteration2_1}
-\end{figure}
+Det første sekvens diagram beskriver kommunikation mellem main controller, 3G og server. Det næste går mere i dybden med 3G modulet og underliggende klasser. Det sidste diagram viser hvordan dronen agerer sig under flyvning.
 
 
-\newpage
-
-På figur \ref{fig:Sekvens_diagram_iteration2_2} fremgår det hvordan dronens main controller via 3G-shieldet kommunikerer med serveren for at kontrollere om der er en ny flyveopsætning tilgængelig. Det vises også hvilke beskeder der flyder frem og tilbage mellem main controller og server. Desuden vises det at dronen først henter ny flyveomsætning, når serveren har bekræftet, at der er en flyveopsætning tilgængelig.   
+Af figur \ref{fig:Sekvens_diagram_iteration2_2} fremgår det hvordan dronens main controller via 3G-shieldet kommunikerer med serveren for at kontrollere om en ny flyveopsætning tilgængelig. Det vises også hvilke beskeder der flyder frem og tilbage mellem main controller og server.
 
 %kommentar
 \begin{figure}[H]
@@ -124,6 +113,18 @@ Som det fremgår af while loopet fortsætter flyvningen indtil dronen er 15 mete
 \subsubsection*{Sekvensdiagram webapplikation}
 \vspace{-0.1cm}
 På figur \ref{fig:page_load} ses hvordan klasserne på websitet interagere med hinanden ved et page load. Kortet bliver initialiseret med centrum over århus og drone markeren bliver initialiseret. Useren som blev gemt ved login bliver brugt til at give en velkomst besked oppe i højre hjørne og sener vil blive brugt når der skal oprettet nye events. Listen med tilgængelige droner bliver loaded. Et click event bliver også oprettet som trigger ved click på kortet til oprettelse af nye waypoints.
+
+Af figur \ref{fig:Sekvens_diagram_iteration2_1} fremgår det hvordan bruger opretter en ny flyveopsætning. Det vises desuden hvilke interaktioner der foretages mellem bruger og website, samt hvordan server løbende indgår og benyttes i sekvensen. 
+%kommentar
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{Billeder/sekvens/sekvens_iteration2_1}
+	\caption{Sekvensdiagram}
+	\label{fig:Sekvens_diagram_iteration2_1}
+\end{figure}
+
+\newpage
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1\textwidth]{Billeder/sekvens/sd_page_load.png}
