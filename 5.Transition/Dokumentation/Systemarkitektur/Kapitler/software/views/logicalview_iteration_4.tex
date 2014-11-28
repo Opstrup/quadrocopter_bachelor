@@ -1,10 +1,10 @@
 \subsection{Iteration \#4}
-I iteration 4 ønskes det at udvide systemet med anti kollision. Inden tilføjelsen af anti kollision kan dronen udelukkende flyve i områder uden forhindringer. Men med tilføjelsen af anti kollision vil det være muligt at flyve med dronen i normale områder med forskellige forhindringer. Hvordan systemet er tiltænkt at bruges beskrives i user story nedenfor:
+I iteration 4 ønskes det at udvide systemet med anti kollision. Inden tilføjelsen af anti kollision kan dronen udelukkende flyve i områder uden forhindringer. Men med tilføjelsen af anti kollision vil det være muligt at flyve med dronen i normale områder med diverse forhindringer. 
 
 
 \subsubsection*{User story}
 Under flyvning kontrolleres det løbende hvorvidt der er et objekt foran dronen. Hvis der detekteres et objekt foran dronen, skal dronen holde om med at flyve fremad. I stedet skal dronen dreje horisontalt indtil der ikke længere er et objekt foran den. Når der er frit foran dronen fortsættes den afbrudte flyvning. 
-Bruger af systemet har ingen direkte kontakt med anti kollisionssystemet. For bruger ses anti kollision blot som en ekstra feature, som gør dronen i stand til at flyve uden at kollidere med objekter foran sig.
+Bruger af systemet har ingen direkte kontakt med anti kollisionssystemet. For bruger ses anti kollision blot som en feature, som gør dronen i stand til at flyve uden at kollidere med objekter foran sig.
  
 %kommentar
 \begin{figure}[H]
@@ -18,26 +18,26 @@ Bruger af systemet har ingen direkte kontakt med anti kollisionssystemet. For br
 \newpage
 
 \subsubsection*{Pakkediagram drone}
-I dette afsnit vises pakkediagram tilhørende drone. Hver pakke i pakkediagrammet består af en eller flere klasser, der med stort samspil udfører opgaver indenfor et fælles ansvarsområde. 
-På hver pakke findes en lille beskrivelse, der tydeliggør pakkens ansvarsområde. De dele af pakkerne der er gråskraveret, er funktionalitet udarbejdet i tidligere iteration.
+I dette afsnit vises pakkediagram tilhørende drone. Hver pakke i pakkediagrammet består af en eller flere klasser, der med stort samspil udfører opgaver indenfor et fælles ansvarsområde. På hver pakke findes en lille beskrivelse, der tydeliggør pakkens ansvarsområde. 
 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=1\textwidth]{Billeder/pakke_diagrammer/iteration3_drone.png}
+	\includegraphics[width=1\textwidth]{Billeder/pakke_diagrammer/iteration4_drone.png}
 	\vspace{-0.5cm}
 	\caption{Pakkediagram drone}
-	\label{fig:iteration2_pakke_diagram_drone}
+	\label{fig:iteration4_pakke_diagram_drone}
 \end{figure}
 
 \textbf{SensorHandling}\\
-Pakken er ansvarlig for indsamling af sensor data. I denne iteration skal pakken bruges til aflæsning af højdemåler og kompasset på flight control boardet. 
+Pakken er ansvarlig for indsamling af sensor data. I denne iteration skal pakken bruges til aflæsning af højdemåler, kompas fra flight control boardet og anti kollision sensor. 
 
 \textbf{FlightHandling}\\
-Pakkens ansvar er kontrol og styring af drone under flyvning. Ved sammenligning af sensor data og data fra flyveopsætning tilpasses flyvehøjde, orientering mm
+Pakkens ansvar er kontrol og styring af drone under flyvning. Ved sammenligning af sensor data og data fra flyveopsætning tilpasses flyvehøjde, orientering mm. 
+I denne iteration tilføjes funktionalitet som skal få dronen til at undgå kollision. 
 
 \textbf{GPSHandling}\\
-Pakkens ansvar er håndtering af GPS. Dels er pakken ansvarlig for opstart og initiering af GPS, og desuden bruges pakken hver gang dronens nuværende GPS position skal opdateres.
+Pakkens ansvar er håndtering af GPS. Dels er pakken ansvarlig for opstart og initiering af GPS. Pakken bruges hver gang dronens nuværende GPS position skal opdateres.
 
 \textbf{CommunicationHandling}\\
 Pakkens ansvar er kommunikation imellem drone og server. Efter denne iteration skal dronen kunne hente flyveopsætninger fra server, sende sin nuværende GPS position til server og sende billeder til server.
@@ -50,19 +50,19 @@ Pakkens ansvar er håndtering af kamera. Pakken bruges til at starte, initierer,
 \subsubsection*{Sekvens diagram}
 \vspace{-0.2cm}
 På sekvensdiagrammet vises de klasser der indgår og bruges i fjerde iteration. 
-På diagrammet vises det hvordan afstanden til eventuelle objekter foran dronen kontrolleres. Hvis afstanden til et objekt er under den definerede kollisionsgrænse stoppes dronens fremdrift og der skiftes orientering. 
+På diagrammet vises det hvordan afstanden til eventuelle objekter foran dronen kontrolleres. Hvis afstanden til et objekt er under den definerede kollisionsgrænse stoppes dronens fremdrift og der ændres orientering. 
 
 
 %kommentar
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8\textwidth]{Billeder/sekvens/sekvens_iteration4}
+	\includegraphics[width=1\textwidth]{Billeder/sekvens/sekvens_iteration4}
 	\caption{Sekvens diagram \#iteration 4}
 	\label{fig:Sekvens_diagram_iteration4}
 \end{figure}
 
 
-\subsubsection*{Klassediagram}
+\subsubsection*{Klassediagram drone}
 \vspace{-0.1cm}
 
 %kommentar
@@ -79,15 +79,15 @@ På diagrammet vises det hvordan afstanden til eventuelle objekter foran dronen 
 Main.cpp filen bruges til at sætte arduino board korrekt op, bla. sættes baudrate på de forskellige serielle forbindelser. Desuden bruges Main.cpp til at kalde og eksekverer forskellige klasse, objekter og funktioner.
 
 
-\textbf{Anti collision} \\
-Module\_3G er ansvarlig for alt kommunikation mellem drone og server. I klassen bruges to forskellige slags http request. Når der ønskes at trække information fra sever til drone gøres der brug af GET request mens der gøres brug af PUT request når dronen ønsker at informere server om ny lokation.
+\textbf{AntiCollision} \\
+AntiCollision klassen fungerer ligesom DistanceSensor. Klassen bruges til at kontrollere de anti kollisions sensorer der er monteret på dronen. 
 
 \newpage
 
 \subsubsection*{State machine diagram}
 \vspace{-0.2cm}
 
-I state machine diagrammet på figur \ref{fig:Statemachine_iteration4}, vises de to states der eksisterer i iteration 4. Desuden vises hvordan flowet imellem de to states ser ud.
+I state machine diagrammet på figur \ref{fig:Statemachine_iteration4}, vises de states der eksisterer i iteration 4. Desuden vises hvordan flowet imellem de to states ser ud.
 
 
 %kommentar

@@ -1,16 +1,20 @@
 \section{Hardware design}
-Til projektet er der købt færdige hardware modulet, hvilket betyder at det eneste hardware der er blevet designet er switch boardet. 
+\vspace{-0.5cm}
+Til projektet er der købt mange færdige hardware modulet. Switch boardet er det eneste hardware der er blevet designet. 
+
+\vspace{-0.3cm}
 
 \subsection{Switch board}
-I det følgende afsnit beskrives designet af hardwaren til switch boardet. Switch boardet er udviklet således at fjernbetjeningen kan overtage styringen fra main controlleren.
+\vspace{-0.4cm}
+I dette afsnit beskrives hardware designet af switch boardet. Boardet er designet så det kan switche mellem manuel og autonom flyvning. Når der flyves manuelt lader switch boardet styringssignaler fra remote controller styre dronen og når der flyves autonom er det signaler fra main controller der styrer dronen.
 
-På figur \ref{fig:switchboard_design} ses det overordnede design til switch boardet. 
-De respektive PWM signaler skal ind i en 2-input AND gate hvor hver PWM signal har en AND gate. Den anden indgang bruges af et kontrol pin som styres af main controlleren. Denne pin sættes enten høj eller lav, afhængigt af hvilken enhed der skal styre dronen. 
-De AND gates der har med samme PWM styring at gøre (fx. Throttle) sendes til en OR gate som sender PWM signalet videre til flight control boardet. 
+På figur \ref{fig:switchboard_design} vises designet af switch boardet.
+Styringssignaler fra main controller og remote controller sendes begge til switch boardet, hvor de sendes ind i 2-input AND gates. AND gates på højre side håndterer signaler fra remote controller og på venstre side håndteres signaler fra main controller. Hvilket output der kommer på de forskellige AND gates afhænger af signalet der sendes ind på kontrol pin. Outputtet fra AND gates med samme styringssignal (fx. Throttle) sendes til OR gates, som sender det rette styringssignal videre til flight control boardet. 
+
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=1\textwidth]{Billeder/hardware/switch_board_diagram.png}
+	\includegraphics[width=0.87\textwidth]{Billeder/hardware/switch_board_diagram.png}
 	\caption{Switch board design}
 	\label{fig:switchboard_design}
 \end{figure}
