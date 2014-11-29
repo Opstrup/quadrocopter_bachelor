@@ -1,6 +1,6 @@
 \subsection{Iteration \#2}
-I iteration 2 udvides systemet, så bruger kan logge på webapplikationen og lave flyveopsætninger, som dronen skal flyve efter. Funktionaliteten af webapplikationen udvides, så det bliver muligt at lave flyveopsætninger. Når en flyveopsætning er lavet, skal den gøres tilgængelig for dronen, hvilket kræver tilføjelser i kommunikationen mellem drone og server. 
-Desuden skal dronen finde egen GPS position, flyvehøjde og orientering. Ud fra viden om egen position, flyvehøjde og orientering skal dronen flyve til de lokationer som er fastsat i flyveopsætningen. 
+I iteration 2 udvides systemet, så bruger kan logge på webapplikationen og lave flyveopsætninger, som dronen skal flyve ud fra. Funktionaliteten af webapplikationen udvides, så det bliver muligt at lave flyveopsætninger. Når en flyveopsætning er lavet, skal den gøres tilgængelig for dronen, hvilket kræver tilføjelser i kommunikationen mellem drone og server. 
+Desuden skal dronen i denne iteration kunne finde egen GPS position, flyvehøjde og orientering. Ud fra viden om egen position, flyvehøjde og orientering skal dronen flyve til de lokationer som er fastsat i flyveopsætningen. 
 
 
 \subsubsection*{User story}
@@ -57,7 +57,7 @@ I dette afsnit vises pakkediagram tilhørende webapplikation. De pakker der vise
 \end{figure}
 
 \textbf{UserHandling}\\
-Pakkens ansvar er validering af login/log ud på websitet. Pakken har også ansvaret for at hente og gemme data om de forskellige brugere.
+Pakkens ansvar er validering af login/log ud på webapplikationen. Pakken har også ansvaret for at hente og gemme data om de forskellige brugere.
 
 \textbf{DatabaseHandling}\\
 Pakkens ansvar er kommunikation imellem databasen og serveren. 
@@ -207,7 +207,7 @@ EventHandler klassen håndterer Events, og bruges som bindeled mellem communicat
 
 \subsubsection*{Klassediagram webapplikation}
 \vspace{-0.1cm}
-På figur \ref{fig:classDiagram_home} ses klasse diagrammet tilhørende iteration 2 for websitet. Funktionaliteten af systemet er blevet udvidet, så der nu er overblik over droner i systemet og deres status. Desuden er der mulighed for at oprette events til bestemte droner. 
+På figur \ref{fig:classDiagram_home} ses klasse diagrammet tilhørende iteration 2 for webapplikationen. Funktionaliteten af systemet er blevet udvidet, så der nu er overblik over droner i systemet og deres status. Desuden er der mulighed for at oprette events til bestemte droner. 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1.\textwidth]{Billeder/klasse_diagrammer/home_class_diagram.png}

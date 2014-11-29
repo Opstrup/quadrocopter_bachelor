@@ -1,6 +1,6 @@
 \subsection{Iteration \#1}
 \vspace{-0.6cm}
-I iteration 1 arbejdes der med blokke som dækker over systemets mest grundlæggende funktionalitet. Batteri, ESC’er, motorer og sensorer tilsluttes dronen, og dronen gøres desuden i stand til oprette forbindelse til webapplikationen via 3G-shield’et.
+I iteration 1 arbejdes der med blokke som dækker systemets mest grundlæggende funktionalitet. Batteri, ESC’er, motorer og sensorer tilsluttes dronen, og dronen gøres desuden i stand til oprette forbindelse til webapplikationen via 3G-shield’et.
 Server opsættes, så basal kommunikation mellem dronen og server er muligt, bla. skal det være muligt for dronen at uploade sin nuværende position til server. For flere detaljer vedrørende opsætning og funktionalitet af server henvises til data view'et. 
 
 \subsubsection*{User story}
@@ -59,7 +59,7 @@ Pakkens ansvar er kommunikation imellem database og server.
 
 \newpage
 \subsubsection*{Sekvensdiagram drone}
-På sekvensdiagrammet på figur \ref{fig:Sekvens_diagram_iteration1}, vises hvilke klasser der indgår og bruges i første iteration. Af sekvensdiagrammet fremgår det, at sekvensen først startes når bruger tilslutter batteri og tænder dronen. Når der er tilkoblet forsyning initialiseres main controller samt 3G/GPS og nuværende GPS position  (longitude og latitude) opdateres. Dronens nuværende GPS position sended via PUT requests til webapplikationen. PUT requests bruges dels til at fortælle webapplikationen at dronen er online og dels til at give webapplikationen information om dronens nuværende position. 
+På sekvensdiagrammet på figur \ref{fig:Sekvens_diagram_iteration1}, vises hvilke klasser der indgår og bruges i første iteration. Af sekvensdiagrammet fremgår det, at sekvensen først startes når bruger tilslutter batteri og tænder dronen. Når der er tilkoblet forsyning initialiseres main controller samt 3G/GPS modulet og nuværende GPS position  (longitude og latitude) opdateres. Dronens nuværende GPS position sendes via PUT request til webapplikationen. PUT requestet bruges dels til at fortælle webapplikationen at dronen er online og dels til at give webapplikationen information om dronens nuværende position. 
 
 %kommentar
 \begin{figure}[H]
@@ -96,7 +96,7 @@ Sekvensdiagrammet på figur \ref{fig:Sekvens_diagram_putDroneStatus} viser hvilk
 \newpage
 
 \subsubsection*{Sekvensdiagram webapplikation}
-På figur \ref{fig:Sekvens_diagram_login} ses sekvens diagrammet over login på webappplikationen. På diagrammet vises det at systemets bruger først bliver ført til næste side ved succesfuld login. Diagrammet viser også kommunikationen med CRUDServiceDrone som kommunikerer med databasen. Ydermere viser diagrammet hvordan AuthenticationServices håndterer bruger data.
+På figur \ref{fig:Sekvens_diagram_login} ses sekvens diagrammet over login på webappplikationen. På diagrammet vises det at systemets bruger først bliver ført til næste side ved succesfuld login. Diagrammet viser også kommunikationen med CRUDServiceDrone og hvordan AuthenticationServices håndterer bruger data.
 
 \begin{figure}[H]
 	\centering
@@ -126,7 +126,7 @@ På figur \ref{fig:classDiagram_iteration1} vises et klassediagram som viser ite
 Main.cpp filen bruges til at sætte arduino board korrekt op, bla. sættes baudrate på de forskellige serielle forbindelser. Desuden bruges Main.cpp til at kalde og eksekverer forskellige klasse, objekter og funktioner.
 
 \textbf{GPS} \\
-GPS klassen er implementeret som en abstract klasse. Init og updateGPSPosition er lavet som virtuelle metoder, hvilket betyder de skal implementeres i alle afledte klasser. GPS klassen er lavet fordi 3G/GPS modulet kunne bruges i 3 forskellige GPS modes. 
+GPS klassen er implementeret som en abstract klasse. Init og updateGPSPosition er lavet som virtuelle metoder, hvilket betyder de skal implementeres i alle afledte klasser. GPS klassen er lavet fordi 3G/GPS modulet kan bruges i 3 forskellige GPS modes. 
 
 \textbf{StandaloneGPS}\\
 Denne klasse er ansvarlig for al kommunikation med GPS'en når standalone mode er valgt. 
@@ -138,14 +138,14 @@ GetAndPut klassen er den klasse der er tættest på hardwaren. Klassen indeholde
 Communication klassen styrer alt der har med 3G kommunikation at gøre.
 
 \textbf{EventHandler} \\
-EventHandler klassen håndterer Events, og bruges som bindeled mellem communication- og GetAndPut klassen. EventHandleren sorterer eventID'et fra data der modtages og returnerer værdien af eventID til communication klassen. 
+EventHandler klassen håndterer Events, og bruges som bindeled mellem communication- og GetAndPut klassen. EventHandleren sorterer eventID'et fra data der modtages fra server og returnerer værdien af eventID til communication klassen. 
 
 
 \newpage
 
 \subsubsection*{Klassediagram webapplikation}
 \vspace{-0.3cm}
-Figur \ref{fig:classDiagram_webapplikation} viser klassediagrammet tilhørende webapplikation tilhørende iteration 1.
+Figur \ref{fig:classDiagram_webapplikation} viser klassediagrammet tilhørende webapplikation til iteration 1.
 
 \vspace{-0.2cm}
 \begin{figure}[H]
@@ -159,10 +159,10 @@ Figur \ref{fig:classDiagram_webapplikation} viser klassediagrammet tilhørende w
 \vspace{-0.2cm}
 
 \textbf{login} \\
-Denne klasse er view'et tilhørende iteration 1. Sammen med loginCtrl skaber Login klassen det view som bruger ser i sin browser.
+Denne klasse indeholder view'et til webapplikationen, og udgør sammen med loginCtrl klassen GUI på webapplikationen. 
 
 \textbf{loginCtrl} \\
-LoginCtrl er en controller klasse som er forbundet med view klassen via two-way databinding. Klassen uddelegere også opgaver til dens services.
+LoginCtrl er en controller klasse som er forbundet med view klassen via two-way databinding. Desuden uddelegere klassen opgaver til de underliggende services.
 
 \textbf{AuthenticationServices} \\
 AuthenticationServices klassen er ansvarlig for at afgøre om bruger er authenticated eller ej. Hvis bruger er authenticated bliver han/hun redirected til webapplikations home-page. Klassen gør brug af UserServices klassen til at gemme information om den bruger der er logget ind på webapplikationen.
@@ -176,7 +176,7 @@ Denne klasse bruges som bindeled imellem server og webapplikation, og indeholder
 
 \subsubsection*{State machine diagram}
 \vspace{-0.1cm}
-I state machine diagrammet på figur \ref{fig:Statemachine_iteration1}, vises de forskellige states der eksisterer i iteration 1 og hvordan flowet imellem dem ser ud. Der eksisterer givet vis kun 1 state i iteration 1, men state machinen er medtaget fordi der bygges ovenpå den i de efterfølgende iterationer.
+I state machine diagrammet på figur \ref{fig:Statemachine_iteration1}, vises de forskellige states der eksisterer i iteration 1. Der eksisterer givet vis kun 1 state i iteration 1, men state machinen er medtaget fordi der bygges ovenpå den i de efterfølgende iterationer.
 %kommentar
 \begin{figure}[H]
 	\centering
