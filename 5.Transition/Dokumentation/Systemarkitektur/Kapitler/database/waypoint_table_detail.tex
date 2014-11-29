@@ -1,5 +1,5 @@
 \subsubsection*{Waypoint table}
-Tabellen indeholder alle waypoints som brugeren har oprettet i systemet. Hvert waypoint i tabellen indeholder information om gps-koordinatet, højden og om der skal tages et billede på den givet lokation eller ej.
+Tabellen indeholder alle waypoints som brugeren har oprettet i systemet. Hvert waypoint i tabellen indeholder information om gps-koordinatet, højden og om der skal tages et billede ved lokationen eller ej.
 \vspace{-5pt}
 \begin{figure}[H]
 	\centering
@@ -14,13 +14,13 @@ Tabellen indeholder alle waypoints som brugeren har oprettet i systemet. Hvert w
 \hline
 
 Formål	 							& Holde data om waypoints i systemet.\\\hline
-Forbindelser						& Tabellen har en foreing key til event tabllen.\\\hline
+Forbindelser						& Waypoint tabellen har en foreing key til event tabellen.\\\hline
 Attributter						& \begin{itemize}
 												\item ID: Primary key.
 												\item Latitude: Requried text felt. Max length: 100 char
 												\item Longitude: Requried text felt. Max length: 100 char
-												\item Height: integer
-												\item Event ID: Relation til event tabellen: Foreingkey
+												\item Height: Integer
+												\item Event ID: Relation til event tabellen: Foreing key
 											\end{itemize} \\\hline 
 \end{tabular}
 \caption{Waypoint table}

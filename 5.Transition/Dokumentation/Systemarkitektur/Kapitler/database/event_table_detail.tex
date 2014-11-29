@@ -1,5 +1,5 @@
 \subsubsection*{Event table}
-Tabellen indeholder data om events i systemet. Tabellen fungere som omdrejnings punkt i databasen. Droner kan tilkobles et event, billeder bliver tilføjet til et event og waypoints bliver tilføjet til et event.
+Tabellen indeholder data om events i systemet. Tabellen fungere som omdrejningspunkt i databasen. Droner, billeder og waypoints kan tilføjes til et event.
 \vspace{-5pt}
 \begin{figure}[H]
 	\centering
@@ -14,7 +14,7 @@ Tabellen indeholder data om events i systemet. Tabellen fungere som omdrejnings 
 \hline
 
 Formål	 							& Holde data om events i systemet.\\\hline
-Forbindelser						& Tabellen har en foreing key til user tabellen med en mange til mange relation. Drone-, waypoint- og picture-tabellen har foreing keys til tabellen.\\\hline
+Forbindelser						& Tabellen har en foreing key til user tabellen med en mange til mange relation. Drone-, waypoint- og picture-tabellen har foreing keys til event tabellen.\\\hline
 Attributter						& \begin{itemize}
 												\item ID: Primary key.
 												\item Name: Navnet på det givet event. Max length: 100 char

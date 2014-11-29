@@ -1,5 +1,5 @@
 \subsubsection*{Picture table}
-Tabellen indeholder data om billeder taget af dronen i systemet, samt selve billederne. Billeder bliver gemt i en blob type, som bare er binær-data i databasen.
+Tabellen indeholder billeder og informationer om de billeder taget af dronen. Billeder gemmes i en blob type, som er binær-data i databasen.
 \vspace{-5pt}
 \begin{figure}[H]
 	\centering
@@ -14,13 +14,13 @@ Tabellen indeholder data om billeder taget af dronen i systemet, samt selve bill
 \hline
 
 Formål	 							& Holde data om billeder i systemet og selve billederne.\\\hline
-Forbindelser						& Tabellen har en foreing key til event tabllen.\\\hline
+Forbindelser						& Picture tabellen har en foreing key til event tabellen.\\\hline
 Attributter						& \begin{itemize}
 												\item ID: Primary key.
 												\item Name: Navnet på det givet event. Max length: 100 char
 												\item Timestamp: Timestamp for oprettelse: Datefield
 												\item Picture: blob: Udefinerbar størrelse binær data
-												\item Event ID: Relation til event tabellen: Foreingkey
+												\item Event ID: Relation til event tabellen: Foreing key
 											\end{itemize} \\\hline 
 \end{tabular}
 \caption{Picture table}
