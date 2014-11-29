@@ -5,25 +5,25 @@ På figur \ref{fig:ibd_overordnet} vises et overordnet ibd diagram. Diagrammet b
 \begin{figure}[H]
 \centering
 \includegraphics[width=1\textwidth]{Billeder/IBD/ibd1_overordnet.pdf}
-\vspace{-1cm}
+\vspace{-0.5cm}
 \caption{Ibd - ASD}
 \label{fig:ibd_overordnet}
 \end{figure}
 
 \begin{table}[H]
 	\centering
-		\begin{tabular}{|p{2.6 cm}|p{4.9 cm}|p{2.5 cm}|p{2.5 cm}|} 
+		\begin{tabular}{|p{2.6 cm}|p{6,2 cm}|p{2,2 cm}|p{2,2 cm}|} 
 		\hline
 			\textbf{Signal navn} 	& \textbf{Signal beskrivelse}		& \textbf{Out} 				& \textbf{In}     \\ \hline
-			User input 			& Via \textit{webserver} opsætter \newline bruger ny flyvning eller undersøger en tidligere. & Bruger. 		& Webserver.			    \\ \hline
-			User interface 		& Via GUI kan bruger se hvad der sker i \textit{webserver}.	& Webserver.			& Bruger.				\\ \hline
+			User input 			& Via \textit{webserver} opsætter bruger ny flyvning eller undersøger en tidligere. & Bruger. 		& Webserver.			    \\ \hline
+			User interface 		& Via GUI kan bruger se \newline hvad der sker i \textit{webserver}.	& Webserver.			& Bruger.				\\ \hline
 			Flight setup		& Fra \textit{webserver} sendes \newline flyveopsætningen til dronen.	& Webserver.	& Dronen.	\\ \hline
-			Flight feedback		& Informationer fra dronen \newline til \textit{webserver}.	& 	Dronen.		& Webserver.			    \\ \hline
+			Flight feedback		& Informationer fra \newline dronen til \textit{webserver}.	& 	Dronen.		& Webserver.			    \\ \hline
 			GPS signal 1		& GPS signal.	& GPS-satellit.			& Dronen.				\\ \hline
 			GPS signal 2		& GPS signal.	& GPS-satellit.				& Webserver.	\\ \hline  
 			Optical light		& Lys til at tage billeder.	& Drone \newline omgivelser.				& Drone.	\\ \hline 
-			Ultra sound \newline Height		& Lydsignal reflekteres tilbage til ultralyds sensor.	& Drone \newline omgivelser.				& Drone.	\\ \hline 
-			Ultra sound \newline Collision		& Lydsignal reflekteres tilbage til ultralyds sensor.	& Drone \newline omgivelser.				& Drone.	\\ \hline 
+			Ultra sound \newline Height		& Lydsignaler reflekteres tilbage \newline til modtagerdel af ultralyds sensor.	& Drone \newline omgivelser.				& Drone.	\\ \hline 
+			Ultra sound \newline Collision		& Lydsignaler reflekteres tilbage \newline til modtagerdel af ultralyds sensor.	& Drone \newline omgivelser.				& Drone.	\\ \hline 
 		\end{tabular}
 	\caption{Forbindelser tilhørende: \textit{Ibd - ASD}}
 	\label{tab:IBD1}
