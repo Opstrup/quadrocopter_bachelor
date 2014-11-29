@@ -73,7 +73,9 @@ I roden findes der også to mapper "backend\_api" og "drone\_backend\_api". "dro
 	\label{fig:mappestruktur_1}
 \end{figure}
 
-På figur \ref{fig:mappestruktur_2} ses projekt mappen, de væsentlige filer i denne mappe er settings.py og urls.py. Settings.py er filen hvor alle tredje parts applikationer registeres i tuplen "INSTALLED\_APPS", her filen vil sikkerheds indstillinger også sættes op i tuplen "MIDDLEWARE\_CLASSES". Urls.py filen bliver brugt til at registre hvilke urls server kender og hvilket funktioner/views der skal præsenteres. Yderligere dokumentation omkring settings.py og urls.py kan findes under djangos egen dokumentation omkring settings\footnote{https://docs.djangoproject.com/en/dev/ref/settings/} og urls\footnote{https://docs.djangoproject.com/en/dev/ref/urls/}.
+På figur \ref{fig:mappestruktur_2} ses projekt mappen, de væsentlige filer i denne mappe er settings.py og urls.py.
+Settings.py er filen hvor alle tredje parts applikationer registeres i "INSTALLED\_APPS", filens sikkerhedsindstillinger  sættes op i "MIDDLEWARE\_CLASSES". 
+Urls.py filen bruges til at registrere hvilke url's serveren kender og hvilke funktioner og views der skal præsenteres. Yderligere dokumentation omkring settings.py og urls.py kan findes under djangos egen dokumentation omkring settings\footnote{https://docs.djangoproject.com/en/dev/ref/settings/} og urls\footnote{https://docs.djangoproject.com/en/dev/ref/urls/}.
 
 \begin{figure}[H]
 	\centering
@@ -94,49 +96,49 @@ På figur \ref{fig:mappestruktur_3} ses applikations mappen. Denne mappe indehol
 \end{figure}
 
 \textbf{admin.py} \\
-Denne fil indeholder registrering af div tables i projektet, så de kan tilgås via en admin page hvor en administrator kan redigere i dataen der findes i databasen. Yderligere dokumentation omkring admin.py kan findes på\footnote{https://docs.djangoproject.com/en/dev/ref/contrib/admin/}.
+Denne fil indeholder registrering af diverse tables i projektet. De kan tilgås via en admin page, hvor en administrator kan redigere i det data der ligger i databasen. Yderligere dokumentation omkring admin.py kan findes på\footnote{https://docs.djangoproject.com/en/dev/ref/contrib/admin/}.
 
 \textbf{models.py} \\
 Denne fil indeholder alt logikken til hvilke tabeller og attributter der eksistere i databasen. Via denne fil bliver db.sqlite3 filen som findes i roden, manipuleret. Yderligere dokumentation omkring models.py kan findes på\footnote{https://docs.djangoproject.com/en/dev/topics/db/models/}.
 
 \textbf{serializers.py} \\
-Denne fil indeholder serializers, disse bliver kaldt når et api-endpoint bliver kaldt og via disse serializers finder serveren ud af hvilke data der skal hentes fra databasen og repræsenteres. Disse serializers bliver hovedsageligt brugt til at formatere dataen fra databasen til et JSON format. Yderligere dokumentation omkring serializers.py kan findes på\footnote{https://docs.djangoproject.com/en/dev/topics/serialization/}.
+Denne fil indeholder serializers kaldes når et api-endpoint bliver kaldt. Via disse serializers finder serveren ud af hvilke data der skal hentes fra databasen og repræsenteres. Disse serializers bliver hovedsageligt brugt til at formatere dataen fra databasen til et JSON format. Yderligere dokumentation omkring serializers.py kan findes på\footnote{https://docs.djangoproject.com/en/dev/topics/serialization/}.
 
 \textbf{views.py} \\
-Denne fil håndtere de requests som der bliver kaldt og ud fra dem afgøre den hvilke serializer der skal generes og præsenteres. Yderligere dokumentation omkring views.py kan findes på\footnote{https://docs.djangoproject.com/en/dev/topics/class-based-views/}.
+Denne fil håndtere de requests som kaldes og afgør ud fra dem hvilke serializer der skal generes og præsenteres. Yderligere dokumentation omkring views.py kan findes på\footnote{https://docs.djangoproject.com/en/dev/topics/class-based-views/}.
 \newpage
 
 \subsubsection*{Debug}
 Dette underafsnit vil beskrive hvordan server software kan debugges og hvordan de forskellige værktøjer kan bruges.\\
 
 \textbf{Terminal}\\
-På figur \ref{fig:get_eksempel} ses et udklip af terminal vinduet, hvor et to GET requests har fundet sted på serveren. Som det ses på billedet er det muligt debugge serveren og tjekke hvilke data der bliver sendt frem og tilbage ved hvert request til serveren. 
+På figur \ref{fig:get_eksempel} ses et udklip af terminal vinduet, hvor to GET requests har fundet sted. Som det ses på billedet, er det muligt at debugge serveren og tjekke hvilke data sendes frem og tilbage ved hvert request. 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\textwidth]{Billeder/implementation/get_eksempel.png}
+	\includegraphics[width=1\textwidth]{Billeder/implementation/get_eksempel.png}
 	\caption{GET eksempel}
 	\label{fig:get_eksempel}
 \end{figure}
 
 \textbf{Browser}\\
-På figur \ref{fig:browser_eksempel} ses et eksempel på hvordan browseren også kan bruges til at debugge serveren. Her ses det hvilke data der kan hentes ved at gå til api-endpoint\\
+På figur \ref{fig:browser_eksempel} ses et andet eksempel på hvordan browseren kan bruges til at debugge serveren. Her ses det hvilke data der kan hentes ved at gå til api-endpoint\\
 "http://127.0.0.1:8000/api/drones/". Yderligere information kan findes under Data View afsnittet.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\textwidth]{Billeder/implementation/browser_eksempel.png}
+	\includegraphics[width=1\textwidth]{Billeder/implementation/browser_eksempel.png}
 	\caption{Browser eksempel}
 	\label{fig:browser_eksempel}
 \end{figure}
 
 \newpage
 
-\subsubsection*{Tredje part teknologier}
-Til udviklingen af server softwaren er der benyttet nogle treide parts teknologier, dette underafsnit beskriver hvilke og hvordan de er blevet brugt.
+\subsubsection*{Tredje parts teknologier}
+Til udviklingen af server softwaren er der benyttet nogle tredje parts teknologier, dette underafsnit beskriver hvilke og hvordan de er blevet brugt.
 
 \textbf{Djangorestframework}\\
-Django frameworket i sig selv er rigtig god til at udvikle webapplikationer, men da der til dette projekt ønskede et RESTful api, er der lagt django-rest-frameworket\footnote{http://www.django-rest-framework.org/} oven på django frameworket. Hvilke gør udviklingen af RESTful api'er med django frameworket en del mere simpel.  
+Django frameworket er et godt framework til udvikling af webapplikationer.Til projektet ønskes et RESTful api oven på django frameworket, derfor er der brugt et django-rest-frameworket\footnote{http://www.django-rest-framework.org/}. 
 
 \textbf{django-cors-headers}\\
-Cors headers\footnote{https://github.com/ottoyiu/django-cors-headers} er en django applikation som tilføjer CORS (Cross-Origin Resource Sharing) til applikationen. Dette gør det muligt at tilgå applikationen fra andre server, som fx vores client software som kunne ligge på en anden server eller vores drone som tilgår serveren. 
+Cors headers\footnote{https://github.com/ottoyiu/django-cors-headers} er et django applikation som tilføjer CORS (Cross-Origin Resource Sharing) til applikationer. Dette gør det muligt at tilgå applikationen fra andre servere, som fx.  client softwaren som kan ligge på en anden server eller dronen som tilgår serveren udefra. 

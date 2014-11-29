@@ -32,7 +32,7 @@ I det følgende forklares hvordan de tre 16-bit timere er sat op. Bla. forklares
 
 Når main controllerens 16-bits timere benyttes er det muligt at sætte timerne i 16 forskellige modes. Valget af mode styrer dels opløsningen af timeren, men styrer også hvordan timeren skal fungere. Timerne kan bruges i Normal mode, i CTC (Clear Timer on Compare), i Phase Correct PWM Mode eller i Fast PWM.
 
-For at få den størst mulige opløsning benyttes de tre timerne i mode 14 - ”Fast PWM”. I mode 14 bestemmes værdien af TOP, af registeret ICRn som er et 16-bit stort register. Dette betyder at ICRn maksimalt kan sættes til værdien 0xFFFF (65535). 
+For at få den størst mulige opløsning benyttes de tre timere i mode 14 - ”Fast PWM”. I mode 14 bestemmer ICRn registeret værdien af TOP, som er et 16-bit stort. Dette betyder at ICRn maksimalt kan sættes til værdien 0xFFFF (65535). 
 
 %kommentar
 \begin{figure}[H]
