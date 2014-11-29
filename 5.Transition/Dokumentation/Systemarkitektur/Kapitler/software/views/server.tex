@@ -1,14 +1,14 @@
-\subsection{Opsæning af server}
-Dette afsnit har til formål at beskrive hvordan et udviklingsmiljø sættes op på en givet maskine så vider udvikling af systemet kan finde sted. Afsnittet forklare også hvilke tredjeparts teknologier der er anvendt og eventuelle afhængigheder.
+\subsection{Opsætning af server}
+Dette afsnit har til formål at beskrive hvordan et udviklingsmiljø sættes op på en givet maskine, så vider udvikling af systemet kan finde sted. Afsnittet forklarer også hvilke tredjeparts teknologier der er anvendt og eventuelle afhængigheder.
 
 \subsubsection*{OS}
-Det anbefales at udviklingen finder sted på en OS X eller Linux maskine, da UNIX-terminalen er et meget brugt værktøj og som standart er windows cmd meget "begrænset", det kan dog lade sig gøre med nogle tweaks at forbedre windows cmd. Dette er ikke noget der vil blive yderligere forklaret og derfor er dokumentet skrevet som udgangspunkt at arbejdet forgår i en UNIX-terminal.
+Det anbefales at udviklingen finder sted på en OS X eller Linux maskine, da UNIX-terminalen er et meget brugt værktøj og som standart er windows cmd meget "begrænset". Det kan dog lade sig gøre at bruge windows's cmd med nogle tweaks. Dette er ikke noget der vil blive forklaret yderligere og derfor er det kun UNIX-terminalen der er beskrevet i afsnittet.
 
 \subsubsection*{IDE/Text Editor}
-Da alt server opsætningen og logikken er skrevet i python som er et højniveau script sprog, er der ikke nogle specielle krav til et IDE. En simpel texeditor er at fortrække. Her anbefales det at enten bruge Sublime\footnote{http://www.sublimetext.com/2} Text Editoren eller Atom\footnote{https://atom.io/} Editoren. Begge text editor tilbyder god code highlighting og med treide parts pakker installeret som "PyLinter", "pep8" eller "Linter", som tjekker koden for evt. fejl i indentringen, manglende kommentar eller kode standart, er disse text editor rigtig gode til arbejdet.
+Da alt server opsætningen og logikken er skrevet i python, som er et højniveau script sprog, er der ikke nogle specielle krav til et IDE. Et simpelt tekst redigerings program er at fortrække. Det anbefales enten at bruge Sublime\footnote{http://www.sublimetext.com/2} Text Editoren eller Atom\footnote{https://atom.io/} Editoren. Begge text editors tilbyder god code highlightning og mulighed for at tilføje tredje parts pakker. Et udkast af de pakker der bruges er "PyLinter", "pep8" eller "Linter", som tjekker koden for evt. fejl i indentering, manglende kommentar eller kode standart.
 
 \subsubsection*{Installation af software}
-Dette underafsnit vil forklare hvordan div. software pakker bliver installeret på udviklingernes maske og hvordan udvikleren starter den lokale server op. \\
+Dette underafsnit vil forklare hvordan diverse software pakker installeres på udviklingernes maskine og hvordan udviklerne starter den lokale server op. \\
 Det første program der skal installeres er git. Skriv følgende i terminalen.
 
 Linux:
@@ -36,13 +36,13 @@ OS X:
 	$ sudo easy_install pip
 \end{lstlisting}
 
-Efter pip er installeret skal scriptet "requirements.txt" køres, dette script ligger i roden af server projektet som blev hentet fra github. Skriv følgende i terminalen (da pip bliver brugt som package manager kommandoen ens på Linux og OS X). \\
+Når pip er installeret skal scriptet "requirements.txt" køres, dette script ligger i roden af server projektet som blev hentet fra github. Skriv følgende i terminalen (da pip bliver brugt som package manager er kommandoen ens på Linux og OS X). \\
 
 \begin{lstlisting}[language=bash]
 	$ pip install -r requirements.txt
 \end{lstlisting}
 
-Efter scriptet har kørt og pip har installeret alle afhængigheder, er serveren klar til blive startet og brugt. For at starte serveren op skriv følgende i terminalen.
+Efter scriptet er kørt og pip har installeret alle afhængigheder, er serveren klar til blive startet. For at starte serveren, skriv følgende i terminalen.
 
 \begin{lstlisting}[language=bash]
 	$ cd drone_backend_api/
@@ -50,7 +50,7 @@ Efter scriptet har kørt og pip har installeret alle afhængigheder, er serveren
 \end{lstlisting}
 
 
-På figur \ref{fig:server_startup} ses et udklip af terminal vinduet ved server startup. Her kan det ses at serveren er startet på "http://127.0.0.1:8000/", bemærk dog at denne url bliver ikke brugt af derfor vil der blive vist en 404 error page not found. For at tilgå servere kan api endpoints som beskrevet i Data view afsnittet benyttes, så som http://127.0.0.1:8000/api/drones/.
+På figur \ref{fig:server_startup} ses et udklip af terminal vinduet ved server startup. Det ses at serveren er startet på "http://127.0.0.1:8000/", bemærk at denne url ikke bruges og vil derfor vise en: 404 error page not found fejl, hvis den tilgås. For at tilgå servere kan api endpoints, som beskrevet i Data view afsnittet, benyttes, http://127.0.0.1:8000/api/drones/.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.85\textwidth]{Billeder/implementation/server_startup.png}
@@ -60,9 +60,9 @@ På figur \ref{fig:server_startup} ses et udklip af terminal vinduet ved server 
 \newpage
 
 \subsubsection*{Mappestruktur}
-Dette underafsnit vil forklare om den overordnede mappe struktur i projektet og give en overordnet forståelse af django udvikling. \\
+Dette underafsnit vil forklare om den overordnede mappe struktur i projektet og giver en overordnet forståelse af django udvikling. \\
 
-På figur \ref{fig:mappestruktur_1} ses den overordnet mappe struktur. I roden af mappen findes to væsentlige filer. db.sqlite3 hvilket er database filen til serveren, denne fil vil aldrig blive brugt direkte, men kun indirekte igennem django-frameworket. Den anden fil er manage.py, denne fil er main filen i hele projektet. Den fil vil aldrig blive redigeret, men bruges kun via terminalen til at køre forskellige kommandoer på django-applikationen. \\
+På figur \ref{fig:mappestruktur_1} ses den overordnet mappe struktur. I roden af mappen findes to væsentlige filer: db.sqlite3 hvilket er database filen til serveren, denne fil vil aldrig blive brugt direkte, men kun indirekte igennem django-frameworket. Den anden fil er manage.py, denne fil er main filen i hele projektet. Filen redigeres aldrig, men bruges kun via terminalen, til forskellige kommandoer på django-applikationen. \\
 
 I roden findes der også to mapper "backend\_api" og "drone\_backend\_api". "drone\_backend\_api"  mappen er selve projekt mappen og "backend\_api" er applikations mappen.
 
@@ -73,7 +73,7 @@ I roden findes der også to mapper "backend\_api" og "drone\_backend\_api". "dro
 	\label{fig:mappestruktur_1}
 \end{figure}
 
-På figur \ref{fig:mappestruktur_2} ses projekt mappen, de væsentlige filer i denne mappe er settings.py og urls.py. Settings.py er filen hvor alle treide parts applikationer registeres i tuplen "INSTALLED\_APPS", her filen vil sikkerheds indstillinger også sættes op i tuplen "MIDDLEWARE\_CLASSES". Urls.py filen bliver brugt til at registre hvilke urls server kender og hvilket funktioner/views der skal præsenteres. Yderligere dokumentation omkring settings.py og urls.py kan findes under djangos egen dokumentation omkring settings\footnote{https://docs.djangoproject.com/en/dev/ref/settings/} og urls\footnote{https://docs.djangoproject.com/en/dev/ref/urls/}.
+På figur \ref{fig:mappestruktur_2} ses projekt mappen, de væsentlige filer i denne mappe er settings.py og urls.py. Settings.py er filen hvor alle tredje parts applikationer registeres i tuplen "INSTALLED\_APPS", her filen vil sikkerheds indstillinger også sættes op i tuplen "MIDDLEWARE\_CLASSES". Urls.py filen bliver brugt til at registre hvilke urls server kender og hvilket funktioner/views der skal præsenteres. Yderligere dokumentation omkring settings.py og urls.py kan findes under djangos egen dokumentation omkring settings\footnote{https://docs.djangoproject.com/en/dev/ref/settings/} og urls\footnote{https://docs.djangoproject.com/en/dev/ref/urls/}.
 
 \begin{figure}[H]
 	\centering
