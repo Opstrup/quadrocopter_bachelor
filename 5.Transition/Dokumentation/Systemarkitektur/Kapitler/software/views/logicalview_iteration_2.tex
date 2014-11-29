@@ -140,7 +140,7 @@ Sekvensdiagrammet på figur \ref{fig:page_load} viser hvordan klasserne i webapp
 \end{figure}
 
 \newpage
-På figur \ref{fig:send_waypoints} ses hvilke hændelser der finder sted i systemet, når bruger trykker på "send event". Hver service har et bestemt ansvar og de kommunikerer ud til CRUD-servicesen. Denne opbygning sikrer at logikken for data håndtering skubbes ud i diverse services. 
+På figur \ref{fig:send_waypoints} hvad der sker, når bruger gemmer en flyveopsætning. Hver service har et bestemt ansvar og de kommunikerer ud til CRUD-servicesen. Denne opbygning sikrer at logikken for data håndtering skubbes ud i diverse services. 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1\textwidth]{Billeder/sekvens/sd_send_waypoints.png}
@@ -172,38 +172,35 @@ På figur \ref{fig:classDiagram_drone_underflyvning} ses klassediagrammet for dr
 	\label{fig:classDiagram_drone_underflyvning}
 \end{figure}
 
-\textbf{Main.cpp} \\
-Main.cpp bruges til at sætte arduino board korrekt op, bla. sættes baudrate på de forskellige serielle forbindelser. Desuden bruges Main.cpp til at kalde og eksekverer forskellige klasse, objekter og funktioner.
-
 \textbf{FlightControl} \\
-Det er Flight Control klassen der har alt med styring af dronen at gøre, lige fra calibrering af motorerne til at hente data fra kompasset. 
+FlightControl klassen står for alt styring af dronen. Bla. står FlightControl for kalibrering og styring af motorerne, samt aflæsning af højdesensor, GPS og kompas. 
 
 \textbf{DistanceSensor} \\
-DistanceSensor klassen bruges til at kontrollere de sensorer der er monteret på dronen. Her er det både sensorer til højdemåling og anti kollision. 
+DistanceSensor klassen bruges til at kontrollere de sensorer der er monteret på dronen. DistanceSensor klassen bruges udelukkende til kontrol af sensore til højdemåling. 
 
-\newpage
+\textbf{WayPointsHandler} \\
+WayPointsHandler klassen håndterer de waypoints der hentes ned fra server. Klassen tager de hentede waypoints og gør dem tilgængelige for main.cpp. WayPointsHandleren gør brug af set-metoder fra WayPoint klassen.
+
+\textbf{WayPoint} \\
+WayPoint klassen bruges til at hente waypoints.  
+
+\textbf{Main.cpp} \\
+Main.cpp filen bruges til at sætte arduino board korrekt op, bla. sættes baudrate på de forskellige serielle forbindelser. Desuden bruges Main.cpp til at kalde og eksekverer forskellige klasse, objekter og funktioner.
 
 \textbf{GPS} \\
-GPS klassen er implementeret som en abstract klasse, idet den ikke selv har nogle metoder den skal bruge, men med virtuelle metoder der sikrer at de implementeres i de afledte klasser. 
-Init og updateGPSPosition er valgt til at være virtuelle klasser, hvilket gør at de skal implementeres uanset hvilken GPS der bruges. Klassen er lavet fordi der i udgangspunkt var mulighed for at bruge 3 forskellige slags GPS modes med 3G/GPS modulet. 
+GPS klassen er implementeret som en abstract klasse. Init og updateGPSPosition er lavet som virtuelle metoder, hvilket betyder de skal implementeres i alle afledte klasser. GPS klassen er lavet fordi 3G/GPS modulet kunne bruges i 3 forskellige GPS modes. 
 
 \textbf{StandaloneGPS}\\
 Denne klasse er ansvarlig for al kommunikation med GPS'en når standalone mode er valgt. 
 
 \textbf{GetAndPut} \\
-GetAndPut klassen er den klasse der er tættest på hardwaren. Klassen indeholder de http metoder der bruges til kommunikation mellem dronen og serveren. 
+GetAndPut klassen er den klasse der er tættest på hardwaren. Klassen indeholder http metoder der bruges til kommunikation mellem dronen og serveren. 
 
 \textbf{Communication} \\
-Communication klassen er den øverste klasse og den håndterer sammen med andre klasser, alt der har med 3G at gøre.
+Communication klassen styrer alt der har med 3G kommunikation at gøre.
 
 \textbf{EventHandler} \\
-EventHandleren er den klasse der håndterer Events. EventHandleren er bindeledet mellem communication- og GetAndPut klassen. EventHandleren sorterer eventID'et fra de data den modtager og returnerer værdien til communication klassen.
-
-\textbf{WayPointsHandler} \\
-WayPointsHandler klassen er den klasse der håndterer de waypoints der hentes ned fra serveren. Klassen tager de waypoints den får fra serveren og gør dem tilgængeligt for resten af systemet. WayPointsHandleren bruger set metoderne i WayPoint klassen.
-
-\textbf{WayPoint} \\
-WayPoint klassen bruges til at kunne hente de forskellige waypoints ud af arrayet.  
+EventHandler klassen håndterer Events, og bruges som bindeled mellem communication- og GetAndPut klassen. EventHandleren sorterer eventID'et fra data der modtages og returnerer værdien af eventID til communication klassen. 
 
 \newpage
 

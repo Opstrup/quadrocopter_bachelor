@@ -99,11 +99,43 @@ Figur \ref{fig:classDiagram_iteration3} viser et klassediagram tilhørende itera
 	\label{fig:classDiagram_iteration3}
 \end{figure}
 
-\textbf{Main.cpp} \\
-Main.cpp filen bruges til at oprette kamera objektet og kalde de dertilhørende metoder.
 
 \textbf{Camera} \\
 Camera klassen er ansvarlig for at tage billeder og sende dem videre i systemet. 
+
+\textbf{FlightControl} \\
+FlightControl klassen står for alt styring af dronen. Bla. står FlightControl for kalibrering og styring af motorerne, samt aflæsning af højdesensor, GPS og kompas. 
+
+\textbf{DistanceSensor} \\
+DistanceSensor klassen bruges til at kontrollere de sensorer der er monteret på dronen. DistanceSensor klassen bruges udelukkende til kontrol af sensore til højdemåling. 
+
+\textbf{WayPointsHandler} \\
+WayPointsHandler klassen håndterer de waypoints der hentes ned fra server. Klassen tager de hentede waypoints og gør dem tilgængelige for main.cpp. WayPointsHandleren gør brug af set-metoder fra WayPoint klassen.
+
+\textbf{WayPoint} \\
+WayPoint klassen bruges til at hente waypoints.  
+
+\textbf{Main.cpp} \\
+Main.cpp filen bruges til at sætte arduino board korrekt op, bla. sættes baudrate på de forskellige serielle forbindelser. Desuden bruges Main.cpp til at kalde og eksekverer forskellige klasse, objekter og funktioner. 
+
+\textbf{GPS} \\
+GPS klassen er implementeret som en abstract klasse. Init og updateGPSPosition er lavet som virtuelle metoder, hvilket betyder de skal implementeres i alle afledte klasser. GPS klassen er lavet fordi 3G/GPS modulet kunne bruges i 3 forskellige GPS modes. 
+
+\textbf{StandaloneGPS}\\
+Denne klasse er ansvarlig for al kommunikation med GPS'en når standalone mode er valgt. 
+
+\textbf{GetAndPut} \\
+GetAndPut klassen er den klasse der er tættest på hardwaren. Klassen indeholder http metoder der bruges til kommunikation mellem dronen og serveren. 
+
+\textbf{Communication} \\
+Communication klassen styrer alt der har med 3G kommunikation at gøre.
+
+\textbf{EventHandler} \\
+EventHandler klassen håndterer Events, og bruges som bindeled mellem communication- og GetAndPut klassen. EventHandleren sorterer eventID'et fra data der modtages og returnerer værdien af eventID til communication klassen. 
+
+
+
+
 \newpage
 
 \subsubsection*{Klassediagram server}
@@ -152,7 +184,7 @@ I state machine diagrammet på figur \ref{fig:Statemachine_iteration3}, vises hv
 %kommentar
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.9\textwidth]{Billeder/statemachine/State_iteration3.png}
+	\includegraphics[width=1\textwidth]{Billeder/statemachine/State_iteration3.png}
 	\caption{State machine \#iteration 3}
 	\label{fig:Statemachine_iteration3}
 \end{figure}

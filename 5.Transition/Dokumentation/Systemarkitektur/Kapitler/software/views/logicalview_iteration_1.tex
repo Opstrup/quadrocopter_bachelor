@@ -126,7 +126,7 @@ På figur \ref{fig:classDiagram_iteration1} vises et klassediagram som viser ite
 Main.cpp filen bruges til at sætte arduino board korrekt op, bla. sættes baudrate på de forskellige serielle forbindelser. Desuden bruges Main.cpp til at kalde og eksekverer forskellige klasse, objekter og funktioner.
 
 \textbf{GPS} \\
-GPS klassen er implementeret som en abstract klasse. Init og updateGPSPosition er lavet som virtuelle metoder, hvilket betyder de skal implementeres i alle afledte klasser. GPS klassen er lavet fordi 3G/GPS shieldet kunne bruges i 3 forskellige GPS modes. 
+GPS klassen er implementeret som en abstract klasse. Init og updateGPSPosition er lavet som virtuelle metoder, hvilket betyder de skal implementeres i alle afledte klasser. GPS klassen er lavet fordi 3G/GPS modulet kunne bruges i 3 forskellige GPS modes. 
 
 \textbf{StandaloneGPS}\\
 Denne klasse er ansvarlig for al kommunikation med GPS'en når standalone mode er valgt. 
@@ -138,7 +138,7 @@ GetAndPut klassen er den klasse der er tættest på hardwaren. Klassen indeholde
 Communication klassen styrer alt der har med 3G kommunikation at gøre.
 
 \textbf{EventHandler} \\
-EventHandleren klassen håndterer Events, og bruges som bindeled mellem communication- og GetAndPut klassen. EventHandleren sorterer eventID'et fra data der modtager og returnerer værdien af eventID til communication klassen. 
+EventHandler klassen håndterer Events, og bruges som bindeled mellem communication- og GetAndPut klassen. EventHandleren sorterer eventID'et fra data der modtages og returnerer værdien af eventID til communication klassen. 
 
 
 \newpage
