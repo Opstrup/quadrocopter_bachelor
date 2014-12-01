@@ -80,6 +80,8 @@ I Atmel og arduino findes der ikke standard JSon biblioteker, der kan håndtere 
 Det anvendte bibliotek hedder aJson\footnote{https://github.com/interactive-matter/aJson} og er et frit tilgængeligt JSON bibliotek som er lavet til Arduino.
 
 
+\newpage
+
 \subsubsection*{Filoversigt Drone}
 
 Dette afsnit omhandler de forskellige filer og biblioteker der er anvendt i Atmel Studio. 
@@ -93,40 +95,40 @@ Dette afsnit omhandler de forskellige filer og biblioteker der er anvendt i Atme
 \end{figure}
 
 \textbf{aJSon}\\
-JSON biblioteket håndterer sammen med stringbuffer biblioteket de JSon objekter der bruges af dronen. Der kan læses mere om JSon biblioteket her\footnote{https://github.com/interactive-matter/aJson} \\ \\
+JSON biblioteket håndterer sammen med stringbuffer biblioteket de JSon objekter der bruges af dronen. Der kan læses mere om JSon biblioteket her\footnote{https://github.com/interactive-matter/aJson} \\ 
 
 \textbf{Communication}\\
-Communication klassen er den klasse der håndterer al kommunikation til dronen. Communication klassen er den øverste klasse i forhold til kommunikationen over 3G. \\ \\
+Communication klassen er den klasse der håndterer al kommunikation til dronen. Communication klassen er den øverste klasse i forhold til kommunikationen over 3G. \\ 
 
 \textbf{DistanceSensor}\\
-Denne klasses funktionalitet er aflæsningen af sensorværdierne. \\ \\
+Denne klasses funktionalitet er aflæsningen af sensorværdierne. \\ 
 
 \textbf{Drone\_fly}\\
-Dette er selve mainen til systemet. Det er denne fil der håndterer alle andre klasser der anvendes i drone systemet. \\ \\
+Dette er selve mainen til systemet. Det er denne fil der håndterer alle andre klasser der anvendes i drone systemet. \\ 
 
 \textbf{EventHandler}\\
-EventHandleren håndterer alle GET og PUT metoder der har med events at gøre. \\ \\
+EventHandleren håndterer alle GET og PUT metoder der har med events at gøre. \\ 
 
 \textbf{FlightControl}\\
-FlightControl klassen styrer selve dronen. Den får input fra både Flight Control boarded og 3G/GPS shieldet og udregner bl.a. orientering. \\ \\
+FlightControl klassen styrer selve dronen. Den får input fra både Flight Control boarded og 3G/GPS shieldet og udregner bl.a. orientering. \\
 
 \textbf{GetAndPut}\\
-GetAndPut klassen er den klasse der er mest hardware nær i forhold til kommunikationen over 3G. Det er denne klasse der kontrollerer hvilken GET og PUT requests der skal sendes og til hvilken server. \\ \\ 
+GetAndPut klassen er den klasse der er mest hardware nær i forhold til kommunikationen over 3G. Det er denne klasse der kontrollerer hvilken GET og PUT requests der skal sendes og til hvilken server. \\ 
 
 \textbf{GPS}\\
-Denne klasse er en abstrakt klasse, som kun indeholder virtuelle metoder. Det gør at andre klasser der bruger denne abstrakte klasse, som minimum skal implementere de virtuelle metoder. \\ \\
+Denne klasse er en abstrakt klasse, som kun indeholder virtuelle metoder. Det gør at andre klasser der bruger denne abstrakte klasse, som minimum skal implementere de virtuelle metoder. \\ 
 
 \textbf{sendAT}\\
-sendAT klassens ansvar er at sende AT kommandoer til 3G/GPS shieldet. !!!!! TILFØJ FODNOTE TIL KODEN !!!!\\ \\ 
+sendAT klassens ansvar er at sende AT kommandoer til 3G/GPS shieldet. !!!!! TILFØJ FODNOTE TIL KODEN !!!!\\ 
 
 \textbf{standAloneGps}\\
-standAloneGps håndterer systemets GPS og de metoder der skal bruges for at hente GPS koordinater. \\ \\
+standAloneGps håndterer systemets GPS og de metoder der skal bruges for at hente GPS koordinater. \\ 
 
 \textbf{waypoint}\\
-Waypoint klassen bruges til at pakke alt information omkring et givet waypoint ind i et objekt.\\ \\
+Waypoint klassen bruges til at pakke alt information omkring et givet waypoint ind i et objekt.\\ 
 
 \textbf{WayPointsHandler}\\
-WayPointsHandleren håndterer alle GET og PUT metoder der har med waypoints at gøre. \\ \\
+WayPointsHandleren håndterer alle GET og PUT metoder der har med waypoints at gøre. \\ 
 
 \newpage
 

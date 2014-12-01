@@ -1,19 +1,27 @@
-%%%%%% Systembeskrivelse %%%%%%
-\chapter{Systembeskrivelse}
-\label{chap:systembeskrivelse}
+\section{Systembeskrivelse}
+På Ingeniørhøjskolen Aarhus Universitet forefindes en AeroQuad ARF Quadrocopter. 
+Målet med projektet er, at omdanne quadrocopteren til en autonom overvågningsdrone.
 
-Track’n’Play er et musikanlæg, som, udover at kunne afspille musik, også automatisk justerer højtalerretning og lydstyrke. Justeringen sker for at forbedre brugerens lydoplevelse.
+Dronen skal ud fra brugers anvisninger overvåge og tage billeder af et defineret område. 
+Via en webapplikation kan bruger lave flyveopsætninger til dronen samt se billeder og flyverute fra tidligere flyvninger. 
+Når der laves ny flyveopsætning vælger bruger en række GPS positioner som dronen skal flyve til, flyvehøjde og hvorvidt der skal tages billeder ved de valgte GPS positioner. Webapplikation fungerer som et grafisk brugerflade mellem bruger og server. Når bruger har lavet en ny flyveopsætning, stilles flyveopsætningen tilgængelig for dronen på server.  
 
-Systemet består af et lydanlæg, en medieafspiller, to højtalere på roterende platforme, en bærbar enhed samt en positionsbestemmer. 
+Til enhver tid, skal al kommunikation mellem drone og server foregå via mobil netværk. Det gøres hovedsageligt at gøre brug af 3G netværket, men i områder med dårlig forbindelse vil der blive gjort brug af 2G som fall-back netværk. Da dronen skal flyve autonomt, er det vigtigt den kan orientere sig på egen hånd. Derfor er den udstyres den med GPS, afstands sensorer og kompas.
 
-\begin{figure}[h!]
-  \centering
-    \includegraphics[width=0.8\textwidth]{billeder/systembeskrivelse/trackplay opstilling.pdf}
-    \caption{Track'n'Play opstilling}
+
+
+\section{Systemoversigt}
+Nederst til højre på figur \ref{fig:Systemskitse} ses et device. Dette device benyttes af bruger til at tilgå webapplikation, og lave en ny flyveopsætning. Når bruger har lavet ny flyveopsætning, overføres den via internettet til server, hvor den gøres tilgængelig for dronen.
+ 
+
+Under flyvning kontrollerer dronen løbende egen GPS position via kommunikation med GPS satellitter. Dette gøres for at opdatere egen position og for dronen kan beregne hvilken retning den skal flyve i. Via det mobile 3G netværk kommunikerer drone løbende med server. Dronen fortæller server om nuværende GPS position, overføre billeder og tjekker om der er ny flyveopsætninger tilgængelig. 
+
+\vspace{-5pt}
+%Systemskitse
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth]{Billeder/Projektbeskrivelse.png}
+\vspace{-.5cm}
+\caption{Systemskitse}
+\label{fig:Systemskitse}
 \end{figure}
-
-
-Anlægget modtager et lydsignal fra medieafspilleren, som den forstærker og afspiller via højtalerne.\newline
-På den bærbare enhed kan brugeren se den aktuelle lydstyrke for anlægget, samt justere lydstyrken til et andet niveau. Den bærbare enhed bruges også til at måle lydstyrken i brugerens position, så brugeren altid oplever en ensartet lydstyrke selvom afstanden mellem anlægget og brugeren ændres. Datakommunikation mellem anlægget og den bærbare enhed foregår trådløst via en radiosender.\newline
-Den bærbare enhed udsender, udover et radiosignal til anlægget, også en højfrekvent tone ud i rummet, som ikke kan høres af det menneskelige øre. Denne tone opfanges af positionsbestemmelsen og ud fra denne tone kan brugerens position i rummet beregnes.\newline
-Når brugerens position er fastlagt, sendes den over til anlægget, der justerer højtalernes retning, så de peger imod brugeren. 
