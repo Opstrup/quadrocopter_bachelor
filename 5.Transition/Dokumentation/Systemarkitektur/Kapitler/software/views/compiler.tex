@@ -25,9 +25,14 @@ I Arduino vælges et tilfældigt projekt, den rigtige arduino vælges under Vær
 
 Inde i mappen ligger en core fil, denne fil skal kopieres over i Atmel Studio's workspace. Som standard ligger workspacet i "C:\textbackslash Users\textbackslash computer navn\textbackslash Documents\textbackslash Atmel Studio". 
 Inde i Atmels workspace oprettes en mappe: "ArduinoCore" eller lignende. Core filen kopieres til mappen og navnet ændres til libcore.
-Ved opstart af Atmel, vælges hvilken type chip arduino bruger.
+Ved opstart af Atmel, vælges hvilken type chip arduino bruger. Til projektet er der anvendt en Mega2560.
 
-!!!!!! TILFØJ BILLEDE AF ATMEL STUDIE HVOR CHIP TYPE VÆLGES !!!!!
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.85\textwidth]{Billeder/implementation/Howtoguide/atmel_chipvalg.png}
+	\caption{Atmel chip}
+	\label{fig:atmel_chip}
+\end{figure}
 
 \textbf{Compiler opsætning} \\
 For at kunne kompilere koden, skal de rette indstillinger til Atmel Studio vælges. 
@@ -142,10 +147,8 @@ I configuration benyttes "use custom path" og ved AVRDude stien linkes til stien
 	\label{fig:Konfigurer_MegunoLink}
 \end{figure}
 
-For at kunne uploade, skal MegunoLink vide hvor hex filen ligger. Dette vælges i edit project properties også stien for det valgte projekt.
-I dropdown menuen vælges den arduino der skal bruges til projektet.
-
-!!!! TILFØJ LIDT MERE FORKLARING HER OG EVT. ET NYT BILLEDE. !!!!!!!
+For at kunne uploade, skal MegunoLink vide hvor projektets hex fil ligger. Denne vælges i edit project properties, markeret med en rød cirkel.
+I dropdown menuen, markeret med en rød pil, vælges den arduino der skal bruges til projektet.
 
 \begin{figure}[H]
 	\centering
