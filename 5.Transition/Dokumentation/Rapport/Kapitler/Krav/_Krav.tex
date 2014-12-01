@@ -1,0 +1,107 @@
+%%%%%% Krav %%%%%%
+\chapter{Krav}
+\label{chap:krav}
+
+%Systemet skal kunne retningsbestemme en bruger og herefter sørge for en bestemt lydstyrke uanset brugerens placering i rummet. Højtalernes retning justeres til altid at pege mod brugeren.
+%For at systemet kan bestemme retning og lydstyrke skal brugeren bære en mikrofon. Retning bestemmes ved, at der er monteret en ultralydssender på højtaleren og man måler outputtet. %af denne i lytterens position og drejer højtaleren indtil kraftigste modtagelse opnås. Lydtrykket bestemmes ved at man kender afstanden til hver højtaler og lydtrykket ved %lytteren. Mikrofonen kommunikere med resten af systemet vha. wireless kommunikation. 
+%
+%
+%\begin{enumerate}
+%\item Ens lydtryk for 1 person, ligegyldigt hvor personen befinder sig i rummet.
+%\item For at kunne nå ”passende” lyd niveau, skal niveau måles ved person.
+%\item Højtalere der tracker og peger mod personen hele tiden.
+%\item Sørge for at fasen fra de to stereo højtalere er den samme ved personen
+%\item Lydoutput kunne kommer fra AUX-stik fra PC, mens styring af højtaler rottering sker via ethernet
+%\end{enumerate}
+
+For at definere systemet er der opstillet en række krav. Aktører til systemet er blevet identificeret og use cases er blevet opstillet for at definere de funktionelle krav. Desuden er der opstillet ikke-funktionelle krav til systemet som helhed og til systemets blokke.\newline
+Alle krav kan findes i Dokumentationsrapportens kapitel \vref{DokRap-chap:kravspec}.
+
+
+\section{Funktionelle krav}
+I systemet er der identificeret 2 aktører.\newline
+Brugeren er primær aktør og ønsker at sætte musik på anlægget, hvorefter anlægget skal justere lydstyrken uanset hvor i rummet brugeren befinder sig.\newline
+Medieafspilleren er sekundær aktør, som skal afspille den musik som brugeren ønsker.
+
+Figur \ref{fig:useCaseDiagram} viser use case diagrammet for systemet.
+\newline Her kan det ses hvilke use cases systemet indeholder, samt hvilke brugeren og medieafspilleren interagerer med.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.80\textwidth]{Billeder/Krav/Usecase_diagram.pdf}
+\caption{Use case diagram}
+\label{fig:useCaseDiagram}
+\end{figure}
+
+Alle use cases er specificeret som fully dressed og kan ses i Dokumentationsrapportens afsnit \vref{DokRap-subsec:useCaseBeskrivelse}.
+
+Tabel \ref{tab:UC4} viser ``Use case 4 -- Tilpas højtaler retning'' som et eksempel på en fully dressed use case.
+
+\begin{table}[H]
+\begin{tabular}{|l|p{10cm}|}
+\hline
+
+Goal 						& Højtalerne peger mod bruger. \\\hline
+Initiation 					& UC-1 og UC-4. \\\hline
+Actors and stakeholders 	& Bruger (Primær): Bruger ændre position. \\\hline
+Concurrent occurences		& 1.\\\hline
+Precondition				& UC-1 er succesfuldt gennemført. \\\hline
+Postcondition by succes		& Højtalerne roteres, så de peger mod bruger.\\
+							& Når UC-4 er succes gennemført, køres den igen. \\\hline
+
+Main success scenario		&
+\renewcommand{\labelenumi}{\arabic{enumi}.}
+\renewcommand{\labelenumii}{\Roman{enumii}:}
+\begin{enumerate}[topsep=0.1cm,leftmargin=0.5cm]
+	\item Systemet måler brugers position.
+	\item System bearbejder data.
+		\begin{enumerate}[partopsep=4cm, topsep=0cm, leftmargin=1cm]
+		\item Ugyldig positionsdataserie.
+		\item Bærbar enhed mister forbindelse til anlæg.
+		\end{enumerate}	
+	\item Højtalere roteres, så de peger mod bruger.
+\end{enumerate} \\\hline	
+
+Extensions					& 
+
+\renewcommand{\labelenumi}{\Roman{enumi}:}
+\renewcommand{\labelenumii}{\alph{enumii})}
+\begin{enumerate}[topsep=0.1cm,leftmargin=0.5cm]
+	\item Ugyldig positionsdataserie.
+		\begin{enumerate}[topsep=0cm, leftmargin=1cm]
+		\item Højtaler retning indstilles til default.		
+		\end{enumerate}
+	\item Bærbar enhed mister forbindelse til system.
+		\begin{enumerate}[topsep=0cm, leftmargin=1cm]
+		\item Højtaler retning og lydstyrke indstilles til default.
+		\end{enumerate}
+\end{enumerate} \\\hline	
+
+\end{tabular}
+\caption{Use case 4}
+\label{tab:UC4}
+\end{table}
+
+Det kan blandt andet ses af use casen, at målet er at højtalerne peger imod brugeren, og at precondition ``Use case 1 -- Start system'' skal være gennemført inden først.
+
+Hovedsucces scenariet viser hvordan et succesfuldt gennemløb af use casen vil forløbe, mens extensions viser de identificerede fejlsituationer systemet kan komme ud for. For eksempel kan systemet have en ugyldig positionsdata-serie og det vil medføre at systemet indstiller sig til sit default udgangspunkt.
+
+Alle use casene danner grundlaget for implementeringen af systemet, både i hardware og software.
+
+
+\newpage
+\section{Ikke-funktionelle krav}
+De ikke-funktionelle krav specificerer krav til blandt andet timing, afstande og dimensioner samt lydniveauer. 
+
+I Dokumentationsrapportens afsnit \vref{DokRap-sec:ikkeFunkKrav} er alle de ikke-funktionelle krav opskrevet.
+
+Kravene er grupperet efter hvor i systemet de hører til. De generelle krav er de krav, som ikke kan placeres under et bestemt modul af systemet. Eksempelvis er der opstillet krav til kommunikationen mellem bærbar enhed og det resterende system.
+
+Der er opstillet krav til højtalere og forstærker, hvor blandt andet default indstillingen, der nævnes i ovenstående use case, defineres.\newline
+Desuden er tider, som for eksempel den maksimale tid det må tage for højtalerne at rotere for fuldt udslag, defineret.
+
+Den bærbare enhed er en vigtig komponent i systemet, og der er opstillet krav til denne for at sikre at den giver så få gener for en bruger som muligt. Blandt andet er der sat krav til batterilevetiden.
+
+For at sikre integriteten af systemet er der opstillet krav til opsamlingen af data, således der for eksempel ikke kan måles og reageres på en ugyldig lydtryksmåling, eller hvis den sidste værdi er for gammel. Dette er gjort for at hindre pludselige ændringer af lyden under afspilning, eller når musikken stopper, at der ikke skrues fuldt op.
+
+

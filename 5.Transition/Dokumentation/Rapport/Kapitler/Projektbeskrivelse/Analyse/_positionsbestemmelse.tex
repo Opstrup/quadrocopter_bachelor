@@ -1,0 +1,13 @@
+%%%%%% Positionsbestemmelse %%%%%%
+\subsection{Positionsbestemmelse}
+\label{sec:Positionsbestemmelse_analyse}
+
+Til at bestemme en brugers position, blev der overvejet forskellige teknologier.
+
+Den første teknologi, som blev undersøgt, var at følge en brugers bevægelse med et kamera. Vi testede denne metode med et webcam og MatLab. Denne metode krævede for meget ny viden, i forhold til de kurser vi havde.
+
+Den anden teknologi, der blev undersøgt, var at bestemme brugerens afstand til to radiobølgesendere, ved at måle styrken af de modtagne signaler ved senderne. Teknologien hedder ``Received signal strength indication'' og benyttes i industrien til indendørs positionsbestemmelse. Ulempen ved denne metode er, at den ikke er særlig præcis.
+
+Den valgte teknologi blev ultralyd. Ved at benytte en ultralydssender og tre ultralydsmodtagere kan man bestemme en position relativ til modtagerne ved brug af triangulering.
+Der er to metoder, som kan anvendes til positionsbestemmelse med ultralyd. Den ene metode er, som beskrevet ovenfor, at måle, hvor stærkt signalet er ved hver modtager. Denne metode kræver en meget præcis måling af signalstyrken. Den anden metode er at måle tidsforskellen fra én modtager opfanger et signal til de andre modtagere opfanger samme signal. Denne metode kaldes for ``Time of arrival'' og det er denne metode, som er anvendt i nærværende projekt.
+

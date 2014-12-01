@@ -1,0 +1,16 @@
+%%%%%% Lydtryksmåling %%%%%%
+\subsection{Lydtryksmåling}
+Lydtryksmåleren blev realiseret på fumlebræt og funktionaliteten blev testet. Herefter blev kredsløbet realiseret på et veroboard og gentestet. Undervejs i projektforløbet blev designet ændret, hvilket medførte, at lydtryksmåleren på veroboardet blev kasseret og det nye design blev lavet på fumle bræt. Opstillingen kan ses på figur \ref{fig:Fumle_opstilling}.
+
+
+På figur \ref{fig:lydtryk} ses et oscilloskop-billede af udgangen på lydtryksmåleren. På billedet ses det uintegrerede signal for neden henholdsvis integrerede signal for oven. Det ses, at et højt lydtryk giver et bredt og klippet signal.
+
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=0.6\textwidth]{Billeder/Projektbeskrivelse/lydtryk.jpg}
+    \caption{Test af lydtryksmåler}
+    \label{fig:lydtryk}
+\end{figure}
+
+Da systemet har en kraftig integration af signalet med et lavpas filter, har det en opladningstid før systemet er pålideligt. 
+Det tager \SI{10}{ms} fra systemet tændes, til systemet er klart og det er sikkert at sample på signalet.

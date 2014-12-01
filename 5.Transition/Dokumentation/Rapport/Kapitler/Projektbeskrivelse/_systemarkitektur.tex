@@ -1,0 +1,49 @@
+%%%%%% Systemarkitektur %%%%%%
+\newpage
+\section{Systemarkitektur}
+\label{chap:systemarkitektur}
+
+Til at dokumentere systemarkitekturen blev der anvendt SysML-diagrammer. Disse giver et godt overblik over, hvordan systemets opbygning er tænkt.
+
+\subsection{Blokbeskrivelse}
+
+BDD på figur \ref{fig:bdd Track_N_Play}, viser hvilke blokke systemet består af, samt hvilke parts blokkene indeholder.
+Blokkene er designet med hensyntagen til hvor blokkene fysisk vil blive implementeret. Formålet er at få så lav kobling, samt så høj samhørighed som muligt. 
+
+
+
+\begin{figure}[htb]
+\includegraphics[width=1.0\textwidth]{billeder/systemarkitektur/BDD.pdf}
+\caption{Overordnet BDD for systemet}
+\label{fig:bdd Track_N_Play}
+\end{figure}
+
+
+
+\paragraph{System} Brugerens position skal løbende trackes, for derefter at kunne tilpasse højtalernes retning, så de altid peger imod bruger. Desuden skal systemet sørge for, at der altid er det ønskede lydtryk hos brugeren uanset dennes placering i forhold til anlægget og højtalerne.
+
+\paragraph{Bærbar enhed} Denne enhed har en central rolle i Track'n'Play systemet, og har derfor en del funktioner. Den bærbare enhed skal hele tiden være i nærheden af brugeren, for at måle det aktuelle lydtryk. Efter endt måling, transmitteres data om lydtrykket trådløst til anlægget. Enheden står også for, 10 gange i sekundet, at udsende ultralyd til positionsbestemmelse ved brug af \SI{40}{kHz} sender. Det ønskede lydtryk kan indstilles og aflæses på lydtryks UI'et.
+
+\paragraph{Positionsbestemmelse} Brugerens placering i rummet ønskes bestemt, for at højtalernes retning kan indstilles derefter.
+Til at modtage det ultralydssignal som den bærbare enhed udsender, indeholder den en \SI{40}{kHz} modtager.
+
+\paragraph{Højtalerplatform} Retningen af rotationsplatformen justeres, så den monterede højtaler hele tiden peger mod brugeren. Ændringen af højtalernes retning sker for, at brugeren kan opnå det bedst mulige lydbillede. Rotationsplatformen drives af en motor, som styres af motorstyringen.
+
+\paragraph{Anlæg} Anlægget modtager løbende informationer om aktuelt lydtryk fra bærbar enhed. Informationsudvekslingen mellem anlægget og bærbar enhed sker trådløst.
+På baggrund af informationsudvekslingen tilpasser anlægget lydtrykket ved at ændre gain'et i forstærkeren. Anlægget modtager et lydsignal fra medieafspilleren igennem minijack-stikket.
+
+
+
+\subsection{Interne forbindelser}
+
+IBD'et på figur \ref{fig:ibdSimpel} beskriver, på simplificeret form, hvorledes de forskellige blokke kommunikerer samt hvilken type signal, der anvendes.  For et mere uddybende IBD jævnfør  Dokumentationsrapportens kapitel \vref{DokRap-chap:systemarkitektur} og frem.
+
+Alle grænsefladerne på IBD'et er yderligere specificeret i en flowspecifikation\footnote{Se Dokumentationsrapportens afsnit \vref{DokRap-subsec:flowSpec}.}.
+
+\begin{figure}[hb]
+	\centering
+	\includegraphics[width=0.9\textwidth]{billeder/systemarkitektur/ibd simpel.pdf}
+	\caption{Simplificeret IBD}
+	\label{fig:ibdSimpel}
+\end{figure}
+

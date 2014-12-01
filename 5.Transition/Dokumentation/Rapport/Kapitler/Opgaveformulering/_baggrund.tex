@@ -1,0 +1,103 @@
+%%%%%% baggrund %%%%%%
+\paragraph{Baggrund}
+\label{chap:baggrund}
+
+
+Lyd er små svingninger i lufttrykket omkring atmosfærens tryk. Det hørebare område ligger fra ca. 20Hz til 20kHz. Det er kun få der har glæde af hele spektret.\\
+Lydtrykket beskriver lydens fysiske størrelse, og måleenheden er Pascal (Pa). Den svageste lyd man kan høre er ca. 20uPa og en meget kraftig er ca. 20Pa. Det er ikke særligt anvendelig at bruge, grundet store forskelle i værdier på kraftig og svag. Derfor anvendes et lydtryksniveau, der måles i dB.\\
+I dB skalen vil den svageste (20uPa) svare til 0dB og en meget kraftig(20Pa) svare til 120dB. dB skalaen er logaritmisk, hvilket gør at den passer godt til vores hørelse. Den mindste forskel der kan høres er 1dB, 3dB er en tydelig forskel og 10dB vil høres som dobbelt så kraftigt.\\
+
+Øret er ikke lige følsomt overfor alle frekvenser. Nedenstående viser hvordan frekvenser er fordelt.
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.8\textwidth]{Billeder/Projektbeskrivelse/orrets_frekvenskarakteristik.png}
+    \caption{Påkrævet lydtryksniveau for hørbarhed ved given frekvens}
+\end{figure}\medskip
+ 
+Udbredelse af lyd sker som bølger i luften og er afhængig af omgivelserne.
+
+Ideelt
+\begin{itemize}
+\item Ingen tab i luft
+\item 100 % reflektion fra flader
+\end{itemize}
+
+Praksis
+\begin{itemize}
+\item Absorption i luften
+\item Absorption i flader
+\item Afhængig af temperatur og medie
+\item Lydtrykniveauet vil variere i forhold til afstand og vinkel til lydkilde. Vinklen vil ikke have betydning hvis lydkilden fragiver samme lydniveau i alle retninger.
+\end{itemize}\medskip
+
+Tabet i luft i vinkel 0° fra lydkilden, vil kunne udregnes ved hjælp af invers distance lov også kendt som 1/r-loven. Resultatet vil være en relativ dæmpning i dB i afstanden r fra lydkilden. X er lydkildens lydniveau i dB.
+\begin{equation}
+Dampening_r = X\g \frac{1}{r}
+\end{equation}
+
+For eksempel kan dæmpning i 5 meters afstand bestemmes.
+\begin{equation}
+Dampening_{5m} = X\g \frac{1}{5}=X\g 0.2
+\end{equation}
+\pagebreak\\
+
+Dvs. 5 meter fra lydkilden vil lydtrykket være faldet til 1/5 af det oprindelige målt i dB.\\
+Nedenstående viser en udregning og en graf af invers distance lov.\\
+
+\begin{table}[H]
+	\centering
+		\begin{tabular}{|c|c|}
+			\hline
+			Relativ afstand [m] & Relativ dæmpning \\ \hline
+			1 & 1.0000\\ \hline
+			2 & 0.5000\\ \hline
+			3 & 0.3333\\ \hline
+			4 & 0.2500\\ \hline
+			5 & 0.2000\\ \hline
+			6 & 0.1667\\ \hline
+			7 & 0.1429\\ \hline
+			8 & 0.1250\\ \hline
+			9 & 0.1111\\ \hline
+			10 & 0.1000\\ \hline
+		\end{tabular}
+	\caption{Dæmpning i lydtryk ved given distance}
+	\label{tab:lydtryk vs distance}
+\end{table}
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.8\textwidth]{Billeder/Projektbeskrivelse/invers distance lov.pdf}
+    \caption{Dæmpning i lydtryk ved en given distance}
+\end{figure}\medskip
+
+Vinklen til lydkilden vil have en indvirkning på lydtrykket. Set fra en højtaler, vil den have en udbredelsesvinkel, hvilket påvirker lydtrykket.\\
+Der er udført måling på en højtaler med en lydtryksmåler (sound level meter), og følgende resultat er fundet.
+
+\begin{table}[H]
+	\centering
+		\begin{tabular}{|c|c|c|c|}
+			\hline
+				&\multicolumn{3}{|c|}{Lydtryksniveau [dB]}\\ \hline
+				Relativ afstand [m] & Vinkel 0° & Vinkel 45° & Vinkel 90°\\ \hline
+				0&	89 (reference)&	78&	75\\ \hline
+				1&	69&				64&	58\\ \hline
+				2&	63&				59&	50\\ \hline
+		\end{tabular}
+	\caption{Lydtryk ved en given vinkel og distance}
+	\label{tab:lydtryk vs distance og vinkel}
+\end{table}
+\fixme{der er en dobbelt lodret streg i øverste række. kan den fjernes?}
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.8\textwidth]{Billeder/Projektbeskrivelse/vinkel og lydtryk.pdf}
+    \caption{Lydtryk ved en given vinkel og distance}
+\end{figure}\medskip
+
+De målte værdier er ikke fuldstændig i overensstemmelse med teorien, men der ses et tab i forhold til afstand og vinkel.
+
+For at kompensere for afstand og vinkel til lydkilde laves dette system.\\
+Referencer:\\
+\url{http://www.sengpielaudio.com/calculator-distance.htm}\\
+\url{http://www.es.aau.dk/sections/acoustics/press/fakta/lidt-om-lyd/}\\
