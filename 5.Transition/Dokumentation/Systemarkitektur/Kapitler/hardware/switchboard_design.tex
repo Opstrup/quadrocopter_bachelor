@@ -1,12 +1,12 @@
 \section{Hardware design}
 \vspace{-0.5cm}
-Til projektet er der købt mange færdige hardware modulet. Switch boardet er det eneste hardware der er blevet designet. 
+Til projektet er der købt mange færdige hardware moduler. Switch boardet er det eneste hardware der er blevet designet. 
 
 \vspace{-0.3cm}
 
 \subsection{Switch board}
 \vspace{-0.4cm}
-I dette afsnit beskrives hardware designet af switch boardet. Boardet er designet så det kan switche mellem manuel og autonom flyvning. Når der flyves manuelt lader switch boardet styringssignaler fra remote controller styre dronen og når der flyves autonom er det signaler fra main controller der styrer dronen.
+I dette afsnit beskrives hardware designet af switch boardet. Boardet er designet så det kan switche mellem manuel og autonom flyvning. Når der flyves manuelt lader switch boardet styringssignaler fra remote controller styre dronen og når der flyves autonomt er det signaler fra main controller der styrer dronen.
 
 På figur \ref{fig:switchboard_design} vises designet af switch boardet.
 Styringssignaler fra main controller og remote controller sendes begge til switch boardet, hvor de sendes ind i 2-input AND gates. AND gates på højre side håndterer signaler fra remote controller og på venstre side håndteres signaler fra main controller. Hvilket output der kommer på de forskellige AND gates afhænger af signalet der sendes ind på kontrol pin. Outputtet fra AND gates med samme styringssignal (fx. Throttle) sendes til OR gates, som sender det rette styringssignal videre til flight control boardet. 
