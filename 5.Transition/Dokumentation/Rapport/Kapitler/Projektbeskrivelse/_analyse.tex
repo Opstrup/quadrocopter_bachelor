@@ -1,10 +1,56 @@
 %%%%%% Analyse %%%%%%
-\section{Analyse}
+\chapter{Analyse}
 \label{chap:analyse}
 
-%\input{Kapitler/Projektbeskrivelse/Design/Amplifier}
+Efter at have udarbejdet kravspecifikation, var der formet en idé om hvordan systemet skulle fungere. 
+I dette afsnit beskrives tanker og overvejelser der på baggrund af kravspecifikation er gjort i projektets indkøbsfase. 
+Først beskrives det hvad systemet krævede af hardware og software komponenter. 
+Dernæst beskrives hvilke komponenter der blev valgt, og til sidst beskrives begrundelse for gruppens valg. 
 
-\input{Kapitler/Projektbeskrivelse/Analyse/_generelt}
+\newpage
+
+Efter at have udarbejdet kravspecifikation og systemskitse, var der formet en idé om hvordan systemet skulle fungere. 
+Nedenfor er der vist udkast til den funktionalitet drone, webapplikation, server og database var tiltænkt at have: \\
+
+\textbf{Dronen skal kunne:}\\
+Finde egen flyvehøjde\\
+Finde egen orientering.\\
+Finde egen GPS position.\\
+Beregne korrekt flyveorientering. \\
+Kommunikere med server via mobilt netværk.\\
+
+\textbf{Webapplikation, server og database skal:}\\
+Give bruger adgang til monitorering af tidlige flyvninger.\\
+Benyttes af bruger til at lave nye flyveopsætninger.\\
+
+
+
+I dette afsnit beskrives tanker og overvejelser der på baggrund af kravspecifikation er gjort i projektets indkøbsfase. 
+Først beskrives det hvad systemet krævede af hardware og software komponenter. 
+Dernæst beskrives hvilke løsninger der blev valgt, og til sidst beskrives begrundelse for gruppens valg. 
+
+
+
+\newpage
+
+\section{Drone}
+Dronen var den mest essentielle del der skulle købes i indkøbsfasen. Derfor beskrives overvejelser lavet i forbindelse med drone indkøb som det første.
+
+Da den rette dronen skulle finde blev der lagt vægt på: \\
+\textit{Pris}    \\
+\textit{Løftekapacitet}\\
+\textit{Tilgængelighed af reservedele} \\
+\textit{Open source kode til regulering} \\
+
+Ud fra kriterierne stod valget mellem 3D Robotic's eller AeroQuad's quadrocopter.
+
+\textbf{3D Robotic}\\
+Ved køb af 3D Robotics quadrocopter fik man motor controller board, motorer der kunne yde op til 850 Kv, 10" propeller og 20 ampere electronic speed controllers. Foruden dette var styringssoftware open source.
+
+\textbf{AeroQuad}\\
+AeroQuad's ARF Cyclone quadrocopter var større, havde 12” propeller og motorer der kunne yde 950 Kv. Ligesom det var tilfældet med 3DR's quadrocopter medfulgte der styringssoftware samt controller board og 20 ampere electronic speed controller.\\  
+
+Aeroquad’s quadrocopter blev valgt fordi den havde større vingefang og motorer med højere ratationshastighed, hvilket betød øget løfteevne og stabilitet. Desuden var Aeroquad’s quadrocopter en smule billigere end 3D robotic's. 
 
 
 

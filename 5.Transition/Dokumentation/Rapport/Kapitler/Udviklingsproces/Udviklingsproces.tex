@@ -1,7 +1,27 @@
 \chapter{Udviklingsproces}
 Arbejdes forløbet har været præget af nogle forskellige arbejdes former, disse former vil blive beskrevet i detaljer hvordan gruppen har benyttet sig af dem.
 
-\section{RUP}
+\section{Gennemførelse}
+Projektet er gennemført i iterationer, i alt fire. Hver iteration indeholder en design- og implementeringsfase. Nedenfor her beskrives hver iteration. Alle gruppens medlemmer har arbejdet tæt sammen under hele forløbet.
+
+\subsection{Iterativt udvikling}
+Da projektet blev opdelt i use cases var det meget naturligt at opdele projektet i iterationer og derved starte med det mest grundlæggende funktionalitet først. Der blev planlagt fire iterationer. 
+
+\textbf{Iteration 1}\\
+Den første iteration i forløbet omhandlede systemet mest grundlæggende funktionalitet. Batteri, ESC'er, motorer og ultralyds sensorer tilsluttes dronen. Desuden gøres dronen i stand til at kunne oprette forbindelse til webapplikation via 3G-shield'et. MÃ¥let med iterationen var at opfylde use case 1. De efterfølgende iterationer bygger oven på denne iteration.
+
+\textbf{Iteration 2}\\
+Iteration 2's hovedformål var at få kommunikation mellem webapplikation og drone til at fungere. Bruger skulle også kunne oprette nye flyveopsætning  og sende dem til dronen. Ydermere skulle drone kunne finde egen GPS position, flyvehøjde og orientering. Ud fra viden om egen position, flyvehøjde og orientering skulle dronen kunne flyve til de forudbestemt lokationer af brugeren. Til denne iteration var use case 2 og 3 tildelt.
+
+\textbf{Iteration 3}\\
+Iteration 3's hovedformål var det primære fokus billeder. Der skulle monteres kamera på dronen, så den kunne tage billeder ved de lokationer som bruger havde defineret. Alle billeder taget under flyvning sendes via mobilnet fra dronen til serveren og gøres tilgængelige for bruger. Målet med iteration 3 var at udføre use case 4 og 5.
+
+\textbf{Iteration 4}\\
+Iteration 4's hovedformål var at udvikle anti kollision til dronen. Inden tilføjelsen af anti kollision kunne dronen udelukkende flyve i lukkede områder uden forhindringer. Tilføjelsen af anti kollision ville muliggøre flyvning i normale områder med forhindringer. Målet med iteration 4 var at udføre use case 6.
+
+\section{Metoder}
+
+\subsection{RUP model}
 \textbf{R}ational \textbf{U}nified \textbf{P}rocess er blevet anvendt til at holde den overordnet fremgangs metode til projektet.  
 
 \begin{figure}[H]
@@ -11,29 +31,54 @@ Arbejdes forløbet har været præget af nogle forskellige arbejdes former, diss
 	\label{fig:rup}
 \end{figure}
 
-\subsection{Inception}
-I denne fase blev de indledende dokumenter udarbejdet. Der blev lavet forundersøgelse og valg vedrørende hardware. En indkøbs liste blev også udarbejdet i denne fase.  
+\textbf{Inception}\\
+I denne fase blev de indledende dokumenter udarbejdet. Der blev lavet forundersøgelse og valg vedrørende hardware. En indkøbs liste blev også udarbejdet i denne fase. Krav til systemet blev også udarbejdet i denne fase samt en overordnet systemskitse. 
 
-\subsection{Elaboration}
-I denne fase blev domain modellen udarbejdet, der blev fortaget en use case analyse af systemets funktionalitet. Krav til systemet blev også udarbejdet og det overordnet design til systemet blev udarbejdet. Ved brug af use case analysen blev der også udarbejdet en iterations plan over den kommende udvikling af systemet. 
+\textbf{Elaboration}\\
+I denne fase blev domain modellen udarbejdet, der blev fortaget en use case analyse af systemets funktionalitet. Ved brug af use case analysen blev der også udarbejdet en iterations plan over den kommende udvikling af systemet. 
 
-\subsection{Construction}
+\textbf{Construction}\\
 I denne fase var produktet i fokus. Udviklingen forgik skiftevis mellem implementering af nyt funktionalitet, test og dokumentation af færdiggjort funktionalitet.
 
-\subsection{Transition}
+\textbf{Transition}\\
 I denne fase blev der gjort opsamling af dokumentationen og rapporten samt accepttest.
 
+\subsection{N + 1 model}
+Dokumentationen af dette projekt har fulgt dokumentations modelle N + 1. N + 1 modellen er en dokumentations model for software, modelle deler dokumentationen af software systemet op i forskellige view's. Til dette projekt er det blevet benyttet 5 + 1 modelle. 5 + 1 modellen indeholder use case view, logical view, process view, data view, deployment view og implementation view. De nævnte view's vil blive beskrevet mere i dybden nedenfor. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.60\textwidth]{Billeder/Udviklingsproces/n+1}
+	\caption{n + 1 modellen}
+	\label{fig:n+1}
+\end{figure}
+
+\textbf{Use Case View}\\
+Dette view er benyttet på baggrund af opdelings muligheder af projektet. View'et giver også et mere håndgribeligt overblik over systemet, da fokus i view'et ligger på funktionalitet for brugeren af systemet. Under dette view i dokumentationen finde use case diagrammer, hvilket tydeliggøre sammenhæng imellem aktør, bruger og systemet.
+
+\textbf{Logical View}\\
+Dette view er benyttet til at beskrive de logiske blokke i systemet.
+
+På baggrund af hver iteration i systemet er der udarbejdet dertilhørende pakke-, klasse- og sekvensdiagrammer. Dette giver et overblik over systemets funktionalitet på programmerings niveau.
+
+\textbf{Deployment View}\\
+Dette view er benyttet til at beskrive det fysiske elementer i systemet. Her beskrives også hvor de forskellige pakker befinder sig i systemet. Hvilket protokoller som er anvendt som interface imellem de forskellige enheder er også beskrevet i dette view.
+
+\textbf{Process View}\\
+Dette view er benyttet til at beskrive hvilke sideløbende processer der befinder sig i systemet. I view'et findes også beskrivelse af kommunikations timing, da i nogle tilfælde i forbindelse med kommunikation er det vigtigt at kommunikationen bliver afviklet i en bestemt rækkefølge.
+
+\textbf{Data View}\\
+Dette view er benyttet til at beskrive databasen i systemet. Håndteringen af dataen og hvordan den tilgås er også beskrevet i dette afsnit. 
+
+\textbf{Implementation View}\\
+Dette view er benyttet til at beskrive de vigtigste elementer i systemet som ikke er blevet beskrevet i de andre views. I dette view er opsættelse af systemet til vider udvikling og hvordan systemet kompileres beskrevet.
+
 \subsection{Dokument udarbejdelse}
-Ved brug af RUP arbejdsmetoden blev der holdt et godt overblik over projektets fremgang og dokument håndtering. Som det kan ses på figur \ref{fig:dokument_udvikling} er dokumentationen opdelt i fire dokumenter, hvilket giver et godt overblik over de forskellige dokumenter tilhørende projektet.
+Ved brug af RUP arbejdsmetoden blev der holdt et godt overblik over projektets fremgang og dokument håndtering. Som det kan ses på figur \ref{fig:dokument_udvikling} er dokumentationen opdelt i fire dokumenter, hvilket giver et godt overblik over de forskellige dokumenter tilhørende projektet. 
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.75\textwidth]{Billeder/Udviklingsproces/Dokument_udvikling}
-	\caption{Dokument udvikling}
+	\caption{Dokument udviklings proces}
 	\label{fig:dokument_udvikling}
 \end{figure}
-
-\section{Iterativt udvikling}
-Da projektet blev opdelt i use cases var det meget naturligt at opdele projektet i iterationer og derved starte med det mest grundlæggende funktionalitet først. Der blev planlagt fire iterationer. 
-
-\textbf{Iteration 1}
