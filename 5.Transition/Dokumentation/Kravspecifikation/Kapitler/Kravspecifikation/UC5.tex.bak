@@ -6,14 +6,10 @@
 
 Mål	 								& Bruger tilgår webapplikation hvor tidligere flyveruter og tilhørende billeder forefindes. \\\hline
 Initiering 							& Bruger. \\\hline
-Aktører og \newline interesserede			& Bruger (primær) 
+Aktører og \newline stakeholders			& Bruger (primær aktør) 
 										\begin{itemize}
 											\item Ønsker at få adgang til webapplikation. 
 											\item Fra webapplikation kan bruger undersøge flyveruter og billeder fra tidligere flyvninger.
-										\end{itemize} 
-									  Webapplikation (sekundær)
-										\begin{itemize}
-											\item Giver bruger adgang til flyveruter og billeder.
 										\end{itemize} \\\hline
 Startbetingelser							& Bruger er oprettet i systemet. \\\hline
 Slutbetingelser						& Ingen. \\\hline
@@ -24,7 +20,7 @@ Hovedforløb				&
 
 									\begin{enumerate}[topsep=0.0cm, leftmargin=0.5cm]
 										\item Bruger logger på webapplikation.
-										\begin{enumerate}[partopsep=4cm, topsep=0cm, leftmargin=1cm]
+										\begin{enumerate}[a:,partopsep=4cm, topsep=0cm, leftmargin=1cm]
 												\item Fejl i login.
 										\end{enumerate}
 										\item Fra forsiden navigerer bruger til historik.
@@ -35,11 +31,11 @@ Undtagelser							&
 
 									\renewcommand{\labelenumi}{\Roman{enumi}:}
 									\renewcommand{\labelenumii}{\alph{enumii})}
-									\begin{enumerate}[topsep=0.0cm,leftmargin=0.5cm]
+									\begin{enumerate}[a:,topsep=0.0cm,leftmargin=0.5cm]
 										\item Fejl i login.
-											\begin{enumerate}[topsep=0cm, leftmargin=1cm]
+											\begin{itemize}[topsep=0cm, leftmargin=1cm]
 												\item Bruger føres tilbage til login skærm.
-											\end{enumerate}
+											\end{itemize}
 									\end{enumerate} \\\hline	
 
 \end{tabular}

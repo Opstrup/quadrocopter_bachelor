@@ -1,13 +1,11 @@
 \chapter{Grænseflader}
-Dette afsnit bruges til at beskrive systemets grænseflader og forklare hvordan bruger kan interagere med systemet.
+Dette afsnit beskriver systemets grænseflader og forklare hvordan bruger interagere med systemet.
 
 \section{Brugergrænseflade}
-Brugergrænsefladen består af en webapplikation, hvor bruger kan opsætte nye flyveruter, gemme flyveruter og overvåge drone status. Webapplikationen indeholder en database, som muliggøre arkiv funktioner for bruger. 
+Brugergrænsefladen består af en webapplikation, hvor bruger kan lave nye flyveopsætninger, gemme flyveopsætninger og overvåge drone status. 
 
 \section{Webapplikation}
-Webapplikationen er grænseflade mellem bruger og den resterende del af systemet. 
-
-På figur \ref{fig:mockup_login} ses login vinduet, som bruger bliver præsenteret for når der ønskes at interagere med systemet. Her vil bruger kunne logge ind og opsætte flyveruter, se gamle ruter og billeder fra tidligere flyvninger. Der accepteres kun tre fejl indtastninger når koden til systemet indtastes. Hvis disse tre forsøg overskrides bliver brugeren låst og der skal kontaktes en administrator for at låse den pågældende bruger op igen.
+På figur \ref{fig:mockup_login} ses login vinduet, som bruger bliver præsenteret for når der ønskes at interagere med systemet. Her vil bruger kunne logge ind og lave flyveopsætninger, se gamle flyveruter og billeder fra tidligere flyvninger. Der accepteres kun tre fejlindtastninger til login. Hvis de tre forsøg overskrides, bliver bruger låst og administrator skal kontaktes.
 
 \vspace{-5pt}
 %Login mockup
@@ -21,8 +19,8 @@ På figur \ref{fig:mockup_login} ses login vinduet, som bruger bliver præsenter
 
  \newpage
 
-Efter login præsenteres bruger for webapplikations forside, se figur \ref{fig:mockup_welcome}. 
-Fra forsiden kan bruger se om der er forbindelse mellem webapplikation og dronen, tilgå Flight bootcamp som er en quick-guiden til flyveopsætning og se en liste med et uddrag af de sidste flyvninger. Øverst på siden kan bruger tilgå opsætning af ny flyvning og den fulde liste med tidligere flyvninger.
+Efter login præsenteres bruger for webapplikationens forside, se figur \ref{fig:mockup_welcome}. 
+Fra forsiden kan bruger se om dronen er online, tilgå Flight bootcamp, som er en quick-guide til flyveopsætning og se en liste med information af de sidste flyvninger. Øverst på siden kan bruger tilgå opsætning af ny flyvning og den fulde liste med tidligere flyvninger.
 
 \vspace{-5pt}
  %Index mockup
@@ -34,7 +32,7 @@ Fra forsiden kan bruger se om der er forbindelse mellem webapplikation og dronen
  	\label{fig:mockup_welcome}
  \end{figure} 
 
-I historik menuen har bruger mulighed for at se alle tidligere flyvninger. De tidligere flyvninger præsenteres med hver sin mappe, og mapperne er struktureret efter dato. Da de tidligere flyvninger er struktureret efter dato er det nemt og hurtigt at finde data fra den eller de ønskede flyvninger. Når bruger doubleklikker på en tidligere flyvning åbnes tilhørende mappe, og alt indhold i mappen vises.
+I historik menuen har bruger mulighed for at se alle tidligere flyvninger. De tidligere flyvninger præsenteres med hver sin mappe, og mapperne er struktureret efter dato. Mappestrukturen gør det nemt og hurtigt at finde data ønskede flyvninger.
 
 \vspace{-5pt}
 %Archive mockup
@@ -48,7 +46,7 @@ I historik menuen har bruger mulighed for at se alle tidligere flyvninger. De ti
 
 \newpage
 
-Når en tidligere flyvning er valgt, præsenteres bruger for al information tilknyttet den pågældende flyvning. Hvilket betyder bruger får adgang til flyverute, billeder og film sekvenser. På et kort vises den flyveruten dronen gjorde brug af.
+Når en tidligere flyvning er valgt, præsenteres bruger for al information tilknyttet den pågældende flyvning. Dette giver bruger adgang til flyveopsætninger og billeder. På et kort vises den flyveruten dronen gjorde brug af.
 
 \vspace{-5pt}
 %Archive choosen mockup
@@ -61,7 +59,7 @@ Når en tidligere flyvning er valgt, præsenteres bruger for al information tilk
 \end{figure}
 
 
-I Opsæt ny flyvning menuen kan bruger indstille ny flyveopsætning. 
+I ny flyveopsætnings menuen kan bruger indstille nye flyveopsætninger. 
 Bruger kan indstille sin ønskede flyverute ved at klikke på kortet, og vælge hvilke GPS positioner som dronen skal overvåge og tage billeder af. 
 Hver GPS position der vælges præsenteres i tabellen til venstre for kortet. 
 I tabellen kan bruger ydermere indstille om der skal tages billeder ved GPS positionerne og hvilken højde dronen skal tage billeder fra. Nedenfor tabellen sættes den generelle flyvehøjde.

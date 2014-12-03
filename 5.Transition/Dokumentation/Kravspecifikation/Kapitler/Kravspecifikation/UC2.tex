@@ -4,17 +4,17 @@
 \begin{tabular}{| p{3cm}| p{11.5cm}|}
 \hline
 
-Mål	 							& Ny flyveopsætning er oprettet og sendt til drone. \\\hline
+Mål	 							& Ny flyveopsætning er oprettet og tilgængelig for drone. \\\hline
 Initiering							& Bruger. \\\hline
-Aktører og \newline interesserede			& Bruger (primær) 
+Aktører og \newline stakeholders			& Bruger (primær aktør) 
 										\begin{itemize}
 											\item Bruger ønsker at få adgang til webapplikation.
 											\item Fra webapplikation indstiller bruger flyveopsætning.
-											\item Bruger sender flyveopsætning til drone.
+											\item Bruger gør flyveopsætning tilgængelig på server.
 										\end{itemize} \\ \hline
 									  
 Startbetingelser						& Bruger er oprettet i systemet og UC\#1 er succesfuld gennemført  \\\hline
-Slutbetingelser						& Ny flyveopsætning er sendt til drone. \\\hline
+Slutbetingelser						& Ny flyveopsætning er tilgængelig for drone. \\\hline
 Hovedforløb				&
  
 									\renewcommand{\labelenumi}{\arabic{enumi}.}
@@ -22,7 +22,7 @@ Hovedforløb				&
 
 									\begin{enumerate}[topsep=0.0cm, leftmargin=0.5cm]
 										\item Bruger logger på webapplikation.
-										\begin{enumerate}[partopsep=4cm, topsep=0cm, leftmargin=1cm]
+										\begin{enumerate}[a:,partopsep=4cm, topsep=0cm, leftmargin=1cm]
 												\item Fejl i login.
 												
 										\end{enumerate}
@@ -32,26 +32,26 @@ Hovedforløb				&
 											  - Om der skal tages billeder ved de valgte lokationer. \newline 
 											  - Højde billeder skal tages fra. \newline
 											  - Generel flyvehøjde.  		
-										\begin{enumerate}[partopsep=4cm, topsep=0cm, leftmargin=1cm]
+										\begin{enumerate}[b:,topsep=0cm, leftmargin=1cm]
 												\item Der laves ikke ny flyveopsætning.
 										\end{enumerate}
-										\item Bruger gemmer flyveopsætning.
+										\item Bruger gemmer flyveopsætning, og flyveopsætningen \newline gøres tilgængelig på server.
 									\end{enumerate} \\\hline	
 
 Undtagelser							& 
 
 									\renewcommand{\labelenumi}{\Roman{enumi}:}
 									\renewcommand{\labelenumii}{\alph{enumii})}
-									\begin{enumerate}[topsep=0.0cm,leftmargin=0.5cm]
+									\begin{enumerate}[a:,topsep=0.0cm,leftmargin=0.5cm]
 										\item Fejl i login.
-											\begin{enumerate}[topsep=0cm, leftmargin=1cm]
+											\begin{itemize}[topsep=0cm, leftmargin=1cm]
 												\item Bruger føres tilbage til login.
-											\end{enumerate}
+											\end{itemize}
 										\vspace{0.4cm}
 										\item Der laves ikke ny flyveopsætning.
-											\begin{enumerate}[topsep=0cm, leftmargin=1cm]
+											\begin{itemize}[topsep=0cm, leftmargin=1cm]
 												\item Gemt flyveopsætning benyttes.
-											\end{enumerate}
+											\end{itemize}
 									\end{enumerate} \\\hline
 										
 

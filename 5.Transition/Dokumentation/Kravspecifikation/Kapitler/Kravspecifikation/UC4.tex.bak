@@ -4,18 +4,15 @@
 \begin{tabular}{| p{3cm}| p{11.5cm}|}
 \hline
 
-Mål	 							& Drone tager et billede af nuværende position som sendes til webapplikation. Fra webapplikation kan bruger inspicere og acceptere billedet. \\\hline
+Mål	 							& Drone tager et billede af nuværende position, og sender billedet til server. Fra webapplikation kan bruger se og acceptere billedet. \\\hline
 Initiering 							& UC\#3. \\\hline
-Aktører og \newline interesserede			& Bruger (primær) 
+Aktører og \newline stakeholders			& Bruger (primær aktør) 
 										\begin{itemize}
-											\item Kan inspicere og acceptere billede.
+											\item Inspicerer og accepterer billede.
 										\end{itemize} \\ \hline
 										
-Startbetingelser					& UC\#1, UC\#2 og UC\#3 er succesfuld gennemført. \\\hline
-Slutbetingelser						& 	\begin{itemize}
-											\item Bruger kan tilgå billede via webapplikation.
-											\item Drone flyver til næste GPS-position eller udgangsposition.
-										\end{itemize} \\\hline
+Startbetingelser					& UC\#3 er succesfuld gennemført. \\\hline
+Slutbetingelser						& Bruger kan tilgå billede via webapplikation. \\\hline
 Hovedforløb				&
  
 									\renewcommand{\labelenumi}{\arabic{enumi}.}
@@ -24,27 +21,26 @@ Hovedforløb				&
 									\begin{enumerate}[topsep=0.0cm, leftmargin=0.5cm]
 										\item Drone tager et billede af nuværende position.
 										\item Billedet sendes til webapplikation.
-										\item Bruger giver accept af billedet via webapplikation.
-											\begin{enumerate}[partopsep=4cm, topsep=0cm, leftmargin=1cm]
+										\item Bruger giver accept af billede via webapplikation.
+											\begin{enumerate}[a:,partopsep=4cm, topsep=0cm, leftmargin=1cm]
 												\item Bruger beder om et nyt billede.
 												\item Bruger svarer ikke inden for tidsgrænsen.
 											\end{enumerate}
-										\item Drone sendes information om næste lokation.
 									\end{enumerate} \\\hline	
 
 Undtagelser							& 
 
 									\renewcommand{\labelenumi}{\Roman{enumi}:}
 									\renewcommand{\labelenumii}{\alph{enumii})}
-									\begin{enumerate}[topsep=0.0cm,leftmargin=0.5cm]
+									\begin{enumerate}[a:,topsep=0.0cm,leftmargin=0.5cm]
 										\item Bruger beder om et nyt billede.
-											\begin{enumerate}[topsep=0cm, leftmargin=1cm]
-												\item Drone instrueres til at ændre højde, orientering eller position. Derefter genstartes UC\#4.
-											\end{enumerate}
+											\begin{itemize}[topsep=0cm, leftmargin=1cm]
+												\item Drone instrueres til at ændre højde, orientering eller position.
+											\end{itemize}
 										\item Bruger svarer ikke inden for tidsgrænsen.
-											\begin{enumerate}[topsep=0cm, leftmargin=1cm]
+											\begin{itemize}[topsep=0cm, leftmargin=1cm]
 												\item Drone får automatisk tildelt accept.
-											\end{enumerate}
+											\end{itemize}
 									\end{enumerate} \\\hline	
 
 \end{tabular}

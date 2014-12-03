@@ -7,13 +7,13 @@
 
 Mål	 							& Drone flyver til ønsket position. \\\hline
 Initiering 							& UC\#2 eller UC\#4. \\\hline
-Aktører og \newline interesserede			& Bruger (primær) 
+Aktører og \newline stakeholders			& Bruger (stakeholder) 
 
 										\begin{itemize}
 											\item Bruger ønsker at drone flyver som angivet i flyveopsætning.
 										\end{itemize} \\  
 										
-										& GPS satellitter (sekundær) 
+										& GPS satellitter (sekundær aktør) 
 
 										\begin{itemize}
 											\item Dronen opdaterer egen GPS position vha. GPS satellitterne.
@@ -27,21 +27,21 @@ Hovedforløb				&
 
 									\begin{enumerate}[topsep=0.0cm, leftmargin=0.5cm]
 										\item Drone henter flyveopsætning fra server.
-											\begin{enumerate}[partopsep=4cm, topsep=0cm, leftmargin=1cm]
-												\item Dronen henter ikke flyveopsætning, da flyvning \newline med en anden flyveopsætning er aktiv.
+											\begin{enumerate}[a:,partopsep=4cm, topsep=0cm, leftmargin=1cm]
+												\item Dronen henter ikke flyveopsætning.
 											\end{enumerate}
 										\item Nuværende position opdateres.
-											\begin{enumerate}[partopsep=4cm, topsep=0cm, leftmargin=1cm]
+											\begin{enumerate}[b:,partopsep=4cm, topsep=0cm, leftmargin=1cm]
 												\item Ugyldig GPS koordinat.
 											\end{enumerate}
 										\item Flyvehøjde tilpasses.
-											\begin{enumerate}[partopsep=4cm, topsep=0cm, leftmargin=1cm]
+											\begin{enumerate}[c:,partopsep=4cm, topsep=0cm, leftmargin=1cm]
 												\item Ugyldig flyvehøjde.
 											\end{enumerate}
 										\item Flyveorientering tilpasses.
-										\item Drone flyver mod ønsket position i ønsket flyvehøjde.
+										\item Drone flyver mod ønsket position.
 										\item Ønsket position er nået.
-										\begin{enumerate}[partopsep=4cm, topsep=0cm, leftmargin=1cm]
+										\begin{enumerate}[d:,partopsep=4cm, topsep=0cm, leftmargin=1cm]
 												\item Ønsket position er ikke nået.
 											\end{enumerate}
 									\end{enumerate} \\\hline	
@@ -50,19 +50,23 @@ Undtagelser							&
 
 									\renewcommand{\labelenumi}{\Roman{enumi}:}
 									\renewcommand{\labelenumii}{\alph{enumii})}
-									\begin{enumerate}[topsep=0.0cm,leftmargin=0.5cm]
+									\begin{enumerate}[a:,topsep=0.0cm,leftmargin=0.5cm]
+										\item Dronen henter ikke flyveopsætning.
+											\begin{itemize}[topsep=0cm, leftmargin=1cm]
+												\item Flyvning med en anden flyveopsætning er aktiv.
+											\end{itemize}
 										\item Ugyldig GPS koordinat.
-											\begin{enumerate}[topsep=0cm, leftmargin=1cm]
+											\begin{itemize}[topsep=0cm, leftmargin=1cm]
 												\item Drone går i fejlmode  \#1.
-											\end{enumerate}
+											\end{itemize}
 										\item Ugyldig flyvehøjde.
-											\begin{enumerate}[topsep=0cm, leftmargin=1cm]
+											\begin{itemize}[topsep=0cm, leftmargin=1cm]
 												\item Drone går i fejlmode \#2.
-											\end{enumerate}
+											\end{itemize}
 										\item Ønsket position er ikke nået.
-											\begin{enumerate}[topsep=0cm, leftmargin=1cm]
+											\begin{itemize}[topsep=0cm, leftmargin=1cm]
 												\item UC \#3 genstartes.
-											\end{enumerate}
+											\end{itemize}
 									\end{enumerate} \\\hline	
 
 \end{tabular}

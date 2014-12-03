@@ -1,45 +1,44 @@
-\subsection*{UC6 - Anti kollidering}
+\subsection*{UC6 - Anti kollision}
 
 \begin{table}[H]
-\begin{tabular}{|l|p{10cm}|}
+\begin{tabular}{| p{3cm}| p{11.5cm}|}
 \hline
 
-Goal	 								& Quadrocopter kan undvige forhindringer vha. anti kollidering \\\hline
-Initiation 							& Bruger. \\\hline
-No. of concurrent occurrence’s		& 1. \\\hline
-Stakeholders	and Interests			& Bruger (primær) 
+Mål	 								& Drone kan undvige forhindringer. \\\hline
+Initiering 							& Ingen - altid aktiv. \\\hline
+Aktører og \newline stakeholders		& Bruger (stakeholder) 
 										\begin{itemize}
 											\item Ønsker flyvning uden kollision.
 										\end{itemize} \\\hline
-Precondition							& Quadropcopter flyver. \\\hline
-Postcondition						& Quadrocopter har undviget en kollision \\\hline
-Main success scenario				&
+Startbetingelser							& UC\#3 er igangværende. \\\hline
+Slutbetingelser						& Drone undviger en kollision. \\\hline
+
+Hovedforløb				&
  
 									\renewcommand{\labelenumi}{\arabic{enumi}.}
 									\renewcommand{\labelenumii}{\Roman{enumii}:}
 
 									\begin{enumerate}[topsep=0.0cm, leftmargin=0.5cm]
-										\item Quadrocopter flyver mod GPS koordinat.
-										\item Anti kolliderings system detekterer en forhindring.
-										\item Undvigelses manøvre udføres.
-											\begin{enumerate}[topsep=0cm, leftmargin=1cm]
+
+										\item Anti kollision detekterer en forhindring.
+										\item Undvigningsmanøvre udføres.
+											\begin{enumerate}[a:,topsep=0cm, leftmargin=1cm]
 												\item Forhindring kan ikke undviges.
 											\end{enumerate}
-										
 									\end{enumerate} \\\hline	
 
-Extensions							& 
+Undtagelser							& 
 
 									\renewcommand{\labelenumi}{\Roman{enumi}:}
 									\renewcommand{\labelenumii}{\alph{enumii})}
-									\begin{enumerate}[topsep=0.0cm,leftmargin=0.5cm]
+									\begin{enumerate}[a:,topsep=0.0cm,leftmargin=0.5cm]
 										\item Forhindring kan ikke undviges.
-											\begin{enumerate}[topsep=0cm, leftmargin=1cm]
-												\item 
-											\end{enumerate}
+											\begin{itemize}[topsep=0cm, leftmargin=1cm]
+												\item Drone går i fejlmode \#3.
+											\end{itemize}
 									\end{enumerate} \\\hline	
 
 \end{tabular}
-\caption{Use Case 5}
-\label{tab:UC5}
+\caption{Use Case 6}
+\label{tab:UC6}
 \end{table}
