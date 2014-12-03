@@ -1,28 +1,40 @@
 \newpage 
 
-\subsection{Use case diagram}
+\section{Use case diagram}
 \label{subsec:useCaseDiagram}
-Figur \ref{fig:UCD} viser de identificerede use cases.
-\vspace{-10pt}
+På figur \ref{fig:UCD} vises de identificerede use cases.
+\vspace{-5pt}
 %Usecase diagram indføres i følgende 5 linjer, derefter starter UC 1
 \begin{figure}[H]
 \includegraphics[width=1\textwidth]{Billeder/Use_case_diagram.png}
-\vspace{-30pt}
+\vspace{-0.8cm}
 \caption{Use case diagram}
 \label{fig:UCD}
 \end{figure}
 
 
 
-\subsection{Udviklingsforløb}
 
-For at tydeliggøre hvordan udviklingsforløbet  
+\newpage
+\section{Udviklingsforløb}
 
-\textbf{Iteration 1:}
+For at gøre udviklingsforløbet mere overskueligt gøres brug af iterationer.
+De iterationer der ligger først i udviklingsforløbet er mest essentielle for systemet, 
+mens de senere iterationer er mindre essentielle for systemet.
+Udviklingsforløbet er planlagt til at forløbe via 4 iterationer. Nedenfor beskrives indholdet af de forskellige iterationer. \\
+
+\textbf{Iteration 1:} \\
+I denne iteration tages hånd om systemets grundlæggende funktionalitet.  Dronen gøres i stand til at oprette forbindelse til server via 3G-shield'et. Desuden tilsluttes batteri, ESC'er, motorer og ultralyds sensorer. Når iteration 1 er færdig skal UC\#1 kunne gennemføres. 
 
 
-\textbf{Iteration 2:}
 
-\textbf{Iteration 3:}
+\textbf{Iteration 2:} \\
+I iteration 2 er hovedformålet at få styr på kommunikationen mellem server og drone. Det skal være muligt for bruger både at oprette og sende flyveopsætning til dronen. 
+Ydermere skal drone kunne finde egen GPS position, flyvehøjde og orientering. Ud fra viden om egen position, flyvehøjde og orientering skal dronen kunne flyve til de lokationer bruger ønsker. Når iteration 2 er færdig skal UC\#2 og UC\#3 kunne gennemføres.  
 
-\textbf{Iteration 4:}
+\textbf{Iteration 3:}  \\
+I iteration 3 er det primære fokus billeder. Der skal monteres kamera på dronen, så den kan tage billeder ved de lokationer som bruger har defineret. Alle billeder taget under flyvning sendes via mobilnet fra dronen til server og gøres tilgængelige for bruger på webapplikationen. Når iteration 3 er færdig skal UC\#4 og UC\#5 kunne gennemføres.
+
+\textbf{Iteration 4:} \\
+I iteration 4 ønskes det at udvikle anti kollision til dronen. 
+Inden tilføjelsen af anti kollision kan dronen udelukkende flyve i lukkede områder uden forhindringer. Tilføjelse af anti kollision vil muliggøre flyvning i normale områder med forhindringer. Når iteration 4 er færdig skal UC\#6 kunne gennemføres  
