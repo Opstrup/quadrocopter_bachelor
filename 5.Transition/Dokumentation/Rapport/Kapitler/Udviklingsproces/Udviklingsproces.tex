@@ -8,7 +8,7 @@ Projektet er gennemført i iterationer, i alt fire. Hver iteration indeholder en
 Da projektet blev opdelt i use cases var det meget naturligt at opdele projektet i iterationer og derved starte med det mest grundlæggende funktionalitet først. Der blev planlagt fire iterationer. 
 
 \textbf{Iteration 1}\\
-Den første iteration i forløbet omhandlede systemet mest grundlæggende funktionalitet. Batteri, ESC'er, motorer og ultralyds sensorer tilsluttes dronen. Desuden gøres dronen i stand til at kunne oprette forbindelse til webapplikation via 3G-shield'et. MÃ¥let med iterationen var at opfylde use case 1. De efterfølgende iterationer bygger oven på denne iteration.
+Den første iteration i forløbet omhandlede systemet mest grundlæggende funktionalitet. Batteri, ESC'er, motorer og ultralyds sensorer tilsluttes dronen. Desuden gøres dronen i stand til at kunne oprette forbindelse til webapplikation via 3G-shield'et. Målet med iterationen var at opfylde use case 1. De efterfølgende iterationer bygger oven på denne iteration.
 
 \textbf{Iteration 2}\\
 Iteration 2's hovedformål var at få kommunikation mellem webapplikation og drone til at fungere. Bruger skulle også kunne oprette nye flyveopsætning  og sende dem til dronen. Ydermere skulle drone kunne finde egen GPS position, flyvehøjde og orientering. Ud fra viden om egen position, flyvehøjde og orientering skulle dronen kunne flyve til de forudbestemt lokationer af brugeren. Til denne iteration var use case 2 og 3 tildelt.
@@ -74,23 +74,29 @@ Dette view er benyttet til at beskrive databasen i systemet. Håndteringen af da
 Dette view er benyttet til at beskrive de vigtigste elementer i systemet som ikke er blevet beskrevet i de andre views. I dette view er opsættelse af systemet til vider udvikling og hvordan systemet kompileres beskrevet.
 
 \subsection{Dokument udarbejdelse}
-I kombination med RUP arbejdsmetoden og ASE modellen som ses på figur \ref{fig:dokument_udvikling} er dokumentationen opdelt i fire dokumenter, hvilket giver et godt overblik over de forskellige dokumenter tilhørende projektet. 
+I kombination med RUP arbejdsmetoden og ASE modellen som ses på figur \ref{fig:dokument_udvikling} er dokumentationen opdelt i fire dokumenter, hvilket giver et godt overblik over de forskellige dokumenter tilhørende projektet. Software delen af dokumentationen er så yderligere opdelt efter modellen n + 1 som beskrevet .
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.75\textwidth]{Billeder/Udviklingsproces/Dokument_udvikling}
+	\includegraphics[width=1\textwidth]{Billeder/Udviklingsproces/ase_model}
 	\caption{ASE modellen}
 	\label{fig:dokument_udvikling}
 \end{figure}
 
-
+\subsection{Agile arbejdsmetoder}
+Udviklingen og dokumentationen af produktet har også været meget præget af agile arbejdsmetoder. Metoder som scrum er blevet delvis anvendt i forløbet. Under construction fasen blev scrum meetings brugt og en samlet backlog blev benyttet til at bevare overblik over projektets fremgang.
 
 \section{Diagrammer}
+Til dokumentationen af projektet er der benyttet en række diagrammer, disse diagrammer vil blive beskrevet i dette afsnit.
 
-\textbf{Use case}
+\textbf{Use case}\\
+Use cases og dertilhørende diagrammer er benyttet i forløbets indledende faser, til at overskueliggøre projektets omfang og opdele projektet i mindre dele. Use casene har fungeret som omdrejnings punkt i projektet, det er her funktionaliteten udspringer fra.
 
-\textbf{Domainmodel}
+\textbf{Domainmodel}\\
+I de indledende faser blev der også udarbejdet en domainmodel som blev brugt til at finde ansvars områder i projektet.
 
-\textbf{SysML}
+\textbf{SysML}\\
+SysMLl diagrammerne er blevet benyttet til dokumentation af hardwaren til projektet. Disse diagrammer er blevet anvendt til at tydeliggøre, hvilke hardware blokke der høre til hvor og hvordan de kommunikere sammen.  
 
-\textbf{UML}
+\textbf{UML}\\
+UML diagrammerne er blevet  benyttet til dokumentation af softwaren. Disse diagrammer er blevet anvendt til at forklare hvordan systemet er opbygget, hvordan de forskellige delsystemer snakker sammen og hvordan funktionaliteten er opbygget.
