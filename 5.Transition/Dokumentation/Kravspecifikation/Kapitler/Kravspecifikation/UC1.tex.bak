@@ -6,13 +6,13 @@
 
 Mål	 								& Drone er tændt og har forbindelse til webapplikation. \\\hline
 Initiering 							& Bruger. \\\hline
-Aktører og \newline interesserede			& Bruger (primær) 
+Aktører og \newline stakeholders			& Bruger (primær aktør) 
 										\begin{itemize}
 											\item Bruger tænder drone.
 										\end{itemize} \\\hline
 Startbetingelser						& Ingen. \\\hline
 
-Slutbetingelser						& Drone kan modtage flyveopsætning fra webapplikation. \\\hline
+Slutbetingelser						& Drone kan modtage flyveopsætning fra server. \\\hline
 
 Hovedforløb				&
  
@@ -20,24 +20,25 @@ Hovedforløb				&
 									\renewcommand{\labelenumii}{\Roman{enumii}:}
 
 									\begin{enumerate}[topsep=0.0cm, leftmargin=0.5cm]
-										\item Bruger tænder drone. 
-										\item Drone initialiseres.
-										\item Forbindelse fra drone til webapplikation oprettes.
-											\begin{enumerate}[partopsep=4cm, topsep=0cm, leftmargin=1cm]
+										\item Bruger tilslutter batteri og drone tændes. 
+										\item Main controller initialiseres.
+										\item GPS initialiseres og dronens nuværende GPS position opdateres.
+										\item 3G initialiseres og dronen opretter forbindelse til 3G-netværket.											
+											\begin{enumerate}[a:,partopsep=4cm, topsep=0cm, leftmargin=1cm]
 												\item Forbindelse kan ikke oprettes.
 											\end{enumerate}
-										
+										\item Drones nuværende GPS position sendes til server.	
 									\end{enumerate} \\\hline	
 
 Undtagelser 							& 
 
 									\renewcommand{\labelenumi}{\Roman{enumi}:}
 									\renewcommand{\labelenumii}{\alph{enumii})}
-									\begin{enumerate}[topsep=0.0cm,leftmargin=0.5cm]
+									\begin{enumerate}[a:,topsep=0.0cm,leftmargin=0.5cm]
 										\item Forbindelse kan ikke oprettes.
-											\begin{enumerate}[topsep=0cm, leftmargin=1cm]
-												\item Systemet indikerer fejl og derfor genstarter bruger systemet. Derefter genstartes UC\#1
-											\end{enumerate}
+											\begin{itemize}[topsep=0cm, leftmargin=1cm]
+												\item Systemet indikerer fejl og derfor genstarter bruger systemet.
+											\end{itemize}
 									\end{enumerate} \\\hline	
 
 \end{tabular}

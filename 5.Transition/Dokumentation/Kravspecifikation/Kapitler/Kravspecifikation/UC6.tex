@@ -4,14 +4,14 @@
 \begin{tabular}{| p{3cm}| p{11.5cm}|}
 \hline
 
-Mål	 								& Drone kan undvige forhindringer vha. anti kollision \\\hline
+Mål	 								& Drone kan undvige forhindringer. \\\hline
 Initiering 							& Ingen - altid aktiv. \\\hline
-Aktører og \newline interesserede		& Bruger (primær) 
+Aktører og \newline stakeholders		& Bruger (stakeholder) 
 										\begin{itemize}
 											\item Ønsker flyvning uden kollision.
 										\end{itemize} \\\hline
 Startbetingelser							& UC\#3 er igangværende. \\\hline
-Slutbetingelser						& Drone har undveget en kollision. \\\hline
+Slutbetingelser						& Drone undviger en kollision. \\\hline
 
 Hovedforløb				&
  
@@ -22,7 +22,7 @@ Hovedforløb				&
 
 										\item Anti kollision detekterer en forhindring.
 										\item Undvigningsmanøvre udføres.
-											\begin{enumerate}[topsep=0cm, leftmargin=1cm]
+											\begin{enumerate}[a:,topsep=0cm, leftmargin=1cm]
 												\item Forhindring kan ikke undviges.
 											\end{enumerate}
 									\end{enumerate} \\\hline	
@@ -31,11 +31,11 @@ Undtagelser							&
 
 									\renewcommand{\labelenumi}{\Roman{enumi}:}
 									\renewcommand{\labelenumii}{\alph{enumii})}
-									\begin{enumerate}[topsep=0.0cm,leftmargin=0.5cm]
+									\begin{enumerate}[a:,topsep=0.0cm,leftmargin=0.5cm]
 										\item Forhindring kan ikke undviges.
-											\begin{enumerate}[topsep=0cm, leftmargin=1cm]
+											\begin{itemize}[topsep=0cm, leftmargin=1cm]
 												\item Drone går i fejlmode \#3.
-											\end{enumerate}
+											\end{itemize}
 									\end{enumerate} \\\hline	
 
 \end{tabular}

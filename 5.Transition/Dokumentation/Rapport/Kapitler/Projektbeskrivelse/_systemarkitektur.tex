@@ -1,10 +1,8 @@
 \section{Systemarkitektur}
 \label{chap:systemarkitektur}
 
-Til at dokumentere systemarkitekturen er der anvendt SysML og UML diagrammer. SysML diagrammer har beskrevet hardware moduler hvor UML diagrammerne har stået af systemets software del.
-
-Nedenfor kommer en beskrivelse af de SysML diagrammer der er anvendt i projektet. UML diagrammer bliver beskrevet i kapitel
-
+Til at dokumentere systemarkitekturen er der anvendt SysML  til visualisering af de hardware blokke der indgår i systemet. UML diagrammer er anvendt til at uddybe software og hvordan softwaren er designet i projektet. Til supplering af UML diagrammer er n+1 modellen anvendt. N+1 modellen er en udviklingsmodel til software, som benytter sig af forskellige views til at illustrere og informere hvordan systemet er designet og implementeret.
+ 
 \subsection{Blokbeskrivelser}
 Det overordnede bdd på figur \ref{fig:bdd_asd} viser hvilke blokke systemet består af, samt hvilke parts blokkene indeholder.
 
@@ -16,10 +14,10 @@ Det overordnede bdd på figur \ref{fig:bdd_asd} viser hvilke blokke systemet bes
 \end{figure}
 
 \textbf{Drone} \\
-
+Drone blokken indeholder alt funktionalitet til dronen. Yderligere beskrivelse af de interne forbindelser imellem alle parts er beskrevet i dokumentationens systemarkitektur og design.
 
 \textbf{Webserver} \\
-
+Webserver blokken indeholder de hardware moduler der anvendes til server og webapplikationen. 
 
 
 \subsection{Interne forbindelser}
@@ -33,7 +31,13 @@ Det overordnede ibd på figur \ref{fig:ibd_asd} beskriver hvorledes de forskelli
 	\label{fig:ibd_asd}
 \end{figure}
 
+\subsection{Pakke diagram}
 
+For at definere hvilke
 
-
-\subsection{•}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{Billeder/Projektbeskrivelse/ibd1_overordnet.pdf}
+	\caption{Overordnet ibd for systemet}
+	\label{fig:ibd_asd}
+\end{figure}
