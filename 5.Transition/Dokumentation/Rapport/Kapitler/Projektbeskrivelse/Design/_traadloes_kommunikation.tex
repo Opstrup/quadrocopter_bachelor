@@ -1,8 +1,0 @@
-%%%%%% Trådløs kommunikations %%%%%%
-\subsection{Trådløs kommunikation}
-Den trådløse kommunikation mellem bærbar enhed og anlægget er lavet ved at bruge to nRF24L01 transceivere. Det ene modul kobles til den bærbare enhed og sættes op som transmitter, mens det andet modul kobles til anlægget, og sættes op som receiver. 
-Set i forhold til datastrømmen er kommunikationen envejs. Der opnås dog pålidelighed ved at de trådløse moduler internt er sat op til at lave checksumsberegninger og retransmission, hvis der er en fejl i en pakke.
-
-Kommunikationen mellem bærbar enhed og nRF24L01-modulet foregår via SPI ved \SI{2}{Mbps}, hvilket er samme overførelseshastighed som nRF24L01-modulerne internt kommunikerer med. For at maksimere overførselshastigheden sættes mængden af bytes, der overføres til \SI{32}{bytes}. Dette gøres fordi nRF24L01-modulet skal initialiseres til at sende hver gang, hvilket giver et delay fra den modtager kommandoen, til den er klar til at modtage payloaden, som skal sendes\footnote{Se Dokumentationsrapporten under design af nRF24L01 i afsnit \vref{DokRap-subsec:tradlosKommunikation}}.
-
-%PSoC'en i anlægget er sat op til at polle nRF24L01-receiveren for data, dette kunne laves som interrupts fra receiver-modulet til PSoC'en. Dette er undladt, da receiveren har en intern RX-buffer på 32 bytes hvilket er rigelig buffer størrelse til den mængde data, som sendes imellem hver læsning af bufferen.
