@@ -1,8 +1,8 @@
 \chapter{Funktionelle krav}
-Dette afsnit specificerer accepttesten af den Autonome overvågningsdrone.
+Dette afsnit specificerer accepttesten af den autonome overvågningsdrone.
 
 \section*{Formål}
-Dokumentet specificerer accepttests og vil i udfyldt stand udgøre accepttest tilhørende funktionelle krav. 
+Dokumentet specificerer accepttests af systemet og vil i udfyldt stand udgøre accepttest tilhørende funktionelle krav. 
 
 \section*{Godkendelseskriterier}
 Godkendelsen af accepttesten består af to trin:
@@ -20,7 +20,7 @@ Hvis der under accepttesten opstår fejl, der umuliggør fortsat udførsel af de
 
 Hvis der opstår fejl i enkelte testcases; men fortsat accepttest er mulig, underkendes den enkelte test og accepttesten fortsættes med efterfølgende testcases.
 
-Såfremt en test afbrydes eller et testcase underkendes, skal der udfærdiges en problemrapport, der beskriver årsagen til underkendelse. Problemrapporten godkendes af både internt og af kunde eller produkt manager.
+Såfremt en test afbrydes eller en testcase underkendes, skal der udfærdiges en problemrapport, der beskriver årsagen til underkendelse. Problemrapporten godkendes af både internt og af kunde eller produkt manager.
 
 \newpage
 
@@ -31,9 +31,8 @@ Software der skal testes:
 		\begin{tabular}{|c|c|c|c|}
 			\hline
 			Software & Version & Release dato & Bemærkning \\ \hline
-			Webapplikation & xxx & &\\ \hline
-			Opdater position & Rev. 302 & 20/05-2013 & \\ \hline
-			Tilpas orientering & Rev. 354 & 20/05-2013 & \\ \hline
+			Server & Rev. 226b85b & 23/11-2014 & \\ \hline			
+			Webapplikation & Rev. 7969aac & 04/12-2014 &\\ \hline
 		\end{tabular}
 	\caption{Software}
 \end{table}
@@ -44,10 +43,10 @@ Hardware der skal testes:
 		\begin{tabular}{|c|c|c|c|}
 			\hline
 			Hardware & Version & Release dato & Bemærkning \\ \hline
-			Højdemåler & Rev. 172 & 20/05-2013 &  \\ \hline
-			3G modul & Rev. 172 & 20/05-2013 &  \\ \hline
-			Opdater position & Rev. 296 & 20/05-2013 &  \\ \hline
-			Tilpas orientering & Rev. 172 & 20/05-2013 &  \\ \hline
+			Kompas 			& Rev. 9d3ec7b & 17/11-2014 &  \\ \hline			
+			Højdemåler 		& Rev. 9d3ec7b & 17/11/2014 &  \\ \hline
+			3G/GPS modul 	& Rev. 51ec5ac & 7/11-2014 &  \\ \hline
+			Switch board 	& Rev. 9d3ec7b & 17/11/2014 &  \\ \hline
 		\end{tabular}
 	\caption{Hardware}
 \end{table}
@@ -78,11 +77,11 @@ Forudsætninger:	Ingen.
 		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{3.5 cm}|} 
 		\hline
 			Step & Handling & Forventet resultat & Resultat\\ \hline
-			1 & Bruger tilslutter batteri og dronen tændes. & Systemet tilføres forsyning og ESC'er signalerer de er forbundet til forsyning. &   \\ \hline
+			1 & Bruger tilslutter batteri og dronen tændes. & Systemet tilføres forsyning og ESC'er signalerer de er \newline forbundet til forsyning. &   \\ \hline
 			2 & Main controller initialiseres. & Main controller startes. &   \\ \hline
-			3 & GPS initialiseres og dronens nuværende GPS position opdateres. & Nuværende GPS position opdateres og gemmes lokalt på main controller. &   \\ \hline
-			4 & 3G initialiseres og dronen opretter forbindelse til 3G-netværket. & Dronen tilsluttes det mobile 3G-netværk. &  \\ \hline
-			5 & Dronens nuværende GPS position sendes til webapplikation. & På webapplikation vises dronens nuværende position og at dronen er online. &  \\ \hline
+			3 & GPS initialiseres og dronens nuværende GPS position \newline opdateres. & Nuværende GPS position \newline opdateres og gemmes lokalt på main controller. &   \\ \hline
+			4 & 3G initialiseres og dronen opretter forbindelse til \newline 3G-netværket. & Dronen tilsluttes det mobile \newline 3G-netværk. &  \\ \hline
+			5 & Dronens nuværende GPS \newline position sendes til server. & På webapplikation vises \newline drones nuværende position og at dronen er online. &  \\ \hline
 		\end{tabular}
 \end{table}
 
@@ -92,7 +91,7 @@ Forudsætninger:	Ingen.
 		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{3.5 cm}|} 
 		\hline
 			Step & Handling & Forventet resultat & Resultat\\ \hline
-			a & Systemet indikerer fejl og derfor genstart bruger systemet. & Systemet genstartes og forbindelsen oprettes. & \\ \hline
+			a & Systemet indikerer fejl og bruger genstarter systemet. & Systemet genstartes og \newline forbindelse oprettes. & \\ \hline
 		\end{tabular}
 \end{table}
 
@@ -107,15 +106,15 @@ Forudsætninger:	Bruger er oprettet i systemet og UC\#1 er succesfuld gennemfør
 		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{3.5 cm}|} 
 		\hline
 			Step & Handling & Forventet resultat & Resultat\\ \hline
-			1 & Bruger logger på webapplikation. & Login lykkes, og webapplikations forside vises. &  \\ \hline
+			1 & Bruger logger på \newline webapplikation. & Login lykkes, og webapplikationens forside vises. &  \\ \hline
 			2 & Fra forsiden navigerer bruger til flyveopsætning. & Flyveopsætnings siden vises. & \\ \hline
-			3 & Bruger laver en ny flyveopsætning og vælger: \newline
-				- GPS lokationer der skal flyves til. \newline
+			3 & Bruger laver en ny \newline flyveopsætning og vælger: \newline
+				- GPS lokationer der \newline skal flyves til. \newline
 				- Om der skal tages billeder ved de valgte lokationer. \newline
 				- Højde billeder skal tages fra. \newline
 				- Generel flyvehøjde.				
 				 & Flyveopsætning klargjort & \\ \hline
-			4 & Bruger vælger at gemme flyveopsætning. & Flyveopsætning gøres tilgængelig på server & \\ \hline
+			4 & Bruger gemmer flyveopsætning og gør den tilgængelig på server. & Flyveopsætning gøres \newline tilgængelig på server & \\ \hline
 		\end{tabular}
 \end{table}
 
@@ -151,16 +150,26 @@ Forudsætninger:	UC\#1 og UC\#2 er succesfuld gennemført.
 		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{3.5 cm}|} 
 		\hline
 			Step & Handling & Forventet resultat & Resultat\\ \hline
-			1 & Drone henter flyveopsætning fra server. & Der oprettes forbindelse mellem server og drone, og flyveopsætning sendes. & \\ \hline
-			2 & Nuværende position opdateres. & Ingen handling  &  \\ \hline
+			1 & Drone henter flyveopsætning fra server. & Der oprettes forbindelse \newline mellem server og drone \newline og flyveopsætning sendes. & \\ \hline
+			2 & Nuværende position \newline opdateres. & Ingen handling  &  \\ \hline
 			3 & Flyvehøjde tilpasses. & Flyvehøjde justeres &  \\ \hline
 			4 & Flyveorientering tilpasses. & Orientering justeres &  \\ \hline
-			5 & Drone flyver mod ønsket position. & Drone nærmer sig ønsket position  &  \\ \hline
+			5 & Drone flyver mod \newline ønsket position. & Drone nærmer sig \newline ønsket position  &  \\ \hline
 			6 & Ønsket position er nået. & Ønsket position er nået. \\ \hline
 		\end{tabular}
 \end{table}
 
-\textbf{Extension 1: Ugyldig GPS koordinat.}
+\textbf{Extension 1: Dronen henter ikke flyveopsætning.}
+\begin{table}[H]
+	\centering
+		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{3.5 cm}|} 
+		\hline
+			Step & Handling & Forventet resultat & Resultat\\ \hline
+			a & Flyvning med en anden flyveopsætning er aktiv. & UC \#3 fortsættes med den aktive flyveopsætning. & \\ \hline
+		\end{tabular}
+\end{table}
+
+\textbf{Extension 2: Ugyldig GPS koordinat.}
 \begin{table}[H]
 	\centering
 		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{3.5 cm}|} 
@@ -170,17 +179,17 @@ Forudsætninger:	UC\#1 og UC\#2 er succesfuld gennemført.
 		\end{tabular}
 \end{table}
 
-\textbf{Extension 2: Ugyldig flyvehøjde.}
+\textbf{Extension 3: Ugyldig flyvehøjde.}
 \begin{table}[H]
 	\centering
 		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{3.5 cm}|} 
 		\hline
 			Step & Handling & Forventet resultat & Resultat\\ \hline
-			a & Drone går i fejlmode \#2. & Forsøger at finde gyldig flyvehøjde, mislykkes dette lander dronen. & \\ \hline
+			a & Drone går i fejlmode \#2. & Forsøger at finde gyldig \newline flyvehøjde, mislykkes dette lander dronen. & \\ \hline
 		\end{tabular}
 \end{table}
 
-\textbf{Extension 3: Ønsket position er ikke nået.}
+\textbf{Extension 4: Ønsket position er ikke nået.}
 \begin{table}[H]
 	\centering
 		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{3.5 cm}|} 
@@ -190,22 +199,11 @@ Forudsætninger:	UC\#1 og UC\#2 er succesfuld gennemført.
 		\end{tabular}
 \end{table}
 
-\textbf{Extension 4: Dronen henter ikke flyveopsætning, da flyvning
-med en anden flyveopsætning er aktiv.}
-\begin{table}[H]
-	\centering
-		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{3.5 cm}|} 
-		\hline
-			Step & Handling & Forventet resultat & Resultat\\ \hline
-			a & Ingen handling. & UC \#3 fortsættes med den aktive flyveopsætning. & \\ \hline
-		\end{tabular}
-\end{table}
-
 \newpage
 
 \section{Test case 4: Billede af position}
 Use case under test: UC 4: Billede af position.\\
-Forudsætninger:	UC\#1, UC\#2 og UC\#3 er succesfuld gennemført.
+Forudsætninger:	UC\#3 er succesfuld gennemført.
 
 \textbf{Hovedscenarie}
 \begin{table}[H]
@@ -213,10 +211,9 @@ Forudsætninger:	UC\#1, UC\#2 og UC\#3 er succesfuld gennemført.
 		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{3.5 cm}|} 
 		\hline
 			Step & Handling & Forventet resultat & Resultat\\ \hline
-			1 & Drone tager et billede af nuværende position. & Kamera aktiveres og der tages et billede. & \\ \hline
-			2 & Billedet sendes til webapplikation. & Billedet sendes til webapplikation bliver tilgængelig på webapplikationen &  \\ \hline
+			1 & Drone tager et billede af \newline nuværende position. & Kamera aktiveres og der \newline tages et billede. & \\ \hline
+			2 & Billedet sendes til server. & Billedet sendes til server gøres tilgængelig på \newline webapplikationen &  \\ \hline
 			3 & Bruger giver accept af billedet via webapplikation. & Billedet gemmes i database  & \\ \hline
-			4 & Drone modtager information om næste GPS lokation & Drone påbegynder flyvning mod næste GPS lokation. & \\ \hline
 
 		\end{tabular}
 \end{table}
@@ -228,7 +225,7 @@ Forudsætninger:	UC\#1, UC\#2 og UC\#3 er succesfuld gennemført.
 		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{3.5 cm}|} 
 		\hline
 			Step & Handling & Forventet resultat & Resultat\\ \hline
-			a & Drone instrueres til at ændre flyvehøjde, orientering eller position. UC4 genstartes. & Flyvehøjde, orientering eller position ændres. & \\ \hline
+			a & Drone instrueres til at \newline ændre flyvehøjde, orientering eller position. & Flyvehøjde, orientering eller position ændres. & \\ \hline
 		\end{tabular}
 \end{table}
 
@@ -253,9 +250,9 @@ Forudsætninger:	Bruger er oprettet i systemet.
 		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{3.5 cm}|} 
 		\hline
 			Step & Handling & Forventet resultat & Resultat\\ \hline
-			1 & Bruger logger på webapplikation. & Login lykkes og webapplikations forside vises. &  \\ \hline
-			2 & Fra forsiden navigerer bruger til historik. & En oversigt over tidligere flyvninger vises. & \\ \hline
-			3 & Bruger vælger en specifik tidligere flyvning. &  Billeder, video og flyverute tilhørende valgte flyvning vises. & \\ \hline			
+			1 & Bruger logger på \newline webapplikation. & Login lykkes og webapplikations forside vises. &  \\ \hline
+			2 & Fra forsiden navigerer \newline bruger til historik. & En oversigt over tidligere \newline flyvninger vises. & \\ \hline
+			3 & Bruger vælger en specifik \newline tidligere flyvning. &  Billeder, video og flyverute \newline tilhørende valgte flyvning \newline vises. & \\ \hline			
 		\end{tabular}
 \end{table}
 
@@ -279,7 +276,7 @@ Forudsætninger:	UC\#3 er igangværende.
 		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{3.5 cm}|} 
 		\hline
 			Step & Handling & Forventet resultat & Resultat\\ \hline
-			1 & Anti kollisions system detekterer en forhindring. & Bremser dronens fremdrift. &  \\ \hline
+			1 & Anti kollisions system \newline detekterer en forhindring. & Bremser dronens fremdrift. &  \\ \hline
 			3 & Undvigelsesmanøvre udføres. & Drone passere forhindring og flyver videre. & \\ \hline			
 		\end{tabular}
 \end{table}
@@ -290,7 +287,7 @@ Forudsætninger:	UC\#3 er igangværende.
 		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{3.5 cm}|} 
 		\hline
 			Step & Handling & Forventet resultat & Resultat\\ \hline
-			a & Drone går i fejlmode \#3. & Forsøger at finde måde at passere forhindring, mislykkes dette lander dronen.. & \\ \hline
+			a & Drone går i fejlmode \#3. & Forsøger at finde måde at passere forhindring. Mislykkes det lander dronen. & \\ \hline
 		\end{tabular}
 \end{table}
 
