@@ -17,7 +17,7 @@ I det overordnede bdd nedenfor vises de blokke systemet består af, samt hvilke 
 
 \newpage
 \subsection{Udvidet - Block definition diagram}
-Da drone blokken er kompliceret og indeholder mange part kræves en yderlige beskrivelse. På figur \ref{fig:bdd_drone} vises et bdd, der går mere i dybden med drone blokken. På figuren åbnes drone blokken og det vises hvilke blokke dronen er bygget af. 
+Da drone blokken er kompliceret og indeholder mange parts kræves en yderlige beskrivelse. På figur \ref{fig:bdd_drone} vises et bdd, der går mere i dybden med drone blokken. På figuren åbnes drone blokken og det vises hvilke blokke dronen er bygget af. 
 
 \begin{figure}[H]
 \centering
@@ -29,14 +29,14 @@ Da drone blokken er kompliceret og indeholder mange part kræves en yderlige bes
 
 \vspace{0.5cm}
 
-Webserveren beskrives ikke nærmere i dette afsnit, da den ikke indeholder så mange parts og fordi webserverens parts har end anden og mere løs kobling end dronens.
+Webserveren beskrives ikke nærmere i dette afsnit, da den ikke indeholder så mange parts og fordi webserverens parts har en anden og mere løs kobling end dronens.
 
 \newpage
 
 \subsection{Blokbeskrivelse}
 
 \textbf{Main controller}\\
-Main controlleren fungerer som dronens hjerne. Ud fra kommunikation med webserver og input fra de forskellige sensorer styrer main controlleren dronens motorer. Skal dronen fx. flyve højere udsendes styrings signaler, som sørger for motorerne øger deres rotationshastigheden. Under autonom flyvning bruges PWM signaler udsendt fra main controller til styre dronen. 
+Main controlleren fungerer som dronens hjerne. Ud fra kommunikation med webserver og input fra de forskellige sensorer styrer main controlleren dronens motorer. Skal dronen fx. flyve højere udsendes styrings signaler, som sørger for motorerne øger deres rotationshastighed. Under autonom flyvning bruges PWM signaler udsendt fra main controller til styre dronen. 
 
 \textbf{Remote controller}\\
 Denne blok består af receiver, transmitter og switch board. Blokken gør det muligt at switche mellem autonom og manuel styring. Afhængig af hvordan transmitteren (fjernbetjening) er indstillet benyttes henholdsvis manuel eller autonom flyvning.

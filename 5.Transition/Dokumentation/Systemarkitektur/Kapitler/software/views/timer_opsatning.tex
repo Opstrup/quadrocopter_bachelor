@@ -1,6 +1,6 @@
 \subsection{Opsætning af timere til PWM}
 
-Da dronen skal flyve autonomt er det påkrævet at dronen skal styres via main controlleren (arduino boardet). Main controlleren styrer dronen ved at sende 6 forskellige pwm signaler til flight control boardet. De 6 pwm signaler bruges til at kontrollere og regulerer henholdsvis: Throttle, yaw, pitch, roll, alttitudehold og flightmode.
+Da dronen skal flyve autonomt er det påkrævet at dronen skal styres via main controlleren (arduino boardet). Main controlleren styrer dronen ved at sende 6 forskellige pwm signaler til flight control boardet. De 6 pwm signaler bruges til at kontrollere og regulere henholdsvis: Throttle, yaw, pitch, roll, alttitudehold og flightmode.
 
 For at undgå at lave busywait når de forskellige pwm signaler skal ændres (skift i periodetid eller duty cycle) benyttes tre 16-bit timere som befinder sig på main controlleren. Arduino 2560 boardet har fire forskellige 16-bit timere, som hver kan styre pwm signal (output signal) på to digitale pins, hvis de  bruges korrekt. 
 
