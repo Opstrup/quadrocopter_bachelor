@@ -1,0 +1,13 @@
+\chapter{Implementation}
+Implementeringen af systemet tager udgangspunkt i de udarbejdede pakke-, sekvens- og klassediagrammer. De højst prioriterede use cases er blevet delvist implementerede. Dette afsnit beskriver hvordan div. delsystemer er udviklet overordnet.
+For at danne et overblik over den forliggende opgave blev der i starten af hver iteration oprettet pakkediagrammer. Ud fra disse pakkediagrammer blev der udarbejdet sekvensdiagrammer, disse diagrammer lå så til grundlag for klassediagrammerne.
+
+\section{Drone}
+Dronen er udviklet i programmerings sproget C++. Software tilhørende dronen er opdelt i forskellige ansvars områder og disse områder er designet til at fungere med de hw-enheder de benytter. Dronen har bla. kode der aflæser højde sensor, GPS-lokation og HTTP-kommunikation, informationen fra disse sw-enheder bliver behandlet i en main controller fil på dronen og ud fra dette afgøres hvilke handling dronen skal udføre.
+
+\section{Server}
+Under iteration 1 blev der lagt meget arbejde på serveren, da den spiller en væsentlig rolle til kommunikationen imellen drone og webapplikation. Serveren er udviklet i programmerings sproget Python og med webframeworket Django[x] dækker det tilsammen over en SQLite database med et RESTful api. Serveren har en række API-endpoints som benyttes for til at data'en på serveren.
+
+\section{Webapplikation}
+Webapplikationen  er udviklet i programmerings sprogene HTML, CSS og JavaScript. Webapplikationen er udviklet med web frontend frameworket AngularJS[x], som er et meget benyttet framework fra Google. Webapplikationen benytter yderligere et google maps API, hvilket giver den funktionalitet for tilføjelse af et kort på sitet. 
+Da AnjularJS er benyttet til udviklingen, er projektet også opdelt efter MVC-modellen[x]. Dette giver projektet en rigtig god struktur og opdeling af filer.
