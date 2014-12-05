@@ -20,7 +20,7 @@ Hovedforløb				&
 
 									\begin{enumerate}[topsep=0.0cm, leftmargin=0.5cm]
 										\item Drone tager et billede af nuværende position.
-										\item Billedet sendes til webapplikation.
+										\item Billedet sendes til server.
 										\item Bruger giver accept af billede via webapplikation.
 											\begin{enumerate}[a:,partopsep=4cm, topsep=0cm, leftmargin=1cm]
 												\item Bruger beder om et nyt billede.

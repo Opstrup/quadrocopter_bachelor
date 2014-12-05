@@ -17,8 +17,8 @@
 				& Det verificeres at protokollen passer.
 				&  \\ \hline
 			
-			1.3 & Ultralyds sensor skal måle højde $\pm$ 10 cm.
-				& Ultralyds sensor placeres i en kendt afstand til en væg.
+			1.3 & Højdemåler skal måle højde $\pm$ 10 cm.
+				& Højdemåler placeres i en kendt afstand til en væg.
 				& Afstanden måles med korrekt længde.
 				& \\ \hline						
 		\end{tabular}
@@ -28,23 +28,43 @@
     \centering
     \begin{tabular}{|p{1. cm}|p{3.2 cm}|p{3.2 cm}|p{3.2 cm}|p{2.2 cm}|}
 			\hline
+			\multicolumn{5}{|l|}{\textbf{{\large Krav til server}}}\\ \hline
+			\textbf{Krav nr.} & \textbf{Krav} & \textbf{Test} & \textbf{Forventet \newline resultat} & 			
+			\textbf{Godkend \& \newline kommentar} \\ \hline
+			
+			2.1 & Indholder database med billeder og flyveruter.
+				& Databasen tilgås, billeder og flyveruter vises.
+				& Databasen indeholder billeder og flyveruter.
+				& \\ \hline
+
+			2.2 & Indholder database med brugere.
+				& Databasen tilgås og en liste med alle brugere vises.
+				& De oprettede brugere vises.
+				&  \\ \hline			
+		\end{tabular}
+
+
+
+    \centering
+    \begin{tabular}{|p{1. cm}|p{3.2 cm}|p{3.2 cm}|p{3.2 cm}|p{2.2 cm}|}
+			\hline
 			\multicolumn{5}{|l|}{\textbf{{\large Krav til webapplikation}}}\\ \hline
 			\textbf{Krav nr.} & \textbf{Krav} & \textbf{Test} & \textbf{Forventet \newline resultat} & 			
 			\textbf{Godkend \& \newline kommentar} \\ \hline
 			
-			2.1 & Webapplikation skal kunne tilgås via både computere og telefoner.
+			3.1 & Webapplikation skal kunne tilgås via både computere og telefoner.
 				& Webapplikationen tilgås på både computer og telefon.
 				& Applikationen tilpasser sig til den forbundne enhed.
 				& \\ \hline
 
-			2.2 & Indholder database med billeder og flyveruter fra tidligere. 
-				& Databasen tilgås, billeder og flyveruter vises.
-				& Databasen indeholder billeder og flyveruter.
+			3.2 & Load time skal være under 0.5 sekunder. 
+				& Webapplikationens URL tilgås.
+				& Siden er loadet inden 0.5 sekunder er gået.
 				&  \\ \hline
 			
-			2.3 & Indholder database med brugere.
-				& Webapplikation tilgås og det verificeres at bruger kan logge ind.
-				& Bruger kan logge på webapplikation.
+			3.3 & Bruger laver flyveopsætning ved hjælp af kort.
+				& Der startes en ny flyveopsætning og GPS koordinater vælges ud fra et kort.
+				& Ved hjælp af kortet findes GPS koordinater.
 				& \\ \hline				
 		\end{tabular}
 	\label{tab:krav_1}
@@ -58,27 +78,27 @@
 			\textbf{Krav nr.} & \textbf{Krav} & \textbf{Test} & \textbf{Forventet \newline resultat} & 			
 			\textbf{Godkend \& \newline kommentar} \\ \hline
 			
-			3.1 & Skal forsynes fra batteri.
+			4.1 & Skal forsynes fra batteri.
 				& Batteri tilsluttes drone.
 				& Lyde fra ESC'er indikerer at drone er klar til flyvning.
 				& \\ \hline
 
-			3.2 & Batterilevetiden skal minimum være 15 minutter.
+			4.2 & Batterilevetiden skal minimum være 15 minutter.
 				& Der laves teoretiske beregninger.
 				& Beregnet levertid er over 15 minutter.
 				&  \\ \hline
 			
-			3.3 & Flyvehastigheden skal minimum være 2$\frac{m}{s}$.
+			4.3 & Flyvehastigheden skal minimum være 2$\frac{m}{s}$.
 				& Det noteres hvor lang tid dronen bruger på at flyve 10 meter.
 				& Flyvehastigheden er minimum 2$\frac{m}{s}$.
 				& \\ \hline		
 				
-			3.4 & Flyvehøjde kan reguleres i følgende 3 intervaller: 1-1.5m, 1.5-2.0m og 2-2.5m.
+			4.4 & Flyvehøjde kan reguleres i følgende 3 intervaller: 1-1.5m, 1.5-2.0m og 2-2.5m.
 				& I flyveopsætning sættes flyvehøjde mellem 1-1.5 meter.
 				& Drone flyver i den ønskede højde.
 				& \\ \hline	
 				
-			3.5 & Højde der tages billeder fra, kan reguleres mellem 1 og 2,5 meter.
+			4.5 & Højde der tages billeder fra, kan reguleres mellem 1 og 2,5 meter.
 				& Den ønskede højde sendes til dronen.
 				& Drone tager billeder i den ønskede højde.
 				& \\ \hline	
@@ -93,14 +113,19 @@
 			\hline
 			\multicolumn{5}{|l|}{\textbf{{\large Krav til opsamling af data}}}\\ \hline
 			\textbf{Krav nr.} & \textbf{Krav} & \textbf{Test} & \textbf{Forventet \newline resultat} & 			
-			\textbf{Godkendelse \& \newline kommentar} \\ \hline
+			\textbf{Godkend \& \newline kommentar} \\ \hline
 			
-			4.1 & Gyldig højdemåling ligger i intervallet 0,5 til 4,5 meter.
+			5.1 & Tiden mellem et billede tages og til det er tilgængeligt på webapplikation skal maksimalt være 5 sekunder.
+				& Tiden det tager at sende et billede måles.
+				& Billedet tager maksimalt 5 sekunder om at nå til server.
+				& \\ \hline			
+			
+			5.2 & Gyldig højdemåling ligger i intervallet 0,5 til 4,5 meter.
 				& Drone flyttes højde sættes først til mindre end 0,5 meter. Derefter placeres den i en højden 0.5-4.5 meter. Til sidst sættes højde over intervallet. 
 				& Drone går i fejlmode \#2 udenfor interval på 0,5-4,5 meter.
 				& \\ \hline
 
-			4.2 & GPS skal angive koordinat indenfor $\pm$ 2,5 meter. 
+			5.3 & GPS skal angive koordinat indenfor $\pm$ 2,5 meter. 
 				& Drone flyttes rundt og GPS lokationen findes og verificeres.
 				& GPS koordinater er angivet indenfor intervallet. 
 				&  \\ \hline		
