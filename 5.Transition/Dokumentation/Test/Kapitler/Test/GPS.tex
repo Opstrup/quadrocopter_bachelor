@@ -1,8 +1,9 @@
 \section{GPS}
 
-Selvom GPSen sidder på 3G/GPS modulet kan det testes for sig selv. 
+GPS modulet testes som et selvstændigt modul.
+For at finde den eksakte GPS position fra GPS modulet, testes modulet i forskellige omgivelser. Som kontrol findes koordinaterne for den aktuelle position. Ud fra de fundne koordinater beregnes en afstand i meter, denne afstand fortæller lidt om afvigelsen af GPS modulet. 
 
-For at finde den eksakte GPS position fra GPS modulet, testes modulet i forskellige omgivelser. Som kontrol findes koordinaterne for den aktuelle position. Ud fra de fundne koordinater beregnes en afstand i meter, denne afstand fortæller lidt om afvigelsen af GPS modulet. I kravene er der defineret hvor stor en afvigelse GPS modulet må have. Denne afvigelse skal overholdes under tests, men da den aktuelle position har en afvigelse, vil afgivelsen i meter være påvirket. Denne påvirking vil føre til at afvigelsen i meter kan være større end de tilladte 2.5 meter som der er defineret i kravene.
+I kravene er der defineret hvor stor en afvigelse GPS modulet må have. Denne afvigelse skal overholdes under tests. Da den aktuelle position har en afvigelse, vil afgivelsen i meter være påvirket. Denne påvirking vil føre til at afvigelsen i meter kan være større end de tilladte 2.5 meter, som defineret i kravene.
 Det har ikke været muligt at teste GPS modulet indendøre, da der ikke var GPS signal tilgængeligt. 
 
 \begin{table}[H]
@@ -10,7 +11,6 @@ Det har ikke været muligt at teste GPS modulet indendøre, da der ikke var GPS 
 \hline
 GPS moduls koordinater & Aktuelle position & Afvigelse i meter\\\hline
 Latitude:10.191518 \newline Longitude: 56.171863 & Latitude: 10.191560 \newline Longitude: 56.171896 & 4 meter\\\hline
-Latitude: \newline Longitude & Latitude: \newline Longitude & \\\hline
 Latitude: \newline Longitude & Latitude: \newline Longitude & \\\hline
 
 \end{tabular}

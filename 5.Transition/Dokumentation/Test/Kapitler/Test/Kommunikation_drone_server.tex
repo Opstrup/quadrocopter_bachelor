@@ -2,7 +2,7 @@
 
 Dette afsnit beskriver testen af kommunikationen mellem drone og server. 
 
-Kommunikationen er testet ved at bruge 3G modulet på drone som benytter HTTP protokollens med GET og PUT metoder. 
+Kommunikationen er testet ved at bruge 3G modulet på drone som benytter HTTP protokollens GET og PUT metoder. 
 Idet serveren er en passiv enhed, er det 3G modulet der skal tage initiativet til at hente eller sende data. 
 
 På figur \ref{fig:integrationstest_webserver} vises hvordan informationen på serveren ser ud. Ved et GET, ønskes disse information hentet ned. 
@@ -21,4 +21,22 @@ Ved brug af GET metoden på serverens URL (iha-11726.iha.dk/api/drones/1/), får
 \includegraphics[width=0.4\textwidth]{Billeder/Test/getfromserver.png}
 \caption{GET data fra server}
 \label{fig:getfromserver}
+\end{figure}
+
+Ved brug af PUT metoden, skal der sendes et request til serveren. Dette request skal indeholde serverens URL og de informationer der ønskes sendt. Et request der er brugt af 3G modulet ser ud som på figur \ref{fig:puttoserver}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\textwidth]{Billeder/Test/put_dronerequest.png}
+\caption{PUT request til server}
+\label{fig:puttoserver}
+\end{figure}
+
+ Ved at sende den viste string, opdateres informationerne på serveren. På figur \ref{fig:putdata_server} vises det opdaterede information på serveren.
+ 
+ \begin{figure}[H]
+\centering
+\includegraphics[width=0.4\textwidth]{Billeder/Test/putdata_server.png}
+\caption{PUT fra server}
+\label{fig:putdata_server}
 \end{figure}
