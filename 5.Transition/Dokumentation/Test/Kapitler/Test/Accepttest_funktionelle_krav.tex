@@ -1,30 +1,19 @@
 \chapter{Funktionelle krav}
-Dette afsnit specificerer accepttesten af den autonome overvågningsdrone.
+
+\vspace{-1cm}
 
 \section*{Formål}
-Dokumentet specificerer accepttests af systemet og vil i udfyldt stand udgøre accepttest tilhørende funktionelle krav. 
+\vspace{-0.5cm}
 
-\section*{Godkendelseskriterier}
-Godkendelsen af accepttesten består af to trin:
+Dette afsnit specificerer accepttests af systemets funktionelle krav. 
 
-\begin{enumerate}
-	\item Godkendelse af accepttestspecifikationen. \\
-	Dette gøres på bagsiden af dokumentet i "Godkendt af" feltet.
+Hvis der under accepttesten opstår fejl, der umuliggør fortsat test af efterfølgende testcases afbrydes denne test. Hvis der opstår fejl i enkelte testcases; men fortsat accepttest er mulig, underkendes den enkelte test og accepttesten fortsættes.
 
-	\item Godkendelse af selve accepttesten. Dette gøres i afsnit Testresultat. 
-\end{enumerate}
+Såfremt en test afbrydes eller en testcase underkendes eller ikke kan gennemføres, skrives den eller de step der ikke kan gennemføres angives de i kapitlet \textbf{Fejl og mangler}. 
 
-Accepttesten er afsluttet, når alle testcases er testet.
-
-Hvis der under accepttesten opstår fejl, der umuliggør fortsat udførsel af de efterfølgende testcases afbrydes denne test.
-
-Hvis der opstår fejl i enkelte testcases; men fortsat accepttest er mulig, underkendes den enkelte test og accepttesten fortsættes med efterfølgende testcases.
-
-Såfremt en test afbrydes eller en testcase underkendes, skal der udfærdiges en problemrapport, der beskriver årsagen til underkendelse. Problemrapporten godkendes af både internt og af kunde eller produkt manager.
-
-\newpage
 
 \section*{Testspecifikation}
+\vspace{-0.5cm}
 Software der skal testes:
 \begin{table}[H]
 	\centering
@@ -34,7 +23,7 @@ Software der skal testes:
 			Server & Rev. 226b85b & 23/11-2014 & \\ \hline			
 			Webapplikation & Rev. 7969aac & 04/12-2014 &\\ \hline
 		\end{tabular}
-	\caption{Software}
+	\caption{Software til test}
 \end{table}
 
 Hardware der skal testes:
@@ -48,22 +37,22 @@ Hardware der skal testes:
 			3G/GPS modul 	& Rev. 51ec5ac & 7/11-2014 &  \\ \hline
 			Switch board 	& Rev. 9d3ec7b & 17/11/2014 &  \\ \hline
 		\end{tabular}
-	\caption{Hardware}
+	\caption{Hardware til test}
 \end{table}
 
-
+\vspace{-0.5cm}
 \section*{Testprocedure}
-De individuelle use cases og scenarier i kravspecifikationen testes i enkelte test cases med testdata som angivet for test casen. 
+\vspace{-0.5cm}
+De individuelle use cases og scenarier i kravspecifikationen testes i enkelte test cases. 
 
 \begin{itemize}
-	\item Hvis et teststep gennemføres fejlfrit markeres dette med ”Godkendt” i feltet ”resultat” for testen. for det pågældende test step.
+	\item Hvis et teststep gennemføres fejlfrit markeres dette med ”Godkendt” i feltet ”resultat” for det pågældende test step.
 
-	\item Hvis et teststep gennemføres med ubetydelige fejl, markeres dette med ”(OK)” i feltet ”resultat” for det pågældende test step, samt evt. en henvisning til en fejlrapport hvori fejlen beskrives.
+	\item Hvis et teststep gennemføres med ubetydelige fejl, markeres dette med ”(OK)” i feltet ”resultat” for det pågældende test step.
 	
-	\item Hvis et teststep gennemføres med betydelige fejl, markeres dette med en henvisning (”1”, ”2”, ”3”,…) til en fejlrapport, som udarbejdes med en beskrivelse af fejlen.
+	\item Hvis et teststep ikke kan gennemføres eller gennemføres med betydelige fejl, markeres dette med "Ikke godkendt".
 	
 \end{itemize}
-Det overordnede testresultat angives på sidste side i dette dokument. Ved kundens og projektgruppens underskrift på samme side godkendes det af begge parter, at testresultatet er som angivet.
 
 \newpage
 
@@ -74,24 +63,24 @@ Forudsætninger:	Ingen.
 \textbf{Hovedscenarie}
 \begin{table}[H]
 	\centering
-		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{3.5 cm}|} 
+		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{2.5 cm}|} 
 		\hline
-			Step & Handling & Forventet resultat & Resultat\\ \hline
-			1 & Bruger tilslutter batteri og dronen tændes. & Systemet tilføres forsyning og ESC'er signalerer de er \newline forbundet til forsyning. &   \\ \hline
-			2 & Main controller initialiseres. & Main controller startes. &   \\ \hline
-			3 & GPS initialiseres og dronens nuværende GPS position \newline opdateres. & Nuværende GPS position \newline opdateres og gemmes lokalt på main controller. &   \\ \hline
-			4 & 3G initialiseres og dronen opretter forbindelse til \newline 3G-netværket. & Dronen tilsluttes det mobile \newline 3G-netværk. &  \\ \hline
-			5 & Dronens nuværende GPS \newline position sendes til server. & På webapplikation vises \newline drones nuværende position og at dronen er online. &  \\ \hline
+			\textbf{Step} & \textbf{Handling} & \textbf{Forventet resultat} & \textbf{Resultat} \\ \hline
+			1 & Bruger tilslutter batteri og dronen tændes. & Systemet tilføres forsyning og ESC'er signalerer de er \newline forbundet til forsyning. & Godkendt.   \\ \hline
+			2 & Main controller initialiseres. & Main controller startes. & Godkendt.   \\ \hline
+			3 & GPS initialiseres og dronens nuværende GPS position \newline opdateres. & Nuværende GPS position \newline opdateres og gemmes lokalt på main controller. & Godkendt.   \\ \hline
+			4 & 3G initialiseres og dronen opretter forbindelse til \newline 3G-netværket. & Dronen tilsluttes det mobile \newline 3G-netværk. &  Godkendt. \\ \hline
+			5 & Dronens nuværende GPS \newline position sendes til server. & På webapplikation vises \newline drones nuværende position og at dronen er online. & Godkendt. \\ \hline
 		\end{tabular}
 \end{table}
 
 \textbf{Extension 1: Forbindelse kan ikke oprettes.}
 \begin{table}[H]
 	\centering
-		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{3.5 cm}|} 
+		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{2.5 cm}|} 
 		\hline
-			Step & Handling & Forventet resultat & Resultat\\ \hline
-			a & Systemet indikerer fejl og bruger genstarter systemet. & Systemet genstartes og \newline forbindelse oprettes. & \\ \hline
+			\textbf{Step} & \textbf{Handling} & \textbf{Forventet resultat} & \textbf{Resultat} \\ \hline
+			a & Systemet indikerer fejl og bruger genstarter systemet. & Systemet genstartes og \newline forbindelse oprettes. & Godkendt. \\ \hline
 		\end{tabular}
 \end{table}
 
@@ -103,38 +92,38 @@ Forudsætninger:	Bruger er oprettet i systemet og UC\#1 er succesfuld gennemfør
 \textbf{Hovedscenarie}
 \begin{table}[H]
 	\centering
-		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{3.5 cm}|} 
+		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{2.5 cm}|}
 		\hline
-			Step & Handling & Forventet resultat & Resultat\\ \hline
-			1 & Bruger logger på \newline webapplikation. & Login lykkes, og webapplikationens forside vises. &  \\ \hline
-			2 & Fra forsiden navigerer bruger til flyveopsætning. & Flyveopsætnings siden vises. & \\ \hline
+			\textbf{Step} & \textbf{Handling} & \textbf{Forventet resultat} & \textbf{Resultat} \\ \hline
+			1 & Bruger logger på \newline webapplikation. & Login lykkes, og webapplikationens forside vises. & Godkendt. \\ \hline
+			2 & Fra forsiden navigerer bruger til flyveopsætning. & Flyveopsætnings siden vises. & Godkendt. \\ \hline
 			3 & Bruger laver en ny \newline flyveopsætning og vælger: \newline
 				- GPS lokationer der \newline skal flyves til. \newline
 				- Om der skal tages billeder ved de valgte lokationer. \newline
 				- Højde billeder skal tages fra. \newline
 				- Generel flyvehøjde.				
-				 & Flyveopsætning klargjort & \\ \hline
-			4 & Bruger gemmer flyveopsætning og gør den tilgængelig på server. & Flyveopsætning gøres \newline tilgængelig på server & \\ \hline
+				 & Flyveopsætning klargjort & Godkendt. \\ \hline
+			4 & Bruger gemmer flyveopsætning og gør den tilgængelig på server. & Flyveopsætning gøres \newline tilgængelig på server & Ikke godkendt. \\ \hline
 		\end{tabular}
 \end{table}
 
 \textbf{Extension 1: Fejl i login.}
 \begin{table}[H]
 	\centering
-		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{3.5 cm}|} 
+		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{2.5 cm}|} 
 		\hline
-			Step & Handling & Forventet resultat & Resultat\\ \hline
-			a & Bruger føres tilbage til login. & Login kan påny forsøges. & \\ \hline
+			\textbf{Step} & \textbf{Handling} & \textbf{Forventet resultat} & \textbf{Resultat} \\ \hline
+			a & Bruger føres tilbage til login. & Login kan påny forsøges. & Godkendt. \\ \hline
 		\end{tabular}
 \end{table}
 
 \textbf{Extension 2: Der laves ikke ny flyveopsætning.}
 \begin{table}[H]
 	\centering
-		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{3.5 cm}|} 
+		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{2.5 cm}|} 
 		\hline
-			Step & Handling & Forventet resultat & Resultat\\ \hline
-			a & Gemt flyveopsætning bruges. & Flyveopsætning klargjort. & \\ \hline
+			\textbf{Step} & \textbf{Handling} & \textbf{Forventet resultat} & \textbf{Resultat} \\ \hline
+			a & Gemt flyveopsætning bruges. & Flyveopsætning klargjort. & Ikke godkendt.\\ \hline
 		\end{tabular}
 \end{table}
 
@@ -147,55 +136,45 @@ Forudsætninger:	UC\#1 og UC\#2 er succesfuld gennemført.
 \textbf{Hovedscenarie}
 \begin{table}[H]
 	\centering
-		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{3.5 cm}|} 
+		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{2.5 cm}|} 
 		\hline
-			Step & Handling & Forventet resultat & Resultat\\ \hline
-			1 & Drone henter flyveopsætning fra server. & Der oprettes forbindelse \newline mellem server og drone \newline og flyveopsætning sendes. & \\ \hline
-			2 & Nuværende position \newline opdateres. & Ingen handling  &  \\ \hline
-			3 & Flyvehøjde tilpasses. & Flyvehøjde justeres &  \\ \hline
-			4 & Flyveorientering tilpasses. & Orientering justeres &  \\ \hline
-			5 & Drone flyver mod \newline ønsket position. & Drone nærmer sig \newline ønsket position  &  \\ \hline
-			6 & Ønsket position er nået. & Ønsket position er nået. \\ \hline
+			\textbf{Step} & \textbf{Handling} & \textbf{Forventet resultat} & \textbf{Resultat} \\ \hline
+			1 & Drone henter flyveopsætning fra server. & Der oprettes forbindelse \newline mellem server og drone \newline og flyveopsætning sendes. & Godkendt. \\ \hline
+			2 & Nuværende position \newline opdateres. & Ingen handling  &  Godkendt. \\ \hline
+			3 & Flyvehøjde tilpasses. & Flyvehøjde justeres & Godkendt. \\ \hline
+			4 & Flyveorientering tilpasses. & Orientering justeres & Ikke godkendt. \\ \hline
+			5 & Drone flyver mod \newline ønsket position. & Drone nærmer sig \newline ønsket position  &  Ikke godkendt. \\ \hline
+			6 & Ønsket position er nået. & Ønsket position er nået. & Ikke godkendt. \\ \hline
 		\end{tabular}
 \end{table}
 
 \textbf{Extension 1: Dronen henter ikke flyveopsætning.}
 \begin{table}[H]
 	\centering
-		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{3.5 cm}|} 
+		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{2.5 cm}|}
 		\hline
-			Step & Handling & Forventet resultat & Resultat\\ \hline
-			a & Flyvning med en anden flyveopsætning er aktiv. & UC \#3 fortsættes med den aktive flyveopsætning. & \\ \hline
+			\textbf{Step} & \textbf{Handling} & \textbf{Forventet resultat} & \textbf{Resultat} \\ \hline
+			a & Flyvning med en anden flyveopsætning er aktiv. & UC \#3 fortsættes med den aktive flyveopsætning. & Godkendt. \\ \hline
 		\end{tabular}
 \end{table}
 
 \textbf{Extension 2: Ugyldig GPS koordinat.}
 \begin{table}[H]
 	\centering
-		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{3.5 cm}|} 
+		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{2.5 cm}|} 
 		\hline
-			Step & Handling & Forventet resultat & Resultat\\ \hline
-			a & Drone går i fejlmode \#1. & Forsøger at finde gyldig GPS koordinat, mislykkes dette lander dronen. & \\ \hline
+			\textbf{Step} & \textbf{Handling} & \textbf{Forventet resultat} & \textbf{Resultat} \\ \hline
+			a & Drone går i fejlmode \#1. & Forsøger at finde gyldig GPS koordinat, mislykkes dette lander dronen. & Ikke godkendt.\\ \hline
 		\end{tabular}
 \end{table}
 
 \textbf{Extension 3: Ugyldig flyvehøjde.}
 \begin{table}[H]
 	\centering
-		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{3.5 cm}|} 
+		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{2.5 cm}|}
 		\hline
-			Step & Handling & Forventet resultat & Resultat\\ \hline
-			a & Drone går i fejlmode \#2. & Forsøger at finde gyldig \newline flyvehøjde, mislykkes dette lander dronen. & \\ \hline
-		\end{tabular}
-\end{table}
-
-\textbf{Extension 4: Ønsket position er ikke nået.}
-\begin{table}[H]
-	\centering
-		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{3.5 cm}|} 
-		\hline
-			Step & Handling & Forventet resultat & Resultat\\ \hline
-			a & UC \#3 genstartes. & Dronen flyver til position. & \\ \hline
+			\textbf{Step} & \textbf{Handling} & \textbf{Forventet resultat} & \textbf{Resultat} \\ \hline
+			a & Drone går i fejlmode \#2. & Forsøger at finde gyldig \newline flyvehøjde, mislykkes dette lander dronen. & Ikke godkendt. \\ \hline
 		\end{tabular}
 \end{table}
 
@@ -208,12 +187,12 @@ Forudsætninger:	UC\#3 er succesfuld gennemført.
 \textbf{Hovedscenarie}
 \begin{table}[H]
 	\centering
-		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{3.5 cm}|} 
+		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{2.5 cm}|} 
 		\hline
-			Step & Handling & Forventet resultat & Resultat\\ \hline
-			1 & Drone tager et billede af \newline nuværende position. & Kamera aktiveres og der \newline tages et billede. & \\ \hline
-			2 & Billedet sendes til server. & Billedet sendes til server gøres tilgængelig på \newline webapplikationen &  \\ \hline
-			3 & Bruger giver accept af billedet via webapplikation. & Billedet gemmes i database  & \\ \hline
+			\textbf{Step} & \textbf{Handling} & \textbf{Forventet resultat} & \textbf{Resultat} \\ \hline
+			1 & Drone tager et billede af \newline nuværende position. & Kamera aktiveres og der \newline tages et billede. & Ikke godkendt. \\ \hline
+			2 & Billedet sendes til server. & Billedet sendes til server gøres tilgængelig på \newline webapplikationen & Ikke godkendt. \\ \hline
+			3 & Bruger giver accept af billedet via webapplikation. & Billedet gemmes i database  & Ikke godkendt. \\ \hline
 
 		\end{tabular}
 \end{table}
@@ -222,20 +201,20 @@ Forudsætninger:	UC\#3 er succesfuld gennemført.
 \textbf{Extension 1: Bruger beder om nyt billede.}
 \begin{table}[H]
 	\centering
-		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{3.5 cm}|} 
+		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{2.5 cm}|} 
 		\hline
-			Step & Handling & Forventet resultat & Resultat\\ \hline
-			a & Drone instrueres til at \newline ændre flyvehøjde, orientering eller position. & Flyvehøjde, orientering eller position ændres. & \\ \hline
+			\textbf{Step} & \textbf{Handling} & \textbf{Forventet resultat} & \textbf{Resultat} \\ \hline
+			a & Drone instrueres til at \newline ændre flyvehøjde, orientering eller position. &  Flyvehøjde, orientering eller position ændres. & Ikke godkendt. \\ \hline
 		\end{tabular}
 \end{table}
 
 \textbf{Extension 2: Bruger svarer ikke inden for tidsgrænsen.}
 \begin{table}[H]
 	\centering
-		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{3.5 cm}|} 
+		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{2.5 cm}|} 
 		\hline
-			Step & Handling & Forventet resultat & Resultat\\ \hline
-			a & Drone får automatisk tildelt accept. & Drone påbegynder flyvning mod næste GPS lokation. & \\ \hline
+			\textbf{Step} & \textbf{Handling} & \textbf{Forventet resultat} & \textbf{Resultat} \\ \hline
+			a & Drone får automatisk tildelt accept. & Drone påbegynder flyvning mod næste GPS lokation. & Ikke godkendt. \\ \hline
 		\end{tabular}
 \end{table}
 
@@ -247,22 +226,22 @@ Forudsætninger:	Bruger er oprettet i systemet.
 \textbf{Hovedscenarie}
 \begin{table}[H]
 	\centering
-		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{3.5 cm}|} 
+		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{2.5 cm}|} 
 		\hline
-			Step & Handling & Forventet resultat & Resultat\\ \hline
-			1 & Bruger logger på \newline webapplikation. & Login lykkes og webapplikations forside vises. &  \\ \hline
-			2 & Fra forsiden navigerer \newline bruger til historik. & En oversigt over tidligere \newline flyvninger vises. & \\ \hline
-			3 & Bruger vælger en specifik \newline tidligere flyvning. &  Billeder, video og flyverute \newline tilhørende valgte flyvning \newline vises. & \\ \hline			
+			\textbf{Step} & \textbf{Handling} & \textbf{Forventet resultat} & \textbf{Resultat} \\ \hline
+			1 & Bruger logger på \newline webapplikation. & Login lykkes og webapplikations forside vises. & Ikke godkendt.  \\ \hline
+			2 & Fra forsiden navigerer \newline bruger til historik. & En oversigt over tidligere \newline flyvninger vises. & Ikke godkendt. \\ \hline
+			3 & Bruger vælger en specifik \newline tidligere flyvning. &  Billeder, video og flyverute \newline tilhørende valgte flyvning \newline vises. &  Ikke godkendt. \\ \hline			
 		\end{tabular}
 \end{table}
 
 \textbf{Extension 1: Fejl i login.}
 \begin{table}[H]
 	\centering
-		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{3.5 cm}|} 
+		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{2.5 cm}|} 
 		\hline
-			Step & Handling & Forventet resultat & Resultat\\ \hline
-			a & Bruger føres tilbage til login. & Login kan påny forsøges. & \\ \hline
+			\textbf{Step} & \textbf{Handling} & \textbf{Forventet resultat} & \textbf{Resultat} \\ \hline
+			a & Bruger føres tilbage til login. & Login kan påny forsøges. & Ikke godkendt. \\ \hline
 		\end{tabular}
 \end{table}
 
@@ -273,21 +252,21 @@ Forudsætninger:	UC\#3 er igangværende.
 \textbf{Hovedscenarie}
 \begin{table}[H]
 	\centering
-		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{3.5 cm}|} 
+		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{2.5 cm}|} 
 		\hline
-			Step & Handling & Forventet resultat & Resultat\\ \hline
-			1 & Anti kollisions system \newline detekterer en forhindring. & Bremser dronens fremdrift. &  \\ \hline
-			3 & Undvigelsesmanøvre udføres. & Drone passere forhindring og flyver videre. & \\ \hline			
+			\textbf{Step} & \textbf{Handling} & \textbf{Forventet resultat} & \textbf{Resultat} \\ \hline
+			1 & Anti kollisions system \newline detekterer en forhindring. & Bremser dronens fremdrift. & Ikke godkendt. \\ \hline
+			2 & Undvigelsesmanøvre udføres. & Drone passere forhindring og flyver videre. & Ikke godkendt.\\ \hline			
 		\end{tabular}
 \end{table}
 
 \textbf{Extension 1: Forhindringen kan ikke undviges.}
 \begin{table}[H]
 	\centering
-		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{3.5 cm}|} 
+		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{2.5 cm}|} 
 		\hline
-			Step & Handling & Forventet resultat & Resultat\\ \hline
-			a & Drone går i fejlmode \#3. & Forsøger at finde måde at passere forhindring. Mislykkes det lander dronen. & \\ \hline
+			\textbf{Step} & \textbf{Handling} & \textbf{Forventet resultat} & \textbf{Resultat} \\ \hline
+			a & Drone går i fejlmode \#3. & Forsøger at finde måde at passere forhindring. Mislykkes det lander dronen. & Ikke godkendt. \\ \hline
 		\end{tabular}
 \end{table}
 

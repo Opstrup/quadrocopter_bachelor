@@ -1,12 +1,15 @@
 \section{Systemarkitektur}
 \label{chap:systemarkitektur}
 
-Efter at have udarbejdet kravspecifikation, systemskitse og domain model, var der formet en idé om hvordan systemet skulle fungere. I det følgende beskrives hvordan systemarkitekturen er udformet. 
+Efter at have udarbejdet kravspecifikation, systemskitse og domain model, var der formet en ide om hvordan systemet skulle fungere. I det følgende beskrives hvordan systemarkitekturen er udformet. 
 
-Systemarkitekturen er lavet ved brug af SysML og UML diagrammer. SysML bruges til beskrivelse af hardware, mens UML diagrammer bruges til beskrivelse af software. N + 1 og applikations modellen anvendes til udarbejdelse af UML diagrammer. Foruden SysML og UML diagrammer er der benyttet en række diagrammer, i det følgende beskrives overordnet nogle af de anvendte diagrammer.\\
+Systemarkitekturen er udført ved brug af SysML og UML diagrammer. 
+SysML bruges til beskrivelse af systemets hardware i blokke og som samlet system. Ud fra N + 1 og applikations modellen udformes UML diagrammer, der bruges til beskrivelse af systemets software. 
+Foruden SysML og UML diagrammer benyttes en række andre diagrammer, i det følgende beskrives nogle af mest centrale diagrammer.\\
+
 
 \textbf{Use case}\\
-Use cases og tilhørende diagrammer er benyttet i projektforløbets indledende faser. De bruges til at overskueliggøre systemets kunnen og opdele systemet i mindre dele. Use cases har i høj grad fungeret som et omdrejningspunkt, hvorfra stort set alt funktionalitet udspringer.
+Use cases og tilhørende diagrammer er benyttet i projektforløbets indledende faser. De bruges til at definere systemets kunnen og opdele systemet i mindre dele. Use cases har i høj grad fungeret som et omdrejningspunkt, hvorfra alt funktionalitet udspringer.
 
 \textbf{Domainmodel}\\
 Domain modellen er brugt som en overgang mellem kravspecifikation og systemarkitektur.
@@ -17,10 +20,12 @@ Der kigges ikke på hardware vs. software, der kigges i stedet på "enheder"og d
 ansvarsområder.
 
 \textbf{SysML}\\
-SysML diagrammer er benyttet til dokumentation af systemets hardware. Disse diagrammer er blevet anvendt til at tydeliggøre, hvilke hardware blokke der høre til hvor og hvordan de kommunikere.  
+Der er benyttet to slags SysML diagrammer til dokumentation af systemets hardware. Block definition diagrammer (bdd'er) er brugt til at identificere og beskrive systemets hardware blokke og deres indbyrdes forhold. Internal block diagrammer (ibd'er) er brugt til at vise de identificerede blokkes interne og eksterne forbindelse, hvordan blokkene kommunikere og hvilke signaler der flyder imellem dem.
+
 
 \textbf{UML}\\
-UML diagrammer er benyttet til dokumentation af systemets software. Disse diagrammer anvendes til at forklare hvordan systemet er opbygget, hvordan de forskellige delsystemer snakker sammen og hvordan systemet funktionalitet generelt er opbygget.
+På baggrund af use cases og domain modellen laves pakkediagrammer, der bruges til at beskrive ansvarsområder i systemet. Sekvensdiagrammer bruges til at identificere systemets klasser, klassernes metoder samt timing i systemet. Klasser samt tilhørende metoder og attributter beskrives ved hjælp af klassediagrammer. State machines bruges til at beskrive flow mellem forskellige states. 
+
 
 \newpage
  
@@ -53,8 +58,7 @@ Det overordnede ibd for systemet vises på figur \ref{fig:ibd_asd}. Dels beskriv
 	\label{fig:ibd_asd}
 \end{figure}
 
-Der vises ikke udvidede ibd'er for webserver, da webserver beskrives med UML i stedet for SysML. 
-For en beskrivelse af alle udarbejdede ibd'er til drone henvises til dokumentationens \textit{Systemarkitektur og Design} [X].
+Der vises ikke udvidede ibd'er for webserver, da webserver ikke indeholder hardware og derfor beskrives nærmere ved brug af UML diagrammer i software afsnittet. For en beskrivelse af alle udarbejdede ibd'er til drone henvises til dokumentationens \textit{Systemarkitektur og Design} [X].
 
 \subsection{Pakke diagram}
 \vspace{-0.3cm}	

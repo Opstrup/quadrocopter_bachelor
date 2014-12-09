@@ -1,133 +1,160 @@
 \chapter{Ikke funktionelle krav}
 
-    \centering
+\section*{Formål}
+\vspace{-0.5cm}
+Dette afsnit specificerer accepttests af systemets ikke funktionelle krav. Indledningsvis gennemgås krav til systemet som helhed og senere testes krav der har henblik på specifikke enheder i systemet. 
+
+Såfremt krav ikke kan opfyldes angives de i kapitlet \textbf{Fejl og mangler}.
+
+\section*{Testprocedure}
+\vspace{-0.5cm}
+De individuelle use cases og scenarier i kravspecifikationen testes i enkelte test cases. 
+
+\begin{itemize}
+	\item Hvis et teststep gennemføres fejlfrit markeres dette med ”Godkendt” i feltet ”resultat” for det pågældende test step.
+
+	\item Hvis et teststep gennemføres med ubetydelige fejl, markeres dette med ”(OK)” i feltet ”resultat” for det pågældende test step.
+	
+	\item Hvis et teststep ikke kan gennemføres eller gennemføres med betydelige fejl, markeres dette med "Ikke godkendt".
+	
+\end{itemize}
+
+\vspace{1.5cm}
+
+
+    
     \begin{tabular}{|p{1. cm}|p{3.2 cm}|p{3.2 cm}|p{3.2 cm}|p{2.2 cm}|}
 			\hline
 			\multicolumn{5}{|l|}{\textbf{{\large Generelle krav}}}\\ \hline
 			\textbf{Krav nr.} & \textbf{Krav} & \textbf{Test} & \textbf{Forventet \newline resultat} & 			
-			\textbf{Godkend \& \newline kommentar} \\ \hline
+			\textbf{Resultat} \\ \hline
 			
 			1.1 & Kommunikation mellem drone og webapplikation skal foregå trådløst.
 				& Opsætning sendes til drone via webapplikation.
 				& Den sendte opsætning modtages.
-				& \\ \hline
+				& Godkendt. \\ \hline
 
 			1.2 & Trådløs kommunikation benytter 3G protokol eller ældre. 
 				& Der undersøges hvilken slags mobilnet 3G-modul er forbundet til.
 				& Det verificeres at protokollen passer.
-				&  \\ \hline
+				& Godkendt. \\ \hline
 			
 			1.3 & Højdemåler skal måle højde $\pm$ 10 cm.
 				& Højdemåler placeres i en kendt afstand til en væg.
 				& Afstanden måles med korrekt længde.
-				& \\ \hline						
+				& Godkendt.\\ \hline						
 		\end{tabular}
 
 \vspace{2cm}
 
-    \centering
+    
     \begin{tabular}{|p{1. cm}|p{3.2 cm}|p{3.2 cm}|p{3.2 cm}|p{2.2 cm}|}
 			\hline
 			\multicolumn{5}{|l|}{\textbf{{\large Krav til server}}}\\ \hline
 			\textbf{Krav nr.} & \textbf{Krav} & \textbf{Test} & \textbf{Forventet \newline resultat} & 			
-			\textbf{Godkend \& \newline kommentar} \\ \hline
+			\textbf{Resultat} \\ \hline
 			
 			2.1 & Indholder database med billeder og flyveruter.
 				& Databasen tilgås, billeder og flyveruter vises.
 				& Databasen indeholder billeder og flyveruter.
-				& \\ \hline
+				& Godkendt. \\ \hline
 
 			2.2 & Indholder database med brugere.
 				& Databasen tilgås og en liste med alle brugere vises.
 				& De oprettede brugere vises.
-				&  \\ \hline			
+				& Godkendt. \\ \hline		
+				
+			2.3 & Indholder database med flyveopsætninger.
+				& Databasen tilgås og en liste med flyveopsætninger vises.
+				& De oprettede flyveopsætninger vises.
+				& Godkendt. \\ \hline		
 		\end{tabular}
 
+\vspace{2.5cm}
 
-
-    \centering
+    
     \begin{tabular}{|p{1. cm}|p{3.2 cm}|p{3.2 cm}|p{3.2 cm}|p{2.2 cm}|}
 			\hline
 			\multicolumn{5}{|l|}{\textbf{{\large Krav til webapplikation}}}\\ \hline
 			\textbf{Krav nr.} & \textbf{Krav} & \textbf{Test} & \textbf{Forventet \newline resultat} & 			
-			\textbf{Godkend \& \newline kommentar} \\ \hline
+			\textbf{Resultat} \\ \hline
 			
 			3.1 & Webapplikation skal kunne tilgås via både computere og telefoner.
 				& Webapplikationen tilgås på både computer og telefon.
 				& Applikationen tilpasser sig til den forbundne enhed.
-				& \\ \hline
+				& Godkendt. \\ \hline
 
 			3.2 & Load time skal være under 0.5 sekunder. 
 				& Webapplikationens URL tilgås.
 				& Siden er loadet inden 0.5 sekunder er gået.
-				&  \\ \hline
+				& Godkendt. \\ \hline
 			
-			3.3 & Bruger laver flyveopsætning ved hjælp af kort.
+			3.3 & Bruger laver \newline flyveopsætning ved hjælp af kort.
 				& Der startes en ny flyveopsætning og GPS koordinater vælges ud fra et kort.
 				& Ved hjælp af kortet findes GPS koordinater.
-				& \\ \hline				
+				& Godkendt. \\ \hline				
 		\end{tabular}
 	\label{tab:krav_1}
 
 
-
-    \centering
+\vspace{1cm}
+    
     \begin{tabular}{|p{1. cm}|p{3.2 cm}|p{3.2 cm}|p{3.2 cm}|p{2.2 cm}|}
 			\hline
 			\multicolumn{5}{|l|}{\textbf{{\large Krav til drone}}}\\ \hline
 			\textbf{Krav nr.} & \textbf{Krav} & \textbf{Test} & \textbf{Forventet \newline resultat} & 			
-			\textbf{Godkend \& \newline kommentar} \\ \hline
+			\textbf{Resultat} \\ \hline
 			
 			4.1 & Skal forsynes fra batteri.
 				& Batteri tilsluttes drone.
 				& Lyde fra ESC'er indikerer at drone er klar til flyvning.
-				& \\ \hline
+				& Godkendt. \\ \hline
 
 			4.2 & Batterilevetiden skal minimum være 15 minutter.
 				& Der laves teoretiske beregninger.
 				& Beregnet levertid er over 15 minutter.
-				&  \\ \hline
+				& Godkendt. \\ \hline
 			
 			4.3 & Flyvehastigheden skal minimum være 2$\frac{m}{s}$.
 				& Det noteres hvor lang tid dronen bruger på at flyve 10 meter.
 				& Flyvehastigheden er minimum 2$\frac{m}{s}$.
-				& \\ \hline		
+				& Ikke \newline godkendt.\\ \hline		
 				
 			4.4 & Flyvehøjde kan reguleres i følgende 3 intervaller: 1-1.5m, 1.5-2.0m og 2-2.5m.
 				& I flyveopsætning sættes flyvehøjde mellem 1-1.5 meter.
 				& Drone flyver i den ønskede højde.
-				& \\ \hline	
+				& Ikke \newline godkendt.\\ \hline	
 				
 			4.5 & Højde der tages billeder fra, kan reguleres mellem 1 og 2,5 meter.
 				& Den ønskede højde sendes til dronen.
 				& Drone tager billeder i den ønskede højde.
-				& \\ \hline	
+				& Ikke \newline godkendt.\\ \hline	
 		\end{tabular}
 	\label{tab:krav_1}
 	%\caption{Generelle krav}
 
-\vspace{2cm}
-
-    \centering
+\vspace{1cm}
+   
     \begin{tabular}{|p{1. cm}|p{3.2 cm}|p{3.2 cm}|p{3.2 cm}|p{2.2 cm}|}
 			\hline
 			\multicolumn{5}{|l|}{\textbf{{\large Krav til opsamling af data}}}\\ \hline
 			\textbf{Krav nr.} & \textbf{Krav} & \textbf{Test} & \textbf{Forventet \newline resultat} & 			
-			\textbf{Godkend \& \newline kommentar} \\ \hline
+			\textbf{Resultat} \\ \hline
 			
 			5.1 & Tiden mellem et billede tages og til det er tilgængeligt på webapplikation skal maksimalt være 5 sekunder.
 				& Tiden det tager at sende et billede måles.
 				& Billedet tager maksimalt 5 sekunder om at nå til server.
-				& \\ \hline			
+				& Ikke \newline godkendt.\\ \hline			
 			
 			5.2 & Gyldig højdemåling ligger i intervallet 0,5 til 4,5 meter.
 				& Drone flyttes højde sættes først til mindre end 0,5 meter. Derefter placeres den i en højden 0.5-4.5 meter. Til sidst sættes højde over intervallet. 
 				& Drone går i fejlmode \#2 udenfor interval på 0,5-4,5 meter.
-				& \\ \hline
+				& Godkendt. \\ \hline
 
 			5.3 & GPS skal angive koordinat indenfor $\pm$ 2,5 meter. 
 				& Drone flyttes rundt og GPS lokationen findes og verificeres.
 				& GPS koordinater er angivet indenfor intervallet. 
-				&  \\ \hline		
+				& Ikke \newline godkendt. \\ \hline		
 		\end{tabular}
-	\label{tab:krav_1}
+	\label{tab:krav_1}				
+		

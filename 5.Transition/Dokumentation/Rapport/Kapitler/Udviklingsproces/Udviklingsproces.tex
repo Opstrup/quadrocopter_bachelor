@@ -7,13 +7,13 @@ Da projektet bevægede sig over i detaljeret design og implementering, blev der 
 
 
 \subsubsection{Iterativ udvikling}
-Stort set alle udviklingsprojekt forløber via vandfaldsmodel eller iterativt udvikling. 
-Hvis vanfaldsmodellen benyttes gennemløber projektet en række faser, der hver for sig afsluttes, inden næste fase påbegyndes. Opbygning af vanfaldsmodellen kunne eksempelvis være: Krav, analyse, design, implementering og til sidst test.
-I et iterativt projektforløb gennemløber projektet i stedet en række iterationer, der hver for sig kan ses som miniudgaver af vandfaldsmodellen. Iterationer der ligger tidligt i et projektforløb vil ofte omhandle grundfunktionalitet, mens iterationer senere i projektforløbet bruges til at tilføje funktionalitet til systemet. 
+Stort set alle udviklingsprojekter forløber via vandfaldsmodel eller iterativ udvikling. 
+Hvis vandfaldsmodellen benyttes gennemløber projektet en række faser, der hver for sig afsluttes, inden næste fase påbegyndes. Opbygning af vandfaldsmodellen kunne eksempelvis være: Krav, analyse, design, implementering og til sidst test.
+I et iterativt projektforløb gennemløber projektet i stedet en række iterationer, der hver for sig kan ses som miniudgaver af vandfaldsmodellen. Iterationer, der ligger tidligt i et projektforløb, vil ofte omhandle grundfunktionalitet, mens iterationer senere i projektforløbet bruges til at tilføje funktionalitet til systemet. 
 
 \newpage 
 
-Da systemarkitektur og desgin er opdelt i use cases, var det oplagt at opdele detaljeret design og implementering  i iterationer. Detaljeret design og implementering opdeles i fire iterationer, og nedenfor beskrives indholdet af de forskellige iterationer.  
+Da systemarkitektur og design er opdelt i use cases, var det oplagt at opdele detaljeret design og implementering  i iterationer. Detaljeret design og implementering opdeles i fire iterationer, og nedenfor beskrives indholdet af de forskellige iterationer.  
 
 \textbf{Iteration 1}\\
 I den første iteration er fokus på systemets mest grundlæggende funktionalitet. 
@@ -22,13 +22,13 @@ Desuden tilsluttes batteri, ESC'er, motorer og ultralyds sensorer til drone.
 Målet med iterationen er at kunne gennemføre use case 1. 
 
 \textbf{Iteration 2}\\
-I iteration 2 er hovedformålet at få kommunikation mellem server og drone til at fungere. Bruger skal kunne oprette nye flyveopsætninger og gøre dem tilgængelig på server for dronen. Ydermere skal drone kunne finde egen GPS position, flyvehøjde og orientering. Ud fra viden om egen position, flyvehøjde og orientering skulle dronen kunne flyve til de forudbestemt lokationer af brugeren. Efter denne iteration skal use case 2 og 3 kunne gennemføres.
+I iteration 2 er hovedformålet at få kommunikation mellem server og drone til at fungere. Bruger skal kunne oprette nye flyveopsætninger og gøre dem tilgængelige på server for dronen. Ydermere skal drone kunne finde egen GPS position, flyvehøjde og orientering. Ud fra viden om egen position, flyvehøjde og orientering skulle dronen kunne flyve til lokationer som er forudbestemt af bruger. Efter denne iteration skal use case 2 og 3 kunne gennemføres.
 
 \textbf{Iteration 3}\\
-I iteration 3 er hovedformål at tilføje billede håndtering. Der monteres kamera på drone, så der kan tages billeder under flyvning. Billeder taget under flyvning sendes via mobilnet fra drone til server og gøres tilgængelige for bruger. Målet med iteration 3 er at kunne gennemføre use case 4 og 5.
+I iteration 3 er hovedformålet at tilføje billede håndtering. Der monteres kamera på drone, så der kan tages billeder under flyvning. Billeder taget under flyvning sendes via mobilnet fra drone til server og gøres tilgængelige for bruger. Målet med iteration 3 er at kunne gennemføre use case 4 og 5.
 
 \textbf{Iteration 4}\\
-Iteration 4's hovedformål var at udvikle anti kollision til dronen. Inden tilføjelsen af anti kollision kunne dronen udelukkende flyve i lukkede områder uden forhindringer. Tilføjelsen af anti kollision skal muliggøre flyvning i normale områder med forhindringer. Efter denne iteration skal alle use cases kunne gennemføres.
+Iteration 4's hovedformål var at udvikle antikollision til dronen. Inden tilføjelsen af antikollision kunne dronen udelukkende flyve i lukkede områder uden forhindringer. Tilføjelsen af antikollision skal muliggøre flyvning i normale områder med forhindringer. Efter denne iteration skal alle use cases kunne gennemføres.
 
 
 \subsubsection{Agile arbejdsmetoder}
@@ -50,8 +50,8 @@ I dette afsnit beskrives de metoder der er blevet benytter i projektet.
 \end{figure}
 
 \textbf{Inception}\\
-Inception fasen er projektets indleden fase, og bruges til at lave forundersøgelse, valg af hardware/software samt opsætning af krav. Funktionelle krav opsættes vha. use case analyse af systemets funktionalitet, mens ikke-funktionelle krav er generelle krav til systemspecifikation.
-I løbet af inception fasen blev der foranalyse, indkøbsliste, krav til systemet og overordnet systemskitse udarbejdet. 
+Inception fasen er projektets indledende fase, og bruges til at lave forundersøgelse, valg af hardware/software samt opsætning af krav. Funktionelle krav opsættes vha. use case analyse af systemets funktionalitet, mens ikke-funktionelle krav er generelle krav til systemspecifikation.
+I løbet af inception fasen blev foranalyse, indkøbsliste, krav til systemet og overordnet systemskitse udarbejdet. 
 
 \textbf{Elaboration}\\
 Elaboration fasen tager hånd om systemarkitektur og design. I denne fase udarbejdes der indledningsvis en domain model, og derefter laves systemarkitektur for hardware og software. 
@@ -77,7 +77,7 @@ ASE modellen som ses på figur \ref{fig:dokument_udvikling} er brugt i kombinati
 \newpage
 
 \subsubsection{N + 1 model}
-Alt software design i projektet er lavet ud fra systemudviklings modellen N + 1. 
+Alt software design i projektet er udført ud fra systemudviklings modellen N + 1 [X]. 
 Modellen er en udviklingsmodel der beskriver software fra flere forskellige view's.  
 Med N + 1 modellen tages der altid udgangspunkt i et use case view. Derefter er det op til udviklerholdet at bestemme hvor mange views der skal bruges for at beskrive systemet på tilstrækkelig vis. 
 
@@ -85,7 +85,7 @@ Til beskrivelse af systemets software anvendes en 5 + 1 view model, som indehold
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=1\textwidth]{Billeder/Udviklingsproces/n+1}
+	\includegraphics[width=0.8\textwidth]{Billeder/Udviklingsproces/n+1}
 	\caption{5 + 1 model}
 	\label{fig:n+1}
 \end{figure}
@@ -97,19 +97,19 @@ Til beskrivelse af systemets software anvendes en 5 + 1 view model, som indehold
 Use case viewet består af use case beskrivelser, der er udviklet ud fra brugers synspunkt og som bruges til at beskrive systemets funktionalitet og forskellige brugsscenarier. Alle udarbejdede use case beskrivelser forefindes i kravspecifikationen.
 
 \textbf{Logical View}\\
-Dette view bruges til at beskrive de logiske blokke i systemet. På baggrund af hver iteration, er der udarbejdet tilhørende Designoverview-, pakke-, klasse-, sekvens- og state machine diagrammer. Diagrammerne bruges til at give et overblik over systemets funktionalitet på et mere detaljeret niveau.
+Logical view bruges til at beskrive de logiske blokke i systemet. På baggrund af hver iteration, er der udarbejdet tilhørende Designoverview-, pakke-, klasse-, sekvens- og state machine diagrammer. Diagrammerne bruges til at give et overblik over systemets funktionalitet på et mere detaljeret niveau.
 
 \textbf{Process View}\\
-Dette view bruges til at beskrive sideløbende processer/tråde i systemet og hvordan samspillet imellem disse er. I view'et beskrives også krav til timing i kommunikation mellem drone og server.
+Process view bruges til at beskrive sideløbende processer/tråde i systemet og hvordan samspillet imellem disse er. I view'et beskrives også krav til timing i kommunikation mellem drone og server.
 
 \textbf{Data View}\\
 I data viewet beskrives layout af data der gemmes i systemet og hvordan det lagres. Desuden beskrives hvordan data sendes rundt i systemet og hvordan servers database tilgås.
 
 \textbf{Deployment View}\\
-Dette view beskriver systemets grundlæggende fysiske elementer og sammenspillet mellem dem. I view'et beskrives også hvilke software pakker der bruges i systemet og hvor de bruges. Desuden beskrives hvilke protokoller der er anvendt, fx. layout af meddelelser med header/start/stop
+Deployment view beskriver systemets grundlæggende fysiske elementer og sammenspillet mellem dem. I view'et beskrives også hvilke software pakker der bruges i systemet og hvor de bruges. Desuden beskrives hvilke protokoller der er anvendt, fx. layout af meddelelser med header/start/stop
 
 \textbf{Implementation View}\\
-Dette view beskriver vigtige elementer i systemet som ikke er blevet beskrevet i andre views. Bla. beskrives hvilke værktøjer der er benyttet til projektet og hvordan disse værktøjer er sat op. Det beskrives også hvilke filer systemet er bygget af og hvordan disse filer skal linkes sammen.
+Implementation view beskriver vigtige elementer i systemet som ikke er blevet beskrevet i andre views. Bla. beskrives hvilke værktøjer der er benyttet til projektet og hvordan disse værktøjer er sat op. Det beskrives også hvilke filer systemet er bygget af og hvordan disse filer skal linkes sammen.
 
 
 \newpage
