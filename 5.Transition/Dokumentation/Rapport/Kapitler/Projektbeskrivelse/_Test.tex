@@ -3,20 +3,25 @@
 
 \label{chap:test}
 
-Indenfor hver del af projektet er der udført tests for at garantere funktionaliteten, men også til at sørge for at samlingen, af de enkelte moduler, bliver så gnidningsfri som mulig. Ved at lave gode tests opfanger man eventuelle fejl og mangler inden integrationen af projektets moduler. Det kan i sidste ende betyde at man undgår et eventuelt tidsspild på at rette fejl sent.
+I projektforløbet er der løbende blevet udført test. Indledningsvis udføres enhedstest i takt med nye moduler/enheder udvikles, senere laves integrationstest der tester kommunikation og samarbejde mellem flere enheder og til sidst udføres accepttest.
+
+Nedenfor ses en kort beskrivelse af de udførte tests:\\
 
 
-I projektet er der udført følgende forskellige typer tests:
+\textbf{Enhedstest} \\
+Enhedstest udføres løbende i takt med nye enheder udvikles. Testene udarbejdes for at sikre kvalitet, funktionalitet og grænseflader af de nyudviklede enheder. 
 
-
-\textbf{Enheds-/modultest} \\
-Her bliver hver enhed/modul testet for sig selv. Der testes på den basale funktionalitet og eventuelle krav fra kravspecifikationen. Der testes blandt andet om App’en udsender de rigtige frekvenser.
+Hovedformålet med enhedstest er at teste tidligt i projektforløbet for at opdage eventuelle fejl og mangler. Hvilket i sidste ende kan spares meget tid og besvær, da fejl og mangler ofte er svære og mere tidskrævende at rette sent i et projektforløb.
 
 
 \textbf{Integrationstest} \\
-Her bliver systemets dele sat sammen del for del og herefter testet. For eksempel testes der om de udsendte frekvenser fra App’en kan detekteres igennem guitaren på Effektpedalen (PSoC’en).
+I integrationstest testes koblingen mellem to eller flere enheder. Her testet om grænseflader mellem enhederne fungerer og om enhederne kan kommunikere og arbejde sammen.  
+
 
 
 \textbf{Accepttest} \\
-I denne del testes det endelige produkt i forhold til accepttestspecifikationen. Dette er en sluttest som oftest foretages med kunden (vejleder) tilstede, således begge parter er enige om resultatet.
-For yderligere og konkret information om dokumenterede tests og resultater, henvises til dokumentationsrapportens kapitel 6 på side 111.
+Accepttesten er en todelt test der tester systemet som helhed. 
+Først udføres accepttest af funktionelle krav og dernæst testes ikke-funktionelle krav.
+Accepttest af funktionelle krav foregår via en gennemgang af use cases, som bruges til at kontrollere systemets funktionalitet. Ikke-funktionelle krav bruges til at teste om systemet overholder den opsatte systemspecifikation.  
+
+For yderligere og konkret information om de forskellige tests og tilhørende resultater henvises til test dokumentet[X] i dokumentationen.
