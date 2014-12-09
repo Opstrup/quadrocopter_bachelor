@@ -6,7 +6,7 @@ I dette afsnit beskrives valg af 3g og GPS modul.
 For at kunne kommunikere mellem webapplikation og drone er det nødvendigt at dronen har forbindelse til internettet. 
 Der kræves en hurtig og stabil internetforbindelse, da dronen under flyvning både skal sende billeder og modtage kommandoer fra webapplikation.
 
-Til at kunne sende informationer mellem webapplikation og dronen er det besluttet at anvende GPRS protokollen eller højere. Nedenfor ses en tabel der viser de hastigheder fra forskellige mobilnet protokoller. 
+Til at sende informationer mellem webapplikation og dronen er det bestemt som minimum at anvende GPRS protokollen eller højere. Nedenfor ses en tabel der viser de hastigheder fra forskellige mobilnet protokoller. 
 
 \begin{figure}[H]
 \centering
@@ -43,7 +43,7 @@ Cooking-Hacks har lavet et 3G shield der er kompatibelt med arduino\footnote{htt
 \newpage
 
 Begge shields har mulighed for at transmittere data mellem dronen og webapplikationen. Cookings Hacks' 3G shield er dog en bedre løsning, da det understøtter et nyere mobilt netværk, der giver mulighed for at sende og modtage data med større datarater.
-Ved sammenligning af prisen ses det, at Cooking Hacks shieldet koster mere end Sparkfuns, dog har Cooking Hacks shieldet den fordel at den udover 3G også indeholder GPS.
+Ved sammenligning af prisen ses, at Cooking Hacks shieldet koster mere end Sparkfuns, dog har Cooking Hacks shieldet den fordel at den udover 3G også indeholder GPS.
 
 \subsection{GPS}
 På grund af Cooking Hacks' 3G modul har indbygget GPS, blev det besluttet at benytte netop dette shield. Når GPS delen af shieldet bruges, kan det benyttets i tre forskellige modes: \textit{mobile-assisted, mobile-based og standalone}. \\
@@ -52,9 +52,10 @@ De forskellige modes gør det muligt at bruge GPS sammen med eller uden netværk
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.7\textwidth]{Billeder/3G.png}
-\caption{3G/GPS shield - fra cooking hacks}
+\caption{3G/GPS shield - fra cooking hacks\protect\footnotemark}
 \label{fig:3gshield}
 \end{figure}
+\footnotetext{http://www.cooking-hacks.com/3g-gprs-shield-for-arduino-3g-gps}
 
 
 På baggrund af undersøgelsen blev det besluttet at anvende 3G/GPS shield fra Cookings-Hacks til projektet. For det første er det billigere at købe 3G og GPS som et samlet modul end at købe 3G og GPS hver for sig. Desuden gør det en eventuel sammenkobling af 3G og GPS lettere.
