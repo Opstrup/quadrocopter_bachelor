@@ -12,10 +12,9 @@ Systemets bruger er ansvarlig for at lave flyveopsætninger, som indeholder info
 Når drone tændes skal den løbende og uden menneskelig indblanding kontrollere om der er en ny flyveopsætning tilgængelig på server. Hvis der er en ny flyveopsætning tilgængelig hentes den, og en ny flyvning påbegyndes. 
 
 Under flyvning flyver drone på egen hånd til de definerede GPS positioner. Afhængig af om bruger har valgt om der skal tages billeder eller ej, tager dronen billeder som via mobilt netværk sendes til server. 
-Under flyvning kontrollerer drone løbende egen GPS position, flyvehøjde og flyveretning under flyvning. Dette gør dronen for at kunne tilpasse flyvehøjde og orientering og for at kunne sende information om nuværende GPS position til server.
+Under flyvning kontrollerer drone løbende egen GPS position, flyvehøjde og flyveretning. Dette gør dronen for løbende at kunne tilpasse flyvehøjde og orientering og for at kunne sende information om nuværende GPS position til server.
 
-På figur \ref{fig:class_drone} vises et klasse diagram for drone. For yderlige information om de enkelte klasser og deres ansvarsområder henvises til logical view i \textit{Systemarkitektur og Design} i dokumentationen. [xx]
-
+På figur \ref{fig:class_drone} vises et simplificeret klasse diagram for drone. I det viste klassediagram vises softwareklasser og deres indbyrdes forhold. For yderlige information om de enkelte klasser, deres metoder og deres ansvarsområder henvises til logical view i \textit{Systemarkitektur og Design} i dokumentationen. [xx]
 
 \begin{figure}[H]
 \centering
@@ -57,7 +56,7 @@ Webapplikationen fungerer som grænseflade til systemets bruger. Da det ikke øn
 
 Via webapplikationen kan bruger lave nye flyveopsætninger samt monitorere data og information fra tidligere flyvninger. Da det ikke er muligt at rette eller stoppe en aktuel flyvning, skal bruger være opmærksom på hvordan en ny flyveopsætning indstilles. 
 
-Mellem server og webapplikation laves en socket connection. Dette betyder at indholdet af webapplikationen opdateres hver gang der der tilføjes eller ændres i eksisterende data på serverens SQLite database. Yderlige information om webapplikation findes logical og impelmentation view i \textit{Systemarkitektur og Design} i dokumentationen [xx].
+Mellem server og webapplikation laves en socket connection. Dette betyder at indholdet af webapplikationen opdateres hver gang der der tilføjes eller ændres i eksisterende data på serverens SQLite database. Yderlige information om webapplikation findes i logical og impelmentation view i \textit{Systemarkitektur og Design} i dokumentationen [xx].
 
 
 \subsection{HTTP protokol}

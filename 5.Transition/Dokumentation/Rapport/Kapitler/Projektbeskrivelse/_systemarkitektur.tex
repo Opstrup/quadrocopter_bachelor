@@ -5,7 +5,7 @@ Efter at have udarbejdet kravspecifikation, systemskitse og domain model, var de
 
 Systemarkitekturen er udført ved brug af SysML og UML diagrammer. 
 SysML bruges til beskrivelse af systemets hardware i blokke og som samlet system. Ud fra N + 1 og applikations modellen udformes UML diagrammer, der bruges til beskrivelse af systemets software. 
-Foruden SysML og UML diagrammer benyttes en række andre diagrammer, i det følgende beskrives nogle af mest centrale diagrammer.\\
+Foruden SysML og UML diagrammer benyttes en række andre diagrammer, i det følgende beskrives nogle af de mest centrale diagrammer.\\
 
 
 \textbf{Use case}\\
@@ -24,12 +24,17 @@ Der er benyttet to slags SysML diagrammer til dokumentation af systemets hardwar
 
 
 \textbf{UML}\\
-På baggrund af use cases og domain modellen laves pakkediagrammer, der bruges til at beskrive ansvarsområder i systemet. Sekvensdiagrammer bruges til at identificere systemets klasser, klassernes metoder samt timing i systemet. Klasser samt tilhørende metoder og attributter beskrives ved hjælp af klassediagrammer. State machines bruges til at beskrive flow mellem forskellige states. 
+På baggrund af use cases og domain modellen udformes pakkediagrammer, der bruges til at beskrive ansvarsområder i systemet. Sekvensdiagrammer bruges til at identificere systemets klasser, klassernes metoder samt timing i systemet. Klasser samt tilhørende metoder og attributter beskrives ved hjælp af klassediagrammer. State machines bruges til at beskrive flow mellem forskellige states. 
 
 
 \newpage
- 
-\subsection{Blokbeskrivelser}
+
+\subsection{Hardware}
+I dette afsnit beskrives hvordan systemets hardwarearkitektur er udformet vha. SysML diagrammer. Indledningsvis bruges block definition diagrammer til at identificere og beskrive systemets blokke. Senere åbnes udvalgte blokke og de interne og eksterne forbindelser vises med internal block diagrammer. 
+
+
+\subsubsection*{Block definition diagram}
+
 Det overordnede bdd på figur \ref{fig:bdd_asd} viser hvilke hardware blokke systemet består af, samt hvilke parts blokkene indeholder.
 
 \begin{figure}[H]
@@ -40,16 +45,17 @@ Det overordnede bdd på figur \ref{fig:bdd_asd} viser hvilke hardware blokke sys
 \end{figure}
 
 \textbf{Drone} \\
-Drone blokken indeholder alt funktionalitet tilhørende drone. De interne forbindelse mellem de forskellige parts er beskrevet i bdd'er som findes i \textit{Systemarkitektur og Design} [X].
+Drone blokken indeholder alle de parts der tilføjer funktionalitet til drone. Beskrivelse af de eksterne og interne forbindelser mellem de forskellige parts er beskrevet nærmere med ibd'er.
 
 \textbf{Webserver} \\
 Webserver blokken indeholder server, database, communication og webapplikationen.
 
 \newpage
 
-\subsection{Interne forbindelser}
+\subsubsection*{Internal block diagram}
 \vspace{-0.3cm}	
-Det overordnede ibd for systemet vises på figur \ref{fig:ibd_asd}. Dels beskriver ibd'et hvordan  systemets største blokke kommunikerer med hinanden og omverden. Desuden beskriver ibd'et hvilken type signaler der anvendes mellem blokke og omverden. 
+
+På figur \ref{fig:ibd_asd} vises et overordnet ibd for systemet. ibd'et beskriver hvordan systemets største blokke kommunikerer med hinanden og omverden. Desuden beskriver ibd'et hvilken type signaler der anvendes. 
 
 \begin{figure}[H]
 	\centering
@@ -58,16 +64,85 @@ Det overordnede ibd for systemet vises på figur \ref{fig:ibd_asd}. Dels beskriv
 	\label{fig:ibd_asd}
 \end{figure}
 
-Der vises ikke udvidede ibd'er for webserver, da webserver ikke indeholder hardware og derfor beskrives nærmere ved brug af UML diagrammer i software afsnittet. For en beskrivelse af alle udarbejdede ibd'er til drone henvises til dokumentationens \textit{Systemarkitektur og Design} [X].
+Da drone blokken er stor og indeholder mange part kræves yderlige beskrivelse. På figur \ref{fig:ibd_asd} vises et ibd, der går mere i dybden med drone blokken. ibd'et åbner drone blokken og viser hvordan parts i drone kommunikerer med hinanden. 
 
-\subsection{Pakke diagram}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{Billeder/Projektbeskrivelse/ibd1_overordnet.pdf}
+	\caption{ibd drone}
+	\label{fig:ibd_drone}
+\end{figure}
+
+
+For yderlige beskrivelser af parts fra drone blokken henvises til ibd'er i \textit{Systemarkitektur og Design} [X].
+Der vises ikke udvidede ibd'er for webserver, da webserver ikke indeholder hardware og derfor beskrives nærmere ved brug af UML diagrammer i software afsnittet.
+
+
+
+\newpage
+
+\subsection{Software}
+
+I dette afsnit beskrives hvordan softwarearkitekturen ved brug af N+1 og applikations modellen tager udgangspunkt i use cases og ender ud i detaljerede klasse- og statemachine diagrammer. 
+   
+\subsubsection*{Pakkediagrammer}
 \vspace{-0.3cm}	
-Pakkediagrammer bruges i software design afsnittet til at vise hvilke ansvarsområder hver pakke har. På figur \ref{fig:package_drone} ses de overordnede pakker tilhørende dronen. Pakkerne og deres ansvarsområde bruges til at danne grundlag for udformning af softwareklasser og klassernes indbyrdes forhold.
+Indledningsvis identificeres pakkediagrammer ud fra use cases udformet i kravspecifikationen. På figur \ref{fig:package_drone} vises et pakkediagram tilhørende dronens software. Pakkerne i pakkediagrammet bruges til at definere de forskellige ansvarsområder i systemts software. For nærmere beskrivelser af pakkediagrammer henvises til logical view \textit{Systemarkitektur og Design} [X].
  
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.85\textwidth]{Billeder/Projektbeskrivelse/Packagediagram_drone}
-	\vspace{-0.3cm}	
+	\includegraphics[width=1\textwidth]{Billeder/Projektbeskrivelse/Packagediagram_drone}
+	\vspace{-0.9cm}	
 	\caption{Overordnet pakkediagram for drone}
 	\label{fig:package_drone}
+\end{figure}
+
+\newpage
+
+\subsubsection*{Sekvensdiagrammer}
+\vspace{-0.3cm}	
+
+Efter at have udformet pakkediagrammer påbegyndes udformning af sekvensdiagrammer, der bruges til at identificere softwareklasser, klassernes metoder, klassernes indbyrdes forhold, samt timing i systemet. Klasserne der indgår i sekvensdiagrammerne tages ud fra domain modellen. 
+
+Sekvensdiagrammet på figur \ref{fig:login_flysetting} viser hvordan bruger interagerer med webapplikation når der laves ny flyveopsætning. For yderlige beskrivelser af sekvensdiagrammer tilhørende systemet henvises til logical view \textit{Systemarkitektur og Design} [X].
+ 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{Billeder/sekvens.png}
+	\vspace{-0.6cm}	
+	\caption{Sekvensdiagram - ny flyveopsætning}
+	\label{fig:login_flysetting}
+\end{figure}
+
+\newpage
+\subsubsection*{Klassediagrammer}
+\vspace{-0.3cm}	
+
+Efter at have udformet sekvensdiagrammer er der opbygget et vist kendskab til de forskellige klasser, deres metoder og deres indbyrdes forhold. For på overskuelig vis at illustrerer og beskrive systemets softwareklasser laves klassediagrammer.
+
+På figur \ref{fig:class_drone} vises et klassediagram tilhørende dronens software. Bemærk at klassediagrammet er fra første iteration, hvilket betyder det er relativt lille og ikke indeholder så mange klasser og metoder.
+
+Ønskes mere information om de enkelte klasser og deres ansvarsområder henvises til logical view i \textit{Systemarkitektur og Design} i dokumentationen. [xx]
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{Billeder/classdiagram.png}
+	\vspace{-0.6cm}	
+	\caption{Klassediagram drone}
+	\label{fig:class_drone}
+\end{figure}
+
+\newpage
+
+\subsubsection*{State machine diagrammer}
+\vspace{-0.3cm}	
+
+Efter pakke, sekvens og klassediagrammer er lavet, udformes state machine diagrammer, som bruges til at beskrive systemflow. På figur \ref{fig:stm} vises et af de udarbejdede state machine diagram. Yderlige beskrivelser af state machines forefindes i logical view i \textit{Systemarkitektur og Design} i dokumentationen. [xx]
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{Billeder/State_iteration3.png}
+	\vspace{-0.6cm}	
+	\caption{State machine diagram}
+	\label{fig:stm}
 \end{figure}
