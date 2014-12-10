@@ -1,12 +1,12 @@
 \subsection{Drone}
 
-På figur \ref{fig:ibd_drone} vises et ibd over drone. Diagrammet viser bla. hvordan alle blokke i dronen er forbundet til main controlleren. Via 3G/GPS modulet sendes og modtages information til og fra drone. Modtaget information bruges til at fortæller dronen hvor der skal flyves til, hvor der skal tages billeder og om de billeder der tages under flyvning godkendes. 
+På figur \ref{fig:ibd_drone} vises et ibd over drone. Diagrammet viser bla. hvordan alle blokke i dronen er forbundet til main controlleren. Via 3G/GPS modulet sendes og modtages information til og fra drone. Modtaget information bruges til at fortælle dronen hvor der skal flyves til, hvor der skal tages billeder og om de billeder der tages under flyvning godkendes. 
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=1\textwidth]{Billeder/IBD/ibd2_drone.pdf}
 \vspace{-0.5cm}
-\caption{Ibd - drone}
+\caption{\textbf{ibd} - drone}
 \label{fig:ibd_drone}
 \end{figure}
 
@@ -17,18 +17,18 @@ På figur \ref{fig:ibd_drone} vises et ibd over drone. Diagrammet viser bla. hvo
 		\hline
 			\textbf{Signal navn} 	& \textbf{Signal beskrivelse}		& \textbf{Out} 		& \textbf{In}     \\ \hline
 			Flight feedback		& Handshake og billeder				& 3G/GPS module.				& Webserver.	\\ \hline
-			Flight setup		& Handshake \& Flyveopsætning  		& Webserver.			& 3G/GPS module.	\\ \hline
-			GPS signal	 		& GPS signal						& GPS-satellitter		& 3G/GPS module.	\\ \hline			
-			3G/GPS supply		& 5V DC							 	& Flight control board	& 3G/GPS module.    \\ \hline
-			Serial com. 1		& RX / TX signaler. \newline Styrer 3G modul.& Main \newline controller. 		& 3G/GPS module.    \\ \hline
+			Flight setup		& Handshake \& Flyveopsætning  		& Webserver.			& 3G/GPS \newline module.	\\ \hline
+			GPS signal	 		& GPS signal						& GPS-satellitter		& 3G/GPS \newline module.	\\ \hline			
+			3G/GPS supply		& 5V DC							 	& Flight control board	& 3G/GPS \newline module.    \\ \hline
+			Serial com. 1		& RX / TX signaler. \newline Styrer 3G modul.& Main \newline controller. 		& 3G/GPS \newline module.    \\ \hline
 			
 			
 			PWM control 1 [6]	& 244 Hz 6 kanals signal. Duty \newline cycle 25-50\%. Periode på 4ms	& Main \newline controller.	& Remoto \newline controller.	\\ \hline
-			MC supply		& 5V DC							 	& Main \newline controller	& Flight control board.    \\ \hline
+			MC supply		& 5V DC							 	& Main \newline controller	& Flight \newline control.    \\ \hline
 			Control pin [1]		& Skifter mellem 5V og 0V							 	& Main \newline controller	& Remoto \newline  controller.    \\ \hline
 			
-			PWM control 2 [6]	& 50 Hz 6 kanals signal. Duty \newline cycle 5-10\%. Periode på 20ms	& Remote \newline controller.	& Flight control board.	\\ \hline		RC supply			& 5V DC							 	& Flight control board	& Remote \newline controller.    \\ \hline
-			Serial com. 2		& RX / TX signaler. \newline Aflæsning kompas. & Main \newline controller.	& Flight control board	\\ \hline 	
+			PWM control 2 [6]	& 50 Hz 6 kanals signal. Duty \newline cycle 5-10\%. Periode på 20ms	& Remote \newline controller.	& Flight \newline control.	\\ \hline		RC supply			& 5V DC							 	& Flight control	& Remote \newline controller.    \\ \hline
+			Serial com. 2		& RX / TX signaler. \newline Aflæsning kompas. & Main \newline controller.	& Flight \newline control.	\\ \hline 	
 			
 			Height data.		& Trigger \& echo signal der \newline indikerer afstanden. 	& Main \newline controller.	& Distance \newline sensors.	\\ \hline
 			Collision data.		& Trigger \& echo signal der \newline indikerer afstanden. 	& Main \newline controller.	& Distance \newline sensors.  \\ \hline
@@ -41,7 +41,7 @@ På figur \ref{fig:ibd_drone} vises et ibd over drone. Diagrammet viser bla. hvo
 			Optical light		& Kamera billede. 	& Camera.	& Omgivelserne.	\\ \hline	
 			
 		\end{tabular}
-	\caption{Forbindelser til: Ibd - drone}
+	\caption{Forbindelser til: \textbf{Ibd} - drone}
 	\label{tab:IBDdrone}
 \end{table}
 
