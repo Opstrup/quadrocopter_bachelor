@@ -1,17 +1,19 @@
 \section{GPS}
 
-GPS modulet testes som et selvstændigt modul.
-For at finde den eksakte GPS position fra GPS modulet, testes modulet i forskellige omgivelser. Som kontrol findes koordinaterne for den aktuelle position. Ud fra de fundne koordinater beregnes en afstand i meter, denne afstand fortæller lidt om afvigelsen af GPS modulet. 
+Der er to mål med enhedstest af GPS. Først og fremmest testes hvorvidt GPS'en virker, desuden testes hvor præcis GPS'en er. I kravspecifikationen er det defineret hvor stor en afvigelse GPS modulet må have, i testen undersøges det om afvigelse overholdes. 
 
-I kravene er der defineret hvor stor en afvigelse GPS modulet må have. Denne afvigelse skal overholdes under tests. Da den aktuelle position har en afvigelse, vil afgivelsen i meter være påvirket. Denne påvirking vil føre til at afvigelsen i meter kan være større end de tilladte 2.5 meter, som defineret i kravene.
-Det har ikke været muligt at teste GPS modulet indendøre, da der ikke var GPS signal tilgængeligt. 
+Hvis der hentes GPS koordinater lige efter GPS'en tændes gøres der brug af \textit{cold start}. Ved brug af cold start fås data fra GPS'en med det samme GPS'en har forbindelse til GPS satellitter, men dataen er upålidelig og upræcis. Derfor gøres der altid brug af \textit{hot start}, både under test og når GPS'en bruges på dronen. Når der bruges hot start er GPS'en i udgangspunkt i forbindelse med GPS-satelitter og er derfor mere præcis. 
+
+Under test tændes modulet og får 30 sekunder til opstart. Efter de 30 sekunder er gået hentes data ud fra GPS modulet. Raw data fra GPS kommer i formatet Degrees/Minutes, og ved omformning fås decimal degrees.
+
+For at beregne GPS'en præcision beregnes forskel på nuværende position og den position der angives af GPS'en. Resultat af enhedstesten er vist i tabellen nedenfor. 
+
 
 \begin{table}[H]
-\begin{tabular}{| p{4cm}| p{4cm}| p{3cm}|}
+\begin{tabular}{| p{5.3cm}| p{5.3cm}| p{3cm}|}
 \hline
-GPS moduls koordinater & Aktuelle position & Afvigelse i meter\\\hline
+\textbf{GPS moduls koordinater} & \textbf{Aktuelle position} & \textbf{Afvigelse}\\\hline
 Latitude:10.191518 \newline Longitude: 56.171863 & Latitude: 10.191560 \newline Longitude: 56.171896 & 4 meter\\\hline
-Latitude: \newline Longitude & Latitude: \newline Longitude & \\\hline
 
 \end{tabular}
 \caption{GPS modul}
