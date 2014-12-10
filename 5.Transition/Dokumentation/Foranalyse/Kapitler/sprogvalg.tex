@@ -4,24 +4,22 @@
 Arduino er et opensource miljø som kan køre helt uafhængigt af OS. Sproget på arduino er en blanding af C og C++ alt afhængigt af hvor hardware nær koden skal være. \newline
 
 \textbf{{\LARGE Server}} \\
-Omkrig server delen af projektet blev der lavet en del overvejelser. Blandt andet blev læsbarhed, testbar og strukturering blev prioriteret højt da sprog og framework skulle findes. Nedenfor er lavet en beskrivelse af de 3 muligheder der blev overvejet. \newline
+Omkring server delen af projektet blev der lavet en del overvejelser. Blandt andet blev læsbarhed, testbar og strukturering blev prioriteret højt da sprog og framework skulle findes. Nedenfor er lavet en beskrivelse af de 3 muligheder der blev overvejet. \newline
 
-\textbf{PHP}\\
-PHP er et scripting sprog til serverside programmering. Læringskurven er meget lav og sproget er meget fleksibelt. Da det er et scripting sprog, er det ikke muligt at lave objekt orientering programmering. Med PHP udvikling ville der blive gået meget på kompromis med strukturering for fleksibilitet. 
+\textbf{PHP\footnote{http://php.net/}}\\
+PHP er et scripting sprog til serverside programmering. Læringskurven er meget lav og sproget er meget fleksibelt. Da det er et scripting sprog, er det ikke muligt at lave objekt orientering programmering. Med PHP udvikling  vil fleksibiliteten prioriteres højere end struktureringen.
 
-\textbf{Ruby} \\
-Ruby og Ruby On Rails er et forhåndsvist nyt udviklings værktøj/sprog til server udvikling. Læringskurven er middel og sproget er tildels fleksibelt. Med Ruby On Rails er det muligt at skrive alt koden objekt orienteret. Sproget er tildels testbart, men det er dog ikke fokus i sproget. 
+\textbf{Ruby\footnote{https://www.ruby-lang.org/en/}} \\
+Ruby og Ruby On Rails er et relativt nyt udviklingsværktøj/sprog til server udvikling. Læringskurven er middel og sproget er tildels fleksibelt. Med Ruby On Rails er det muligt at skrive alt koden objekt orienteret. Sproget er tildels testbart, men det er dog ikke fokus i sproget. 
 
-\textbf{Python} \\
+\textbf{Python\footnote{https://www.python.org/}} \\
 Python er et ældre programmerings sprog, som er kendt for sin stramme syntaks. Pga. den stramme syntaks er læringskurven stejlere end hos de to andre sprog.
-Python bliver i modsætning til PHP og Ruby bliver brugt til meget andet end web udvikling, derfor er test frameworket meget stort. Kombineres Python med Django, som er et web-framework - fås et stort og meget stabilt test framework. \newline
+Python bliver i modsætning til PHP og Ruby brugt til meget andet end web udvikling, derfor er test frameworket større. Kombineres Python med Django, som er et web-framework, fås et stort og meget stabilt test framework. \\ \\ \\
 
-Både django og ruby on rails er to meget agile frameworks som begge benytter sig af Model view controller modellen, hvilket er ideelt. Men da gruppens medlemmer allerede besad lidt kendskab til python og pythons gode test framework, blev python + django valgt som sprog og framework til server arbejdet.
-
-\newpage
+Både django og ruby on rails er to meget agile frameworks som begge benytter sig af Model view controller modellen, hvilket er ideelt. Men da gruppens medlemmer allerede besad lidt kendskab til python og pythons gode test framework, blev python + django valgt som sprog og framework til server delen.
 
 \textbf{Udvidet test framework} \\
-I samarbejde med python og django test frameworket blev det besluttet at inddrage selenium teknologien. Selenium er et værktøj som kan automatisere en browser, dvs. der kan skrives kode som så kan teste GUI'et og selve funktionaliteten i webapplikationen. 
+I samarbejde med python og django test frameworket blev det besluttet at inddrage selenium\footnote{http://www.seleniumhq.org/} teknologien. Selenium er et værktøj som kan automatisere en browser, fx. kode der kan teste GUI'et og selve funktionaliteten i webapplikationen. 
 
 \textbf{Database}\\
-Django frameworket understøtter en række forskellige databaser. Det er valgt at benytte en SQLight database, da dette er en simpel light weight database og dækker applikations behov for at kunne gemme billeder og tekst strenge. 
+Django frameworket understøtter en række forskellige databaser. Det er valgt at benytte en SQLight\footnote{http://www.sqlite.org/} database, da dette er en simpel light weight database og dækker applikations behov for at kunne gemme billeder og tekst strenge. 
