@@ -1,5 +1,13 @@
 \section{Webapplikation}
-Applikationen er enheds testet med test frameworket Jasmine\footnote{http://jasmine.github.io/2.0/introduction.html}, som er et JavaScript framework. Frameworket benytter ikke DOM'en til test af applikationer. Alle test bliver afviklet via terminalen ved at køre kommandoen "start" på filen karma.\\
+Applikationen er enheds testet med test frameworket Jasmine\footnote{http://jasmine.github.io/2.0/introduction.html}, som er et JavaScript framework. Frameworket benytter ikke DOM'en til test af applikationer. Jasmine skal bruge to filer for at kunne udføre tests.\\
+
+\textbf{karma.conf.js}\\
+Alt setup til Jasmine gøres i karma.conf.js filen som ligger i roden af projektet. Her bestemmes en række af opsætnings muligheder til frameworket. De mest væsentlige er følgende, hvilke filer Jasmine skal teste, hvilket output der ønskes til test, om testene skal køres en gang og derefter lukkes test programmet, eller om testene skal afvikles ved hvert gem af filer. 
+
+\textbf{test fil}\\
+Jasmine skal også bruge test filer for at kunne afvikle test. Her i skrives test logikken for testene. Disse tests er opdel efter klasser.
+
+Alle test bliver afviklet via terminalen ved at køre kommandoen "start" på filen karma.\\
 
 \begin{lstlisting}[language=bash]
 	$ ./node_modules/karma/bin/karma start
@@ -14,7 +22,5 @@ Efter start kommandoen er kørt starter frameworket en test server op som så af
 	\caption{Test eksempel}
 	\label{fig:test_eksempel}
 \end{figure}
-
-Alt setup til Jasmine gøres i karma.conf.js filen som ligger i roden af projektet. Her bestemmes en række af opsætnings muligheder til frameworket. De mest væsentlige er følgende, hvilke filer Jasmine skal teste, hvilket output der ønskes til test, om testene skal køres en gang og derefter lukkes test programmet, eller om testene skal afvikles ved hvert gem af filer. 
 
 Yderligere information omkring test, se test filerne i mappen test i roden af projektet.
