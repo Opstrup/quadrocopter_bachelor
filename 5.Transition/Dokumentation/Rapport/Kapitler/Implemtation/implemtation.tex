@@ -8,11 +8,35 @@ Dette afsnit beskriver implementering af systemet.
 \subsection{Drone}
 Drone indeholder alt systemets hardware. Software til drone er udviklet i programmerings sproget C++, og er opdelt i forskellige ansvarsområder. Nogle softwareklasser bruges til at aflæse data fra højdesensor, 3G/GPS modul og kompas, mens andre klasser er ansvarlige for kommunikation. Information fra de forskellige softwareklasser samles og behandles på dronens main controller. Ud fra den indsamlede data tilpasses dronens flyveindstilling via dertil indrettede klasser. 
 
+Håndtering af GPS sker via en abstrakt GPS klasse og StandAloneGps klassen der nedarver fra den abstrakte klasse. Når nuværende og ønsket GPS position kendes, kan korrekt flyveretning og afstand til ønsket GPS position findes. Til at finde korrekt flyveretning og afstand til ønsket GPS bruges de to metoder calBearingToTarget og calDistToTarget fra FlightControl klassen. 
+
+Dronen kommunikerer med server via HTTP protokollen, til dette anvendes flere klasser. GetAndPut klassen som er den mest hardware nære klasse, håndterer GET og PUT requests. Metoder i GetAndPut klassen anvendes af de to klasser, EventHandler og WayPointsHandler. Disse klasser sorterer informationen fra GetAndPut og returnerer det nødvendige information. Coomunication klassen bruger Handler klasserne, hvilket giver systemet lav kobling. Ved at have denne opdeling, kan tests udføres enkeltvis, da klasserne ikke er afhængige af hinanden.
+
+Under flyvning aflæser main controller løbende flyvehøjde fra ultralydssensor via DistanceSensor klassen og nuværende orientering fra flight control boardet via FlightControl klassen. FlightControl klassen benyttes når der på baggrund af indsamlet data er brug for ændring af flyveindstilling, eksempelvis korrektion af throttle (gas). I FlightControl klassen er der dels implementeret metoder, der initierer timere som kontrollerer PWM styrings signaler. Desuden er der implementeret set-metoder der anvendes til korrektion af throttle, yaw, picth og roll.  
+
+Af sikkerhedshensyn er det implementeret, at bruger med en fjernbetjening kan skifte fra autonom til manuel styring. Under flyvning kaldes metoden checkIfControllerIsOn() løbende, main controlleren bruger metoden til at kontrollere hvorvidt dronen skal styres autonomt eller manuelt.  
+
+
 
 \subsection{Server}
 Indledningsvis i implementeringen blev der lagt meget fokus på server, da den spiller en afgørende rolle i kommunikationen mellen drone og webapplikation. 
 Server er udviklet i programmerings sproget Python og med webframeworket Django[x].
 Tilsammen udgør Python og Django en SQLite database med et RESTful API. Der benyttes en række API-endpoints for at tilgå eller ændre data på server.
 
+
 \subsection{Webapplikation}
-Webapplikationen  er udviklet i programmerings sprogene HTML, CSS og JavaScript. Webapplikationens frontend er udviklet med frameworket AngularJS[X], som er et meget vidt benyttet framework udviklet af Google. Derudover benyttes et google maps API til webapplikationen, dette muliggør brugen af kort på webapplikationen. Da AnjularJS er benyttet til udviklingen, er opdeles projektet efter MVC-modellen[x]. Dette giver projektet en god struktur og overskuelig opdeling af filer.
+Webapplikationen  er udviklet i programmerings sprogene HTML, CSS og JavaScript. Webapplikationens frontend er udviklet med frameworket AngularJS[X], som er et meget vidt benyttet framework udviklet af Google. Derudover benyttes et google maps API til webapplikationen. Dette API muliggør brugen af kort på webapplikationen. Da AnjularJS er benyttet til udviklingen, er projektet opdelt efter MVC-modellen[x]. 
+
+Kortet er implementeret ved brug af et google-maps directive[X], dette pakker google maps api'et ind og derved gør det mere effektivt i forbindelse med Angular udvikling. Dette betyder også at noget funktionalitet som google maps tilbyder kan ikke direkte bruges i dette directive. 
+Da det var et krav at waypoints skulle oprettes ved klik på kortet, blev der udviklet et specifik klik event på kortet. Når et klik på kortet finder sted bliver der tegnet et waypoint på kortet. I koden bag bliver der så oprettet to waypoint objekter. Det ene waypoint objekt er til kortet, dette objekt indeholder kun icon, latitude og longitude til hvor waypointet skal tegnes. Det andet waypoint der bliver oprettet er det waypoint som skal benyttes og sendes til serveren når brugeren ønsker at publicere det tegnede rute. Dette er nødsaget da google-maps directivet ikke kan finde ud af at tegne waypoints hvis de indeholder data som directivet ikke kender til. Figur \ref{fig:click_event} illustrere hvordan klik eventet opretter to waypoint objekter.
+
+\vspace{-5pt}
+%kommentar
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\textwidth]{Billeder/click_event.png}
+	\vspace{-5pt}
+	\caption{Click event eksempel}
+	\label{fig:click_event}
+\end{figure}
+

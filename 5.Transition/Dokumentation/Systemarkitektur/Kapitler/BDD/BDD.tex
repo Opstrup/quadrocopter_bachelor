@@ -11,7 +11,7 @@ I det overordnede bdd nedenfor vises de blokke systemet består af, samt hvilke 
 \centering
 \includegraphics[width=1\textwidth]{Billeder/BDD/bdd_overordnet.pdf}
 \vspace{-0.5cm}
-\caption{Bdd - overordnet}
+\caption{\textbf{bdd} - overordnet}
 \label{fig:bdd_overordnet}
 \end{figure}
 
@@ -23,7 +23,7 @@ Da drone blokken er kompliceret og indeholder mange parts kræves en yderlige be
 \centering
 \includegraphics[width=1.\textwidth]{Billeder/BDD/bdd_drone.pdf}
 \vspace{-0.5cm}
-\caption{Bdd - drone}
+\caption{\textbf{bdd} - drone}
 \label{fig:bdd_drone}
 \end{figure}
 
@@ -41,8 +41,8 @@ Main controlleren fungerer som dronens hjerne. Ud fra kommunikation med webserve
 \textbf{Remote controller}\\
 Denne blok består af receiver, transmitter og switch board. Blokken gør det muligt at switche mellem autonom og manuel styring. Afhængig af hvordan transmitteren (fjernbetjening) er indstillet benyttes henholdsvis manuel eller autonom flyvning.
 
-\textbf{Flight control board}\\
-Flight control boardet indholder software til styring, derunder PID regulering. Boardet har indbygget kompas, gyroskop, accelerometer og barometer, som alle bruges under flyvning. Flight control boardets vigtigste opgave er at viderebringe control signaler fra main controller til ESC'er som åbner/lukker for forsyning til dronens motorer. 
+\textbf{Flight control}\\
+Flight control indeholder flight control boarded. Flight control boarded indeholder alt software til styring, herunder PID regulering. Boardet har indbygget kompas, som bruges under flyvning. Flight control blokkens vigtigste opgave er at viderebringe control signaler fra main controller til ESC'er som åbner/lukker for forsyning til dronens motorer.
 
 \textbf{3G/GPS module}\\
 3G/GPS blokken har to funktioner i systemet. For det første er 3G/GPS blokken ansvarlig for opdatering af dronens GPS position. Desuden fungerer blokken som kommunikationslag mellem webserver og main controller. Al information der udvekles mellem webserver og drone går gennem 3G/GPS modulet.
