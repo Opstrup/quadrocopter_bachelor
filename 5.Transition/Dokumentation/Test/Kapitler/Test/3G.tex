@@ -1,10 +1,12 @@
-\section{3G}
+\section{3G modul}
 
-3G modulet testes som et selvstændigt modul. 
-Testene der udføres er PUT og GET, da det er disse metoder der er implementeret på dronen. 
-For at udføre tests med 3G modulet, kræves en fungerende server der tillader HTTP requests. Projektets webserver anvendes ikke til testen, for kun at have fokus på en enhed. Istedet er hjemmesiden requestb.in[X] anvendt, da requestb.in tillader HTTP kommunikation. Ved Requestb.in får man en URL, denne URL anvendes til både PUT og GET requests.
+Enhedstest af 3G modulet foregår ved test af PUT og GET request, som er de metoder der er implementeret på dronen.
 
-På figur \ref{fig:get_req} vises et GET request til en requestb.in server. I dette tilfælde: requestb.in/1d8w2501. Den første linje efter \textit{data:} fortæller om requestet er gennemført succesfuldt eller om der er sket en fejl. Svaret 200 ok betyder at requestet er gået igennem og det ønskede data er hentet. 
+For udelukkende at have fokus på 3G modulet under enhedstesten, testes der ikke op imod den server som ellers anvendes til projektet. I stedet benyttes hjemmesiden requestb.in[X], en hjemmeside der der tillader test af HTTP kommunikation. Ved at tilgå Requestb.in og starte en session tildeles en URL der kan bruges til test. Requestbin indsamler information om alle HTTP request lavet til den tildelte URL. 
+
+På figur \ref{fig:get_req} vises et GET request der sendes fra 3G modulet til en requestb.in server. Den første linje efter \textit{data:} fortæller om requestet er gennemført succesfuldt eller ej. Svaret \textit{200 ok} betyder at GET requestet er gået igennem og det ønskede data på korrekt vis er hentet. 
+
+\vspace{0.3cm}
 
 \begin{figure}[H]
 \centering
@@ -13,7 +15,10 @@ På figur \ref{fig:get_req} vises et GET request til en requestb.in server. I de
 \label{fig:get_req}
 \end{figure}
 
-Ved brug af PUT, opdateres information der allerede ligger på serveren. Figur \ref{fig:putrequest_module} viser hvad der sendes til serveren. Det information der er sendt, er tilgængelig på serveren, som vist på figur \ref{fig:put_req}.
+\newpage
+
+PUT request bruges til at sende data til eller opdatere information på server. 
+På figur \ref{fig:putrequest_module} vises et PUT der sendes fra 3G modulet til requestb.in. De føreste seks linjer på figur \ref{fig:putrequest_module} viser requestet header med linje syv er requestet body. 
 
 \begin{figure}[H]
 \centering
@@ -22,7 +27,9 @@ Ved brug af PUT, opdateres information der allerede ligger på serveren. Figur \
 \label{fig:putrequest_module}
 \end{figure}
 
-RAW BODY viser dataet der er sendt og HEADERS indeholder parametrene for HTTP protokollen.
+\vspace{1cm}
+
+På figur \ref{fig:put_req} vises det information der tilgængelig på server efter PUT requestet er fuldført. \textit{RAW BODY} viser det data der er modtaget og HEADERS indeholder parametrene for HTTP protokollen.
 
 \begin{figure}[H]
 \centering

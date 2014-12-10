@@ -1,12 +1,13 @@
-\subsection{Orientering}
+\section{Tilpas orientering}
 
-Dette afsnit beskriver test af dronens orientering. 
-
-Dronen skal have den rette orientere, før den kan flyve fremad. For at finde orienteringen, bruges 3G/GPS modulet, kompas og main controlleren.
+Dette afsnit beskriver test af dronens orientering. Dronen skal have den rette orientere, før den kan flyve fremad. For at finde orienteringen, bruges 3G/GPS modulet, kompas og main controlleren.
 
 Til testen af orientering er nuværende og ønskede GPS positioner hardcoded. 
-Den nuværende og ønskede GPS positions sammenlignes og orienteringen findes. Fra kompasset aflæser main controlleren dronens orientering og sammenligner med den ønskede orientering. Hvis orienteringerne ikke er ens, skal dronen ændre retning, retningen ændres ved at forøge eller formindske Yaw parameteren. 
-På figur \ref{fig:orientering_skift} vises hvad main controlleren gør. Main controlleren sammenligner nuværende med ønskede orientering, hvis orienteringen ikke er indenfor det ønskede interval, ændres denne.
+Den nuværende og ønskede GPS positions sammenlignes og orienteringen findes. 
+Fra kompasset aflæser main controlleren dronens orientering og sammenligner med den ønskede orientering. Hvis orienteringerne ikke indenfor det ønskede interval, skal dronen ændre retning. Dronens flyveretning ændres ved kortvarigt at forøge Yaw parameteren. 
+
+
+På figur \ref{fig:orientering_skift} vises hvad main controlleren gør. Main controlleren sammenligner nuværende med ønskede orientering, hvis orienteringen ikke er indenfor det ønskede interval, ændres denne ved ændre på indstillingen af Yaw.
 
 \begin{figure}[H]
 \centering
@@ -14,6 +15,8 @@ På figur \ref{fig:orientering_skift} vises hvad main controlleren gør. Main co
 \caption{Ændring af orientering}
 \label{fig:orientering_skift}
 \end{figure}
+
+\vspace{0.5cm}
 
 Hvis orienteringen er indenfor intervallet, vil outputtet være som på figur \ref{fig:orientering_interval}.
 
