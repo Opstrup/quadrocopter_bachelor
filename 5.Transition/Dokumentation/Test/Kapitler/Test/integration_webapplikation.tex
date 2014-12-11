@@ -7,14 +7,14 @@ Config filen skal bruges til at køre testene. Her bestemmes hvilke test server 
 \textbf{test fil}\\
 Det sidste protractor skal bruge for at kunne køre her en test fil eller flere test filer som skal afvikles. 
 
-\subsection{Kør tests}
-For at testene kan afvikles skal først test serveren startes. Dette gøres via commandoen:
+\subsection*{Test afvikling}
+For at testene kan afvikles skal testserveren startes. Dette gøres via commandoen:
 
 \begin{lstlisting}[language=bash]
 	$ webdriver-manager start
 \end{lstlisting}
 
-Efter denne kommando starter test serveren op. Og nu kan testene afvikles ved kommandoen:
+Efter testserveren er oppe, kan testene afvikles ved kommandoen:
 
 \begin{lstlisting}[language=bash]
 	$ protractor protractor.conf.js
