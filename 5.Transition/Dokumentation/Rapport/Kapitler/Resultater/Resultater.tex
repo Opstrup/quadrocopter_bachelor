@@ -1,19 +1,13 @@
-%%%%%% Systembeskrivelse %%%%%%
-\chapter{Systembeskrivelse}
-\label{chap:systembeskrivelse}
+\section{Resultater}
 
-Track’n’Play er et musikanlæg, som, udover at kunne afspille musik, også automatisk justerer højtalerretning og lydstyrke. Justeringen sker for at forbedre brugerens lydoplevelse.
+Dette afsnit beskriver resultaterne af de tests foretaget i dokumentationens test afsnit.[X]
 
-Systemet består af et lydanlæg, en medieafspiller, to højtalere på roterende platforme, en bærbar enhed samt en positionsbestemmer. 
+Ud fra Use cases beskrevet i kravspecifikationen[X] er der opstillet 6 test cases. Disse er opstillet og testet i accepttesten, hvilket giver følgende resultater: en test case  består, to test cases består delvist og de resterende 3 test cases består ikke accepttesten.
 
-\begin{figure}[h!]
-  \centering
-    \includegraphics[width=0.8\textwidth]{billeder/systembeskrivelse/trackplay opstilling.pdf}
-    \caption{Track'n'Play opstilling}
-\end{figure}
+Test case 1 er succesfuld gennemført, og alle punkter defineret i test casen virker som ønsket. \\
 
+Test case 2 er delvist gennemført. Bruger har mulighed for at logge ind på webapplikationen og oprette en ny flyveopsætning. Kommunikationen mellem webapplikation og server fungerer delvist. Det er muligt at hente information fra serveren, mens det ikke er muligt at sende information. Dette gør, at bruger ikke kan sende en ny flyveopsætning til serveren.\\
 
-Anlægget modtager et lydsignal fra medieafspilleren, som den forstærker og afspiller via højtalerne.\newline
-På den bærbare enhed kan brugeren se den aktuelle lydstyrke for anlægget, samt justere lydstyrken til et andet niveau. Den bærbare enhed bruges også til at måle lydstyrken i brugerens position, så brugeren altid oplever en ensartet lydstyrke selvom afstanden mellem anlægget og brugeren ændres. Datakommunikation mellem anlægget og den bærbare enhed foregår trådløst via en radiosender.\newline
-Den bærbare enhed udsender, udover et radiosignal til anlægget, også en højfrekvent tone ud i rummet, som ikke kan høres af det menneskelige øre. Denne tone opfanges af positionsbestemmelsen og ud fra denne tone kan brugerens position i rummet beregnes.\newline
-Når brugerens position er fastlagt, sendes den over til anlægget, der justerer højtalernes retning, så de peger imod brugeren. 
+Test case 3 er ligesom test case 2 delvist gennemført. Dronen kan hente flyveopsætningen fra server og sende dens nuværende GPS position til serveren. Derudover har dronen mulighed for at tilpasse flyvehøjden til den ønskede flyvehøjde. Det lykkedes kun delvist at implementere tilpasning af orienteringen, idet funktionaliteten virker som beskrevet i integrationstesten[X], men dronen kan ikke autonomt ændre orienteringen.\\
+
+Test case 4, 5 og 6 er ikke godkendt. Funktionaliteten i disse cases er ikke blevet implementeret.
