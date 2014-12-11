@@ -4,7 +4,6 @@ Implementering af systemets funktionalitet tager udgangspunkt i de udarbejdede h
 Implementeringsfasen udarbejdes iterativ, og de højst prioriterede use cases implementeres først. 
 Dette afsnit beskriver implementering af systemet.
 
-
 \subsection{Drone}
 Drone indeholder alt systemets hardware. Software til drone er udviklet i programmerings sproget C++, og er opdelt i forskellige ansvarsområder. Nogle softwareklasser bruges til at aflæse data fra højdesensor, 3G/GPS modul og kompas, mens andre klasser er ansvarlige for kommunikation. Information fra de forskellige softwareklasser samles og behandles på dronens main controller. Ud fra den indsamlede data tilpasses dronens flyveindstilling via dertil indrettede klasser. 
 
@@ -12,17 +11,14 @@ Håndtering af GPS sker via en abstrakt GPS klasse og StandAloneGps klassen der 
 
 Dronen kommunikerer med server via HTTP protokollen, til dette anvendes flere klasser. GetAndPut klassen som er den mest hardware nære klasse, håndterer GET og PUT requests. Metoder i GetAndPut klassen anvendes af de to klasser, EventHandler og WayPointsHandler. Disse klasser sorterer informationen fra GetAndPut og returnerer det nødvendige information. Coomunication klassen bruger Handler klasserne, hvilket giver systemet lav kobling. Ved at have denne opdeling, kan tests udføres enkeltvis, da klasserne ikke er afhængige af hinanden.
 
-Under flyvning aflæser main controller løbende flyvehøjde fra ultralydssensor via DistanceSensor klassen og nuværende orientering fra flight control boardet via FlightControl klassen. FlightControl klassen benyttes når der på baggrund af indsamlet data er brug for ændring af flyveindstilling, eksempelvis korrektion af throttle (gas). I FlightControl klassen er der dels implementeret metoder, der initierer timere som kontrollerer PWM styrings signaler. Desuden er der implementeret set-metoder der anvendes til korrektion af throttle, yaw, picth og roll.  
+Under flyvning aflæser main controller løbende flyvehøjde fra ultralydssensor via DistanceSensor klassen og nuværende orientering fra flight control boardet via FlightControl klassen. FlightControl klassen benyttes også når der på baggrund af indsamlet data er brug for ændring af flyveindstilling, eksempelvis korrektion af throttle. I FlightControl klassen er der dels implementeret metoder, der initierer timere som kontrollerer PWM styrings signaler. Desuden er der implementeret set-metoder der anvendes til korrektion af throttle, yaw, picth og roll.  
 
-Af sikkerhedshensyn er det implementeret, at bruger med en fjernbetjening kan skifte fra autonom til manuel styring. Under flyvning kaldes metoden checkIfControllerIsOn() løbende, main controlleren bruger metoden til at kontrollere hvorvidt dronen skal styres autonomt eller manuelt.  
-
-
+Af sikkerhedshensyn er det implementeret, at bruger med en fjernbetjening kan skifte fra autonom til manuel styring. Under flyvning kalder main controller løbende metoden checkIfControllerIsOn(), for at kontrollere hvorvidt dronen skal styres autonomt eller manuelt.  
 
 \subsection{Server}
 Indledningsvis i implementeringen blev der lagt meget fokus på server, da den spiller en afgørende rolle i kommunikationen mellen drone og webapplikation. 
 Server er udviklet i programmerings sproget Python og med webframeworket Django[x].
 Tilsammen udgør Python og Django en SQLite database med et RESTful API. Der benyttes en række API-endpoints for at tilgå eller ændre data på server.
-
 
 \subsection{Webapplikation}
 Webapplikationen  er udviklet i programmerings sprogene HTML, CSS og JavaScript. Webapplikationens frontend er udviklet med frameworket AngularJS[X], som er et meget vidt benyttet framework udviklet af Google. Derudover benyttes et google maps API til webapplikationen. Dette API muliggør brugen af kort på webapplikationen. Da AnjularJS er benyttet til udviklingen, er projektet opdelt efter MVC-modellen[x]. 
