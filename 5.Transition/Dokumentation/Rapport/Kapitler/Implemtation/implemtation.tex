@@ -20,6 +20,11 @@ Indledningsvis i implementeringen blev der lagt meget fokus på server, da den s
 Server er udviklet i programmerings sproget Python og med webframeworket Django[x].
 Tilsammen udgør Python og Django en SQLite database med et RESTful API. Der benyttes en række API-endpoints for at tilgå eller ændre data på server.
 
+Databasen er designet modulært så systemet har stor mulighed for udvidelser, så som mulighed for at kunne håndtere flere bruger af systemet og flere droner. Omdrejnings punktet i databasen er et event, hvilket indeholder information omkring hvilke bruger der har oprettet event og til hvilke droner.
+
+Til udviklingen af serveren er der også benyttet en udvidelse til Django, Django REST frameworket[x], ved brug af dette framework kan tags så som "@api\_view(['GET', 'POST'])", hvilket fortæller serveren hvilke HTTP requests der er tilladt på et givet endpoint. Med mulighed for at kunne bruge serializers, som er en måde at fortælle serveren på hvordan den skal formater den ønsket data på og med et browsable API, simplificere det udviklingen af et REST framework.
+
+\newpage
 \subsection{Webapplikation}
 Webapplikationen  er udviklet i programmerings sprogene HTML, CSS og JavaScript. Webapplikationens frontend er udviklet med frameworket AngularJS[X], som er et meget vidt benyttet framework udviklet af Google. Derudover benyttes et google maps API til webapplikationen. Dette API muliggør brugen af kort på webapplikationen. Da AnjularJS er benyttet til udviklingen, er projektet opdelt efter MVC-modellen[x]. 
 
@@ -35,4 +40,9 @@ Da det var et krav at waypoints skulle oprettes ved klik på kortet, blev der ud
 	\caption{Click event eksempel}
 	\label{fig:click_event}
 \end{figure}
+
+
+Under udviklingen af webapplikationen har test vægtede en stor del, systemet skulle udvikles så det var testbar. Derfor blev der brugt AngularJS's dependency injection teknikker. Alt kommunikationen med backenden er for et eksempel skrevet som en service som alle andre services og controller benytter sig af via dependency injection, på den måde kan alt kommunikation til serveren abstraheres væk. Ligeledes teknikker er benyttet for alle services i systemet, som indeholde største delen af logikken i systemet.  
+
+Alle requests til server sker asynkron. Derfor er webapplikationen implementeret således at når der bliver lavet et request til server, så arbejder webapplikationen videre og når dataen fra serveren er klar så får webapplikationen et interrupt og præsentere dataen. Dette kan ses ved klik på kortet, hvor efter et kort delay dronen bliver tegnet på kortet.
 
