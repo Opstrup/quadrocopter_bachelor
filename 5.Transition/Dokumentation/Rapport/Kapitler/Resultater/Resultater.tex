@@ -1,14 +1,14 @@
 \section{Resultater}
 
-Dette afsnit beskriver resultaterne af de tests foretaget i dokumentationens test afsnit.[X]
+I dette afsnit beskriver resultatet af accepttesten som blev foretaget i projektets afsluttende fase. 
+Accepttesten er bygget op om seks test cases, som bruges til at teste det samlede systems funktionalitet. For mere information om de forskellige test cases henvises til test dokumentet. [X] \\
 
-Ud fra Use cases beskrevet i kravspecifikationen[X] er accepttestens test cases opbygget.
+Test case 1 er succesfuld gennemført. Når dronen tændes, initieres main controller samt 3G/GPS modul og dronen opdaterer sin nuværende GPS position. Efter at have opdateret egen GPS position opretter dronen forbindelse til mobilt 3G-netværk og sender information om sin nuværende GPS position til server.
 
-Test case 1 er succesfuld gennemført. Dronen tændes og egen GPS position opdateres. Ydermere oprettes der forbindelse til netværket hvorefter egen GPS position sendes til serveren.
+Test case 2 er delvist gennemført. Bruger har mulighed for at tilgå webapplikation, logge ind på applikationen og oprette nye flyveopsætninger. Webapplikationen kan både hente og vise information fra server. Det er dog ikke muligt at sende information fra webapplikation til server, da kommunikation mellem webapplikation og server ikke er fuldt ud implementeret. Hvilket betyder at bruger ikke kan uploade nyoprettede flyveopsætninger til server.  
 
-Test case 2 er delvist gennemført. Bruger har mulighed for at logge ind på webapplikationen og oprette en ny flyveopsætning. Kommunikationen mellem webapplikation og server fungerer delvist. Webapplikationen kan hente information fra serveren, mens det ikke er muligt at sende information til serveren. \\
+Test case 3 er ligesom test case 2 delvist gennemført. Dronen kan sende sin nuværende GPS position til server og hente flyveopsætninger fra server. Det bemærkes dog, at flyveopsætninger der hentes fra server, ikke er oprettet via webapplikationen men derimod tilføjet server via backend. 
+Tilpasning af flyveindstillinger er implementeret som en tre-trins-raket. Først tilpasses flyvehøjde, dernæst tilpasses flyveretning og når både flyvehøjde og flyveretning er tilpasset flyves fremad.
+Tilpasning af flyveindstillinger er ikke blevet optimeret, hvilket får dronen til at afvige fra det ønskede resultat og gør dele af test case 3 fejler.
 
-Test case 3 er ligesom test case 2 delvist gennemført. Dronen kan hente flyveopsætningen fra server og sende dens nuværende GPS position til serveren. Flyveopsætningen der hentes, er ikke oprettet i webapplikationen men derimod i backend. Derudover har dronen mulighed for at tilpasse flyvehøjden til den ønskede flyvehøjde. 
-Det lykkedes at implementere tilpasning af orientering og flyve mod den ønskede position. Funktionaliteten af det implementerede er ikke blevet optimeret, hvilket får dronen til at afvige fra det ønskede resultat.\\
-
-Test case 4, 5 og 6 er ikke godkendt. Funktionaliteten er blevet designet men ikke implementeret.
+Test case 4, 5 og 6 er ikke godkendt, da funktionalitet kun er designet og ikke implementeret.
