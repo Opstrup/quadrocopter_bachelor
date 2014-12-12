@@ -1,17 +1,16 @@
 \section{Konklusion}
+Igennem projektforløbet er det lykkedes at implementere de essentielle moduler som skal bruges til håndtering af dronen. Det er derimod ikke lykkedes at samle disse moduler til en enhed der kan opfylde alle kravene til autonom overvågningsdrone projektet. 
 
-
-
-Igennem projektforløbet er det lykkedes at implementere de essentielle moduler som skal bruges til håndtering af dronen. Det er derimod ikke lykkedes at samle disse moduler til en enhed der kan udføre autonom overvågning. 
-
-Det er lykkedes at implementere en fungerende kommunikationslink mellem drone og server, derudover er det delvist lykkedes at lave styringen til dronen. Her virker modulerne enkeltvis, men systemet er ikke optimeret til at fungere som en samlet enhed. Dronens højdemåling, tilpasning af orientering og flyve funktionalitet virker, men fungerer langt fra optimalt.
+Det er lykkedes at implementere et fungerende kommunikationslink mellem drone og server, derudover er det delvist lykkedes at lave styringen til dronen. Her virker modulerne enkeltvis, men systemet er ikke optimeret til at fungere som en samlet enhed. Dronens højdemåling, tilpasning af orientering og flyve funktionalitet virker, men kræver yderligere fin justeringer for at virke optimalt.
 Flyve orienteringen og flyve funktionaliteten er ikke blevet optimeret, da det har været svært at test flyve dronen. 
-
 
 På webapplikationen er det lykkedes at implementere således at bruger kan logge på webapplikationen. Ved succesfuld login har bruger mulighed for at hente og oprette en ny flyveopsætning. Dog kan flyveopsætningen ikke sendes til serveren, da den kommunikationen ikke er blevet implementeret. Ved oprettelse af en ny flyveopsætning, bruges kortet til at finde de forskellige waypoints. Hver gang der trykkes på kortet oprettes et nyt waypoint, til dette waypoint kan der bestemmes om der skal tages et billede og i hvilken højde det skal tages.
 
+I udviklings fasen af systemet blev meget af fokus lagt på serveren da den spiller en væsentlig rolle imellem drone og webapplikation. Det lykkedes derfor at implementere en fuld funktionel server, som fungere som bindeled imellem drone og webapplikation.  
 
+De tre moduler som systemet består af drone, server og website har meget lav kobling indbyrdes hvilket giver et mest fleksibelt system og rig mulighed for videreudvikling. Da systemets delsystemer har lav kobling er det også muligt at udskifte et af delsystemerne uden det resterende system bliver påvirket.
 
+-------------------------------------------------- Vejledning --------------------------------------------------
 Her gives en samlet konklusion på projektarbejdet. Hvad er lykkedes, hvad er evt. ikke 
 lykkedes og årsagen til dette. Konklusionen skal gerne indeholde et klart budskab. 
 
