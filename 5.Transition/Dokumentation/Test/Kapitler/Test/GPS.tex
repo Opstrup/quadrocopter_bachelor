@@ -2,7 +2,7 @@
 
 Der er to mål med enhedstest af GPS. Først og fremmest testes hvorvidt GPS'en virker, desuden testes hvor præcis GPS'en er. I kravspecifikationen er det defineret hvor stor en afvigelse GPS modulet må have, i testen undersøges det om afvigelse overholdes. 
 
-Hvis der hentes GPS koordinater lige efter GPS'en tændes gøres der brug af \textit{cold start}. Ved brug af cold start fås data fra GPS'en med det samme GPS'en har forbindelse til GPS satellitter, men dataen er upålidelig og upræcis. Derfor gøres der altid brug af \textit{hot start}, både under test og når GPS'en bruges på dronen. Når der bruges hot start er GPS'en i udgangspunkt i forbindelse med GPS-satelitter og er derfor mere præcis. 
+Hvis der hentes GPS koordinater lige efter at GPS'en tændes gøres der brug af \textit{cold start}. Ved brug af cold start fås data fra GPS'en med det samme GPS'en har forbindelse til GPS satellitter, men dataen er upålidelig og upræcis. Derfor gøres der altid brug af \textit{hot start}, både under test og når GPS'en bruges på dronen. Når der bruges hot start er GPS'en i udgangspunkt i forbindelse med GPS-satelitter og er derfor mere præcis. 
 
 Under test tændes modulet og får 30 sekunder til opstart. Efter de 30 sekunder er gået hentes data ud fra GPS modulet. Raw data fra GPS kommer i formatet Degrees/Minutes, og ved omformning fås decimal degrees.
 
