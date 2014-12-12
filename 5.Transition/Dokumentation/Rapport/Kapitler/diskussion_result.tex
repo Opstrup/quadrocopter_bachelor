@@ -5,7 +5,7 @@ I dette afsnit beskrives og diskuteres de resultater gruppen opnåede og der lav
 Accepttesten forløb stort set som planlagt indtil test case 4-6 som omhandlede opsamling af billeder, visning af billeder og tilføjelse af antikollision. Test case 4-6 blev ikke godkendt, da de kun blev designet og ikke implementeret. Da arbejdsprocessen var planlagt i iterationer, var de fejlene test cases ikke kritiske for det resterende system.\\
 
 \textbf{Drone}\\
-Drone kan under flyvning finde nuværende flyvehøjde, flyveretning og GPS position ved aflæsning af data fra ultralydssensor, kompas og GPS.  Ud fra det aflæste data tilpasses flyveindstillinger. Via det mobile 3G-netværk sender drone information om nuværende position til server og henter flyveopsætninger fra server
+Drone kan under flyvning finde nuværende flyvehøjde, flyveretning og GPS position ved aflæsning af data fra ultralydssensor, kompas og GPS.  Ud fra det aflæste data tilpasses flyveindstillinger. Via det mobile 3G-netværk sender drone information om nuværende position til server og henter flyveopsætninger fra server.
 
 Tilpasning af flyveindstillinger er implementeret som en tre-trins-raket. Først tilpasses flyvehøjde, dernæst tilpasses flyveretning og når både flyvehøjde og flyveretning er tilpasset flyves fremad. Hver del er implementeret og fungerer hver for sig selv, men samlet set fungerer det ikke optimalt pga. manglende optimering. Til justering og optimering af flyvehøjde og flyveorientering kunne der med fordel være gjort brug af PID regulering.  I implementerings fasen opstod problemer med timing, specielt når 3G/GPS modulet blev brugt. Ved at indføre brug af flertrådet main controller kunne disse problemer undgås. \\
 
@@ -16,3 +16,27 @@ Men pga. manglede implementering kan webapplikationen ikke sende de nyoprettede 
 
 \textbf{Server}\\
 Server er implementeret med fuldt fungerende database og tilhørende interface. Billeder i databasen er koblet op til events, de kunne med fordel være koblet til waypoints.
+
+
+\subsection{Videreudvikling}
+
+Dette afsnit beskriver hvilke muligheder der er for at videreudvikle projektet. 
+
+\subsubsection*{PID regulering}
+I diskussionen blev der kort nævnt at PID regulering kunne anvendes for at forbedre dronen. 
+
+
+
+Regulering anvendes for at gøre systemet mere stabil, således at ændringer foretaget er flydende istedet for at systemet skal oscillere.
+
+Når dronen ændrer højde eller orientering gøres brug af regulering. Denne regulering kan optimeres ved at anvende PID regulering. 
+Regulering bruges til at stabilisere dronen. 
+Der gøres brug af regulering, for at stabilisere dronen
+
+hvirfor regulering
+Hvor forbedringen ligger.
+
+\subsubsection*{Flertrådet system}
+For at undgå timings problemer, kan et flertråds system anvendes. 
+
+Main controlleren har timings problemer, idet 3G/GPS modulet kræver tid samtidigt med at reguleringen skal passes, skal der komprimeres med noget. Dette kan løses ved at bruge et flertrådet systemet. Et flertrådet system tillader at gøre flere processer parallelt, således at reguleringen vil kunne passes samtidigt med 3G/GPS modulet.
