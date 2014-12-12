@@ -23,20 +23,20 @@ Server er implementeret med fuldt fungerende database og tilhørende interface. 
 Dette afsnit beskriver hvilke muligheder der er for at videreudvikle projektet. 
 
 \subsubsection*{PID regulering}
-I diskussionen blev der kort nævnt at PID regulering kunne anvendes for at forbedre dronen. 
 
+Dronen anvender regulering til flyvehøjde og orienteringen. Disse to parametre skal konstant reguleres for at sikre at den ikke flyver ind i objekter. \\
+Der kan videreudvikles på dronens regulering, da denne ikke fungerer optimalt. Den nuværende regulering er ikke stabil og giver nogle store udsving. En evt. forbedring er at anvende PID regulering. 
+PID regulering bruger tidligere og nuværende fejl til at korrigere med. Denne form for regulering vil tilpasse sig omstændighederne hele tiden, og virke dynamisk.
 
-
-Regulering anvendes for at gøre systemet mere stabil, således at ændringer foretaget er flydende istedet for at systemet skal oscillere.
-
-Når dronen ændrer højde eller orientering gøres brug af regulering. Denne regulering kan optimeres ved at anvende PID regulering. 
-Regulering bruges til at stabilisere dronen. 
-Der gøres brug af regulering, for at stabilisere dronen
 
 hvirfor regulering
 Hvor forbedringen ligger.
 
 \subsubsection*{Flertrådet system}
-For at undgå timings problemer, kan et flertråds system anvendes. 
 
-Main controlleren har timings problemer, idet 3G/GPS modulet kræver tid samtidigt med at reguleringen skal passes, skal der komprimeres med noget. Dette kan løses ved at bruge et flertrådet systemet. Et flertrådet system tillader at gøre flere processer parallelt, således at reguleringen vil kunne passes samtidigt med 3G/GPS modulet.
+
+3G/GPS modulet er tidskrævende. Ved at anvende et flertrådet system, kan tidsproblemer optimeres. Et flertrådet system tillader at køre flere processer parallelt.
+Dronen kan både kontrollere reguleringen og kommunikationen til serveren hvis disse processer køres parallelt. 
+
+
+
