@@ -1,7 +1,25 @@
 \section{Systemarkitektur}
 \label{chap:systemarkitektur}
 
+Domain modellen anvendes som en overgang mellem kravspecifikation og systemarkitektur.
+I kravspecifikation beskrives hvad der sker ved interaktion med systemet. Mens
+systemarkitekturen bruges til at beskrive systemet i blokke og til at skitsere både interne
+og eksterne forbindelser. Domain modellen bruges til at beskrive hele systemets domæne.
+Der kigges ikke på hardware vs. software, der kigges i stedet på "enheder"og deres
+ansvarsområder.\\
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{Billeder/domain_model.png}
+	\caption{Domain model}
+	\label{fig:domain}
+\end{figure}
+
+
+\newpage
+
 Efter at have udarbejdet kravspecifikation, systemskitse og domain model, var der formet en ide om hvordan systemet skulle fungere. I det følgende beskrives hvordan systemarkitekturen er udformet. 
+
 
 Systemarkitekturen er udført ved brug af SysML og UML diagrammer. 
 SysML bruges til beskrivelse af systemets hardware i blokke og som samlet system. Ud fra N + 1 og applikations modellen udformes UML diagrammer, der bruges til beskrivelse af systemets software. 
@@ -11,16 +29,9 @@ Foruden SysML og UML diagrammer benyttes en række andre diagrammer, i det følg
 \textbf{Use case}\\
 Use cases og tilhørende diagrammer er benyttet i projektforløbets indledende faser. De bruges til at definere systemets kunnen og opdele systemet i mindre dele. Use cases har i høj grad fungeret som et omdrejningspunkt, hvorfra alt funktionalitet udspringer.
 
-\textbf{Domain model}\\
-Domain modellen er brugt som en overgang mellem kravspecifikation og systemarkitektur.
-I kravspecifikation beskrives hvad der sker ved interaktion med systemet. Mens
-systemarkitekturen bruges til at beskrive systemet i blokke og til at skitsere både interne
-og eksterne forbindelser. Domain modellen bruges til at beskrive hele systemets domæne.
-Der kigges ikke på hardware vs. software, der kigges i stedet på "enheder"og deres
-ansvarsområder.
 
 \textbf{SysML}\\
-Der er benyttet to slags SysML diagrammer til dokumentation af systemets hardware. Block definition diagrammer (bdd'er) er brugt til at identificere og beskrive systemets hardware blokke og deres indbyrdes forhold. Internal block diagrammer (ibd'er) er brugt til at vise de identificerede blokkes interne og eksterne forbindelse, hvordan blokkene kommunikere og hvilke signaler der flyder imellem dem.
+Der er benyttet to slags SysML diagrammer til dokumentation af systemets hardware. Block definition diagrammer (bdd'er) er brugt til at identificere og beskrive systemets hardware blokke og deres indbyrdes forhold. Internal block diagrammer (ibd'er) er brugt til at vise de identificerede blokkes interne og eksterne forbindelse, hvordan blokkene kommunikerer og hvilke signaler der flyder imellem dem.
 
 
 \textbf{UML}\\
@@ -83,7 +94,7 @@ Der vises ikke udvidede ibd'er for webserver, da webserver ikke indeholder hardw
 
 \subsection{Software}
 
-I dette afsnit beskrives hvordan softwarearkitekturen ved brug af N+1 og applikations modellen tager udgangspunkt i use cases og ender ud i detaljerede klasse- og state machine diagrammer. 
+I dette afsnit beskrives hvordan softwarearkitekturen ved brug af N+1 og applikations modellen tager udgangspunkt i use cases og ender ud i detaljerede klassedigrammer. 
    
 \subsubsection*{Pakkediagrammer}
 \vspace{-0.3cm}	
@@ -102,9 +113,10 @@ Indledningsvis identificeres pakkediagrammer ud fra use cases og domain modellen
 \subsubsection*{Sekvensdiagrammer}
 \vspace{-0.3cm}	
 
-Efter at have udformet pakkediagrammer påbegyndes udformning af sekvensdiagrammer, der bruges til at identificere softwareklasser, klassernes metoder, klassernes indbyrdes forhold, samt timing i systemet. Klasserne der indgår i sekvensdiagrammerne tages ud fra domain modellen. 
+Efter at have udformet pakkediagrammer påbegyndes udformning af sekvensdiagrammer. Disse diagrammer bruges til at identificere softwareklasser, klassernes metoder, klassernes indbyrdes forhold, samt timing i systemet. Enheder der indgår i sekvensdiagrammerne tages ud fra domain modellen. 
 
-Sekvensdiagrammet på figur \ref{fig:login_flysetting} viser hvordan bruger interagerer med webapplikation når der laves ny flyveopsætning. For yderlige beskrivelser af sekvensdiagrammer tilhørende systemet henvises til logical view [X].
+Sekvensdiagrammet på figur \ref{fig:login_flysetting} viser et eksempel på en use case omsat til et sekvensdiagram. Sekvensdiagrammet bruges til overordnet at vise hvordan bruger interagerer med webapplikation når der laves ny flyveopsætning. For yderlige beskrivelser af sekvensdiagrammer tilhørende systemet henvises til logical view [X].
+
  
 \begin{figure}[H]
 	\centering
@@ -118,7 +130,7 @@ Sekvensdiagrammet på figur \ref{fig:login_flysetting} viser hvordan bruger inte
 \subsubsection*{Klassediagrammer}
 \vspace{-0.3cm}	
 
-Efter at have udformet sekvensdiagrammer er der opbygget et vist kendskab til de forskellige klasser, deres metoder og deres indbyrdes forhold. For på overskuelig vis at illustrerer og beskrive systemets softwareklasser laves klassediagrammer.
+Efter at have udformet sekvensdiagrammer er der opbygget et vist kendskab til de forskellige klasser, deres metoder og deres indbyrdes forhold. For på overskuelig vis at illustrere og beskrive systemets softwareklasser laves klassediagrammer.
 
 På figur \ref{fig:class_drone} vises et klassediagram tilhørende dronens software. Bemærk at klassediagrammet er fra første iteration, hvilket betyder det er relativt lille og ikke indeholder så mange klasser og metoder.
 
@@ -130,19 +142,5 @@ For mere information om de enkelte klasser og deres ansvarsområder henvises til
 	\vspace{-0.6cm}	
 	\caption{Klassediagram drone}
 	\label{fig:class_drone}
-\end{figure}
 
-\newpage
-
-\subsubsection*{State machine diagrammer}
-\vspace{-0.3cm}	
-
-Efter pakke, sekvens og klassediagrammer er lavet, udformes state machine diagrammer, som bruges til at beskrive systemflow. På figur \ref{fig:stm} vises et af de udarbejdede state machine diagram. Yderlige beskrivelser af state machines forefindes i logical view [x].
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=1\textwidth]{Billeder/State_iteration3.png}
-	\vspace{-0.6cm}	
-	\caption{State machine diagram}
-	\label{fig:stm}
 \end{figure}
