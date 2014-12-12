@@ -85,7 +85,7 @@ Da drone blokken er stor og indeholder mange part kræves yderlige beskrivelse. 
 \end{figure}
 
 
-For yderlige beskrivelser af parts fra drone blokken henvises til ibd'er i \textit{Systemarkitektur og Design} [X].
+For yderlige beskrivelser af parts fra drone blokken henvises til ibd'er i hardwarearkitektur [X].
 Der vises ikke udvidede ibd'er for webserver, da webserver ikke indeholder hardware og derfor beskrives nærmere ved brug af UML diagrammer i software afsnittet.
 
 
@@ -98,7 +98,7 @@ I dette afsnit beskrives hvordan softwarearkitekturen ved brug af N+1 og applika
    
 \subsubsection*{Pakkediagrammer}
 \vspace{-0.3cm}	
-Indledningsvis identificeres pakkediagrammer ud fra use cases og domain modellen. På figur \ref{fig:package_drone} vises et pakkediagram tilhørende dronens software. Pakkerne i pakkediagrammet bruges til at definere de forskellige ansvarsområder i systemts software. For nærmere beskrivelser af pakkediagrammer over systemets software henvises til logical view \textit{Systemarkitektur og Design} [X].
+Indledningsvis identificeres pakkediagrammer ud fra use cases og domain modellen. På figur \ref{fig:package_drone} vises et pakkediagram tilhørende dronens software. Pakkerne i pakkediagrammet bruges til at definere de forskellige ansvarsområder i systemts software. For nærmere beskrivelser af pakkediagrammer over systemets software henvises til logical view [X].
  
 \begin{figure}[H]
 	\centering
@@ -115,7 +115,8 @@ Indledningsvis identificeres pakkediagrammer ud fra use cases og domain modellen
 
 Efter at have udformet pakkediagrammer påbegyndes udformning af sekvensdiagrammer. Disse diagrammer bruges til at identificere softwareklasser, klassernes metoder, klassernes indbyrdes forhold, samt timing i systemet. Enheder der indgår i sekvensdiagrammerne tages ud fra domain modellen. 
 
-Sekvensdiagrammet på figur \ref{fig:login_flysetting} viser et eksempel på en use case omsat til et sekvensdiagram. Sekvensdiagrammet bruges til overordnet at vise hvordan bruger interagerer med webapplikation når der laves ny flyveopsætning. For yderlige beskrivelser af sekvensdiagrammer tilhørende systemet henvises til logical view \textit{Systemarkitektur og Design} [X].
+Sekvensdiagrammet på figur \ref{fig:login_flysetting} viser et eksempel på en use case omsat til et sekvensdiagram. Sekvensdiagrammet bruges til overordnet at vise hvordan bruger interagerer med webapplikation når der laves ny flyveopsætning. For yderlige beskrivelser af sekvensdiagrammer tilhørende systemet henvises til logical view [X].
+
  
 \begin{figure}[H]
 	\centering
@@ -133,7 +134,7 @@ Efter at have udformet sekvensdiagrammer er der opbygget et vist kendskab til de
 
 På figur \ref{fig:class_drone} vises et klassediagram tilhørende dronens software. Bemærk at klassediagrammet er fra første iteration, hvilket betyder det er relativt lille og ikke indeholder så mange klasser og metoder.
 
-Ønskes mere information om de enkelte klasser og deres ansvarsområder henvises til logical view i \textit{Systemarkitektur og Design} i dokumentationen. [xx]
+For mere information om de enkelte klasser og deres ansvarsområder henvises til logical view [x].
 
 \begin{figure}[H]
 	\centering
@@ -141,4 +142,5 @@ På figur \ref{fig:class_drone} vises et klassediagram tilhørende dronens softw
 	\vspace{-0.6cm}	
 	\caption{Klassediagram drone}
 	\label{fig:class_drone}
+
 \end{figure}
