@@ -31,7 +31,9 @@ Dette afsnit beskriver hvordan det resten af systemet kan implementeres. Før vi
 
 \subsubsection*{Test case 4}
 For at test case 4 kan gennemføres succesfuld, skal kameraet implementeres. 
-Sekvens og klasse diagrammer er designet, så kamera klassen skal oprettes med de metoder beskrevet i klasse diagrammet og funktionaliteten skal implementeres. Klassen skal være i stand til at tage billedet, sende billedet til server og hente en godkendelse ned fra serveren.
+Sekvens og klasse diagrammer er designet, så kamera klassen skal oprettes med de metoder beskrevet i klasse diagrammet og funktionaliteten skal implementeres. \\
+Dronen skal være i stand til, med hjælp af kamera klassen og communication klasse, at tage og sende billeder. Derudover skal der hentes en godkendelse fra serveren om hvorvidt billedet er godkendt.
+
 
 \subsubsection*{Test case 5}
 
@@ -41,20 +43,14 @@ Test case 6 indeholder antikollision. Antikollision skal sikre at dronen ikke fl
 
 \subsection{Videreudvikling}
 
-Dette afsnit beskriver hvilke muligheder der er for at videreudvikle projektet. 
+Dette afsnit beskriver nogle af de muligheder der er for at videreudvikle projektet. 
 
-\subsubsection*{Optimering af sensorer}
+\subsubsection*{Optimering af højdemåling}
 
-Til styring af flyvehøjden kunne der have været anvendt en anden teknologi eller en blanding af det anvendte og en ny teknologi. Dronen bruger en ultralydssensor til måling af højden, men der er en begrænsning på afstanden den kan måle. Sensorerne fungerer til flyvehøjder indenfor en bestemt rækkevidde, når dronen kommer udenfor rækkevidden vil ultralydssensorer ikke længere fungere. Det vil derfor være brugbart at anvende en teknologi der kan måle en højere højde. 
+Til at optimere måling af flyvehøjden, kan der udvides med en ny teknologi. De ultralydssensorer der er monteret på dronen fungerer kun til en bestemt højde og de er mindre præcise når dronen er i bevægelse. En løsning ville være at tilføje andre sensorer, der sammen med ultralydssensorer skal definere flyvehøjden. På flight contorl boarded forefindes et barometer, dette kan benyttes til at supplere ultralydssensorer med.
+Et barometer aflæser lufttrykket og omregner den til en højde i forhold til havoverfladen.
 
-\textbf{GPS}\\
-Idet dronen allerede anvender et GPS modul, kan dette udvides til også at måle højden. Nutidens GPS moduler kan udover at give GPS koordinater også angive højden.
-
-\textbf{Barometer}\\ 
-Et barometer kan anvendes som ekstra teknologi. Et barometer aflæser lufttrykket og omregner den til en højde i forehold til havoverfladen. Dronen vil ikke kunne detektere hvis den flyver over en bakke, hvilket gør at barometeret helst skal bruges sammen med en anden teknologi. På flight control boarded forefindes et barometer. 
-
-
-En kombination af 2 teknologier vil gøre, at ultralydssensoren kan anvendes når dronen skal lette eller lande, hvor den anden teknologi skal bruges under flyvningen. Dette vil være en stabil løsning, da begge teknologier har stærke og svage sider, hvor de svage fjernes ved brug af 2 teknologier.
+En kombination af to teknologier vil gøre, at ultralydssensoren kan anvendes når dronen skal lette eller lande og barometeret skal bruges under flyvningen. Det vil være en stabil løsning, da begge teknologier har stærke og svage sider, hvor de svage fjernes ved brug af to teknologier.
 
 \subsubsection*{PID regulering}
 
