@@ -3,22 +3,22 @@ Projektforløbet er gennemført over en periode på 4 måneder, hvor der er blev
 
 \subsection{Gennemførelse}
 Under hele projektforløbet har alle gruppens medlemmer arbejdet tæt sammen. Specielt i starten af projektet hvor foranalyse, krav og indledende systemarkitektur blev udarbejdet, arbejdede gruppens medlemmer i tæt fællesskab. 
-Da projektet bevægede sig over i detaljeret design og implementering, blev der gjort brug af iterativ udvikling, og gruppens medlemmer blev ansvarlige for forskellige dele. Foruden iterativ udvikling er der også blevet udviklet agilt.
+Da projektet bevægede sig over i detaljeret design og implementering, blev der gjort brug af iterativ udvikling, og gruppens medlemmer blev ansvarlige for forskellige dele. Foruden iterativ udvikling blev der også gjort brug af agil udvikling.
 
 
 \subsubsection*{Iterativ udvikling}
 Stort set alle udviklingsprojekter forløber via vandfaldsmodel eller iterativ udvikling. 
-Hvis vandfaldsmodellen benyttes gennemløber projektet en række faser, der hver for sig afsluttes, inden næste fase påbegyndes. Opbygning af vandfaldsmodellen kunne eksempelvis være: Krav, analyse, design, implementering og til sidst test.
+Hvis vandfaldsmodellen benyttes gennemløber projektet en række faser, der hver for sig afsluttes, inden næste fase påbegyndes. Opbygning af vandfaldsmodellen kunne eksempelvis være: Krav, analyse, design, implementering og test.
 I et iterativt projektforløb gennemløber projektet i stedet en række iterationer, der hver for sig kan ses som miniudgaver af vandfaldsmodellen. Iterationer, der ligger tidligt i et projektforløb, vil ofte omhandle grundfunktionalitet, mens iterationer senere i projektforløbet bruges til at tilføje funktionalitet til systemet. 
 
 \newpage 
 
-Da systemarkitektur og design er opdelt i use cases, var det oplagt at opdele detaljeret design og implementering  i iterationer. Detaljeret design og implementering opdeles i fire iterationer, og nedenfor beskrives indholdet af de forskellige iterationer.  
+Da krav til systemets funktionalitet var beskrevet med use cases, var det oplagt at opdele detaljeret design og implementering  i iterationer. Derfor blev detaljeret design og implementering opdelt i de fire iterationer, som beskrives nedenfor.  
 
 \textbf{Iteration 1}\\
 I første iteration er fokus på systemets mest grundlæggende funktionalitet. 
 Drone gøres i stand til at oprette forbindelse til server via 3G/GPS-modulet.
-Desuden tilsluttes batteri, ESC'er, motorer og ultralyds sensorer til drone. 
+Desuden tilsluttes batteri, ESC'er, motorer og ultralydssensor til drone. 
 Målet med iterationen er at kunne gennemføre use case 1. 
 
 \textbf{Iteration 2}\\
@@ -28,11 +28,11 @@ I iteration 2 er hovedformålet at få kommunikation mellem server og drone til 
 I iteration 3 er hovedformålet at tilføje billede håndtering. Der monteres kamera på drone, så der kan tages billeder under flyvning. Billeder taget under flyvning sendes via mobilnet fra drone til server og gøres tilgængelige for bruger. Målet med iteration 3 er at kunne gennemføre use case 4 og 5.
 
 \textbf{Iteration 4}\\
-Iteration 4's hovedformål var at udvikle antikollision til dronen. Inden tilføjelsen af antikollision kunne dronen udelukkende flyve i lukkede områder uden forhindringer. Tilføjelsen af antikollision skal muliggøre flyvning i normale områder med forhindringer. Efter denne iteration skal alle use cases kunne gennemføres.
+I iteration 4 er hovedformålet at udvikle antikollision til dronen. Inden tilføjelsen af antikollision kunne dronen udelukkende flyve i lukkede områder uden forhindringer. Tilføjelsen af antikollision skal muliggøre flyvning i normale områder med forhindringer. Efter denne iteration skal alle use cases kunne gennemføres.
 
 
 \subsubsection*{Agile arbejdsmetoder}
-Agil systemudvikling har fokus på løbende at levere værdi til kunden gennem en fleksibel og omskiftelig udviklingsproces. Gennem brug af metoder som scrum light er udvikling og dokumentationen af projektet forløbet meget agilt. Under construction fasen blev der gjort brug af backlog og scrum meetings til at bevare overblik over projektets fremgang.
+Agil systemudvikling har fokus på løbende at levere værdi til kunden gennem en fleksibel og omskiftelig udviklingsproces. Gennem brug af metoder som scrum light er udvikling og dokumentationen af projektetforløbet meget agilt. Under construction fasen blev der gjort brug af backlog og scrum meetings til at bevare overblik over projektets fremgang.
 
 
 \newpage
@@ -64,7 +64,7 @@ Transition er den afsluttende fase, og tager hånd om færdiggørelse af projekt
 \newpage
 
 \subsubsection*{ASE modellen}
-ASE modellen som ses på figur \ref{fig:dokument_udvikling} er brugt i kombination med arbejdsmetoden RUP. RUP bruges til at danne overordnede rammer for projektet, mens ASE modellen bruges til definere hvilke dokumenter der skal udarbejdes og hvornår. På figur \ref{fig:dokument_udvikling} vise hvilke dokumenter der oprettes som produkt af ASE modellen. 
+ASE modellen som ses på figur \ref{fig:dokument_udvikling} er brugt i kombination med RUP. RUP bruges til at danne overordnede rammer for projektet, mens ASE modellen bruges til definere hvilke dokumenter der skal udarbejdes og hvornår. På figur \ref{fig:dokument_udvikling} vise hvilke dokumenter der oprettes som produkt af ASE modellen. 
 
 \begin{figure}[H]
 	\centering
@@ -77,9 +77,11 @@ ASE modellen som ses på figur \ref{fig:dokument_udvikling} er brugt i kombinati
 
 \subsubsection*{N + 1 model}
 Alt software design i projektet er lavet ud fra systemudviklings modellen N + 1 [X]. Modellen er en udviklingsmodel der beskriver software fra flere forskellige view's.  
-Med N + 1 modellen tages der altid udgangspunkt i et use case view. Derefter er det op til udviklerholdet at bestemme hvor mange views der skal bruges for at beskrive systemet på tilstrækkelig vis. 
+Med N + 1 modellen tages der udgangspunkt i et use case view. Derefter er det op til udviklerholdet at bestemme hvor mange views der skal bruges for at beskrive systemet på tilstrækkelig vis. 
 
-Til beskrivelse af systemets software anvendes en 5 + 1 view model, som indeholder use case view, logical view, process view, data view, deployment view og implementation view. De nævnte view's beskrives mere uddybende på den følgende side. 
+Til beskrivelse af systemets software anvendes en 5 + 1 view model, som indeholder use case view, logical view, process view, data view, deployment view og implementation view. 
+På figur \ref{fig:n+1} ses en illustration der viser 5 + 1 modellen.
+5 + 1 modellens view's beskrives uddybende på den følgende side. 
 
 \begin{figure}[H]
 	\centering

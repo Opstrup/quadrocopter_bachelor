@@ -8,17 +8,18 @@ I dette afsnit beskrives kravene til projektet [x]. Indledningsvis præsenteres 
 \vspace{-0.2cm}
 Til systemet er der identificeret de 2 aktører: Bruger \& GPS-satellitter. Bruger er primær aktør der ønsker at initialisere og styre systemet. Bruger er ansvarlig for at oprette flyveopsætninger på webapplikationen og tilslutte batteri til dronen.
 GPS-satellitter er sekundær aktør, der gør det muligt for dronen at finde egen position. 
-
 På figur \ref{fig:useCaseDiagram} vises et use case diagram, der viser systemets aktørerne og i hvilke use cases aktørerne optræder. 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.65\textwidth]{Billeder/Krav/Use_case_diagram}
+	\includegraphics[width=0.75\textwidth]{Billeder/Krav/Use_case_diagram}
 	\vspace{-0.3cm}	
 	\caption{Use case diagram}
 	\label{fig:useCaseDiagram}
 \end{figure}
 
-I projektets kravspecifikation er alle use cases beskrevet som fully dressed use cases. I fully dressed use cases beskrives hvordan hovedforløb ser ud i en given use case, hvis den succesfuld gennemføres. Desuden beskrives startbetingelse, aktører og tilføjelser.
+\newpage
+
+I projektets kravspecifikation er alle use cases beskrevet som fully dressed use cases. I fully dressed use cases beskrives hvordan hovedforløb ser ud i en given use case, hvis den succesfuldt gennemføres. Desuden beskrives startbetingelse, aktører og tilføjelser.
 
 Nedenfor beskrives hovedforløb og funktion af de seks use cases:\\
 
@@ -44,6 +45,7 @@ Drones antikollisions sensorer bruges til at detekterer forhindringer. I tilfæl
 
 \section{Ikke-funktionelle krav}
 
-De ikke-funktionelle krav opstilles ud fra systemspecifikationerne og er krav som ikke kan defineres i use cases. De ikke-funktionelle krav har ingen indvirkning på systemets endelig funktion, kun systemspecifikationer.  
+De ikke-funktionelle krav opstilles ud fra systemspecifikationerne og er krav som ikke kan defineres i use cases. Disse krav har ingen indvirkning på systemets endelig funktion, kun systemspecifikationer.  
 
-De generelle krav, er krav der omhandler både drone, server og webapplikation, altså krav der ikke kan placeres i en specifik gruppe. For at sikre system performance, er der eksempelvis opsat krav til de hardwaremoduler og sensorer der er monteret på dronen. 
+De ikke-funktionelle krav opstilles i fem grupper. Nogle krav er generelle krav til systemet, mens andre krav mere specifikt omhandler drone, server og webapplikation eller dataopsamling. 
+De ikke-funktionelle krav bruges til at sikre system performance, eksempelvis stilles krav til de hardwaremoduler og sensorer der er monteret på dronen. 
