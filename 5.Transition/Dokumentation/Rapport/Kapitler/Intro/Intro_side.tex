@@ -7,9 +7,14 @@
 		\hline
 			\textbf{Rev. Nr} & \textbf{Dato}		& \textbf{Initialer} 	& \textbf{Ændring} \\ \hline
 			1.0 	& 1-12-2014 & AO, KG, RL  & Oprettet dokument.  \\ \hline
-			1.1 	& 1-12-2014 & RL  & Tilføjet resume, indledning, forord og systemskitse. \\ \hline
-			1.2 	& 1-12-2014 & KG  & Tilføjet krav og projektafgrænsning. 	\\ \hline
-			1.3 	& 1-12-2014 & AO  & Tilføjet arbejdsmetode og \newline udviklingsproces.	\\ \hline
+			1.1 	& 1-12-2014 & RL  & Tilføjet resume, indledning, forord \newline og systembeskrivelse. \\ \hline
+			1.2 	& 1-12-2014 & KG  & Tilføjet, opgaveformulering, krav \newline og projektafgrænsning. 	\\ \hline
+			1.3 	& 1-12-2014 & AO  & Tilføjet udviklingsproces. \newline udviklingsproces.	\\ \hline
+			1.4 	& 8-12-2014 & KG  & Tilføjet systemarkitektur \newline i projektbeskrivelse..	\\ \hline
+			1.5 	& 8-12-2014 & RL  & Tilføjet design i projektbeskrivelse. \newline udviklingsproces.	\\ \hline
+			1.6 	& 8-12-2014 & AO  & Tilføjet implementering \newline i projektbeskrivelse.	\\ \hline
+			1.7 	& 10-12-2014 & AO, KG, RL  & Tilføjet test, resultater og \newline diskussion af resultater.	\\ \hline
+			1.8 	& 12-12-2014 & AO, KG, RL  & Tilføjet konklusion.	\\ \hline
 
 		\end{tabular}
 	\caption{Revisionshistorik}
@@ -17,7 +22,7 @@
 \end{table}
 
 
-\vspace{1.5cm}
+\vspace{0.5cm}
 
 \section{Ordforklaring}
 \begin{table}[H]
@@ -26,8 +31,14 @@
 		\hline
 			\textbf{Forkortelse} & \textbf{Betydning} & \textbf{Forklaring} \\ \hline
 			 Drone & Drone & Aeroquad ARF quadrocopter og \newline påmonteret hardware. \\ \hline
-			 Drone & Drone & Aeroquad ARF quadrocopter og \newline påmonteret hardware. \\ \hline
-			 Drone & Drone & Aeroquad ARF quadrocopter og \newline påmonteret hardware. \\ \hline
+			 Webapp & Webapplikation & Applikation som bruges til opsætning af nye flyvninger og monitorering af tidlige flyvninger. \\ \hline
+			 Server & Server & Server dækker over systemets database og tilhørende logik. \\ \hline
+			 Main controller & Main controller  & Main controller er en arduino mega2560. Main controlleren styrer dronen ud fra flyveopsætning og data fra diverse sensorer.   \\ \hline
+			 Flight control \newline board & Flight control board  & Boardet er købt sammen med quadrocopter hos aeroquad. Boardet bruges som mellemled mellem main controller og dronens motorer.  \\ \hline
+			 3G/GPS & 3G/GPS modul  & Dette modul er et 3G/GPS shield der påmonteres main controller  \\ \hline
+			 bdd& Block definition diagram  & bdd bruges til at vise systemets overordnede hardware blokke  \\ \hline
+			 ibd& Internal block diagram & ibd bruges til at vise ekstern og intern kommunikation tilhørende en eller flere blokke. \\ \hline
+			 sd& Sekvens diagram & Diagrammet bruges til at vise afvikling og timing af forskellige processer. \\ \hline			 
 		\end{tabular}
 	\caption{Ordforklaring}
 	%\label{tab:TC1}
