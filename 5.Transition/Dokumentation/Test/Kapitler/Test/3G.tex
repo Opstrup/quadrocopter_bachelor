@@ -2,7 +2,7 @@
 
 Enhedstest af 3G modulet foregår ved test af PUT og GET request, som er de metoder der er implementeret på dronen.
 
-For udelukkende at have fokus på 3G modulet under enhedstesten, testes der ikke op imod den server som ellers anvendes til projektet. I stedet benyttes hjemmesiden requestb\footnote{requestb.in} , en hjemmeside der der tillader test af HTTP kommunikation. Ved at tilgå Requestb og starte en session tildeles en URL der kan bruges til test. Requestb indsamler information om alle HTTP request lavet til den tildelte URL. 
+For udelukkende at have fokus på 3G modulet under enhedstesten, testes der ikke op imod den server som ellers anvendes til projektet. I stedet benyttes hjemmesiden requestb\footnote{http://www.requestb.in}, en hjemmeside der tillader test af HTTP kommunikation. Ved at tilgå Requestb og starte en session tildeles en URL der kan bruges til test. Requestb indsamler information om alle HTTP request der er sendt til den tildelte URL. 
 
 På figur \ref{fig:get_req} vises et GET request der sendes fra 3G modulet til en requestb.in server. Den første linje efter \textit{data:} fortæller om requestet er gennemført succesfuldt eller ej. Svaret \textit{200 ok} betyder at GET requestet er gået igennem og det ønskede data på korrekt vis er hentet. 
 
@@ -18,7 +18,7 @@ På figur \ref{fig:get_req} vises et GET request der sendes fra 3G modulet til e
 \newpage
 
 PUT request bruges til at sende data til eller opdatere information på server. 
-På figur \ref{fig:putrequest_module} vises et PUT der sendes fra 3G modulet til requestb.in. De føreste seks linjer på figur \ref{fig:putrequest_module} viser requestet header med linje syv er requestet body. 
+På figur \ref{fig:putrequest_module} vises et PUT der sendes fra 3G modulet til www.requestb.in. De føreste seks linjer på figur \ref{fig:putrequest_module} ses requestet header med linje syv er requestet body. 
 
 \begin{figure}[H]
 \centering

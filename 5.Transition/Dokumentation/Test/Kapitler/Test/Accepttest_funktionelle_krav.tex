@@ -7,9 +7,9 @@
 
 Dette afsnit specificerer accepttest af systemets funktionelle krav. 
 
-Hvis der under accepttesten opstår fejl, der umuliggør fortsat test af efterfølgende testcases afbrydes denne test. Hvis der opstår fejl i enkelte testcases; men fortsat accepttest er mulig, underkendes den enkelte test og accepttesten fortsættes.
+Hvis der under accepttesten opstår fejl, der umuliggør fortsat test af efterfølgende testcases afbrydes denne test. Hvis der opstår fejl i enkelte testcases, men fortsat accepttest er mulig, underkendes den enkelte test og accepttesten fortsættes.
 
-Såfremt en test afbrydes eller en testcase underkendes eller ikke kan gennemføres, skrives den eller de step der ikke kan gennemføres angives de i kapitlet \textbf{Fejl og mangler}. 
+Såfremt en test afbrydes, underkendes eller ikke kan gennemføres, angives den eller de step der ikke kan gennemføres i kapitlet \textbf{Fejl og mangler}. 
 
 
 \section*{Testspecifikation}
@@ -80,7 +80,7 @@ Forudsætninger:	Ingen.
 		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{2.5 cm}|} 
 		\hline
 			\textbf{Step} & \textbf{Handling} & \textbf{Forventet resultat} & \textbf{Resultat} \\ \hline
-			a & Systemet indikerer fejl og bruger genstarter systemet. & Systemet genstartes og \newline forbindelse oprettes. & Godkendt. \\ \hline
+			a & Systemet indikerer fejl og bruger genstarter systemet. & Systemet genstartes og \newline forbindelse oprettes. & Ikke Godkendt. \\ \hline
 		\end{tabular}
 \end{table}
 
@@ -102,7 +102,7 @@ Forudsætninger:	Bruger er oprettet i systemet og UC\#1 er succesfuld gennemfør
 				- Om der skal tages billeder ved de valgte lokationer. \newline
 				- Højde billeder skal tages fra. \newline
 				- Generel flyvehøjde.				
-				 & Flyveopsætning klargjort & Godkendt. \\ \hline
+				 & Flyveopsætning klargjort & (OK). \\ \hline
 			4 & Bruger gemmer flyveopsætning og gør den tilgængelig på server. & Flyveopsætning gøres \newline tilgængelig på server & Ikke godkendt. \\ \hline
 		\end{tabular}
 \end{table}
@@ -141,7 +141,7 @@ Forudsætninger:	UC\#1 og UC\#2 er succesfuld gennemført.
 			\textbf{Step} & \textbf{Handling} & \textbf{Forventet resultat} & \textbf{Resultat} \\ \hline
 			1 & Drone henter flyveopsætning fra server. & Der oprettes forbindelse \newline mellem server og drone \newline og flyveopsætning sendes. & Godkendt. \\ \hline
 			2 & Nuværende position \newline opdateres. & Ingen handling  &  Godkendt. \\ \hline
-			3 & Flyvehøjde tilpasses. & Flyvehøjde justeres & Godkendt. \\ \hline
+			3 & Flyvehøjde tilpasses. & Flyvehøjde justeres & (OK). \\ \hline
 			4 & Flyveorientering tilpasses. & Orientering justeres & Ikke godkendt. \\ \hline
 			5 & Drone flyver mod \newline ønsket position. & Drone nærmer sig \newline ønsket position  &  Ikke godkendt. \\ \hline
 			6 & Ønsket position er nået. & Ønsket position er nået. & Ikke godkendt. \\ \hline
@@ -229,7 +229,7 @@ Forudsætninger:	Bruger er oprettet i systemet.
 		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{2.5 cm}|} 
 		\hline
 			\textbf{Step} & \textbf{Handling} & \textbf{Forventet resultat} & \textbf{Resultat} \\ \hline
-			1 & Bruger logger på \newline webapplikation. & Login lykkes og webapplikations forside vises. & Ikke godkendt.  \\ \hline
+			1 & Bruger logger på \newline webapplikation. & Login lykkes og webapplikations forside vises. & Godkendt.  \\ \hline
 			2 & Fra forsiden navigerer \newline bruger til historik. & En oversigt over tidligere \newline flyvninger vises. & Ikke godkendt. \\ \hline
 			3 & Bruger vælger en specifik \newline tidligere flyvning. &  Billeder, video og flyverute \newline tilhørende valgte flyvning \newline vises. &  Ikke godkendt. \\ \hline			
 		\end{tabular}
@@ -241,7 +241,7 @@ Forudsætninger:	Bruger er oprettet i systemet.
 		\begin{tabular}{|l|p{5 cm}|p{5 cm}|p{2.5 cm}|} 
 		\hline
 			\textbf{Step} & \textbf{Handling} & \textbf{Forventet resultat} & \textbf{Resultat} \\ \hline
-			a & Bruger føres tilbage til login. & Login kan påny forsøges. & Ikke godkendt. \\ \hline
+			a & Bruger føres tilbage til login. & Login kan påny forsøges. & Godkendt. \\ \hline
 		\end{tabular}
 \end{table}
 

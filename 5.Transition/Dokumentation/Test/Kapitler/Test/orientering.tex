@@ -6,10 +6,10 @@ Dette afsnit beskriver test af dronens orientering. Dronen skal have den rette o
 
 Til testen af orientering er nuværende og ønskede GPS positioner hardcoded. 
 Den nuværende og ønskede GPS positions sammenlignes og orienteringen findes. 
-Fra kompasset aflæser main controlleren dronens orientering og sammenligner med den ønskede orientering. Hvis orienteringerne ikke indenfor det ønskede interval, skal dronen ændre retning. Dronens flyveretning ændres ved kortvarigt at forøge Yaw parameteren. 
+Fra kompasset aflæser main controlleren dronens orientering og sammenligner med den ønskede orientering. Hvis orienteringerne ikke ligger indenfor det ønskede interval, skal dronen ændre retning. Dronens flyveretning ændres ved kortvarigt at forøge Yaw parameteren. 
 
 
-På figur \ref{fig:orientering_skift} vises hvad main controlleren gør. Main controlleren sammenligner nuværende med ønskede orientering, hvis orienteringen ikke er indenfor det ønskede interval, ændres denne ved ændre på indstillingen af Yaw.
+På figur \ref{fig:orientering_skift} vises hvad main controlleren gør. Main controlleren sammenligner nuværende orientering med ønskede orientering, hvis orienteringen ikke er indenfor det ønskede interval, ændres denne ved ændre på indstillingen af Yaw.
 
 \begin{figure}[H]
 \centering
