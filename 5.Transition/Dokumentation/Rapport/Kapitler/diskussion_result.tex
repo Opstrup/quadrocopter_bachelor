@@ -36,6 +36,7 @@ Dronen skal være i stand til, med hjælp af kamera klassen og communication kla
 
 
 \subsubsection*{Test case 5}
+For at test case 5 kan gennemføres skal logikken for archive view'et implementeres. Der skal gøres brug af kalender funktionen i AngularJS for at kunne se events efter dato. Billede funktionaliteten skal også implementeres så billederne fra hvert event bliver præsenteret korrekt. 
 
 \subsubsection*{Test case 6}
 Test case 6 indeholder antikollision. Antikollision skal sikre at dronen ikke flyver ind i genstande. For at implementere antikollisions funktionaliteten, skal der gøres brug af DistanceSensor klassen. Denne klasse indeholder metoder til at aflæse værdi fra de valgte sensorer. 
@@ -66,4 +67,6 @@ Main controlleren har kun mulighed for at udføre en kommando afgangen. Dette gi
 
 Ved at anvende et flertrådet system, kan disse prioriteringer optimeres. Et flertrådet system tillader at køre flere processer parallelt. Ved at implementere et flertrådet system, vil 3G/GPS modulet kunne køre parallelt med flight control, således at dronen altid har mulighed for at korrigere for eventuelle hændelser. 
 
-
+\subsubsection*{Sikkerhed for webapplikation og server}
+På nuværende tidspunkt er der ikke nogle former for sikkerhed i forbindelse med webapplikationen og serveren. Dette ville klart være et fokus punkt for fremtidige videreudviklinger af systemet. Der kunne udnyttes tokens i kommunikationen imellem webapplikationen. 
+Brugernavne og passwords kunne også med fordel krypteres i databasen, for at højne sikkerheden.
