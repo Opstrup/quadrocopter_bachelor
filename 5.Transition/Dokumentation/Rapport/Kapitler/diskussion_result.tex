@@ -17,26 +17,48 @@ Men pga. manglede implementering kan webapplikationen ikke sende de nyoprettede 
 \textbf{Server}\\
 Server er implementeret med fuldt fungerende database og tilhørende interface. Billeder i databasen er koblet op til events, de kunne med fordel være koblet til waypoints.
 
+\newpage
+\subsection{Færdig udvikling}
+Dette afsnit beskriver hvordan det resten af systemet kan implementeres. Før videreudvikling kan foretages, skal færdig udvikling være gennemført.
+
+\subsubsection*{Test case 4}
+For at test case 4 kan gennemføres succesfuld, skal kameraet implementeres. 
+Sekvens og klasse diagrammer er designet, så kamera klassen skal oprettes med de metoder beskrevet i klasse diagrammet og funktionaliteten skal implementeres. Klassen skal være i stand til at tage billedet, sende billedet til server og hente en godkendelse ned fra serveren.
+
+\subsubsection*{Test case 5}
+
+\subsubsection*{Test case 6}
+Test case 6 indeholder antikollision. Antikollision skal sikre at dronen ikke flyver ind i genstande. For at implementere antikollisions funktionaliteten, skal der gøres brug af DistanceSensor klassen. Denne klasse indeholder metoder til at aflæse værdi fra de valgte sensorer. 
 
 \subsection{Videreudvikling}
 
 Dette afsnit beskriver hvilke muligheder der er for at videreudvikle projektet. 
 
+\subsubsection*{Optimering af sensorer}
+
+Til styring af flyvehøjden kunne der have været anvendt en anden teknologi eller en blanding af det anvendte og en ny teknologi. Dronen bruger en ultralydssensor til måling af højden, men der er en begrænsning på afstanden den kan måle. Sensorerne fungerer til flyvehøjder indenfor en bestemt rækkevidde, når dronen kommer udenfor rækkevidden vil ultralydssensorer ikke længere fungere. Det vil derfor være brugbart at anvende en teknologi der kan måle en højere højde. 
+
+\textbf{GPS}\\
+Idet dronen allerede anvender et GPS modul, kan dette udvides til også at måle højden. Nutidens GPS moduler kan udover at give GPS koordinater også angive højden.
+
+\textbf{Barometer}\\ 
+Et barometer kan anvendes som ekstra teknologi. Et barometer aflæser lufttrykket og omregner den til en højde i forehold til havoverfladen. Dronen vil ikke kunne detektere hvis den flyver over en bakke, hvilket gør at barometeret helst skal bruges sammen med en anden teknologi. På flight control boarded forefindes et barometer. 
+
+
+En kombination af 2 teknologier vil gøre, at ultralydssensoren kan anvendes når dronen skal lette eller lande, hvor den anden teknologi skal bruges under flyvningen. Dette vil være en stabil løsning, da begge teknologier har stærke og svage sider, hvor de svage fjernes ved brug af 2 teknologier.
+
 \subsubsection*{PID regulering}
 
-Dronen anvender regulering til flyvehøjde og orienteringen. Disse to parametre skal konstant reguleres for at sikre at den ikke flyver ind i objekter. \\
-Der kan videreudvikles på dronens regulering, da denne ikke fungerer optimalt. Den nuværende regulering er ikke stabil og giver nogle store udsving. En evt. forbedring er at anvende PID regulering. 
-PID regulering bruger tidligere og nuværende fejl til at korrigere med. Denne form for regulering vil tilpasse sig omstændighederne hele tiden, og virke dynamisk.
+Dronen anvender regulering til flyvehøjde og orienteringen. Disse to parametre skal konstant reguleres for at sikre at den ikke flyver i den ønskede retning. \\
+Den nuværende regulering er bygget op omkring højdemåling og kompas. Ud fra værdierne af sensorerne, afgøres der om der skal reguleres. Der tages ikke forbehold for tidligere fejl ved denne implementerede regulering og derfor vil dronen svinge meget i højde.
 
+For at kompensere for udsving, kan PID regulering anvendes. PID regulering måler nuværende fejl og sammenligner med den tidligere fejl og indstiller reguleringen derefter. Det vil give en flydende overgang og en stabil drone. Denne regulering vil tilpasse sig omstændighederne og er derved dynamisk.
 
-hvirfor regulering
-Hvor forbedringen ligger.
+\subsubsection*{Flertrådet main controller}
 
-\subsubsection*{Flertrådet system}
+Main controlleren har kun mulighed for at udføre en kommando afgangen. Dette giver ikke nogle problemer, men når der ikke er nogen prioriteringsliste, vil kritiske metoder kunne komme til at vente hvis en mindre kritisk og tidskrævende metode afvikles. 
+3G/GPS modulet er tidskrævende og ikke særlig kritisk, hvormed prioritering for at anvende modulet ligger lavt. Men 3G/GPS modulet har samme prioritet som flight control og kan være i brug under kritiske situationer. 
 
-
-3G/GPS modulet er tidskrævende. Ved at anvende et flertrådet system, kan tidsproblemer optimeres. Et flertrådet system tillader at køre flere processer parallelt.
-Dronen kan både kontrollere reguleringen og kommunikationen til serveren hvis disse processer køres parallelt. 
-
+Ved at anvende et flertrådet system, kan disse prioriteringer optimeres. Et flertrådet system tillader at køre flere processer parallelt. Ved at implementere et flertrådet system, vil 3G/GPS modulet kunne køre parallelt med flight control, således at dronen altid har mulighed for at korrigere for eventuelle hændelser. 
 
 
