@@ -23,45 +23,42 @@ Det er lykkedes at implementere en fuld funktionel server, der fungerer som bind
 
 Billeder i serverens database er koblet op til events, de kunne med fordel i stedet være koblet til waypoints. Udover dette har de overordnet server design valg fungeret tilfredsstillende. Hvilket har betydet at der er blevet holdt fast i de værktøjer og beslutninger, der blev truffet i starten af projektet. Eksempelvis indeholder server en SQLite database, som til projektet har fungeret fint. Der kunne dog i stedet være gjort brug af en MongoDB database, der er en database type der håndterer data som objekter.
 
+\vspace{0.5cm}
+
+\subsection{Færdigudvikling}
+
+Som det fremgik af resultatafsnittet, er det ikke lykkedes at implementere systemets fulde funktionalitet. Derfor bør der inversteres tid i færdigudvikling af systemet før eventuel videreudvikling foretages. I dette afsnit beskrives hvordan det restende systemfunktionalitet kan implementeres. 
+
+\textbf{Test case 4}  \\
+Før test case 4 kan gennemføres succesfuldt, skal håndtering af kamera implementeres.
+Sekvens- og klassediagrammer er designet, så det eneste der mangler er oprettelse af en \textit{camera} klasse. Klassen oprettes og tilføjes de metoder der er beskrevet i klassediagrammet. Desuden skal dronen skal være i stand til at sende billeder til server og tage imod accept af billeder fra systemets bruger. Dette gøres ved udvidelse af \textit{communication} klassen. 
+
+\textbf{Test case 5} \\
+For at test case 5 kan gennemføres skal logikken til archive view'et implementeres. 
+Helt overordnet er målet, at visning af billeder og flyveruter skal implementeres, så billeder og flyveruter fra forskellige flyvninger præsenteres på korrekt vis. Dette gøres bla. ved brug af kalender funktionen i AngularJS. 
+
+\textbf{Test case 6}\\
+Test case 6 indeholder antikollision. Antikollision skal sikre at dronen ikke flyver ind i eventuelle forhindringer uden flyvning. For at implementere antikollisions funktionaliteten, kan der gøres brug af \textit{DistanceSensor} klassen. Det er muligt at lave objekter af \textit{DistanceSensor} klassen som skal bruges til altikollision. 
 
 \newpage
 
-\subsection{Færdig udvikling}
-Dette afsnit beskriver hvordan det resten af systemet kan implementeres. Før videreudvikling kan foretages, skal færdig udvikling være gennemført.
-
-\subsubsection*{Test case 4}
-For at test case 4 kan gennemføres succesfuld, skal kameraet implementeres. 
-Sekvens og klasse diagrammer er designet, så kamera klassen skal oprettes med de metoder beskrevet i klasse diagrammet og funktionaliteten skal implementeres. \\
-Dronen skal være i stand til, med hjælp af kamera klassen og communication klasse, at tage og sende billeder. Derudover skal der hentes en godkendelse fra serveren om hvorvidt billedet er godkendt.
-
-
-\subsubsection*{Test case 5}
-For at test case 5 kan gennemføres skal logikken for archive view'et implementeres. Der skal gøres brug af kalender funktionen i AngularJS for at kunne se events efter dato. Billede funktionaliteten skal også implementeres så billederne fra hvert event bliver præsenteret korrekt. 
-
-\subsubsection*{Test case 6}
-Test case 6 indeholder antikollision. Antikollision skal sikre at dronen ikke flyver ind i genstande. For at implementere antikollisions funktionaliteten, skal der gøres brug af DistanceSensor klassen. Denne klasse indeholder metoder til at aflæse værdi fra de valgte sensorer. 
-
-
 \subsection{Videreudvikling}
 
-Dette afsnit beskriver nogle af de muligheder der er for at videreudvikle projektet. 
+I dette afsnit beskrives nogle af de muligheder der er for videreudvikle af systemet.  
 
 \subsubsection*{Optimering af højdemåling}
-
 Til at optimere måling af flyvehøjden, kan der udvides med en ny teknologi. De ultralydssensorer der er monteret på dronen fungerer kun til en bestemt højde og de er mindre præcise når dronen er i bevægelse. En løsning ville være at tilføje andre sensorer, der sammen med ultralydssensorer skal definere flyvehøjden. På flight contorl boarded forefindes et barometer, dette kan benyttes til at supplere ultralydssensorer med.
 Et barometer aflæser lufttrykket og omregner den til en højde i forhold til havoverfladen.
 
 En kombination af to teknologier vil gøre, at ultralydssensoren kan anvendes når dronen skal lette eller lande og barometeret skal bruges under flyvningen. Det vil være en stabil løsning, da begge teknologier har stærke og svage sider, hvor de svage fjernes ved brug af to teknologier.
 
 \subsubsection*{PID regulering}
-
 Dronen anvender regulering til flyvehøjde og orienteringen. Disse to parametre skal konstant reguleres for at sikre at den ikke flyver i den ønskede retning. \\
 Den nuværende regulering er bygget op omkring højdemåling og kompas. Ud fra værdierne af sensorerne, afgøres der om der skal reguleres. Der tages ikke forbehold for tidligere fejl ved denne implementerede regulering og derfor vil dronen svinge meget i højde.
 
 For at kompensere for udsving, kan PID regulering anvendes. PID regulering måler nuværende fejl og sammenligner med den tidligere fejl og indstiller reguleringen derefter. Det vil give en flydende overgang og en stabil drone. Denne regulering vil tilpasse sig omstændighederne og er derved dynamisk.
 
 \subsubsection*{Flertrådet main controller}
-
 Main controlleren har kun mulighed for at udføre en kommando afgangen. Dette giver ikke nogle problemer, men når der ikke er nogen prioriteringsliste, vil kritiske metoder kunne komme til at vente hvis en mindre kritisk og tidskrævende metode afvikles. 
 3G/GPS modulet er tidskrævende og ikke særlig kritisk, hvormed prioritering for at anvende modulet ligger lavt. Men 3G/GPS modulet har samme prioritet som flight control og kan være i brug under kritiske situationer. 
 
