@@ -2,21 +2,29 @@
 
 I dette afsnit beskrives og diskuteres de resultater gruppen opnåede og der laves en beskrivelse af de punkter der kunne være lavet på bedre, smartere eller anderledes vis. Diskussionen tager udgangspunkt i de opnåede resultater beskrevet i resultatafsnittet.
 
-Accepttesten forløb stort set som planlagt indtil test case 4-6 som omhandlede opsamling af billeder, visning af billeder og tilføjelse af antikollision. Test case 4-6 blev ikke godkendt, da de kun blev designet og ikke implementeret. Da arbejdsprocessen var planlagt i iterationer, var de fejlene test cases ikke kritiske for det resterende system.\\
+Accepttesten forløb stort set som planlagt indtil test case 4-6, som omhandlede opsamling af billeder, visning af billeder og tilføjelse af antikollision. Test case 4-6 blev ikke godkendt, da de kun blev designet og ikke implementeret. Da arbejdsprocessen var planlagt i iterationer, var de fejlene test cases ikke kritiske for det resterende system.\\
 
 \textbf{Drone}\\
 Drone kan under flyvning finde nuværende flyvehøjde, flyveretning og GPS position ved aflæsning af data fra ultralydssensor, kompas og GPS.  Ud fra det aflæste data tilpasses flyveindstillinger. Via det mobile 3G-netværk sender drone information om nuværende position til server og henter flyveopsætninger fra server.
 
-Tilpasning af flyveindstillinger er implementeret som en tre-trins-raket. Først tilpasses flyvehøjde, dernæst tilpasses flyveretning og når både flyvehøjde og flyveretning er tilpasset flyves fremad. Hver del er implementeret og fungerer hver for sig selv, men samlet set fungerer det ikke optimalt pga. manglende optimering. Til justering og optimering af flyvehøjde og flyveorientering kunne der med fordel være gjort brug af PID regulering.  I implementerings fasen opstod problemer med timing, specielt når 3G/GPS modulet blev brugt. Ved at indføre brug af flertrådet main controller kunne disse problemer undgås. \\
+Tilpasning af flyveindstillinger er implementeret i en tre trin. Først tilpasses flyvehøjde, dernæst tilpasses flyveretning og når både flyvehøjde og flyveretning er tilpasset flyves der fremad. Hver del er implementeret og fungerer hver for sig selv, men samlet set fungerer det ikke optimalt pga. manglende optimering. Til justering af flyvehøjde og flyveorientering kunne der med fordel være gjort brug af PID regulering.  I implementerings fasen opstod problemer med timing, specielt når 3G/GPS modulet blev brugt. Ved at indføre brug af flertrådet main controller kunne disse problemer undgås. \\
+
 
 \textbf{Webapplikation}\\
-Før systemets bruger kan få lov at tilgå webapplikationens funktionalitet er login påkrævet. Når bruger er logget ind kan der laves flyveopsætninger. Det er lykkes at implementere webapplikationen så den kan hente og fremvise data fra server. 
-Men pga. manglede implementering kan webapplikationen ikke sende de nyoprettede event, med dertilhørende flyveinformationer til server.\\
+Før systemets bruger kan få lov at tilgå webapplikationens funktionalitet er login påkrævet. Efter succesfuld login hentes og fremvises data fra server.
+Når bruger er logget ind kan der laves nye flyveopsætninger, men pga. manglede implementering kan webapplikationen ikke sende de nyoprettede flyveopsætninger til server.
 
+Overordnet designvalg til webapplikation har fungeret tilfredsstillende. Dette har betydet at der undervejs i projektet ikke er lavet væsentlige ændringer i design og brug af udviklingsværktøjer. Webapplikationen er udviklet ved brug AngularJS, CSS3 og HTML5. Server er udviklet med en kombination af Django og Django-REST-framework, på samme vis kunne webapplikationen været blevet udviklet. Men server og webapplikation er bevist udviklet adskilt og med forskellige værktøjer. Dette er gjort for at bevise at der er lav kobling mellem server og webapplikation, og for at undgå problemer med syntaks. 
+
+\newpage
 
 \textbf{Server}\\
-Server er implementeret med fuldt fungerende database og tilhørende interface. Billeder i databasen er koblet op til events, de kunne med fordel være koblet til waypoints.
+Det er lykkedes at implementere en fuld funktionel server, der fungerer som bindeled mellem drone og webapplikation. Serveren er implementeret som en passiv enhed, der er ansvarlig for håndtering af systemets data og tilgås via HTTP protokollen. 
 
+Billeder i serverens database er koblet op til events, de kunne med fordel i stedet være koblet til waypoints. Udover dette har de overordnet server design valg fungeret tilfredsstillende. Hvilket har betydet at der er blevet holdt fast i de værktøjer og beslutninger, der blev truffet i starten af projektet. Eksempelvis indeholder server en SQLite database, som til projektet har fungeret fint. Der kunne dog i stedet være gjort brug af en MongoDB database, der er en database type der håndterer data som objekter.
+
+
+\newpage
 
 \subsection{Videreudvikling}
 
