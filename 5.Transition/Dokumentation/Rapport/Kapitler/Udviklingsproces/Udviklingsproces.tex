@@ -3,7 +3,7 @@ Projektforløbet er gennemført over en periode på 4 måneder, hvor der er blev
 
 \subsection{Gennemførelse}
 Under hele projektforløbet har alle gruppens medlemmer arbejdet tæt sammen. Specielt i starten af projektet hvor foranalyse, krav og indledende systemarkitektur blev udarbejdet, arbejdede gruppens medlemmer i tæt fællesskab. 
-Da projektet bevægede sig over i detaljeret design og implementering, blev der gjort brug af iterativ udvikling, og gruppens medlemmer blev ansvarlige for forskellige dele. Foruden iterativ udvikling er der også blev udviklet agilt.
+Da projektet bevægede sig over i detaljeret design og implementering, blev der gjort brug af iterativ udvikling, og gruppens medlemmer blev ansvarlige for forskellige dele. Foruden iterativ udvikling er der også blevet udviklet agilt.
 
 
 \subsubsection*{Iterativ udvikling}
@@ -16,8 +16,8 @@ I et iterativt projektforløb gennemløber projektet i stedet en række iteratio
 Da systemarkitektur og design er opdelt i use cases, var det oplagt at opdele detaljeret design og implementering  i iterationer. Detaljeret design og implementering opdeles i fire iterationer, og nedenfor beskrives indholdet af de forskellige iterationer.  
 
 \textbf{Iteration 1}\\
-I den første iteration er fokus på systemets mest grundlæggende funktionalitet. 
-Drone gøres i stand til at oprette forbindelse til server via 3G-shield'et.
+I første iteration er fokus på systemets mest grundlæggende funktionalitet. 
+Drone gøres i stand til at oprette forbindelse til server via 3G/GPS-modulet.
 Desuden tilsluttes batteri, ESC'er, motorer og ultralyds sensorer til drone. 
 Målet med iterationen er at kunne gennemføre use case 1. 
 
@@ -32,7 +32,7 @@ Iteration 4's hovedformål var at udvikle antikollision til dronen. Inden tilfø
 
 
 \subsubsection*{Agile arbejdsmetoder}
-Agil systemudvikling har fokus på løbende at levere værdi til kunden gennem en fleksibel og omskiftelig udviklingsproces. Udvikling og dokumentationen af projektet har forløbet meget agilt. Metoder som scrum light er blevet anvendt, og under construction fasen blev der ofte gjort brug af scrum meetings brugt og backlog til at bevare overblik over projektets fremgang.
+Agil systemudvikling har fokus på løbende at levere værdi til kunden gennem en fleksibel og omskiftelig udviklingsproces. Gennem brug af metoder som scrum light er udvikling og dokumentationen af projektet forløbet meget agilt. Under construction fasen blev der gjort brug af backlog og scrum meetings til at bevare overblik over projektets fremgang.
 
 
 \newpage
@@ -50,17 +50,16 @@ I dette afsnit beskrives de metoder der er blevet benytter i projektet.
 \end{figure}
 
 \textbf{Inception}\\
-Inception fasen er projektets indledende fase, og bruges til at lave forundersøgelse, valg af hardware/software samt opsætning af krav. Funktionelle krav opsættes vha. use case analyse af systemets funktionalitet, mens ikke-funktionelle krav er generelle krav til systemspecifikation.
-I løbet af inception fasen blev foranalyse, indkøbsliste, krav til systemet og overordnet systemskitse udarbejdet. 
+Inception fasen er projektets indledende fase, og bruges til at lave forundersøgelse, valg af hardware/software samt opsætning af krav. I løbet af inception fasen udarbejdes foranalyse, indkøbsliste, krav til systemet og overordnet systemskitse. 
 
 \textbf{Elaboration}\\
-Elaboration fasen tager hånd om systemarkitektur og design. I denne fase udarbejdes der indledningsvis en domain model, og derefter laves systemarkitektur for hardware og software. 
+Elaboration fasen tager hånd om systemarkitektur og design. I denne fase udarbejdes der indledningsvis en domain model og derefter systemarkitektur af hardware og software. 
 
 \textbf{Construction}\\
 I construction fasen er produktet i fokus, og der skiftes løbende mellem implementering af ny funktionalitet, test og dokumentation af nytilføjet funktionalitet. 
 
 \textbf{Transition}\\
-Transition er den afsluttende fase, og denne fase tager hånd om færdiggørelse af projekt og overdragelse af produkt. Idet vi ikke har nogen egentlig kunde, bruges afsnittet til lave accepttest, færdiggøre dokumentation og udarbejdelse af rapport. 
+Transition er den afsluttende fase, og tager hånd om færdiggørelse af projekt og overdragelse af produkt. Idet gruppen ikke har nogen egentlig kunde, bruges fasen til lave accepttest, færdiggøre dokumentation og udarbejdelse af rapport. 
 
 \newpage
 
@@ -77,8 +76,7 @@ ASE modellen som ses på figur \ref{fig:dokument_udvikling} er brugt i kombinati
 \newpage
 
 \subsubsection*{N + 1 model}
-Alt software design i projektet er udført ud fra systemudviklings modellen N + 1 [X]. 
-Modellen er en udviklingsmodel der beskriver software fra flere forskellige view's.  
+Alt software design i projektet er lavet ud fra systemudviklings modellen N + 1 [X]. Modellen er en udviklingsmodel der beskriver software fra flere forskellige view's.  
 Med N + 1 modellen tages der altid udgangspunkt i et use case view. Derefter er det op til udviklerholdet at bestemme hvor mange views der skal bruges for at beskrive systemet på tilstrækkelig vis. 
 
 Til beskrivelse af systemets software anvendes en 5 + 1 view model, som indeholder use case view, logical view, process view, data view, deployment view og implementation view. De nævnte view's beskrives mere uddybende på den følgende side. 
@@ -97,7 +95,7 @@ Til beskrivelse af systemets software anvendes en 5 + 1 view model, som indehold
 Use case viewet består af use case beskrivelser, der er udviklet ud fra brugers synspunkt og som bruges til at beskrive systemets funktionalitet og forskellige brugsscenarier. Alle udarbejdede use case beskrivelser forefindes i kravspecifikationen.
 
 \textbf{Logical View}\\
-Logical view bruges til at beskrive de logiske blokke i systemet. På baggrund af hver iteration, er der udarbejdet tilhørende Designoverview-, pakke-, klasse-, sekvens- og state machine diagrammer. Diagrammerne bruges til at give et overblik over systemets funktionalitet på et mere detaljeret niveau.
+Logical view bruges til at beskrive de logiske blokke i systemet. På baggrund af hver iteration, er der udarbejdet tilhørende designoverview-, pakke-, klasse-, sekvens- og state machine diagrammer. Diagrammerne bruges til at give et overblik over systemets funktionalitet på et mere detaljeret niveau.
 
 \textbf{Process View}\\
 Process view bruges til at beskrive sideløbende processer/tråde i systemet og hvordan samspillet imellem disse er. I view'et beskrives også krav til timing i kommunikation mellem drone og server.
