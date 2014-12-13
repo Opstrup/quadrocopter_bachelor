@@ -1,6 +1,6 @@
 \section{Domain Model}
 
-Domain modellen bruges som en overgang mellem kravspecifikation og systemarkitektur. 
+Domain modellen\footnote{http://en.wikipedia.org/wiki/Domain\_model} bruges som en overgang mellem kravspecifikation og systemarkitektur. 
 I kravspecifikation beskrives hvad der sker ved interaktion med systemet. Mens systemarkitekturen bruges til at beskrive systemet i blokke og til at skitsere både interne og eksterne forbindelser. Domain modellen bruges til at beskrive hele systemets domæne. Der kigges ikke på hardware vs. software, der kigges i stedet på "enheder" og deres ansvarsområder.
 
 På figur \ref{fig:domain_model} vises domain model tilhørende systemet. De fire øverste enheder i domain modellen dækker ansvarsområder som har med systemets webapplikation at gøre. De resterende enheder er alle tilknyttet ansvarsområder der omhandler dronen.
@@ -28,8 +28,6 @@ Boundary klasser repræsenterer use case-aktører og aktørernes grænseflader t
 
 \textbf{Controller klasser} \newline
 Controller klasser indeholder systemets domænelogik og står for at kontrollere systemets boundary og domain klasser. Desuden er controller klasserne ansvarlige for at håndtere input og output fra systemets boundary klasser.\\
-
-For yderlige information om domain modellen og tilhørende klasser henvises til linket \footnote{http://epf.eclipse.org/wikis/openuppt/openup\_basic/guidances/concepts/ \newline entity\_control\_boundary\_pattern,\_uF-QYEAhEdq\_UJTvM1DM2Q.html}
 
 \vspace{0.5cm}
 
