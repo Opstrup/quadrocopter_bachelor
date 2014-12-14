@@ -1,9 +1,3 @@
-/*
- * EventHandler.cpp
- *
- * Created: 11-11-2014 11:43:51
- *  Author: Kevin
- */ 
 #include "EventHandler.h"
 
 eventHandler::eventHandler()
@@ -33,15 +27,6 @@ int eventHandler::getNextEvent(String request)
 void eventHandler::setOnlineLocation(String request, float _latitude, float _longitude)
 {
 	aJsonObject* put_isOnline_location = aJson.createObject();
-	
-	//int _id = atoi(aJson.print(aJson.getObjectItem(data_object, "id")));
-	
-	
-	//char* _model = aJson.print(aJson.getObjectItem(data_object, "model"));
-	//_model = strtok(_model,"\"");
-	//_model = strtok(_model,"\"");
-	//int _putnextEvent = atoi(aJson.print(aJson.getObjectItem(data_object, "next_event")));
-
 	
 	aJson.addNumberToObject(put_isOnline_location,"id",1);
 	aJson.addStringToObject(put_isOnline_location,"is_online" ,"true");

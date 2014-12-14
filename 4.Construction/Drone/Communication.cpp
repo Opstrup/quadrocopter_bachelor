@@ -1,17 +1,4 @@
-/*
- * Communication.cpp
- *
- * Created: 12-11-2014 12:05:21
- *  Author: Kevin
- */ 
 #include "Communication.h"
-
-// communication :: communication(getAndput gap, eventHandler eHandler,waypointsHandler wpHandler)
-// {
-//  	_gap = gap;
-// 	_wpHandler = wpHandler;
-// 	_eHandler = eHandler;
-// }
 
 waypoint* communication::getwayPoints()
 {

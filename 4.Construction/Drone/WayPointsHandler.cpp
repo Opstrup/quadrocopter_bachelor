@@ -50,11 +50,7 @@ waypoint* waypointsHandler::getWayPoints(String request)
 	
 		if (numberOfWaypoints > 1)
 		{
-			
-			//int i = 0;
-			//while (i < numberOfWaypoints)
-			for(int i = 0; i <numberOfWaypoints; i++)
-			{
+			for(int i = 0; i <numberOfWaypoints; i++){
 				devide_waypoints = strtok (NULL,"}");
 				devide_waypoints = "{" + devide_waypoints + "}";		
 				Serial.println(devide_waypoints);	
@@ -76,10 +72,6 @@ waypoint* waypointsHandler::getWayPoints(String request)
  				Serial.println(aWayPoint.getheight());
 				strwayPoints[i] = aWayPoint;
 
-			
-				
-				
-				
 				aJson.deleteItem(waypoints_object);
 				
 	
@@ -87,10 +79,25 @@ waypoint* waypointsHandler::getWayPoints(String request)
 		}
 		else if (numberOfWaypoints == 1)
 		{
+			devide_waypoints = strtok (NULL,"}");
+			devide_waypoints = "{" + devide_waypoints + "}";
 			Serial.println("numberofWaypoints = 1");
-// 			devide_waypoints = strtok (NULL,"}");
-// 			devide_waypoints = devide_waypoints + "}";
-// 			strwayPoints[0] = devide_waypoints;
+			
+			char wp[500];
+			devide_waypoints.toCharArray(wp,500);
+			
+			aJsonObject* waypoints_object = aJson.parse(wp);
+			char* _latitude_char = aJson.print(aJson.getObjectItem(waypoints_object, "latitude"));
+			char* _longitude_char = aJson.print(aJson.getObjectItem(waypoints_object, "longitude"));
+			
+			char* _height_char = aJson.print(aJson.getObjectItem(waypoints_object, "height"));
+			char* _takePhoto = aJson.print(aJson.getObjectItem(waypoints_object, "take_photo"));
+			waypoint aWayPoint;
+			
+			delay(1000);
+			aWayPoint = createWayPoint(_latitude_char,_longitude_char,_height_char,_takePhoto);
+			Serial.println(aWayPoint.getheight());
+			strwayPoints[i] = aWayPoint;
 		}
 	return strwayPoints;
 }
