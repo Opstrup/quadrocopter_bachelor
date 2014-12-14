@@ -9,7 +9,7 @@ Drone indeholder alt systemets hardware. Software til drone er udviklet i progra
 
 Håndtering af GPS sker via den abstrakte \textit{GPS} klasse og \textit{StandAloneGps} klassen der nedarver fra den abstrakte klasse. Når nuværende og ønsket GPS position kendes, kan korrekt flyveretning og afstand til ønsket GPS position beregnes. Til at beregne korrekt flyveretning og afstand til ønsket GPS position bruges de to metoder \textit{calBearingToTarget} og \textit{calDistToTarget} fra \textit{FlightControl} klassen. 
 
-Dronen kommunikerer med server via HTTP protokollen, til dette anvendes flere klasser. GetAndPut klassen som er den mest hardware nære klasse, håndterer \textit{GET} og \textit{PUT} requests. Metoder i \textit{GetAndPut} klassen anvendes af de to klasser, \textit{EventHandler} og \textit{WayPointsHandler}. Disse klasser sorterer informationen fra \textit{GetAndPut} og returnerer det nødvendige information. \textit{Communication} klassen bruger Handler klasserne, hvilket giver systemet lav kobling. Ved at have denne opdeling, er klasserne uafhængige af hinanden og tests kan udføres enkelt.
+Dronen kommunikerer med server via HTTP protokollen, til dette anvendes flere klasser. GetAndPut klassen som er den mest hardware nære klasse, håndterer \textit{GET} og \textit{PUT} requests. Metoder i \textit{GetAndPut} klassen anvendes af de to klasser, \textit{EventHandler} og \textit{WayPointsHandler}. Disse klasser sorterer informationen fra \textit{GetAndPut} og returnerer den nødvendige information. \textit{Communication} klassen bruger Handler klasserne, hvilket giver systemet lav kobling. Ved at have denne opdeling, er klasserne uafhængige af hinanden og tests kan udføres enkelt.
 
 Under flyvning aflæser main controller løbende flyvehøjde fra ultralydssensor via \textit{DistanceSensor} klassen og nuværende orientering fra flight control boardet via \textit{FlightControl} klassen. \textit{FlightControl} klassen benyttes også når der på baggrund af indsamlet data er brug for ændring af flyveindstilling, eksempelvis korrektion af \textit{throttle}. I \textit{FlightControl} klassen er der dels implementeret metoder, der initierer timere som kontrollerer PWM styrings signaler. Desuden er der implementeret set-metoder der anvendes til korrektion af \textit{throttle}, \textit{yaw}, \textit{picth} og \textit{roll}.  
 
@@ -20,7 +20,7 @@ Indledningsvis i implementeringen blev der lagt meget fokus på server, da den s
 Server er udviklet i programmerings sproget Python og med webframeworket Django[12].
 Tilsammen udgør Python og Django en SQLite database med et RESTful API. Der benyttes en række API-endpoints for at tilgå eller ændre data på server.
 
-Databasen er designet modulært så systemet har stor mulighed for udvidelser, fx. mulighed for håndtering af flere brugere og flere droner. Omdrejnings punktet i databasen er et event, der indeholder information omkring hvilke bruger som har oprettet event og til hvilke droner.
+Databasen er designet modulært så systemet har stor mulighed for udvidelser, fx. mulighed for håndtering af flere brugere og flere droner. Omdrejningspunktet i databasen er et event, der indeholder information omkring hvilke bruger som har oprettet event og til hvilke droner.
 
 Til udviklingen af serveren er der også benyttet Django REST frameworket[13], som er en udvidelse til Django. Ved brug af dette framework kan tags som "@api\_view(['GET', 'POST'])" benyttes til at fortælle server hvilke HTTP requests der er tilladt til et givet endpoint. 
 Ved brug af REST frameworket kan der gøres brug af serializers, som bruges til at informere  serveren om hvordan data skal formateres på. Med et browsable API simplificeres udviklingen med frameworket.
@@ -29,12 +29,12 @@ Ved brug af REST frameworket kan der gøres brug af serializers, som bruges til 
 \subsection{Webapplikation}
 Webapplikationen  er udviklet i programmeringssprogene HTML, CSS og JavaScript. Webapplikationens frontend er udviklet med frameworket AngularJS[14], som er framework udviklet af Google. Derudover benyttes et google maps API til webapplikationen. Brug af google maps API'et muliggør brug af kort på webapplikationen. Da AngularJS er benyttet til udvikling, er frontend opdelt efter MVC-modellen[15]. 
 
-Google maps kortet er implementeret ved brug af et google-maps directive[16], som pakker google maps API'et ind og gør det mere effektivt i forbindelse med Angular udvikling. Dette medfører at dele af den funktionalitet som google maps oprindelig tilbyder ikke kan bruges. 
+Google maps kortet er implementeret ved brug af et google-maps directive[16], som pakker google maps API'et ind og gør det mere effektivt i forbindelse med Angular udvikling. Dette medfører at dele af den funktionalitet, som google maps oprindelig tilbyder ikke kan bruges. 
 
 Da det var et krav at waypoints skulle oprettes ved klik på kortet, blev der udviklet et klik event. 
 Når der klikkes på kortet, bliver der automatisk tegnet et waypoint på kortet. 
-I den bagvedliggende koden bliver der oprettet to waypoint objekter. 
-Det ene waypoint objekt er til kortet, og indeholder icon, latitude og longitude til den placering waypointet skal tegnes.  Det andet waypoint sendes til serveren når bruger ønsker at publicere den oprette flyveopsætning. 
+I den bagvedliggende kode bliver der oprettet to waypoint objekter. 
+Det ene waypoint objekt er til kortet, og indeholder icon, latitude og longitude til den placering waypointet skal tegnes.  Det andet waypoint sendes til serveren når bruger ønsker at publicere den oprettede flyveopsætning. 
 Dette er nødsaget, da google-maps directivet ikke kan tegne waypoints hvis de indeholder data som directivet ikke kender. Figur \ref{fig:click_event} illustrere hvordan klik eventet opretter to waypoint objekter.
 
 \vspace{-5pt}

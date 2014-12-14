@@ -25,7 +25,7 @@ Målet med iterationen er at kunne gennemføre use case 1. \\
 I iteration 2 er hovedformålet at få kommunikation mellem server og drone til at fungere. Bruger skal kunne oprette nye flyveopsætninger og gøre dem tilgængelige på server for dronen. Ydermere skal drone kunne finde egen GPS position, flyvehøjde og orientering. Ud fra viden om egen position, flyvehøjde og orientering skulle dronen kunne flyve til lokationer som er forudbestemt af bruger. Efter denne iteration skal use case 2 og 3 kunne gennemføres. \\
 
 \textbf{Iteration 3}\\
-I iteration 3 er hovedformålet at tilføje billede håndtering. Der monteres kamera på drone, så der kan tages billeder under flyvning. Billeder taget under flyvning sendes via mobilnet fra drone til server og gøres tilgængelige for bruger. Målet med iteration 3 er at kunne gennemføre use case 4 og 5. \\
+I iteration 3 er hovedformålet at tilføje billedehåndtering. Der monteres kamera på drone, så der kan tages billeder under flyvning. Billeder taget under flyvning sendes via mobilnet fra drone til server og gøres tilgængelige for bruger. Målet med iteration 3 er at kunne gennemføre use case 4 og 5. \\
 
 \textbf{Iteration 4}\\
 I iteration 4 er hovedformålet at udvikle antikollision til dronen. Inden tilføjelsen af antikollision kunne dronen udelukkende flyve i lukkede områder uden forhindringer. Tilføjelsen af antikollision skal muliggøre flyvning i normale områder med forhindringer. Efter denne iteration skal alle use cases kunne gennemføres.
@@ -37,7 +37,7 @@ Agil systemudvikling har fokus på løbende at levere værdi til kunden gennem e
 
 \newpage
 \subsection{Metoder}
-I dette afsnit beskrives de metoder der er blevet benytter i projektet.
+I dette afsnit beskrives de metoder der er blevet benyttet i projektet.
 
 \subsubsection*{RUP model}
 \textbf{R}ational \textbf{U}nified \textbf{P}rocess er en systemudviklings metode der er blevet anvendt til at definere den overordnede ramme for projektet. RUP er opbygget af de fire faser som beskrives nedenfor.  
@@ -64,7 +64,7 @@ Transition er den afsluttende fase, og tager hånd om færdiggørelse af projekt
 \newpage
 
 \subsubsection*{ASE modellen}
-ASE modellen som ses på figur \ref{fig:dokument_udvikling} er brugt i kombination med RUP. RUP bruges til at danne overordnede rammer for projektet, mens ASE modellen bruges til definere hvilke dokumenter der skal udarbejdes og hvornår. På figur \ref{fig:dokument_udvikling} vise hvilke dokumenter der oprettes som produkt af ASE modellen. 
+ASE modellen som ses på figur \ref{fig:dokument_udvikling} er brugt i kombination med RUP. RUP bruges til at danne overordnede rammer for projektet, mens ASE modellen bruges til definere hvilke dokumenter der skal udarbejdes og hvornår. På figur \ref{fig:dokument_udvikling} vises hvilke dokumenter der oprettes som produkt af ASE modellen. 
 
 \begin{figure}[H]
 	\centering
@@ -76,7 +76,7 @@ ASE modellen som ses på figur \ref{fig:dokument_udvikling} er brugt i kombinati
 \newpage
 
 \subsubsection*{N + 1 model}
-Alt software design i projektet er lavet ud fra systemudviklings modellen N + 1 [10]. Modellen er en udviklingsmodel der beskriver software fra flere forskellige view's.  
+Alt software design i projektet er lavet ud fra systemudviklings modellen N + 1 [10]. Modellen er en udviklingsmodel, der beskriver software fra flere forskellige view's.  
 Med N + 1 modellen tages der altid udgangspunkt i et use case view. Derefter er det op til udviklerholdet at bestemme hvor mange views der skal bruges for at beskrive systemet på tilstrækkelig vis. 
 
 Til beskrivelse af systemets software anvendes en 5 + 1 view model, som indeholder use case view, logical view, process view, data view, deployment view og implementation view. 
@@ -104,7 +104,7 @@ Process view bruges til at beskrive sideløbende processer/tråde i systemet og 
 
 
 \textbf{Data View}\\
-I data viewet beskrives layout af data der gemmes i systemet og hvordan det lagres. Desuden beskrives hvordan data sendes rundt i systemet og hvordan servers database tilgås.\\
+I data viewet beskrives layout af data, der gemmes i systemet, og hvordan det lagres. Desuden beskrives hvordan data sendes rundt i systemet og hvordan servers database tilgås.\\
 
 
 \textbf{Deployment View}\\

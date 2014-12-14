@@ -2,26 +2,26 @@
 
 I dette afsnit beskrives og diskuteres de resultater gruppen opnåede og der laves en beskrivelse af de punkter der kunne være lavet på bedre, smartere eller anderledes vis. Diskussionen tager udgangspunkt i de opnåede resultater beskrevet i resultatafsnittet.
 
-Accepttesten forløb stort set som planlagt indtil test case 4-6, som omhandlede opsamling af billeder, visning af billeder og tilføjelse af antikollision. Test case 4-6 blev ikke godkendt, da de kun blev designet og ikke implementeret. Da arbejdsprocessen var planlagt i iterationer, var de fejlene test cases ikke kritiske for det resterende system.\\
+Accepttesten forløb stort set som planlagt indtil test case 4-6, som omhandlede opsamling af billeder, visning af billeder og tilføjelse af antikollision. Test case 4-6 blev ikke godkendt, da de kun blev designet og ikke implementeret. Da arbejdsprocessen var planlagt i iterationer, var de fejlede test cases ikke kritiske for det resterende system.\\
 
 \textbf{Drone}\\
 Drone kan under flyvning finde nuværende flyvehøjde, flyveretning og GPS position ved aflæsning af data fra ultralydssensor, kompas og GPS.  Ud fra det aflæste data tilpasses flyveindstillinger. Via det mobile 3G-netværk sender drone information om nuværende position til server og henter flyveopsætninger fra server.
 
-Tilpasning af flyveindstillinger er implementeret i en tre trin. Først tilpasses flyvehøjde, dernæst tilpasses flyveretning og når både flyvehøjde og flyveretning er tilpasset flyves der fremad. Hver del er implementeret og fungerer hver for sig selv, men samlet set fungerer det ikke optimalt pga. manglende optimering. Til justering af flyvehøjde og flyveorientering kunne der med fordel være gjort brug af PID regulering.  I implementerings fasen opstod problemer med timing, specielt når 3G/GPS modulet blev brugt. Ved at indføre brug af flertrådet main controller kunne disse problemer undgås. \\
+Tilpasning af flyveindstillinger er implementeret i tre trin. Først tilpasses flyvehøjde, dernæst tilpasses flyveretning og når både flyvehøjde og flyveretning er tilpasset flyves der fremad. Hver del er implementeret og fungerer hver for sig selv, men samlet set fungerer det ikke optimalt pga. manglende optimering. Til justering af flyvehøjde og flyveorientering kunne der med fordel være gjort brug af PID regulering.  I implementerings fasen opstod problemer med timing, specielt når 3G/GPS modulet blev brugt. Ved at indføre brug af flertrådet main controller kunne disse problemer undgås. \\
 
 
 \textbf{Webapplikation}\\
 Før systemets bruger kan få lov at tilgå webapplikationens funktionalitet er login påkrævet. Efter succesfuld login hentes og fremvises data fra server.
 Når bruger er logget ind kan der laves nye flyveopsætninger, men pga. manglede implementering kan webapplikationen ikke sende de nyoprettede flyveopsætninger til server.
 
-Overordnet designvalg til webapplikation har fungeret tilfredsstillende. Dette har betydet at der undervejs i projektet ikke er lavet væsentlige ændringer i design og brug af udviklingsværktøjer. Webapplikationen er udviklet ved brug AngularJS, CSS3 og HTML5. Server er udviklet med en kombination af Django og Django-REST-framework, på samme vis kunne webapplikationen været blevet udviklet. Men server og webapplikation er bevist udviklet adskilt og med forskellige værktøjer. Dette er gjort for at bevise at der er lav kobling mellem server og webapplikation, og for at undgå problemer med syntaks. 
+Overordnet designvalg til webapplikation har fungeret tilfredsstillende. Dette har betydet at der undervejs i projektet ikke er lavet væsentlige ændringer i design og brug af udviklingsværktøjer. Webapplikationen er udviklet ved brug AngularJS, CSS3 og HTML5. Server er udviklet med en kombination af Django og Django-REST-framework, på samme vis kunne webapplikationen være blevet udviklet. Men server og webapplikation er bevidst udviklet adskilt og med forskellige værktøjer. Dette er gjort for at bevise at der er lav kobling mellem server og webapplikation, og for at undgå problemer med syntaks. 
 
 \newpage
 
 \textbf{Server}\\
 Det er lykkedes at implementere en fuld funktionel server, der fungerer som bindeled mellem drone og webapplikation. Serveren er implementeret som en passiv enhed, der er ansvarlig for håndtering af systemets data og tilgås via HTTP protokollen. 
 
-Billeder i serverens database er koblet op til events, de kunne med fordel i stedet være koblet til waypoints. Udover dette har de overordnet server design valg fungeret tilfredsstillende. Hvilket har betydet at der er blevet holdt fast i de værktøjer og beslutninger, der blev truffet i starten af projektet. Eksempelvis indeholder server en SQLite database, som til projektet har fungeret fint. Der kunne dog i stedet være gjort brug af en MongoDB database, der er en database type der håndterer data som objekter.
+Billeder i serverens database er koblet op til events, de kunne med fordel i stedet være koblet til waypoints. Udover dette har de overordnet server design valg fungeret tilfredsstillende. Dette har betydet at der er blevet holdt fast i de værktøjer og beslutninger, der blev truffet i starten af projektet. Eksempelvis indeholder server en SQLite database, som til projektet har fungeret fint. Der kunne dog i stedet være gjort brug af en MongoDB database, der er en databasetype der håndterer data som objekter.
 
 \vspace{0.5cm}
 
@@ -31,7 +31,7 @@ Som det fremgik af resultatafsnittet, er det ikke lykkedes at implementere syste
 
 \textbf{Test case 4}  \\
 Før test case 4 kan gennemføres succesfuldt, skal håndtering af kamera implementeres.
-Sekvens- og klassediagrammer er designet, så det eneste der mangler er oprettelse af en \textit{camera} klasse. Klassen oprettes og tilføjes de metoder der er beskrevet i klassediagrammet. Desuden skal dronen skal være i stand til at sende billeder til server og tage imod accept af billeder fra systemets bruger. Dette gøres ved udvidelse af \textit{communication} klassen. 
+Sekvens- og klassediagrammer er designet, så det eneste der mangler er oprettelse af en \textit{camera} klasse. Klassen oprettes og tilføjes de metoder der er beskrevet i klassediagrammet. Desuden skal dronen være i stand til at sende billeder til server og tage imod accept af billeder fra systemets bruger. Dette gøres ved udvidelse af \textit{communication} klassen. 
 
 \textbf{Test case 5} \\
 For at test case 5 kan gennemføres skal logikken til archive view'et implementeres. 
@@ -47,11 +47,11 @@ Test case 6 indeholder antikollision. Antikollision skal sikre at dronen ikke fl
 I dette afsnit beskrives nogle af de muligheder der er for videreudvikling af systemet.  \\
 
 \textbf{Optimering af højdemåling}\\
-Den ultralydssensor der bruges til aflæsning af flyvehøjde kan maksimalt måle afstande på 4-5 meter og er knap så præcis når dronen er i bevægelse. 
+Den ultralydssensor der bruges til aflæsning af flyvehøjde kan maksimalt måle afstande på 4-5 meter og er knap så præcis, når dronen er i bevægelse. 
 Til at optimere måling af flyvehøjden kan systemet udvides med endnu en teknologi der måler flyvehøjde. En løsning kan være at tilføje andre sensorer, der i fællesskab med ultralydssensoren bruges til måling af flyvehøjde. 
-På flight contorl board'et befinder der sig et barometer, dette kan eksempelvis benyttes til at supplere ultralydssensoren.
+På flight control board'et befinder der sig et barometer, dette kan eksempelvis benyttes til at supplere ultralydssensoren.
 Ved kombination af to teknologier, vil ultralydssensoren kunne anvendes når dronen skal lette eller lande og barometeret kan anvendes under flyvning. 
-Måling af flyvehøjde med både ultralydssensor og barometer vil være en stabil løsning. Da begge teknologier har stærke og svage sider, og de svage fjernes ved kombination af teknologierne.\\
+Måling af flyvehøjde med både ultralydssensor og barometer vil være en stabil løsning, da begge teknologier har stærke og svage sider, og de svage fjernes ved kombination af teknologierne.\\
 
 
 \textbf{PID regulering}\\
