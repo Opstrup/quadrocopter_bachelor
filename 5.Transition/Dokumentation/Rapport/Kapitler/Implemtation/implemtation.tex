@@ -7,7 +7,7 @@ Dette afsnit beskriver implementering af systemet.
 \subsection{Drone}
 Drone indeholder alt systemets hardware. Software til drone er udviklet i programmerings sproget C++, og er opdelt i forskellige ansvarsområder. Nogle softwareklasser bruges til at aflæse data fra højdesensor, 3G/GPS modul og kompas, mens andre klasser er ansvarlige for kommunikation. Information fra de forskellige softwareklasser samles og behandles på dronens main controller. Ud fra den indsamlede data tilpasses dronens flyveindstilling via dertil indrettede klasser. 
 
-Håndtering af GPS sker via den abstrakte \textit{GPS} klasse og \textit{StandAloneGps} klassen der nedarver fra den abstrakte klasse. Når nuværende og ønsket GPS position kendes, kan korrekt flyveretning og afstand til ønsket GPS position findes. Til at finde korrekt flyveretning og afstand til ønsket GPS bruges de to metoder \textit{calBearingToTarget} og \textit{calDistToTarget} fra \textit{FlightControl} klassen. 
+Håndtering af GPS sker via den abstrakte \textit{GPS} klasse og \textit{StandAloneGps} klassen der nedarver fra den abstrakte klasse. Når nuværende og ønsket GPS position kendes, kan korrekt flyveretning og afstand til ønsket GPS position beregnes. Til at beregne korrekt flyveretning og afstand til ønsket GPS position bruges de to metoder \textit{calBearingToTarget} og \textit{calDistToTarget} fra \textit{FlightControl} klassen. 
 
 Dronen kommunikerer med server via HTTP protokollen, til dette anvendes flere klasser. GetAndPut klassen som er den mest hardware nære klasse, håndterer \textit{GET} og \textit{PUT} requests. Metoder i \textit{GetAndPut} klassen anvendes af de to klasser, \textit{EventHandler} og \textit{WayPointsHandler}. Disse klasser sorterer informationen fra \textit{GetAndPut} og returnerer det nødvendige information. \textit{Communication} klassen bruger Handler klasserne, hvilket giver systemet lav kobling. Ved at have denne opdeling, er klasserne uafhængige af hinanden og tests kan udføres enkelt.
 
@@ -20,17 +20,22 @@ Indledningsvis i implementeringen blev der lagt meget fokus på server, da den s
 Server er udviklet i programmerings sproget Python og med webframeworket Django[x].
 Tilsammen udgør Python og Django en SQLite database med et RESTful API. Der benyttes en række API-endpoints for at tilgå eller ændre data på server.
 
-Databasen er designet modulært så systemet har stor mulighed for udvidelser, fx. mulighed for at håndtering flere brugere og flere droner. Omdrejnings punktet i databasen er et event, der indeholder information omkring hvilke bruger som har oprettet event og til hvilke droner.
+Databasen er designet modulært så systemet har stor mulighed for udvidelser, fx. mulighed for håndtering af flere brugere og flere droner. Omdrejnings punktet i databasen er et event, der indeholder information omkring hvilke bruger som har oprettet event og til hvilke droner.
 
 Til udviklingen af serveren er der også benyttet Django REST frameworket[x], som er en udvidelse til Django. Ved brug af dette framework kan tags som "@api\_view(['GET', 'POST'])" benyttes til at fortælle server hvilke HTTP requests der er tilladt til et givet endpoint. 
 Ved brug af REST frameworket kan der gøres brug af serializers, som bruges til at informere  serveren om hvordan data skal formateres på. Med et browsable API simplificeres udviklingen med frameworket.
 
 \newpage
 \subsection{Webapplikation}
-Webapplikationen  er udviklet i programmeringssprogene HTML, CSS og JavaScript. Webapplikationens frontend er udviklet med frameworket AngularJS[X], som er et meget vidt benyttet framework udviklet af Google. Derudover benyttes et google maps API til webapplikationen. Dette API muliggør brugen af kort på webapplikationen. Da AngularJS er benyttet til udviklingen, er projektet opdelt efter MVC-modellen[x]. 
+Webapplikationen  er udviklet i programmeringssprogene HTML, CSS og JavaScript. Webapplikationens frontend er udviklet med frameworket AngularJS[X], som er framework udviklet af Google. Derudover benyttes et google maps API til webapplikationen. Brug af google maps API'et muliggør brug af kort på webapplikationen. Da AngularJS er benyttet til udvikling, er frontend opdelt efter MVC-modellen[x]. 
 
-Kortet er implementeret ved brug af et google-maps directive[X], dette pakker google maps api'et ind og derved gør det mere effektivt i forbindelse med Angular udvikling. Dette betyder også at noget funktionalitet som google maps tilbyder kan ikke direkte bruges i dette directive. 
-Da det var et krav at waypoints skulle oprettes ved klik på kortet, blev der udviklet et specifik klik event på kortet. Når et klik på kortet finder sted bliver der tegnet et waypoint på kortet. I koden bag bliver der så oprettet to waypoint objekter. Det ene waypoint objekt er til kortet, dette objekt indeholder kun icon, latitude og longitude til hvor waypointet skal tegnes. Det andet waypoint, der bliver oprettet, er det waypoint som skal benyttes og sendes til serveren når brugeren ønsker at publicere det tegnede rute. Dette er nødsaget da google-maps directivet ikke kan finde ud af at tegne waypoints hvis de indeholder data som directivet ikke kender til. Figur \ref{fig:click_event} illustrere hvordan klik eventet opretter to waypoint objekter.
+Google maps kortet er implementeret ved brug af et google-maps directive[X], som pakker google maps API'et ind og gør det mere effektivt i forbindelse med Angular udvikling. Dette medfører at dele af den funktionalitet som google maps oprindelig tilbyder ikke kan bruges. 
+
+Da det var et krav at waypoints skulle oprettes ved klik på kortet, blev der udviklet et klik event. 
+Når der klikkes på kortet, bliver der automatisk tegnet et waypoint på kortet. 
+I den bagvedliggende koden bliver der oprettet to waypoint objekter. 
+Det ene waypoint objekt er til kortet, og indeholder icon, latitude og longitude til den placering waypointet skal tegnes.  Det andet waypoint sendes til serveren når bruger ønsker at publicere den oprette flyveopsætning. 
+Dette er nødsaget, da google-maps directivet ikke kan tegne waypoints hvis de indeholder data som directivet ikke kender. Figur \ref{fig:click_event} illustrere hvordan klik eventet opretter to waypoint objekter.
 
 \vspace{-5pt}
 %kommentar
@@ -43,7 +48,6 @@ Da det var et krav at waypoints skulle oprettes ved klik på kortet, blev der ud
 \end{figure}
 
 
-Under udviklingen af webapplikationen har test vægtet en stor del, systemet skulle udvikles, så det var testbart. Derfor blev der brugt AngularJS's dependency injection teknikker. Alt kommunikationen med backend'en er for et eksempel skrevet som en service, som alle andre services og controller benytter sig af via dependency injection, på den måde kan alt kommunikation til serveren abstraheres væk. Lignende teknikker er benyttet for alle services i systemet, som indeholder størstedelen af logikken i systemet.  
+Under udviklingen af webapplikationen har test vægtet en stor del, derfor er systemet udviklet så det er testbart. Til udviklingen blev AngularJS's dependency injection teknikker brugt. Eksempelvis er kommunikationen med backend implementeret i en service, som alle andre services og controller benytter sig af via dependency injection. Lignende teknikker er benyttet for alle services, som indeholder størstedelen af systemets logik.  
 
-Alle requests til server sker asynkron. Derfor er webapplikationen implementeret således at når der bliver lavet et request til server, så arbejder webapplikationen videre og når data fra serveren er klar så får webapplikationen et interrupt og præsentere data. Dette kan ses ved klik på kortet, hvor efter et kort delay dronen bliver tegnet på kortet.
-
+Alle requests til server sker asynkront. Når webapplikation laver et request til server ventes der ikke på svar. Webapplikation arbejder videre, og når data fra server er klar får webapplikation et interrupt og præsenterer derefter data.
