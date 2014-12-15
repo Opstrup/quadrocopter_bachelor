@@ -18,3 +18,27 @@ Styringssignaler fra main controller og remote controller sendes begge til switc
 	\caption{Switch board design}
 	\label{fig:switchboard_design}
 \end{figure}
+
+\newpage
+
+\subsection{}
+I dette afsnit beskrives hvordan systemets forskellige hardware dele sammensættes.
+Først i afsnittet vises en stykliste der beskriver systemets hardware dele, dernæst vises hvordan hardware delene er koblet sammen.
+
+\textbf{Stykliste}\\
+3G/GPS module\\
+Ultralydssensor\\
+Main controller\\
+Flight control board\\
+Fjernbetjening + Receiver\\
+Switch board\\
+
+De fem første moduler er færdigkøbte hardware moduler, kun switch boardet er designet og implementeret af gruppen. Til konstruktion af switch boardet er der brugt: To AND gates af typen 74HC08, en OR gate af typen 74HC32 og en INVERTER af typen 74HC04.
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{Billeder/hardware/hardware_oversigt.png}
+	\caption{Switch board design}
+	\label{fig:switchboard_design}
+\end{figure}

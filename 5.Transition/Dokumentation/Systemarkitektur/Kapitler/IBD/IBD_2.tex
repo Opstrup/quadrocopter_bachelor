@@ -19,12 +19,12 @@ På figur \ref{fig:ibd_drone} vises et ibd over drone. Diagrammet viser bla. hvo
 			Flight feedback		& Handshake og billeder				& 3G/GPS module.				& Webserver.	\\ \hline
 			Flight setup		& Handshake \& Flyveopsætning  		& Webserver.			& 3G/GPS \newline module.	\\ \hline
 			GPS signal	 		& GPS signal						& GPS-satellitter		& 3G/GPS \newline module.	\\ \hline			
-			3G/GPS supply		& 5V DC							 	& Flight control board	& 3G/GPS \newline module.    \\ \hline
+			3G/GPS supply		& 5V DC							 	& Arduino	& 3G/GPS \newline module.    \\ \hline
 			Serial com. 1		& RX / TX signaler. \newline Styrer 3G modul.& Main \newline controller. 		& 3G/GPS \newline module.    \\ \hline
 			
 			
 			PWM control 1 [6]	& 244 Hz 6 kanals signal. Duty \newline cycle 25-50\%. Periode på 4ms	& Main \newline controller.	& Remoto \newline controller.	\\ \hline
-			MC supply		& 5V DC							 	& Main \newline controller	& Flight \newline control.    \\ \hline
+			MC supply		& 5V DC							 	& Flight \newline control. 	& Main \newline controller    \\ \hline
 			Control pin [1]		& Skifter mellem 5V og 0V							 	& Main \newline controller	& Remoto \newline  controller.    \\ \hline
 			
 			PWM control 2 [6]	& 50 Hz 6 kanals signal. Duty \newline cycle 5-10\%. Periode på 20ms	& Remote \newline controller.	& Flight \newline control.	\\ \hline		RC supply			& 5V DC							 	& Flight control	& Remote \newline controller.    \\ \hline
