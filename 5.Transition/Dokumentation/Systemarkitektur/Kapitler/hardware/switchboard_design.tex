@@ -4,7 +4,32 @@ Til projektet er der købt mange færdige hardware moduler. Switch boardet er de
 
 \vspace{-0.3cm}
 
-\subsection{Switch board}
+\subsection{Hardware oversigt}
+I dette afsnit beskrives hvordan systemets forskellige hardware dele sammensættes.
+Først i afsnittet vises en stykliste der beskriver systemets hardware dele, dernæst vises hvordan hardware delene er koblet sammen.
+
+\textbf{Stykliste}
+\begin{itemize}
+	\item 3G/GPS module
+	\item Ultralydssensor
+	\item Main controller
+	\item Flight control board
+	\item Fjernbetjening + Receiver
+	\item Switch board \\
+\end{itemize} 
+
+De fem første moduler er færdigkøbte hardware moduler, kun switch boardet er designet og implementeret af gruppen. Til konstruktion af switch boardet er der brugt: To AND gates af typen 74HC08, en OR gate af typen 74HC32 og en INVERTER af typen 74HC04.
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{Billeder/hardware/hardware_oversigt.png}
+	\caption{Switch board design}
+	\label{fig:switchboard_design}
+\end{figure}
+
+\newpage
+\subsection*{Switch board}
 \vspace{-0.4cm}
 I dette afsnit beskrives hardware designet af switch boardet. Boardet er designet så det kan switche mellem manuel og autonom flyvning. Når der flyves manuelt lader switch boardet styringssignaler fra remote controller styre dronen og når der flyves autonomt er det signaler fra main controller der styrer dronen.
 
@@ -19,26 +44,4 @@ Styringssignaler fra main controller og remote controller sendes begge til switc
 	\label{fig:switchboard_design}
 \end{figure}
 
-\newpage
 
-\subsection{}
-I dette afsnit beskrives hvordan systemets forskellige hardware dele sammensættes.
-Først i afsnittet vises en stykliste der beskriver systemets hardware dele, dernæst vises hvordan hardware delene er koblet sammen.
-
-\textbf{Stykliste}\\
-3G/GPS module\\
-Ultralydssensor\\
-Main controller\\
-Flight control board\\
-Fjernbetjening + Receiver\\
-Switch board\\
-
-De fem første moduler er færdigkøbte hardware moduler, kun switch boardet er designet og implementeret af gruppen. Til konstruktion af switch boardet er der brugt: To AND gates af typen 74HC08, en OR gate af typen 74HC32 og en INVERTER af typen 74HC04.
-
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=1\textwidth]{Billeder/hardware/hardware_oversigt.png}
-	\caption{Switch board design}
-	\label{fig:switchboard_design}
-\end{figure}
