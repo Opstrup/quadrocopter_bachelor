@@ -9,7 +9,7 @@
 			1.0 	& 25-08-14	& KG,RL,AO		& Oprettet kravspecifikations \newline dokument.	\\ \hline
 			1.1 	& 03-09-14	& KG,RL,AO		& Use cases opdateret.\\ \hline
 			1.2 	& 09-09-14	& KG,RL			& Opdateret kravspecifikation.\\ \hline
-			1.3 	& 03-12-14	& KG,RL,AO		& Kravspecifikationen er rettet for fejl.\\ \hline
+			1.3 	& 03-12-14	& KG,RL,AO		& Kravspecifikationen er opdateret og rettet for fejl.\\ \hline
 		\end{tabular}
 	\caption{Revisionshistorik}
 	%\label{tab:TC1}
@@ -30,7 +30,7 @@
 	%\label{tab:TC1}
 \end{table}
 
-\vspace{4cm}
+\vspace{2cm}
 
 \section{Indledning}
 
